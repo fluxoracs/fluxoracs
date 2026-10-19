@@ -106,13 +106,18 @@ footer::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;back
 @media(prefers-reduced-motion:reduce){.clause{filter:none!important}}
 
 /* ===== v3: bolitas blancas ===== */
-.glow i{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.95) 0,rgba(255,255,255,.55) 42%,rgba(255,255,255,0) 72%);filter:blur(5px);opacity:var(--o,.15);animation:floaty var(--d,18s) ease-in-out infinite alternate}
-@keyframes floaty{to{transform:translate3d(var(--dx,20px),var(--dy,-40px),0)}}
-@media(max-width:640px){.glow i{width:calc(var(--s)*.62);height:calc(var(--s)*.62)}}
+@media(max-width:640px){}
+/* barra fija solida */
+header{background:#0b0b0c!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;-webkit-mask-image:none!important;mask-image:none!important;border-bottom:1px solid var(--line)!important}
+body::before{background:#0b0b0c!important}
+
+/* ===== fondo: cuadricula que se desvanece ===== */
+.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:56px 56px;background-position:center top;-webkit-mask-image:radial-gradient(ellipse 85% 65% at 50% 25%,#000 15%,transparent 75%);mask-image:radial-gradient(ellipse 85% 65% at 50% 25%,#000 15%,transparent 75%)}
+@media(max-width:640px){.glow{background-size:40px 40px}}
 </style>
 </head>
 <body>
-<div class="glow" aria-hidden="true"><i style="--x:6%;--y:8%;--s:110px;--o:0.2;--d:17s;--dx:30px;--dy:-50px"></i><i style="--x:80%;--y:6%;--s:70px;--o:0.16;--d:21s;--dx:-20px;--dy:40px"></i><i style="--x:46%;--y:22%;--s:46px;--o:0.14;--d:15s;--dx:25px;--dy:35px"></i><i style="--x:12%;--y:44%;--s:150px;--o:0.12;--d:24s;--dx:40px;--dy:-30px"></i><i style="--x:88%;--y:40%;--s:100px;--o:0.18;--d:19s;--dx:-35px;--dy:-45px"></i><i style="--x:58%;--y:52%;--s:60px;--o:0.15;--d:16s;--dx:20px;--dy:-40px"></i><i style="--x:4%;--y:78%;--s:80px;--o:0.17;--d:22s;--dx:30px;--dy:30px"></i><i style="--x:70%;--y:76%;--s:130px;--o:0.11;--d:26s;--dx:-30px;--dy:-35px"></i><i style="--x:36%;--y:88%;--s:54px;--o:0.16;--d:18s;--dx:-20px;--dy:-30px"></i></div>
+<div class="glow" aria-hidden="true"></div>
 
 <header>
   <div class="nav">
