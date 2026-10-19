@@ -231,6 +231,22 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
 .info-list a:hover .ico{background:#fff;color:#000}
 @media(max-width:620px){.stats{gap:1rem 1.6rem}.badge{letter-spacing:.1em;font-size:.62rem}}
 @media(prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;filter:none}.w{transform:none}.scene{transform:none}}
+
+/* ===== paquetes: mismo diseño y hover en blanco suave ===== */
+.tier,.tier.feat{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));color:var(--ink2);border-color:var(--line);box-shadow:none;animation:none;transition:transform .5s var(--ease),border-color .4s,box-shadow .4s}
+.tier::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(145deg,#ebebee,#cfcfd4);opacity:0;transition:opacity .4s var(--ease)}
+.tier .tname,.tier .amt,.tier .amt small,.tier li,.tier.feat .tname,.tier.feat .amt,.tier.feat li{transition:color .35s,border-color .35s}
+.tier.feat .tname{color:var(--muted)}.tier.feat .amt{color:var(--ink)}.tier.feat li{border-color:var(--line);color:var(--ink2)}
+.tier.feat li::before{background:rgba(255,255,255,.5)}
+.tier li::before{transition:background .35s}
+.tiers .tier:hover,.tiers .tier.feat:hover{border-color:rgba(255,255,255,.55);box-shadow:0 24px 50px -24px rgba(255,255,255,.28)}
+.tiers .tier:hover::before{opacity:1}
+.tiers .tier:hover .tname,.tiers .tier.feat:hover .tname{color:#55555b}
+.tiers .tier:hover .amt,.tiers .tier.feat:hover .amt{color:#0b0b0c}
+.tiers .tier:hover .amt small{color:#6a6a70}
+.tiers .tier:hover li,.tiers .tier.feat:hover li{color:#2b2b30;border-color:rgba(0,0,0,.13)}
+.tiers .tier:hover li::before,.tiers .tier.feat:hover li::before{background:#111}
+.tiers .tier:hover .btn{background:#0b0b0c;color:#fff}
 </style>
 </head>
 <body>
@@ -310,8 +326,8 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
     <div class="center reveal"><div class="eyebrow">Precios</div><h2 class="h2">Nuestros paquetes</h2></div>
     <div class="tiers">
       <div class="tier reveal"><div class="tname">Básico</div><div class="amt">$150 <small>MXN</small></div><ul><li>Para videos de máximo 1 minuto</li><li>Vertical u horizontal</li><li>Música sin copyright</li><li>Cortes y ajustes básicos</li><li>Entrega estimada: 1 a 2 días</li></ul><a href="https://wa.me/526424836880?text=Hola,%20me%20interesa%20el%20paquete%20Básico%20%24150" target="_blank" rel="noopener" class="btn btn-light">Contratar <span class="arrow">→</span></a></div>
-      <div class="tier reveal feat d1"><div class="tname">Estándar</div><div class="amt">$300 <small>MXN</small></div><ul><li>Edición intermedia</li><li>Vertical u horizontal</li><li>Para videos de hasta 4 minutos</li><li>Subtítulos incluidos</li><li>Transiciones</li><li>Entrega estimada: 1 a 2 días</li></ul><a href="https://wa.me/526424836880?text=Hola,%20me%20interesa%20el%20paquete%20Estándar%20%24300" target="_blank" rel="noopener" class="btn btn-dark">Contratar <span class="arrow">→</span></a></div>
-      <div class="tier reveal d2"><div class="tname">Pro</div><div class="amt">$500 <small>MXN</small></div><ul><li>Edición avanzada y más dinámica</li><li>Vertical u horizontal</li><li>Música y efectos de sonido</li><li>Para videos de 5 a 10 minutos</li><li>Ajustes visuales más detallados</li><li>Entrega estimada: 1 a 3 días</li></ul><a href="https://wa.me/526424836880?text=Hola,%20me%20interesa%20el%20paquete%20Pro%20%24500" target="_blank" rel="noopener" class="btn btn-dark">Contratar <span class="arrow">→</span></a></div>
+      <div class="tier reveal feat d1"><div class="tname">Estándar</div><div class="amt">$300 <small>MXN</small></div><ul><li>Edición intermedia</li><li>Vertical u horizontal</li><li>Para videos de hasta 4 minutos</li><li>Subtítulos incluidos</li><li>Transiciones</li><li>Entrega estimada: 1 a 2 días</li></ul><a href="https://wa.me/526424836880?text=Hola,%20me%20interesa%20el%20paquete%20Estándar%20%24300" target="_blank" rel="noopener" class="btn btn-light">Contratar <span class="arrow">→</span></a></div>
+      <div class="tier reveal d2"><div class="tname">Pro</div><div class="amt">$500 <small>MXN</small></div><ul><li>Edición avanzada y más dinámica</li><li>Vertical u horizontal</li><li>Música y efectos de sonido</li><li>Para videos de 5 a 10 minutos</li><li>Ajustes visuales más detallados</li><li>Entrega estimada: 1 a 3 días</li></ul><a href="https://wa.me/526424836880?text=Hola,%20me%20interesa%20el%20paquete%20Pro%20%24500" target="_blank" rel="noopener" class="btn btn-light">Contratar <span class="arrow">→</span></a></div>
     </div>
     <p class="note">Adaptamos el paquete a tus necesidades. La entrega es un estimado y puede variar por diferentes factores.</p>
   </div>
