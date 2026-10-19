@@ -9,6 +9,9 @@
 <link rel="icon" type="image/png" href="favicon1.png" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="favicon2.png" media="(prefers-color-scheme: light)">
 <link rel="apple-touch-icon" href="1.1.png">
+<script>
+(function(){var m=matchMedia('(prefers-color-scheme: dark)');function s(){document.querySelectorAll('link[rel="icon"]').forEach(function(l){l.remove()});var l=document.createElement('link');l.rel='icon';l.type='image/png';l.sizes='any';l.href=(m.matches?'favicon1.png':'favicon2.png')+'?v=2';document.head.appendChild(l)}s();if(m.addEventListener)m.addEventListener('change',s)})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -112,7 +115,7 @@ header{background:#0b0b0c!important;-webkit-backdrop-filter:none!important;backd
 body::before{background:#0b0b0c!important}
 
 /* ===== fondo: cuadricula que se desvanece ===== */
-.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:56px 56px;background-position:center top;-webkit-mask-image:radial-gradient(ellipse 85% 65% at 50% 25%,#000 15%,transparent 75%);mask-image:radial-gradient(ellipse 85% 65% at 50% 25%,#000 15%,transparent 75%)}
+.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.17) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.17) 1px,transparent 1px);background-size:56px 56px;background-position:center top;-webkit-mask-image:radial-gradient(ellipse 110% 85% at 50% 20%,#000 35%,rgba(0,0,0,.35) 70%,transparent 100%);mask-image:radial-gradient(ellipse 110% 85% at 50% 20%,#000 35%,rgba(0,0,0,.35) 70%,transparent 100%)}
 @media(max-width:640px){.glow{background-size:40px 40px}}
 </style>
 </head>
