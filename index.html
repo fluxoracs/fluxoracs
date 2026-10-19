@@ -167,11 +167,76 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
 .channels{grid-template-columns:repeat(3,1fr);margin-top:3rem}
 .channels.hours{grid-template-columns:repeat(2,1fr);margin-top:.75rem}
 @media(max-width:760px){.channels,.channels.hours{grid-template-columns:1fr}}
+
+/* ===== hero v2 y animaciones ===== */
+.hero{min-height:auto;padding:clamp(104px,14vw,150px) 0 clamp(60px,8vw,100px)}
+.hero .lead{max-width:620px;margin:1.6rem auto 2rem}
+.badge{display:inline-flex;align-items:center;gap:.7rem;padding:.55rem 1.1rem;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin-bottom:1.6rem}
+.pulse{position:relative;width:8px;height:8px;border-radius:50%;background:#fff;flex-shrink:0}
+.pulse::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid #fff;animation:ripple 2s ease-out infinite}
+@keyframes ripple{from{transform:scale(.5);opacity:1}to{transform:scale(1.8);opacity:0}}
+.hl{font-weight:800;text-transform:uppercase;font-size:clamp(2rem,8.2vw,5.4rem);line-height:1.06;letter-spacing:-.01em;color:#fff}
+.ln{display:block;overflow:hidden;padding-bottom:.1em}
+.w{display:block;transform:translateY(110%);animation:up .9s var(--ease) forwards;animation-delay:calc(.2s + var(--i,0)*.15s)}
+@keyframes up{to{transform:none}}
+.sh{background:linear-gradient(100deg,#6d6d72 20%,#fff 45%,#6d6d72 70%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:up .9s var(--ease) forwards,shim 5s linear infinite}
+@keyframes shim{to{background-position:-200% 0}}
+.rise{opacity:0;transform:translateY(24px);filter:blur(8px);animation:rise 1s var(--ease) forwards;animation-delay:var(--dl,0s)}
+@keyframes rise{to{opacity:1;transform:none;filter:none}}
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem clamp(1.5rem,5vw,3.5rem);margin-top:2.6rem}
+.stats div{display:flex;flex-direction:column;gap:.15rem}
+.stats b{font-size:clamp(1rem,2.4vw,1.35rem);font-weight:800;color:#fff}
+.stats span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.stage{position:relative;width:min(900px,100%);aspect-ratio:100/61;margin:clamp(2.5rem,6vw,4rem) auto 0;container-type:inline-size}
+.scene{position:absolute;inset:0;transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transform-style:preserve-3d;transition:transform .25s ease-out}
+.monitor{position:absolute;left:0;top:0;width:84%;height:86%;border-radius:2.2cqw;border:1px solid rgba(255,255,255,.2);background:#0a0a0a;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.04),0 0 80px rgba(255,255,255,.06)}
+.mbar{height:11%;display:flex;gap:1cqw;align-items:center;padding:0 2cqw;border-bottom:1px solid var(--line)}
+.mbar i{width:1.2cqw;height:1.2cqw;border-radius:50%;background:rgba(255,255,255,.3)}
+.mprev{position:relative;height:51%;display:grid;place-items:center;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.16),transparent 55%),linear-gradient(135deg,#1b1b1b,#070707)}
+.mplay{width:6cqw;height:6cqw;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);position:relative}
+.mplay::after{content:"";position:absolute;left:55%;top:50%;transform:translate(-50%,-50%);border-left:1.8cqw solid #fff;border-top:1.1cqw solid transparent;border-bottom:1.1cqw solid transparent}
+.mcap{position:absolute;bottom:5%;left:50%;transform:translateX(-50%);padding:.5cqw 1.6cqw;border-radius:99px;background:rgba(0,0,0,.65);font-size:1.7cqw;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;color:#fff}
+.mtl{position:relative;height:38%;padding:1.6cqw 3cqw;display:flex;flex-direction:column;gap:1.2cqw}
+.row{position:relative;flex:1}
+.row i{position:absolute;top:0;bottom:0;border-radius:.8cqw;background:linear-gradient(90deg,rgba(255,255,255,.3),rgba(255,255,255,.12),rgba(255,255,255,.3));background-size:200% 100%;animation:clip 3s linear infinite}
+@keyframes clip{to{background-position:-200% 0}}
+.ph{position:absolute;top:0;bottom:0;left:4%;width:2px;background:#fff;box-shadow:0 0 12px #fff;animation:scrub 7s linear infinite}
+.ph::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);border-top:1.2cqw solid #fff;border-left:.8cqw solid transparent;border-right:.8cqw solid transparent}
+@keyframes scrub{0%{left:4%}100%{left:94%}}
+.phone{position:absolute;right:0;bottom:0;width:22%;aspect-ratio:9/16;border-radius:2.6cqw;border:1.5px solid rgba(255,255,255,.4);background:#050505;overflow:hidden;transform:translateZ(50px);box-shadow:0 30px 70px rgba(0,0,0,.85),0 0 60px rgba(255,255,255,.08);animation:bob 6s ease-in-out infinite}
+@keyframes bob{50%{translate:0 -2cqw}}
+.pstory{position:absolute;top:3.5%;left:6%;right:6%;display:flex;gap:1cqw;z-index:2}
+.pstory i{flex:1;height:.45cqw;border-radius:9px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
+.pstory i::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:0 50%;transform:scaleX(0);animation:fill 9s linear infinite;animation-delay:var(--d,0s)}
+@keyframes fill{0%{transform:scaleX(0)}33%{transform:scaleX(1)}100%{transform:scaleX(1)}}
+.pscene{position:absolute;inset:0;background:radial-gradient(circle at 50% 38%,rgba(255,255,255,.28),transparent 52%),linear-gradient(170deg,#262626,#050505)}
+.pscene::after{content:"";position:absolute;left:50%;top:38%;width:40%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.5);transform:translate(-50%,-50%);animation:ring 3s ease-out infinite}
+@keyframes ring{from{transform:translate(-50%,-50%) scale(.5);opacity:1}to{transform:translate(-50%,-50%) scale(1.9);opacity:0}}
+.pcap{position:absolute;bottom:12%;left:50%;transform:translateX(-50%);padding:.4cqw 1.4cqw;border-radius:99px;background:#fff;color:#000;font-size:1.5cqw;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;animation:pop 2.4s var(--ease) infinite}
+@keyframes pop{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.1)}}
+.pui{position:absolute;right:6%;bottom:26%;display:flex;flex-direction:column;gap:1.2cqw}
+.pui b{width:2cqw;height:2cqw;border-radius:50%;background:rgba(255,255,255,.5)}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:#fff;transform-origin:0 50%;transform:scaleX(var(--p,0))}
+/* animaciones extra */
+.btn-dark{position:relative;overflow:hidden}
+.btn-dark::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(0,0,0,.14) 50%,transparent 62%);transform:translateX(-130%);animation:sweep 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes sweep{0%,55%{transform:translateX(-130%)}100%{transform:translateX(130%)}}
+.cell:hover,.tile:hover,.tier:not(.feat):hover{background-image:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.13),transparent 65%),linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+.ico{transition:transform .4s var(--ease),background .3s}.cell:hover .ico{transform:rotate(-8deg) scale(1.1);background:rgba(255,255,255,.16)}
+.fv,.fh{animation:bob 5s ease-in-out infinite}.fh{animation-delay:-2.2s}
+.tier.feat{box-shadow:0 0 0 1px #fff,0 0 60px rgba(255,255,255,.18);animation:glowp 4s ease-in-out infinite}
+@keyframes glowp{50%{box-shadow:0 0 0 1px #fff,0 0 100px rgba(255,255,255,.34)}}
+.dot::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(255,255,255,.4);animation:ripple 2.6s ease-out infinite}
+.values span{transition:transform .3s var(--ease),background .3s}.values span:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}
+.info-list a:hover .ico{background:#fff;color:#000}
+@media(max-width:620px){.stats{gap:1rem 1.6rem}.badge{letter-spacing:.1em;font-size:.62rem}}
+@media(prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;filter:none}.w{transform:none}.scene{transform:none}}
 </style>
 </head>
 <body>
 <div class="glow" aria-hidden="true"></div>
 <header id="top">
+  <div class="progress"></div>
   <div class="wrap nav">
     <a href="#inicio" class="brand" aria-label="Fluxora Creative Studio"><img src="1.1.png" alt="Fluxora Creative Studio"></a>
     <nav class="links">
@@ -184,15 +249,24 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
 
 <section class="hero" id="inicio">
   <div class="wrap">
-    <h1 class="display">Fluxora</h1>
-    <div class="tag">Creative Studio</div>
-    <p class="lead">Edición de video, diseño gráfico y estrategia con IA. <strong style="color:var(--ink);font-weight:600">Tu contenido, al nivel que merece.</strong></p>
-    <div class="cta">
+    <div class="badge rise" style="--dl:.05s"><i class="pulse"></i>Edición de video vertical y horizontal</div>
+    <h1 class="hl"><span class="ln"><span class="w" style="--i:0">Tu contenido,</span></span><span class="ln"><span class="w sh" style="--i:1">al nivel que merece.</span></span></h1>
+    <p class="lead rise" style="--dl:.75s">Editamos tus videos para redes sociales con calidad, ritmo y un estilo profesional. <strong style="color:var(--ink);font-weight:600">Tú grabas, nosotros lo hacemos brillar.</strong></p>
+    <div class="cta rise" style="--dl:.9s">
       <a href="https://wa.me/526424836880" target="_blank" rel="noopener" class="btn btn-dark">Cotiza tu proyecto <span class="arrow">→</span></a>
-      <a href="#servicios" class="btn btn-light">Ver servicios</a>
+      <a href="#paquetes" class="btn btn-light">Ver paquetes</a>
     </div>
+    <div class="stats rise" style="--dl:1.05s">
+      <div><b>$150</b><span>Desde, MXN</span></div><div><b>1 a 3 días</b><span>Entrega estimada</span></div><div><b>9:16 y 16:9</b><span>Tú eliges el formato</span></div>
+    </div>
+    <div class="stage rise" style="--dl:1.2s" aria-hidden="true"><div class="scene">
+      <div class="monitor"><div class="mbar"><i></i><i></i><i></i></div>
+        <div class="mprev"><div class="mplay"></div><span class="mcap">Tu historia, bien contada</span></div>
+        <div class="mtl"><div class="row"><i style="left:4%;width:22%"></i><i style="left:30%;width:34%"></i><i style="left:68%;width:26%"></i></div><div class="row"><i style="left:10%;width:30%"></i><i style="left:46%;width:18%"></i><i style="left:70%;width:22%"></i></div><div class="row"><i style="left:4%;width:48%"></i><i style="left:56%;width:38%"></i></div><b class="ph"></b></div>
+      </div>
+      <div class="phone"><div class="pstory"><i></i><i style="--d:3s"></i><i style="--d:6s"></i></div><div class="pscene"></div><span class="pcap">Subtítulos</span><div class="pui"><b></b><b></b></div></div>
+    </div></div>
   </div>
-  <div class="scroll-hint" aria-hidden="true"></div>
 </section>
 
 <div class="rotator" aria-label="Edición de video vertical, horizontal y para redes sociales"><span class="rt-pre">Edición de video</span><span class="rt-words" aria-hidden="true"><b style="animation-delay:0.0s">vertical</b><b style="animation-delay:2.4s">horizontal</b><b style="animation-delay:4.8s">para Reels</b><b style="animation-delay:7.2s">para TikTok</b><b style="animation-delay:9.6s">para YouTube</b><b style="animation-delay:12.0s">con subtítulos</b></span></div>
@@ -291,6 +365,14 @@ $('#menuBtn').addEventListener('click',()=>header.classList.toggle('menu-open'))
 document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>header.classList.remove('menu-open')));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const pr=$('.progress');
+addEventListener('scroll',()=>{const h=document.documentElement;pr.style.setProperty('--p',Math.min(1,scrollY/Math.max(1,h.scrollHeight-innerHeight)))},{passive:true});
+document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.cell,.tile,.tier');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}});
+const hero=$('.hero'),sc=$('.scene');
+if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;sc.style.setProperty('--ry',(x*10)+'deg');sc.style.setProperty('--rx',(-y*8)+'deg')});
+  hero.addEventListener('pointerleave',()=>{sc.style.setProperty('--ry','0deg');sc.style.setProperty('--rx','0deg')});
+}
 </script>
 </body>
 </html>
