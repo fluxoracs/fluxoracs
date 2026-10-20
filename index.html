@@ -152,7 +152,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
   .cta .btn{width:100%}.hero .tag{letter-spacing:.26em;margin-right:-.26em}.eyebrow{letter-spacing:.2em}
   .foot,.foot-right{flex-direction:column;text-align:center;justify-content:center}
   }
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:opacity .2s!important}.reveal{transform:none;filter:none}}
+
 
 /* ===== fondo: cuadricula que se desvanece ===== */
 .glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.17) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.17) 1px,transparent 1px);background-size:56px 56px;background-position:center top;-webkit-mask-image:radial-gradient(ellipse 110% 85% at 50% 20%,#000 35%,rgba(0,0,0,.35) 70%,transparent 100%);mask-image:radial-gradient(ellipse 110% 85% at 50% 20%,#000 35%,rgba(0,0,0,.35) 70%,transparent 100%)}
@@ -161,9 +161,9 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
 /* ===== banda con palabras que giran ===== */
 .rotator{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.8rem 1rem;padding:1.4rem clamp(1.25rem,4vw,2.5rem);border-block:1px solid var(--line);background:rgba(13,13,13,.6);font-size:clamp(.78rem,2.6vw,1rem);font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink2);text-align:center}
 .rt-words{display:inline-grid;perspective:700px;padding:.45rem 1.2rem;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.06);color:#fff}
-.rt-words b{grid-area:1/1;font-weight:700;opacity:0;transform-origin:50% 50%;backface-visibility:hidden;animation:flipword 14.4s infinite both}
-@keyframes flipword{0%{opacity:0;transform:rotateX(-90deg)}2.5%{opacity:1;transform:none}14.5%{opacity:1;transform:none}17%{opacity:0;transform:rotateX(90deg)}100%{opacity:0;transform:rotateX(90deg)}}
-@media(prefers-reduced-motion:reduce){.rt-words b{opacity:0}.rt-words b:first-child{opacity:1}}
+.rt-words b{grid-area:1/1;font-weight:700;opacity:0;transform-origin:50% 50%;backface-visibility:hidden;animation:flipword 16.8s infinite both}
+@keyframes flipword{0%{opacity:0;transform:rotateX(-90deg)}2%{opacity:1;transform:none}12%{opacity:1;transform:none}14.3%{opacity:0;transform:rotateX(90deg)}100%{opacity:0;transform:rotateX(90deg)}}
+
 .channels{grid-template-columns:repeat(3,1fr);margin-top:3rem}
 .channels.hours{grid-template-columns:repeat(2,1fr);margin-top:.75rem}
 @media(max-width:760px){.channels,.channels.hours{grid-template-columns:1fr}}
@@ -230,7 +230,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
 .values span{transition:transform .3s var(--ease),background .3s}.values span:hover{transform:translateY(-3px);background:rgba(255,255,255,.12)}
 .info-list a:hover .ico{background:#fff;color:#000}
 @media(max-width:620px){.stats{gap:1rem 1.6rem}.badge{letter-spacing:.1em;font-size:.62rem}}
-@media(prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;filter:none}.w{transform:none}.scene{transform:none}}
+
 
 /* ===== paquetes: mismo diseño y hover en blanco suave ===== */
 .tier,.tier.feat{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));color:var(--ink2);border-color:var(--line);box-shadow:none;animation:none;transition:transform .5s var(--ease),border-color .4s,box-shadow .4s}
@@ -247,6 +247,83 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
 .tiers .tier:hover li,.tiers .tier.feat:hover li{color:#2b2b30;border-color:rgba(0,0,0,.13)}
 .tiers .tier:hover li::before,.tiers .tier.feat:hover li::before{background:#111}
 .tiers .tier:hover .btn{background:#0b0b0c;color:#fff}
+
+/* ===== subtitulos con scroll vertical ===== */
+.pcap{padding:0 1.8cqw;height:3cqw;line-height:3cqw;overflow:hidden;animation:none}
+.roll{display:flex;flex-direction:column;animation:roll 8s cubic-bezier(.65,0,.35,1) infinite}
+.roll b{display:block;height:3cqw;line-height:3cqw;text-align:center;font-weight:800}
+@keyframes roll{0%,20%{transform:translateY(0)}25%,45%{transform:translateY(-3cqw)}50%,70%{transform:translateY(-6cqw)}75%,95%{transform:translateY(-9cqw)}100%{transform:translateY(-12cqw)}}
+
+/* ===== pantalla del celular como feed de videos ===== */
+.feed{position:absolute;left:0;top:0;width:100%;height:500%;animation:feed 12s cubic-bezier(.7,0,.25,1) infinite}
+@keyframes feed{0%,20%{transform:translateY(0)}25%,45%{transform:translateY(-20%)}50%,70%{transform:translateY(-40%)}75%,95%{transform:translateY(-60%)}100%{transform:translateY(-80%)}}
+.vid{position:relative;height:20%;overflow:hidden}
+.v1{background:radial-gradient(circle at 50% 38%,rgba(255,255,255,.28),transparent 52%),linear-gradient(170deg,#262626,#050505)}
+.v2{background:linear-gradient(200deg,#3d3d40,#0a0a0a 70%)}
+.v3{background:radial-gradient(circle at 25% 70%,rgba(255,255,255,.22),transparent 50%),linear-gradient(160deg,#1e1e20,#000)}
+.v4{background:radial-gradient(circle at 75% 25%,rgba(255,255,255,.2),transparent 45%),linear-gradient(135deg,#2e2e30,#050505 60%)}
+.s{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%)}
+.s1{width:40%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.5);animation:ring 3s ease-out infinite}
+.s3{width:32%;aspect-ratio:1;border:1.5px solid rgba(255,255,255,.7);animation:spin3 6s linear infinite}
+@keyframes spin3{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.s4{width:0;height:0;border-left:5cqw solid #fff;border-top:3cqw solid transparent;border-bottom:3cqw solid transparent;transform:translate(-35%,-50%);filter:drop-shadow(0 0 1.5cqw rgba(255,255,255,.5))}
+.eq{display:flex;gap:1cqw;align-items:center;height:7cqw}
+.eq b{width:1.2cqw;height:100%;background:#fff;border-radius:9px;animation:eq .9s ease-in-out infinite alternate}
+.eq b:nth-child(2){animation-delay:-.3s}.eq b:nth-child(3){animation-delay:-.6s}.eq b:nth-child(4){animation-delay:-.15s}.eq b:nth-child(5){animation-delay:-.45s}
+@keyframes eq{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+.pui{z-index:2}
+
+/* ===== proceso animado ===== */
+.reveal.in .shine{animation:track 1.4s var(--ease) both}
+@keyframes track{from{letter-spacing:.18em;opacity:0}to{letter-spacing:0;opacity:1}}
+.timeline::after{content:"";position:absolute;top:7px;left:12.5%;right:12.5%;height:1px;background:#fff;box-shadow:0 0 12px #fff;transform:scaleX(0);transform-origin:0 50%}
+.timeline.in::after{animation:draw 2.6s .3s ease-in-out forwards}
+@keyframes draw{to{transform:scaleX(1)}}
+.step:nth-child(1){--k:0}.step:nth-child(2){--k:1}.step:nth-child(3){--k:2}.step:nth-child(4){--k:3}
+.timeline .step .h3{color:#7c7c82}
+.timeline.in .step .dot{animation:dotOn .5s forwards;animation-delay:calc(.3s + var(--k)*.85s)}
+.timeline.in .step .h3{animation:lit .6s forwards;animation-delay:calc(.3s + var(--k)*.85s)}
+@keyframes dotOn{to{background:#fff;border-color:#fff;box-shadow:0 0 24px rgba(255,255,255,.65);transform:scale(1.3)}}
+@keyframes lit{to{color:#fff}}
+@media(max-width:980px){.timeline::after{display:none}}
+/* ===== portafolio ===== */
+.showcase{display:flex;align-items:flex-end;justify-content:center;gap:clamp(.7rem,2.5vw,1.5rem);margin-top:3.5rem}
+.thumb{position:relative;border-radius:clamp(12px,2vw,22px);overflow:hidden;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.2),transparent 55%),linear-gradient(150deg,#232325,#060606);transition:transform .5s var(--ease),border-color .3s,box-shadow .4s}
+.thumb::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.14) 50%,transparent 60%);transform:translateX(-120%);animation:sweep 5s ease-in-out infinite}
+.thumb:hover{transform:translateY(-10px) scale(1.03);border-color:rgba(255,255,255,.6);box-shadow:0 30px 60px -20px rgba(255,255,255,.25)}
+.tv{width:clamp(80px,22%,210px);aspect-ratio:9/16}.th{width:clamp(150px,46%,440px);aspect-ratio:16/9}
+.t2{animation:bob 6s ease-in-out infinite}.th{animation:bob 7s ease-in-out infinite -2s}
+.tplay{width:clamp(34px,22%,58px);aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(255,255,255,.75);position:relative;transition:background .3s}
+.tplay::after{content:"";position:absolute;left:56%;top:50%;transform:translate(-50%,-50%);border-left:clamp(9px,.9vw,14px) solid #fff;border-top:clamp(6px,.6vw,9px) solid transparent;border-bottom:clamp(6px,.6vw,9px) solid transparent}
+.thumb:hover .tplay{background:rgba(255,255,255,.18)}
+.tlab{position:absolute;left:8%;bottom:6%;padding:3px 9px;border-radius:99px;background:rgba(0,0,0,.6);font-size:.62rem;font-weight:700;letter-spacing:.12em;color:#fff}
+
+/* ===== linea del proceso completa ===== */
+.timeline::before,.timeline::after{left:7px;right:calc(25% - 7px)}
+@media(max-width:620px){
+  .timeline{gap:0}
+  .step{display:grid;grid-template-columns:15px 1fr;column-gap:1.1rem;padding:0 0 2.2rem;position:relative}
+  .step .dot{grid-column:1;grid-row:1/span 3;margin:0}
+  .step .num,.step .h3,.step p{grid-column:2}
+  .step:not(:last-child)::before{content:"";position:absolute;left:7px;top:15px;bottom:0;width:1px;background:var(--line)}
+  .step:not(:last-child)::after{content:"";position:absolute;left:7px;top:15px;bottom:0;width:1px;background:#fff;box-shadow:0 0 10px #fff;transform:scaleY(0);transform-origin:50% 0}
+  .timeline.in .step:not(:last-child)::after{animation:drawY .8s forwards;animation-delay:calc(.5s + var(--k)*.85s)}
+}
+@keyframes drawY{to{transform:scaleY(1)}}
+
+
+/* ===== carruseles en celular ===== */
+.dots{display:none;justify-content:center;gap:.5rem;margin-top:1.2rem}
+.dots button{width:7px;height:7px;border-radius:99px;border:0;padding:0;cursor:pointer;background:rgba(255,255,255,.25);transition:width .3s var(--ease),background .3s}
+.dots button.on{width:22px;background:#fff}
+@media(max-width:620px){
+  .about-grid,.bento,.tiers{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;gap:1rem;margin-left:calc(-1*clamp(1.25rem,4vw,2.5rem));margin-right:calc(-1*clamp(1.25rem,4vw,2.5rem));padding:.5rem clamp(1.25rem,4vw,2.5rem) 1rem;scroll-padding-inline:clamp(1.25rem,4vw,2.5rem);scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .about-grid::-webkit-scrollbar,.bento::-webkit-scrollbar,.tiers::-webkit-scrollbar{display:none}
+  .about-grid>*,.bento>*,.tiers>*{flex:0 0 84%;scroll-snap-align:start}
+  .bento>*{min-height:300px}
+  .about-grid .reveal,.bento .reveal,.tiers .reveal{opacity:1;transform:none;filter:none}
+  .dots{display:flex}
+}
 </style>
 </head>
 <body>
@@ -256,7 +333,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
   <div class="wrap nav">
     <a href="#inicio" class="brand" aria-label="Fluxora Creative Studio"><img src="1.1.png" alt="Fluxora Creative Studio"></a>
     <nav class="links">
-      <a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#paquetes">Paquetes</a><a href="#proceso">Proceso</a><a href="#contacto">Contacto</a>
+      <a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#portafolio">Portafolio</a><a href="#paquetes">Paquetes</a><a href="#proceso">Proceso</a><a href="#contacto">Contacto</a>
     </nav>
     <a href="https://wa.me/526424836880" target="_blank" rel="noopener" class="btn btn-dark btn-sm">Cotizar <span class="arrow">→</span></a>
     <button class="menu-toggle" id="menuBtn" aria-label="Abrir menú"><span></span><span></span></button>
@@ -280,12 +357,12 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
         <div class="mprev"><div class="mplay"></div><span class="mcap">Tu historia, bien contada</span></div>
         <div class="mtl"><div class="row"><i style="left:4%;width:22%"></i><i style="left:30%;width:34%"></i><i style="left:68%;width:26%"></i></div><div class="row"><i style="left:10%;width:30%"></i><i style="left:46%;width:18%"></i><i style="left:70%;width:22%"></i></div><div class="row"><i style="left:4%;width:48%"></i><i style="left:56%;width:38%"></i></div><b class="ph"></b></div>
       </div>
-      <div class="phone"><div class="pstory"><i></i><i style="--d:3s"></i><i style="--d:6s"></i></div><div class="pscene"></div><span class="pcap">Subtítulos</span><div class="pui"><b></b><b></b></div></div>
+      <div class="phone"><div class="pstory"><i></i><i style="--d:3s"></i><i style="--d:6s"></i></div><div class="feed"><div class="vid v1"><i class="s s1"></i><span class="pcap">Subtítulos</span></div><div class="vid v2"><div class="s eq"><b></b><b></b><b></b><b></b><b></b></div><span class="pcap">Ritmo</span></div><div class="vid v3"><i class="s s3"></i><span class="pcap">Estilo</span></div><div class="vid v4"><i class="s s4"></i><span class="pcap">Impacto</span></div><div class="vid v1"><i class="s s1"></i><span class="pcap">Subtítulos</span></div></div><div class="pui"><b></b><b></b></div></div>
     </div></div>
   </div>
 </section>
 
-<div class="rotator" aria-label="Edición de video vertical, horizontal y para redes sociales"><span class="rt-pre">Edición de video</span><span class="rt-words" aria-hidden="true"><b style="animation-delay:0.0s">vertical</b><b style="animation-delay:2.4s">horizontal</b><b style="animation-delay:4.8s">para Reels</b><b style="animation-delay:7.2s">para TikTok</b><b style="animation-delay:9.6s">para YouTube</b><b style="animation-delay:12.0s">con subtítulos</b></span></div>
+<div class="rotator" aria-label="Edición de video para ti, vertical u horizontal"><span class="rt-pre">Edición de video</span><span class="rt-words" aria-hidden="true"><b style="animation-delay:0.0s">para ti</b><b style="animation-delay:2.4s">vertical</b><b style="animation-delay:4.8s">horizontal</b><b style="animation-delay:7.2s">para Reels</b><b style="animation-delay:9.6s">para TikTok</b><b style="animation-delay:12.0s">para YouTube</b><b style="animation-delay:14.4s">con subtítulos</b></span></div>
 
 <section id="nosotros">
   <div class="wrap">
@@ -321,6 +398,14 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
   </div>
 </section>
 
+<section id="portafolio">
+  <div class="wrap">
+    <div class="center reveal"><div class="eyebrow">Portafolio</div><h2 class="h2">Mira lo que<br>hemos creado.</h2><p class="lead">Proyectos reales en formato vertical y horizontal. Explora nuestro portafolio completo y encuentra el estilo que va con tu marca.</p></div>
+    <div class="showcase reveal"><a class="thumb tv" href="https://drive.google.com/drive/folders/1DI1NBxxmzqbGsrKTVU6GEYxL9wTBIPRS?usp=drive_link" target="_blank" rel="noopener" aria-label="Ver portafolio"><i class="tplay"></i><span class="tlab">9:16</span></a><a class="thumb th" href="https://drive.google.com/drive/folders/1DI1NBxxmzqbGsrKTVU6GEYxL9wTBIPRS?usp=drive_link" target="_blank" rel="noopener" aria-label="Ver portafolio"><i class="tplay"></i><span class="tlab">16:9</span></a><a class="thumb tv t2" href="https://drive.google.com/drive/folders/1DI1NBxxmzqbGsrKTVU6GEYxL9wTBIPRS?usp=drive_link" target="_blank" rel="noopener" aria-label="Ver portafolio"><i class="tplay"></i><span class="tlab">9:16</span></a></div>
+    <div class="cta" style="margin-top:2.5rem"><a href="https://drive.google.com/drive/folders/1DI1NBxxmzqbGsrKTVU6GEYxL9wTBIPRS?usp=drive_link" target="_blank" rel="noopener" class="btn btn-dark">Ver portafolio completo <span class="arrow">→</span></a></div>
+  </div>
+</section>
+
 <section id="paquetes">
   <div class="wrap">
     <div class="center reveal"><div class="eyebrow">Precios</div><h2 class="h2">Nuestros paquetes</h2></div>
@@ -335,7 +420,7 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
 
 <section id="proceso">
   <div class="wrap">
-    <div class="center reveal"><div class="eyebrow">¿Cómo funciona?</div><h2 class="h2">Del concepto<br>a la entrega.</h2></div>
+    <div class="center reveal"><div class="eyebrow">¿Cómo funciona?</div><h2 class="h2 shine">Del concepto<br>a la entrega.</h2></div>
     <div class="timeline">
       <div class="step reveal"><div class="dot"></div><div class="num">01</div><h3 class="h3">Contacto</h3><p>Nos escribes, platicamos tu proyecto y te damos una cotización clara.</p></div>
       <div class="step reveal d1"><div class="dot"></div><div class="num">02</div><h3 class="h3">Pago y confirmación</h3><p>50% de anticipo. Te contactamos en máximo 48 horas para coordinar.</p></div>
@@ -380,15 +465,23 @@ const $=s=>document.querySelector(s),header=$('#top');
 $('#menuBtn').addEventListener('click',()=>header.classList.toggle('menu-open'));
 document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>header.classList.remove('menu-open')));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal,.timeline').forEach(el=>io.observe(el));
 const pr=$('.progress');
 addEventListener('scroll',()=>{const h=document.documentElement;pr.style.setProperty('--p',Math.min(1,scrollY/Math.max(1,h.scrollHeight-innerHeight)))},{passive:true});
 document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.cell,.tile,.tier');if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}});
 const hero=$('.hero'),sc=$('.scene');
-if(matchMedia('(hover:hover)').matches&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+if(matchMedia('(hover:hover)').matches){
   hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;sc.style.setProperty('--ry',(x*10)+'deg');sc.style.setProperty('--rx',(-y*8)+'deg')});
   hero.addEventListener('pointerleave',()=>{sc.style.setProperty('--ry','0deg');sc.style.setProperty('--rx','0deg')});
 }
+function dots(sel){document.querySelectorAll(sel).forEach(c=>{
+  const items=[...c.children],d=document.createElement('div');d.className='dots';
+  items.forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ir al elemento '+(i+1));b.addEventListener('click',()=>it.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'}));d.appendChild(b)});
+  c.after(d);
+  const upd=()=>{const pl=parseFloat(getComputedStyle(c).paddingLeft)||0,l=c.getBoundingClientRect().left+pl;let k=0,best=1e9;items.forEach((it,i)=>{const x=Math.abs(it.getBoundingClientRect().left-l);if(x<best){best=x;k=i}});[...d.children].forEach((b,i)=>b.classList.toggle('on',i===k))};
+  c.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+})}
+dots('.about-grid,.bento,.tiers');
 </script>
 </body>
 </html>
