@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fluxoracs.github.io/fluxoracs/sitemap.xml
