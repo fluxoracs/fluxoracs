@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<base href="https://fluxoracs.github.io/fluxoracs/">
+<title>Error | Fluxora Creative Studio</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0b0c"><meta name="color-scheme" content="dark">
+<link rel="icon" type="image/png" href="favicon1.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="favicon2.png" media="(prefers-color-scheme: light)">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#000}
+body{min-height:100svh;display:grid;place-items:center;padding:2rem 1.25rem;font:400 1rem/1.6 Montserrat,system-ui,sans-serif;color:#e4e4e8;text-align:center;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.g{position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,#000 15%,transparent 100%);mask-image:radial-gradient(ellipse 90% 70% at 50% 40%,#000 15%,transparent 100%)}
+.w{max-width:560px;display:grid;gap:1.1rem;justify-items:center}
+.w img.l{height:44px;opacity:.95}
+.c{font-size:clamp(5rem,26vw,10rem);font-weight:800;line-height:1;letter-spacing:-.04em;background:linear-gradient(100deg,#6d6d72 20%,#fff 45%,#6d6d72 70%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:s 4s ease-in-out infinite alternate,f 5s ease-in-out infinite}
+@keyframes s{to{background-position:-120% 0}}@keyframes f{50%{transform:translateY(-10px)}}
+h1{font-size:clamp(1.2rem,4vw,1.7rem);font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.02em}
+p{color:#9a9a9f;max-width:44ch}
+.b{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;margin-top:.6rem}
+.btn{display:inline-flex;align-items:center;height:46px;padding:0 1.5rem;border-radius:999px;font:700 .85rem Montserrat,sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .12s,box-shadow .3s}
+.btn:active{transform:scale(.96)}.d{background:#fff;color:#000}.d:hover{box-shadow:0 0 0 5px rgba(255,255,255,.15)}.l2{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25)}
+</style>
+</head>
+<body>
+<div class="g" aria-hidden="true"></div>
+<main class="w">
+<a href="index.html"><img class="l" src="1.1.png" alt="Fluxora Creative Studio"></a>
+<div class="c" id="c">500</div>
+<h1 id="h">Algo salió mal</h1>
+<p id="t">Tuvimos un problema. Intenta de nuevo.</p>
+<div class="b"><button class="btn d" onclick="location.href=document.referrer||'index.html'">Intentar de nuevo</button><a class="btn l2" href="index.html">Volver al inicio</a></div>
+</main>
+<script>
+const E={403:['Acceso denegado','No tienes permiso para ver esta sección. Si crees que es un error, entra con la cuenta correcta.'],500:['Algo salió mal','Tuvimos un problema de nuestro lado. Intenta de nuevo en unos minutos.'],503:['Estamos en mantenimiento','Estamos mejorando el sitio. Vuelve en un momento.'],offline:['Sin conexión','No pudimos conectarnos. Revisa tu internet e inténtalo otra vez.']};
+const q=new URLSearchParams(location.search).get('c')||'500',e=E[q]||E[500];
+document.getElementById('c').textContent=E[q]?(q==='offline'?'OFF':q):'500';
+document.getElementById('h').textContent=e[0];document.getElementById('t').textContent=e[1];document.title=e[0]+' | Fluxora Creative Studio';
+</script>
+</body>
+</html>
