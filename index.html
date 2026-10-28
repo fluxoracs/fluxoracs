@@ -567,6 +567,30 @@ dots('.about-grid,.bento,.tiers');
   }
   requestAnimationFrame(tick);
 })();
+/* Contenido editable desde el panel (paquetes y contacto). Si falla, se queda el contenido de arriba. */
+(function(){
+  const U='https://bglrhelixubrfdpqkwjy.supabase.co',K='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnbHJoZWxpeHVicmZkcHFrd2p5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxMzU5NjIsImV4cCI6MjEwODcxMTk2Mn0.RkdhuvJ1iBWF0BzW5CtdauJPyj6VtxeL-OfrJZYhqm4';
+  const e=t=>String(t==null?'':t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  fetch(U+'/rest/v1/site_settings?select=key,value',{headers:{apikey:K,Authorization:'Bearer '+K}}).then(r=>r.ok?r.json():[]).then(rows=>{
+    const s=Object.fromEntries(rows.map(x=>[x.key,x.value])),c=s.contact,pk=s.packages;
+    const wa='https://wa.me/'+((c&&c.wa)||'526424836880');
+    if(Array.isArray(pk)&&pk.length){
+      const t=document.querySelector('.tiers');
+      if(t){t.innerHTML=pk.map(p=>`<div class="tier reveal in"><div class="tname">${e(p.name)}</div><div class="amt">$${Number(p.price)||0} <small>MXN</small></div><ul>${(p.features||[]).map(f=>`<li>${e(f)}</li>`).join('')}</ul><a href="${wa}?text=${encodeURIComponent('Hola, me interesa el paquete '+p.name+' $'+p.price)}" target="_blank" rel="noopener" class="btn btn-light">Contratar <span class="arrow">→</span></a></div>`).join('');
+        document.querySelectorAll('.tiers + .dots').forEach(d=>d.remove());dots('.tiers')}
+      const b=document.querySelector('.stats div b');if(b)b.textContent='$'+Math.min(...pk.map(p=>Number(p.price)||0));
+    }
+    if(c){
+      if(c.wa)document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>{a.href=a.href.replace(/wa\.me\/\d*/,'wa.me/'+c.wa)});
+      const ch=document.querySelectorAll('.channels:not(.hours) > a'),sp=(a,t)=>{const x=a&&a.querySelector('span');if(x&&t)x.textContent=t};
+      sp(ch[0],c.wa_show);
+      if(ch[1]&&c.ig){ch[1].href='https://instagram.com/'+c.ig;sp(ch[1],'@'+c.ig)}
+      if(ch[2]&&c.fb){ch[2].href='https://facebook.com/'+c.fb;sp(ch[2],c.fb_show||c.fb)}
+      const h=document.querySelectorAll('.channels.hours > div');
+      [[c.h1_l,c.h1],[c.h2_l,c.h2]].forEach((x,i)=>{if(h[i]){const bb=h[i].querySelector('b'),ss=h[i].querySelector('span');if(bb&&x[0])bb.textContent=x[0];if(ss&&x[1])ss.textContent=x[1]}});
+    }
+  }).catch(()=>{});
+})();
 </script>
 </body>
 </html>
