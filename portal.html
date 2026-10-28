@@ -55,6 +55,14 @@ table{width:100%;border-collapse:collapse;font-size:.82rem}th,td{text-align:left
 .auth{max-width:420px;margin:12vh auto 0;text-align:center}.auth img{height:46px;margin:0 auto}.auth .msg2{min-height:1.2em;color:var(--muted);font-size:.8rem}
 .empty{text-align:center;color:var(--muted);padding:2rem 1rem}
 @media(max-width:600px){.who span{display:none}.msg{max-width:92%}}
+
+.pc.st-cancelado,.card.st-cancelado{border-color:#ef4444}.pc.st-proceso,.card.st-proceso{border-color:#f59e0b}.pc.st-ok,.card.st-ok{border-color:#22c55e}
+.pc.st-cancelado:hover{border-color:#f87171;box-shadow:0 0 28px -10px #ef4444}.pc.st-proceso:hover{border-color:#fbbf24;box-shadow:0 0 28px -10px #f59e0b}.pc.st-ok:hover{border-color:#4ade80;box-shadow:0 0 28px -10px #22c55e}
+.bd.s-cancelado{border-color:#ef4444;color:#fca5a5;opacity:1}
+.bd.s-revision,.bd.s-edicion,.bd.s-modificaciones{border-color:#f59e0b;color:#fcd34d}
+.bd.s-entregado,.bd.s-finalizado{border-color:#22c55e;color:#86efac;background:rgba(34,197,94,.14)}
+.bd svg{width:11px;height:11px;margin-right:.3rem;vertical-align:-1px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.82);display:grid;place-items:center;padding:1rem;z-index:50}.ov .card{max-width:440px;width:100%;border-color:#ef4444}
 </style>
 </head>
 <body>
@@ -75,27 +83,32 @@ const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const mx=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'}).format(+n||0);
 const fd=d=>d?new Date(String(d).length===10?d+'T00:00:00':d).toLocaleDateString('es-MX',{day:'2-digit',month:'short',year:'numeric'}):'Sin fecha';
 const ft=d=>new Date(d).toLocaleString('es-MX',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
-const bd=s=>`<span class="bd s-${s}">${ST[s]||MD[s]||s}</span>`;
+const CK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const bd=s=>`<span class="bd s-${s}">${s==='entregado'||s==='finalizado'?CK:''}${ST[s]||MD[s]||s}</span>`;
+const stc=s=>s==='cancelado'?'st-cancelado':['revision','edicion','modificaciones'].includes(s)?'st-proceso':['entregado','finalizado'].includes(s)?'st-ok':'';
+const daysLeft=p=>Math.max(0,Math.ceil(14-(Date.now()-new Date(p.cancelled_at||Date.now()))/864e5));
+function askReason(){return new Promise(res=>{const d=document.createElement('div');d.className='ov';d.innerHTML='<form class="card"><h2>Cancelar proyecto</h2><small>El cliente verá este motivo y podrá enviar una apelación.</small><textarea required placeholder="Motivo de la cancelación"></textarea><div class="row2"><button type="button" class="btn btn-light">Volver</button><button class="btn btn-dark">Cancelar proyecto</button></div></form>';document.body.appendChild(d);const t=d.querySelector('textarea');t.focus();const done=v=>{d.remove();res(v)};d.querySelector('.btn-light').onclick=()=>done(null);d.querySelector('form').onsubmit=e=>{e.preventDefault();done(t.value.trim()||null)}})}
 const opts=(o,v)=>Object.entries(o).map(([k,t])=>`<option value="${k}" ${k===v?'selected':''}>${t}</option>`).join('');
-let sb,S={u:null,p:null,projects:[],payments:[],profiles:[],fin:[],view:'home',id:null,tab:'resumen',f:'',D:{ev:[],msg:[],mods:[]}},ch;
+let sb,S={u:null,p:null,projects:[],payments:[],profiles:[],fin:[],view:'home',id:null,tab:'resumen',f:'',D:{ev:[],msg:[],mods:[],ap:[]}},ch;
 const admin=()=>S.p&&S.p.role==='admin';
 const paid=id=>S.payments.filter(x=>x.project_id===id).reduce((a,x)=>a+ +x.amount,0);
 const ym=d=>String(d).slice(0,7),thisM=new Date().toISOString().slice(0,7);
 
 function authView(m){m=m||(location.hash==='#registro'?'up':'in');const up=m==='up';
-  app.innerHTML=`<div class="card auth"><a href="index.html"><img src="1.1.png" alt="Fluxora"></a><div class="seg"><button class="${up?'':'on'}" onclick="authView('in')">Entrar</button><button class="${up?'on':''}" onclick="authView('up')">Crear cuenta</button></div><h1>${up?'Crea tu cuenta':'Bienvenido de vuelta'}</h1><small>${up?'Regístrate para pedir tus proyectos y darles seguimiento.':'Sigue tus proyectos, pide modificaciones y habla con nosotros.'}</small><form onsubmit="return A.auth(event,'${m}')">${up?'<input name="name" placeholder="Nombre completo" autocomplete="name" required>':''}<input name="email" type="email" placeholder="Correo" autocomplete="email" required><input name="pass" type="password" placeholder="Contraseña (mínimo 6 caracteres)" minlength="6" autocomplete="${up?'new-password':'current-password'}" required>${up?'<input name="pass2" type="password" placeholder="Repite la contraseña" minlength="6" autocomplete="new-password" required>':''}<button class="btn btn-dark">${up?'Crear mi cuenta':'Entrar'}</button></form><p class="msg2" id="msg"></p></div>`}
+  app.innerHTML=`<div class="card auth"><a href="index.html"><img src="1.1.png" alt="Fluxora"></a><div class="seg"><button class="${up?'':'on'}" onclick="authView('in')">Entrar</button><button class="${up?'on':''}" onclick="authView('up')">Crear cuenta</button></div><h1>${up?'Crea tu cuenta':'Bienvenido de vuelta'}</h1><small>${up?'Regístrate para pedir tus proyectos y darles seguimiento.':'Sigue tus proyectos, pide modificaciones y habla con nosotros.'}</small><form onsubmit="return A.auth(event,'${m}')">${up?'<input name="name" placeholder="Nombre completo" autocomplete="name" required>':''}<input name="email" type="email" placeholder="Correo" autocomplete="email" required><input name="pass" type="password" placeholder="Contraseña (mínimo 6 caracteres)" minlength="6" autocomplete="${up?'new-password':'current-password'}" required>${up?'<input name="pass2" type="password" placeholder="Repite la contraseña" minlength="6" autocomplete="new-password" required>':''}<button class="btn btn-dark">${up?'Crear mi cuenta':'Entrar'}</button></form><p class="msg2" id="msg"></p>${up?'':'<button type="button" class="lnk" onclick="A.reset()">Olvidé mi contraseña</button>'}</div>`}
+function recView(){app.innerHTML=`<div class="card auth"><a href="index.html"><img src="1.1.png" alt="Fluxora"></a><h1>Nueva contraseña</h1><small>Escribe la contraseña nueva para tu cuenta.</small><form onsubmit="return A.newpass(event)"><input name="pass" type="password" minlength="6" placeholder="Nueva contraseña (mínimo 6)" autocomplete="new-password" required><input name="pass2" type="password" minlength="6" placeholder="Repite la contraseña" autocomplete="new-password" required><button class="btn btn-dark">Guardar contraseña</button></form><p class="msg2" id="msg"></p></div>`}
 const tr=m=>{m=String(m||'');return /Invalid login/i.test(m)?'Correo o contraseña incorrectos.':/already registered|already been registered/i.test(m)?'Ese correo ya tiene cuenta. Usa "Entrar".':/Email not confirmed/i.test(m)?'Confirma tu correo antes de entrar. Revisa tu bandeja.':/at least 6/i.test(m)?'La contraseña debe tener mínimo 6 caracteres.':/rate limit/i.test(m)?'Demasiados intentos. Espera un momento.':m}
 
 async function load(){
   const q=[sb.from('projects').select('*,profiles(full_name,email)').order('created_at',{ascending:false}),sb.from('payments').select('*').order('paid_at',{ascending:false})];
   if(admin())q.push(sb.from('profiles').select('*').eq('role','client'),sb.from('finance_entries').select('*').order('entry_date',{ascending:false}));
-  const r=await Promise.all(q);S.projects=r[0].data||[];S.payments=r[1].data||[];
+  const r=await Promise.all(q);if(r[0].error)throw r[0].error;S.projects=r[0].data||[];S.payments=r[1].data||[];
   if(admin()){S.profiles=r[2].data||[];S.fin=r[3].data||[]}
   if(S.id)await loadD()}
 async function loadD(){const g=(t,a)=>sb.from(t).select('*').eq('project_id',S.id).order('created_at',{ascending:a});
-  const [e,m,o]=await Promise.all([g('project_events',false),g('messages',true),g('modifications',false)]);S.D={ev:e.data||[],msg:m.data||[],mods:o.data||[]}}
+  const [e,m,o,a]=await Promise.all([g('project_events',false),g('messages',true),g('modifications',false),g('appeals',false)]);S.D={ev:e.data||[],msg:m.data||[],mods:o.data||[],ap:a.data||[]}}
 function sub(){if(ch)return;let tm;ch=sb.channel('rt').on('postgres_changes',{event:'*',schema:'public'},()=>{clearTimeout(tm);tm=setTimeout(async()=>{await load();render(true)},400)}).subscribe()}
-async function init(u){S.u=u;const r=await sb.from('profiles').select('*').eq('id',u.id).single();S.p=r.data;await load();sub();render()}
+async function init(u){try{S.u=u;const r=await sb.from('profiles').select('*').eq('id',u.id).single();S.p=r.data;await load();sub();render()}catch(e){app.innerHTML='<div class="card auth"><h1>No pudimos cargar tu panel</h1><small>'+esc(e.message||'Error de conexión')+'</small><button class="btn btn-dark" onclick="init(S.u)">Reintentar</button><a class="lnk" href="error.html?c=500">Ver más información</a></div>'}}
 
 function go(v,id){S.view=v;S.id=id||null;S.tab='resumen';(S.id?loadD():Promise.resolve()).then(()=>{render();scrollTo(0,0)})}
 function render(keep){
@@ -104,7 +117,7 @@ function render(keep){
   app.innerHTML=`<header class="top"><a href="index.html" class="brand"><img src="1.1.png" alt="Fluxora"></a><nav>${nav.map(([v,t])=>`<button class="${S.view===v&&!S.id?'on':''}" onclick="go('${v}')">${t}</button>`).join('')}</nav><div class="who"><span>${esc((S.p&&S.p.full_name)||S.u.email)}${admin()?' · Admin':''}</span><button class="lnk" onclick="sb.auth.signOut()">Salir</button></div></header><main class="pm">${S.id?detail():V[S.view]()}</main>`;
   const c=document.querySelector('.chat');if(c)c.scrollTop=c.scrollHeight}
 
-const card=p=>{const pg=paid(p.id);return `<article class="card pc" onclick="go('project','${p.id}')"><div class="row2"><b>${esc(p.title)}</b>${bd(p.status)}</div><small>${TY[p.type]||''}${p.format&&p.format!=='na'?' · '+esc(p.format):''}${admin()?' · '+esc(p.profiles&&p.profiles.full_name||''):''}</small><div class="bar"><i style="width:${p.progress}%"></i></div><div class="row2"><small>${p.progress}% completado</small><small>${+p.price>0?mx(pg)+' de '+mx(p.price):'Por cotizar'}</small></div></article>`};
+const card=p=>{const pg=paid(p.id),cx=p.status==='cancelado'&&!admin();return `<article class="card pc ${stc(p.status)}" onclick="go('project','${p.id}')"><div class="row2"><b>${esc(p.title)}</b>${bd(p.status)}</div><small>${TY[p.type]||''}${p.format&&p.format!=='na'?' · '+esc(p.format):''}${admin()?' · '+esc(p.profiles&&p.profiles.full_name||''):''}</small>${cx?`<small>Proyecto cerrado · puedes apelar. Se quitará de tu panel en ${daysLeft(p)} día(s).</small>`:`<div class="bar"><i style="width:${p.progress}%"></i></div><div class="row2"><small>${p.progress}% completado</small><small>${+p.price>0?mx(pg)+' de '+mx(p.price):'Por cotizar'}</small></div>`}</article>`};
 const stat=(t,v)=>`<div class="card stat"><small>${t}</small><b>${v}</b></div>`;
 const incomeOf=m=>S.payments.filter(x=>ym(x.paid_at)===m).reduce((a,x)=>a+ +x.amount,0)+S.fin.filter(x=>x.kind==='ingreso'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
 const expOf=m=>S.fin.filter(x=>x.kind==='gasto'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
@@ -122,12 +135,18 @@ fin(){const rows=[...S.payments.map(x=>({d:x.paid_at,k:'ingreso',c:'Pago: '+((S.
   return `<h1>Finanzas</h1><div class="grid">${stat('Ingresos del mes',mx(i))}${stat('Gastos del mes',mx(e))}${stat('Utilidad del mes',mx(i-e))}</div><form class="card" onsubmit="return A.fin(event)"><h2>Nuevo movimiento</h2><div class="grid grid2"><label>Tipo<select name="kind"><option value="gasto">Gasto</option><option value="ingreso">Ingreso extra</option></select></label><label>Concepto<input name="concept" required placeholder="Ej. Licencia de software"></label><label>Categoría<input name="category" placeholder="Software, publicidad..."></label><label>Monto<input name="amount" type="number" min="1" step="0.01" required></label><label>Fecha<input name="entry_date" type="date" value="${new Date().toISOString().slice(0,10)}"></label></div><button class="btn btn-dark">Registrar</button></form><div class="card tw"><h2>Bitácora</h2><table><tr><th>Fecha</th><th>Concepto</th><th>Categoría</th><th>Monto</th></tr>${rows.map(r=>`<tr><td>${fd(r.d)}</td><td>${esc(r.c)}</td><td>${esc(r.cat)}</td><td>${r.k==='gasto'?'- ':'+ '}${mx(r.a)}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin movimientos.</td></tr>'}</table></div>`}
 };
 
+function closedView(p){const ap=S.D.ap[0];
+  return `<button class="lnk" style="justify-self:start" onclick="go('home')">← Volver</button><div class="card st-cancelado"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div><h2>Proyecto cerrado</h2><p><b>Motivo:</b> ${esc(p.cancel_reason||'Sin motivo registrado')}</p><small>Este proyecto desaparecerá de tu panel en ${daysLeft(p)} día(s).</small></div>
+  ${ap?`<div class="card"><h2>Tu apelación</h2><p style="white-space:pre-wrap">${esc(ap.body)}</p><small>Enviada ${ft(ap.created_at)}. Solo se permite un mensaje de apelación; la respuesta aparecerá abajo.</small></div>`:`<form class="card" onsubmit="return A.appeal(event,'${p.id}')"><h2>Apelar la cancelación</h2><small>Puedes enviar un solo mensaje para pedir que reconsideremos. No podrás enviar otro, así que explícalo con claridad.</small><textarea name="body" minlength="10" required placeholder="Escribe tu apelación..."></textarea><button class="btn btn-dark">Enviar apelación</button></form>`}
+  ${S.D.msg.length?`<div class="card"><h2>Respuestas</h2><div class="chat">${S.D.msg.map(m=>`<div class="msg ${m.sender_id===S.u.id?'me':''}"><small>${m.sender_id===S.u.id?'Tú':'Fluxora'} · ${ft(m.created_at)}</small><p>${esc(m.body)}</p></div>`).join('')}</div><small>El proyecto está cerrado, por eso el chat es solo de lectura.</small></div>`:''}
+  <div class="card"><h2>Historial</h2><ul class="tl">${S.D.ev.map(e=>`<li><b>${esc(e.text)}</b><br><small>${ft(e.created_at)}</small></li>`).join('')}</ul></div>`}
 function detail(){const p=S.projects.find(x=>x.id===S.id);if(!p)return '<div class="card empty">Proyecto no encontrado.</div>';
+  if(!admin()&&p.status==='cancelado')return closedView(p);
   const tabs=[['resumen','Resumen'],['chat','Chat'],['mods','Modificaciones'],['pagos','Pagos']];
-  return `<button class="lnk" style="justify-self:start" onclick="go('${admin()?'projects':'home'}')">← Volver</button><div class="card"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div><div class="bar"><i style="width:${p.progress}%"></i></div><small>${p.progress}% completado${admin()?' · '+esc(p.profiles&&p.profiles.full_name||'')+' · '+esc(p.profiles&&p.profiles.email||''):''}</small></div><div class="tabs">${tabs.map(([k,t])=>`<button class="${S.tab===k?'on':''}" onclick="S.tab='${k}';render()">${t}</button>`).join('')}</div>${T[S.tab](p)}`}
+  return `<button class="lnk" style="justify-self:start" onclick="go('${admin()?'projects':'home'}')">← Volver</button><div class="card ${stc(p.status)}"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div><div class="bar"><i style="width:${p.progress}%"></i></div><small>${p.progress}% completado${admin()?' · '+esc(p.profiles&&p.profiles.full_name||'')+' · '+esc(p.profiles&&p.profiles.email||''):''}</small></div><div class="tabs">${tabs.map(([k,t])=>`<button class="${S.tab===k?'on':''}" onclick="S.tab='${k}';render()">${t}</button>`).join('')}</div>${T[S.tab](p)}`}
 
 const T={
-resumen(p){return `<div class="card"><h2>Detalles</h2><p><b>${TY[p.type]||''}</b>${p.format&&p.format!=='na'?' · '+esc(p.format):''} · ${esc(p.package||'')}</p><p style="white-space:pre-wrap">${esc(p.description||'')}</p>${p.material_url?`<a href="${esc(p.material_url)}" target="_blank" rel="noopener">Ver material</a>`:''}<small>Entrega estimada: ${fd(p.due_date)} · Creado: ${fd(p.created_at)}</small></div>
+resumen(p){return `${admin()&&p.status==='cancelado'?`<div class="card st-cancelado"><h2>Proyecto cancelado</h2><p><b>Motivo:</b> ${esc(p.cancel_reason||'')}</p><small>Se oculta del panel del cliente el ${fd(new Date(+new Date(p.cancelled_at)+12096e5).toISOString())}.</small></div>`:''}${admin()&&S.D.ap.length?`<div class="card"><h2>Apelación del cliente</h2><p style="white-space:pre-wrap">${esc(S.D.ap[0].body)}</p><small>${ft(S.D.ap[0].created_at)} · Respóndele en la pestaña Chat. Para reabrir el proyecto, cambia su estado.</small></div>`:''}<div class="card"><h2>Detalles</h2><p><b>${TY[p.type]||''}</b>${p.format&&p.format!=='na'?' · '+esc(p.format):''} · ${esc(p.package||'')}</p><p style="white-space:pre-wrap">${esc(p.description||'')}</p>${p.material_url?`<a href="${esc(p.material_url)}" target="_blank" rel="noopener">Ver material</a>`:''}<small>Entrega estimada: ${fd(p.due_date)} · Creado: ${fd(p.created_at)}</small></div>
   ${admin()?`<form class="card" onsubmit="return A.save(event,'${p.id}')"><h2>Gestionar y notificar al cliente</h2><div class="grid grid2"><label>Estado<select name="status">${opts(ST,p.status)}</select></label><label>Avance (%)<input type="number" name="progress" min="0" max="100" value="${p.progress}"></label><label>Precio (MXN)<input type="number" name="price" min="0" step="1" value="${p.price}"></label><label>Fecha de entrega<input type="date" name="due_date" value="${p.due_date||''}"></label></div><button class="btn btn-dark">Guardar cambios</button></form>`:''}
   <div class="card"><h2>Historial del proyecto</h2><ul class="tl">${S.D.ev.map(e=>`<li><b>${esc(e.text)}</b><br><small>${ft(e.created_at)}</small></li>`).join('')||'<li><small>Sin movimientos.</small></li>'}</ul></div>`},
 chat(p){const who=m=>m.sender_id===S.u.id?'Tú':(admin()?esc(p.profiles&&p.profiles.full_name||'Cliente'):'Fluxora');
@@ -148,12 +167,26 @@ async auth(e,m){e.preventDefault();const f=new FormData(e.target),msg=document.g
   if(r.error)msg.textContent=tr(r.error.message);
   else if(m==='up'&&!r.data.session)msg.textContent='Cuenta creada. Te enviamos un correo para confirmarla; después de confirmar, inicia sesión.';
   return false},
+async reset(){const em=(document.querySelector('input[name=email]').value||'').trim(),msg=document.getElementById('msg');
+  if(!em){msg.textContent='Escribe tu correo en el campo de arriba y vuelve a tocar "Olvidé mi contraseña".';return}
+  msg.textContent='Enviando...';const r=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.href.split('#')[0]});
+  msg.textContent=r.error?tr(r.error.message):'Listo. Si ese correo tiene cuenta, te enviamos un enlace para crear una contraseña nueva.'},
+async newpass(e){e.preventDefault();const f=new FormData(e.target),msg=document.getElementById('msg');
+  if(f.get('pass')!==f.get('pass2')){msg.textContent='Las contraseñas no coinciden.';return false}
+  const r=await sb.auth.updateUser({password:f.get('pass')});
+  if(r.error){msg.textContent=tr(r.error.message);return false}
+  S.rec=false;history.replaceState(null,'',location.pathname);const u=await sb.auth.getUser();init(u.data.user);return false},
 async create(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
   const r=await sb.from('projects').insert({client_id:S.u.id,title:f.title,type:f.type,format:f.format,package:f.package,description:f.description,material_url:f.material_url||null}).select().single();
   if(r.error){alert(r.error.message);return false}await load();go('project',r.data.id);return false},
-async save(e,id){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
-  const r=await sb.from('projects').update({status:f.status,progress:+f.progress,price:+f.price,due_date:f.due_date||null}).eq('id',id);
+async save(e,id){e.preventDefault();const f=Object.fromEntries(new FormData(e.target)),p=S.projects.find(x=>x.id===id);
+  const u={status:f.status,progress:+f.progress,price:+f.price,due_date:f.due_date||null};
+  if(f.status==='cancelado'){const why=p.status==='cancelado'?p.cancel_reason:await askReason();if(!why)return false;u.cancel_reason=why}
+  const r=await sb.from('projects').update(u).eq('id',id);
   if(r.error)alert(r.error.message);await load();render();return false},
+async appeal(e,id){e.preventDefault();if(!confirm('Solo puedes enviar un mensaje de apelación. ¿Enviarlo ahora?'))return false;
+  const r=await sb.from('appeals').insert({project_id:id,client_id:S.u.id,body:new FormData(e.target).get('body').trim()});
+  if(r.error)alert(/duplicate|unique/i.test(r.error.message)?'Ya enviaste tu apelación.':r.error.message);await loadD();render();return false},
 async send(e,id){e.preventDefault();const b=new FormData(e.target).get('body').trim();if(!b)return false;
   const r=await sb.from('messages').insert({project_id:id,sender_id:S.u.id,body:b});if(r.error)alert(r.error.message);await loadD();render();return false},
 async mod(e,id){e.preventDefault();const r=await sb.from('modifications').insert({project_id:id,requested_by:S.u.id,body:new FormData(e.target).get('body')});
@@ -170,9 +203,12 @@ async fin(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target
 if(SUPABASE_URL.includes('TU-PROYECTO')){
   app.innerHTML='<div class="card auth"><h1>Falta conectar Supabase</h1><small>Abre portal.html y pega tu Project URL y tu anon key en la parte de CONFIGURACION. Luego ejecuta schema.sql en tu proyecto.</small></div>';
 }else{
+  S.rec=location.hash.includes('type=recovery');
   sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
   sb.auth.onAuthStateChange((ev,session)=>{
-    if(session&&session.user){if(!S.u||S.u.id!==session.user.id)setTimeout(()=>init(session.user),0)}
+    if(ev==='PASSWORD_RECOVERY')S.rec=true;
+    if(session&&session.user&&S.rec){setTimeout(recView,0)}
+    else if(session&&session.user){if(!S.u||S.u.id!==session.user.id)setTimeout(()=>init(session.user),0)}
     else{S.u=null;S.p=null;S.view='home';S.id=null;if(ch){sb.removeChannel(ch);ch=null}authView()}
   });
 }
