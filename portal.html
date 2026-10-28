@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi panel | Fluxora Creative Studio</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0b0c"><meta name="color-scheme" content="dark">
+<link rel="icon" type="image/png" href="favicon1.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="favicon2.png" media="(prefers-color-scheme: light)">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#f5f5f7;--ink2:#e4e4e8;--muted:#9a9a9f;--line:rgba(255,255,255,.1);--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#000}
+body{font:400 .92rem/1.55 Montserrat,system-ui,sans-serif;color:var(--ink2);background:transparent;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 110% 85% at 50% 15%,#000 25%,transparent 100%);mask-image:radial-gradient(ellipse 110% 85% at 50% 15%,#000 25%,transparent 100%)}
+.top{position:sticky;top:0;z-index:10;background:#0b0b0c;border-bottom:1px solid var(--line);padding:env(safe-area-inset-top,0px) clamp(1rem,3vw,2rem) 0;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;min-height:60px}
+.brand img{height:30px;display:block}
+.top nav{display:flex;gap:.3rem;overflow-x:auto;flex:1;scrollbar-width:none}.top nav::-webkit-scrollbar{display:none}
+.top nav button{background:none;border:0;padding:.55rem .9rem;border-radius:999px;color:var(--muted);font-size:.8rem;font-weight:600;white-space:nowrap}
+.top nav button.on,.top nav button:hover{background:rgba(255,255,255,.1);color:#fff}
+.who{display:flex;align-items:center;gap:.8rem;font-size:.75rem;color:var(--muted)}
+.lnk{background:none;border:0;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-size:.8rem;padding:.3rem 0}.lnk:hover{color:#fff}
+.pm{max-width:1100px;margin:0 auto;padding:clamp(1.2rem,4vw,2.5rem) clamp(1rem,3vw,2rem) 4rem;display:grid;gap:1.2rem}
+h1{font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.02em;line-height:1.15}
+h2{font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+small{color:var(--muted);font-size:.74rem}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:20px;padding:clamp(1rem,3vw,1.5rem);display:grid;gap:.8rem}
+.pc{cursor:pointer;transition:transform .4s var(--ease),border-color .3s}.pc:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.4)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.grid2{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.row2{display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
+.bar{height:6px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden}.bar i{display:block;height:100%;background:#fff;border-radius:9px;transition:width .6s var(--ease)}
+.bd{padding:.2rem .7rem;border-radius:999px;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.35);color:#fff;white-space:nowrap}
+.s-finalizado{background:#fff;color:#000}.s-cancelado{opacity:.5}.s-solicitado,.s-pendiente{border-style:dashed}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;height:44px;padding:0 1.4rem;border-radius:999px;border:0;font-weight:700;font-size:.82rem;transition:transform .12s,box-shadow .3s}.btn:active{transform:scale(.96)}
+.btn-dark{background:#fff;color:#000}.btn-dark:hover{box-shadow:0 0 0 5px rgba(255,255,255,.15)}
+.btn-light{background:rgba(255,255,255,.1);color:#fff}
+input,select,textarea{width:100%;background:rgba(0,0,0,.55);border:1px solid var(--line);border-radius:12px;padding:.75rem 1rem;color:var(--ink);font:inherit;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#fff}textarea{min-height:90px;resize:vertical}select option{background:#111}
+label{display:grid;gap:.35rem;font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+form{display:grid;gap:.8rem}
+.tabs{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none}.tabs button{background:rgba(255,255,255,.06);border:1px solid var(--line);padding:.55rem 1.1rem;border-radius:999px;font-size:.78rem;font-weight:600;color:var(--muted);white-space:nowrap}.tabs button.on{background:#fff;color:#000}
+.stat b{display:block;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;color:#fff}
+.tl{list-style:none;display:grid;gap:.7rem;border-left:1px solid var(--line);padding-left:1rem}.tl li{position:relative}.tl li::before{content:"";position:absolute;left:-1.28rem;top:.45rem;width:7px;height:7px;border-radius:50%;background:#fff}
+.chat{display:grid;gap:.6rem;max-height:52vh;overflow-y:auto;padding:.2rem}
+.msg{max-width:82%;padding:.6rem .9rem;border-radius:16px;background:rgba(255,255,255,.08);justify-self:start}.msg.me{background:#fff;color:#000;justify-self:end}.msg.me small{color:#555}
+.msg p{white-space:pre-wrap;overflow-wrap:anywhere}
+table{width:100%;border-collapse:collapse;font-size:.82rem}th,td{text-align:left;padding:.7rem .5rem;border-bottom:1px solid var(--line)}th{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}tr.k{cursor:pointer}tr.k:hover td{background:rgba(255,255,255,.04)}
+.tw{overflow-x:auto}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;padding:.3rem;border-radius:999px;background:rgba(0,0,0,.5);border:1px solid var(--line);margin:.3rem 0}.seg button{border:0;background:none;padding:.6rem;border-radius:999px;font-size:.78rem;font-weight:700;color:var(--muted)}.seg button.on{background:#fff;color:#000}
+.auth{max-width:420px;margin:12vh auto 0;text-align:center}.auth img{height:46px;margin:0 auto}.auth .msg2{min-height:1.2em;color:var(--muted);font-size:.8rem}
+.empty{text-align:center;color:var(--muted);padding:2rem 1rem}
+@media(max-width:600px){.who span{display:none}.msg{max-width:92%}}
+</style>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<div id="app"></div>
+<noscript>Activa JavaScript para usar tu panel.</noscript>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+/* ===== CONFIGURACION: pega los datos de tu proyecto Supabase (Settings > API) ===== */
+const SUPABASE_URL='https://bglrhelixubrfdpqkwjy.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnbHJoZWxpeHVicmZkcHFrd2p5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxMzU5NjIsImV4cCI6MjEwODcxMTk2Mn0.RkdhuvJ1iBWF0BzW5CtdauJPyj6VtxeL-OfrJZYhqm4';
+/* ================================================================================ */
+const app=document.getElementById('app');
+const ST={solicitado:'Solicitado',revision:'En revisión',edicion:'En edición',entregado:'Entregado',modificaciones:'En modificaciones',finalizado:'Finalizado',cancelado:'Cancelado'};
+const TY={edicion:'Edición de video',diseno:'Diseño gráfico',ia:'Estrategia con IA',otro:'Otro'};
+const MD={pendiente:'Pendiente',proceso:'En proceso',hecha:'Hecha'};
+const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const mx=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'}).format(+n||0);
+const fd=d=>d?new Date(String(d).length===10?d+'T00:00:00':d).toLocaleDateString('es-MX',{day:'2-digit',month:'short',year:'numeric'}):'Sin fecha';
+const ft=d=>new Date(d).toLocaleString('es-MX',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
+const bd=s=>`<span class="bd s-${s}">${ST[s]||MD[s]||s}</span>`;
+const opts=(o,v)=>Object.entries(o).map(([k,t])=>`<option value="${k}" ${k===v?'selected':''}>${t}</option>`).join('');
+let sb,S={u:null,p:null,projects:[],payments:[],profiles:[],fin:[],view:'home',id:null,tab:'resumen',f:'',D:{ev:[],msg:[],mods:[]}},ch;
+const admin=()=>S.p&&S.p.role==='admin';
+const paid=id=>S.payments.filter(x=>x.project_id===id).reduce((a,x)=>a+ +x.amount,0);
+const ym=d=>String(d).slice(0,7),thisM=new Date().toISOString().slice(0,7);
+
+function authView(m){m=m||(location.hash==='#registro'?'up':'in');const up=m==='up';
+  app.innerHTML=`<div class="card auth"><a href="index.html"><img src="1.1.png" alt="Fluxora"></a><div class="seg"><button class="${up?'':'on'}" onclick="authView('in')">Entrar</button><button class="${up?'on':''}" onclick="authView('up')">Crear cuenta</button></div><h1>${up?'Crea tu cuenta':'Bienvenido de vuelta'}</h1><small>${up?'Regístrate para pedir tus proyectos y darles seguimiento.':'Sigue tus proyectos, pide modificaciones y habla con nosotros.'}</small><form onsubmit="return A.auth(event,'${m}')">${up?'<input name="name" placeholder="Nombre completo" autocomplete="name" required>':''}<input name="email" type="email" placeholder="Correo" autocomplete="email" required><input name="pass" type="password" placeholder="Contraseña (mínimo 6 caracteres)" minlength="6" autocomplete="${up?'new-password':'current-password'}" required>${up?'<input name="pass2" type="password" placeholder="Repite la contraseña" minlength="6" autocomplete="new-password" required>':''}<button class="btn btn-dark">${up?'Crear mi cuenta':'Entrar'}</button></form><p class="msg2" id="msg"></p></div>`}
+const tr=m=>{m=String(m||'');return /Invalid login/i.test(m)?'Correo o contraseña incorrectos.':/already registered|already been registered/i.test(m)?'Ese correo ya tiene cuenta. Usa "Entrar".':/Email not confirmed/i.test(m)?'Confirma tu correo antes de entrar. Revisa tu bandeja.':/at least 6/i.test(m)?'La contraseña debe tener mínimo 6 caracteres.':/rate limit/i.test(m)?'Demasiados intentos. Espera un momento.':m}
+
+async function load(){
+  const q=[sb.from('projects').select('*,profiles(full_name,email)').order('created_at',{ascending:false}),sb.from('payments').select('*').order('paid_at',{ascending:false})];
+  if(admin())q.push(sb.from('profiles').select('*').eq('role','client'),sb.from('finance_entries').select('*').order('entry_date',{ascending:false}));
+  const r=await Promise.all(q);S.projects=r[0].data||[];S.payments=r[1].data||[];
+  if(admin()){S.profiles=r[2].data||[];S.fin=r[3].data||[]}
+  if(S.id)await loadD()}
+async function loadD(){const g=(t,a)=>sb.from(t).select('*').eq('project_id',S.id).order('created_at',{ascending:a});
+  const [e,m,o]=await Promise.all([g('project_events',false),g('messages',true),g('modifications',false)]);S.D={ev:e.data||[],msg:m.data||[],mods:o.data||[]}}
+function sub(){if(ch)return;let tm;ch=sb.channel('rt').on('postgres_changes',{event:'*',schema:'public'},()=>{clearTimeout(tm);tm=setTimeout(async()=>{await load();render(true)},400)}).subscribe()}
+async function init(u){S.u=u;const r=await sb.from('profiles').select('*').eq('id',u.id).single();S.p=r.data;await load();sub();render()}
+
+function go(v,id){S.view=v;S.id=id||null;S.tab='resumen';(S.id?loadD():Promise.resolve()).then(()=>{render();scrollTo(0,0)})}
+function render(keep){
+  if(keep&&document.activeElement&&/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
+  const nav=admin()?[['home','Resumen'],['projects','Proyectos'],['clients','Clientes'],['pay','Pagos'],['fin','Finanzas']]:[['home','Mis proyectos'],['new','Nuevo proyecto']];
+  app.innerHTML=`<header class="top"><a href="index.html" class="brand"><img src="1.1.png" alt="Fluxora"></a><nav>${nav.map(([v,t])=>`<button class="${S.view===v&&!S.id?'on':''}" onclick="go('${v}')">${t}</button>`).join('')}</nav><div class="who"><span>${esc((S.p&&S.p.full_name)||S.u.email)}${admin()?' · Admin':''}</span><button class="lnk" onclick="sb.auth.signOut()">Salir</button></div></header><main class="pm">${S.id?detail():V[S.view]()}</main>`;
+  const c=document.querySelector('.chat');if(c)c.scrollTop=c.scrollHeight}
+
+const card=p=>{const pg=paid(p.id);return `<article class="card pc" onclick="go('project','${p.id}')"><div class="row2"><b>${esc(p.title)}</b>${bd(p.status)}</div><small>${TY[p.type]||''}${p.format&&p.format!=='na'?' · '+esc(p.format):''}${admin()?' · '+esc(p.profiles&&p.profiles.full_name||''):''}</small><div class="bar"><i style="width:${p.progress}%"></i></div><div class="row2"><small>${p.progress}% completado</small><small>${+p.price>0?mx(pg)+' de '+mx(p.price):'Por cotizar'}</small></div></article>`};
+const stat=(t,v)=>`<div class="card stat"><small>${t}</small><b>${v}</b></div>`;
+const incomeOf=m=>S.payments.filter(x=>ym(x.paid_at)===m).reduce((a,x)=>a+ +x.amount,0)+S.fin.filter(x=>x.kind==='ingreso'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
+const expOf=m=>S.fin.filter(x=>x.kind==='gasto'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
+
+const V={
+home(){
+  if(!admin())return `<div class="row2"><h1>Mis proyectos</h1><button class="btn btn-dark" onclick="go('new')">Nuevo proyecto</button></div>${S.projects.length?`<div class="grid">${S.projects.map(card).join('')}</div>`:'<div class="card empty">Aún no tienes proyectos. Pide tu primera edición o diseño.</div>'}`;
+  const act=S.projects.filter(p=>!['finalizado','cancelado'].includes(p.status)),owed=S.projects.filter(p=>p.status!=='cancelado').reduce((a,p)=>a+Math.max(0,+p.price-paid(p.id)),0),nw=S.projects.filter(p=>p.status==='solicitado');
+  return `<h1>Resumen</h1><div class="grid">${stat('Proyectos activos',act.length)}${stat('Por cobrar',mx(owed))}${stat('Ingresos del mes',mx(incomeOf(thisM)))}${stat('Gastos del mes',mx(expOf(thisM)))}</div><h2>Solicitudes nuevas</h2>${nw.length?`<div class="grid">${nw.map(card).join('')}</div>`:'<div class="card empty">No hay solicitudes nuevas.</div>'}<h2>En curso</h2>${act.length?`<div class="grid">${act.filter(p=>p.status!=='solicitado').map(card).join('')}</div>`:'<div class="card empty">Sin proyectos en curso.</div>'}`},
+new(){return `<h1>Nuevo proyecto</h1><form class="card" onsubmit="return A.create(event)"><label>Título<input name="title" placeholder="Ej. Reel de mi negocio" required></label><div class="grid grid2"><label>Tipo<select name="type">${opts(TY)}</select></label><label>Formato<select name="format"><option value="vertical">Vertical 9:16</option><option value="horizontal">Horizontal 16:9</option><option value="ambos">Ambos</option><option value="na">No aplica</option></select></label><label>Paquete<select name="package"><option>Básico $150</option><option>Estándar $300</option><option>Pro $500</option><option>A cotizar</option></select></label></div><label>Cuéntanos qué necesitas<textarea name="description" required></textarea></label><label>Enlace a tu material (Drive, etc.)<input name="material_url" type="url" placeholder="https://"></label><button class="btn btn-dark">Enviar solicitud</button></form>`},
+projects(){const l=S.projects.filter(p=>!S.f||p.status===S.f);return `<div class="row2"><h1>Proyectos</h1><select style="max-width:220px" onchange="S.f=this.value;render()"><option value="">Todos</option>${opts(ST,S.f)}</select></div>${l.length?`<div class="grid">${l.map(card).join('')}</div>`:'<div class="card empty">Sin proyectos.</div>'}`},
+clients(){return `<h1>Clientes</h1><div class="card tw"><table><tr><th>Cliente</th><th>Proyectos</th><th>Total</th><th>Pagado</th><th>Pendiente</th></tr>${S.profiles.map(c=>{const ps=S.projects.filter(p=>p.client_id===c.id&&p.status!=='cancelado'),t=ps.reduce((a,p)=>a+ +p.price,0),pg=ps.reduce((a,p)=>a+paid(p.id),0);return `<tr><td><b>${esc(c.full_name||'Sin nombre')}</b><br><small>${esc(c.email)}</small></td><td>${ps.length}</td><td>${mx(t)}</td><td>${mx(pg)}</td><td>${mx(Math.max(0,t-pg))}</td></tr>`}).join('')||'<tr><td colspan="5" class="empty">Aún no hay clientes.</td></tr>'}</table></div>`},
+pay(){const l=S.projects.filter(p=>+p.price>0&&p.status!=='cancelado');return `<h1>Pagos</h1><div class="card tw"><table><tr><th>Proyecto</th><th>Cliente</th><th>Precio</th><th>Pagado</th><th>Pendiente</th></tr>${l.map(p=>{const pg=paid(p.id);return `<tr class="k" onclick="go('project','${p.id}')"><td><b>${esc(p.title)}</b></td><td>${esc(p.profiles&&p.profiles.full_name||'')}</td><td>${mx(p.price)}</td><td>${mx(pg)}</td><td>${+p.price-pg>0?mx(+p.price-pg):'Liquidado'}</td></tr>`}).join('')||'<tr><td colspan="5" class="empty">Sin proyectos cotizados.</td></tr>'}</table></div>`},
+fin(){const rows=[...S.payments.map(x=>({d:x.paid_at,k:'ingreso',c:'Pago: '+((S.projects.find(p=>p.id===x.project_id)||{}).title||''),cat:x.method||'Pago',a:x.amount})),...S.fin.map(x=>({d:x.entry_date,k:x.kind,c:x.concept,cat:x.category||'',a:x.amount}))].sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,150),i=incomeOf(thisM),e=expOf(thisM);
+  return `<h1>Finanzas</h1><div class="grid">${stat('Ingresos del mes',mx(i))}${stat('Gastos del mes',mx(e))}${stat('Utilidad del mes',mx(i-e))}</div><form class="card" onsubmit="return A.fin(event)"><h2>Nuevo movimiento</h2><div class="grid grid2"><label>Tipo<select name="kind"><option value="gasto">Gasto</option><option value="ingreso">Ingreso extra</option></select></label><label>Concepto<input name="concept" required placeholder="Ej. Licencia de software"></label><label>Categoría<input name="category" placeholder="Software, publicidad..."></label><label>Monto<input name="amount" type="number" min="1" step="0.01" required></label><label>Fecha<input name="entry_date" type="date" value="${new Date().toISOString().slice(0,10)}"></label></div><button class="btn btn-dark">Registrar</button></form><div class="card tw"><h2>Bitácora</h2><table><tr><th>Fecha</th><th>Concepto</th><th>Categoría</th><th>Monto</th></tr>${rows.map(r=>`<tr><td>${fd(r.d)}</td><td>${esc(r.c)}</td><td>${esc(r.cat)}</td><td>${r.k==='gasto'?'- ':'+ '}${mx(r.a)}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin movimientos.</td></tr>'}</table></div>`}
+};
+
+function detail(){const p=S.projects.find(x=>x.id===S.id);if(!p)return '<div class="card empty">Proyecto no encontrado.</div>';
+  const tabs=[['resumen','Resumen'],['chat','Chat'],['mods','Modificaciones'],['pagos','Pagos']];
+  return `<button class="lnk" style="justify-self:start" onclick="go('${admin()?'projects':'home'}')">← Volver</button><div class="card"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div><div class="bar"><i style="width:${p.progress}%"></i></div><small>${p.progress}% completado${admin()?' · '+esc(p.profiles&&p.profiles.full_name||'')+' · '+esc(p.profiles&&p.profiles.email||''):''}</small></div><div class="tabs">${tabs.map(([k,t])=>`<button class="${S.tab===k?'on':''}" onclick="S.tab='${k}';render()">${t}</button>`).join('')}</div>${T[S.tab](p)}`}
+
+const T={
+resumen(p){return `<div class="card"><h2>Detalles</h2><p><b>${TY[p.type]||''}</b>${p.format&&p.format!=='na'?' · '+esc(p.format):''} · ${esc(p.package||'')}</p><p style="white-space:pre-wrap">${esc(p.description||'')}</p>${p.material_url?`<a href="${esc(p.material_url)}" target="_blank" rel="noopener">Ver material</a>`:''}<small>Entrega estimada: ${fd(p.due_date)} · Creado: ${fd(p.created_at)}</small></div>
+  ${admin()?`<form class="card" onsubmit="return A.save(event,'${p.id}')"><h2>Gestionar y notificar al cliente</h2><div class="grid grid2"><label>Estado<select name="status">${opts(ST,p.status)}</select></label><label>Avance (%)<input type="number" name="progress" min="0" max="100" value="${p.progress}"></label><label>Precio (MXN)<input type="number" name="price" min="0" step="1" value="${p.price}"></label><label>Fecha de entrega<input type="date" name="due_date" value="${p.due_date||''}"></label></div><button class="btn btn-dark">Guardar cambios</button></form>`:''}
+  <div class="card"><h2>Historial del proyecto</h2><ul class="tl">${S.D.ev.map(e=>`<li><b>${esc(e.text)}</b><br><small>${ft(e.created_at)}</small></li>`).join('')||'<li><small>Sin movimientos.</small></li>'}</ul></div>`},
+chat(p){const who=m=>m.sender_id===S.u.id?'Tú':(admin()?esc(p.profiles&&p.profiles.full_name||'Cliente'):'Fluxora');
+  return `<div class="card"><div class="chat">${S.D.msg.map(m=>`<div class="msg ${m.sender_id===S.u.id?'me':''}"><small>${who(m)} · ${ft(m.created_at)}</small><p>${esc(m.body)}</p></div>`).join('')||'<div class="empty">Escribe el primer mensaje.</div>'}</div><form onsubmit="return A.send(event,'${p.id}')" style="grid-template-columns:1fr auto;align-items:start"><textarea name="body" style="min-height:48px" placeholder="Escribe un mensaje..." required></textarea><button class="btn btn-dark">Enviar</button></form></div>`},
+mods(p){return `${admin()?'':`<form class="card" onsubmit="return A.mod(event,'${p.id}')"><h2>Pedir una modificación</h2><textarea name="body" placeholder="Describe qué quieres cambiar (minutos, texto, música, cortes...)" required></textarea><button class="btn btn-dark">Enviar solicitud</button></form>`}
+  <div class="card"><h2>Solicitudes de modificación</h2>${S.D.mods.map(m=>`<div class="row2" style="border-top:1px solid var(--line);padding-top:.7rem"><div><p style="white-space:pre-wrap">${esc(m.body)}</p><small>${ft(m.created_at)}</small></div>${admin()?`<select style="max-width:160px" onchange="A.modst('${m.id}',this.value)">${opts(MD,m.status)}</select>`:bd(m.status)}</div>`).join('')||'<div class="empty">Sin solicitudes.</div>'}</div>`},
+pagos(p){const pg=paid(p.id),pr=+p.price,pc=pr>0?Math.min(100,Math.round(pg/pr*100)):0;
+  return `<div class="card"><div class="grid grid2"><div class="stat"><small>Precio</small><b>${pr>0?mx(pr):'Por cotizar'}</b></div><div class="stat"><small>Pagado</small><b>${mx(pg)}</b></div><div class="stat"><small>Pendiente</small><b>${pr>0?mx(Math.max(0,pr-pg)):'-'}</b></div></div><div class="bar"><i style="width:${pc}%"></i></div><small>${pc}% pagado</small></div>
+  ${admin()?`<form class="card" onsubmit="return A.pay(event,'${p.id}')"><h2>Registrar pago</h2><div class="grid grid2"><label>Monto<input name="amount" type="number" min="1" step="0.01" required></label><label>Método<select name="method"><option>Transferencia</option><option>Efectivo</option><option>Depósito</option><option>Otro</option></select></label><label>Nota<input name="note" placeholder="Anticipo, liquidación..."></label></div><button class="btn btn-dark">Registrar pago</button></form>`:''}
+  <div class="card tw"><h2>Pagos recibidos</h2><table><tr><th>Fecha</th><th>Monto</th><th>Método</th><th>Nota</th></tr>${S.payments.filter(x=>x.project_id===p.id).map(x=>`<tr><td>${fd(x.paid_at)}</td><td>${mx(x.amount)}</td><td>${esc(x.method||'')}</td><td>${esc(x.note||'')}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin pagos todavía.</td></tr>'}</table></div>`}
+};
+
+const A={
+async auth(e,m){e.preventDefault();const f=new FormData(e.target),msg=document.getElementById('msg');
+  if(m==='up'&&f.get('pass')!==f.get('pass2')){msg.textContent='Las contraseñas no coinciden.';return false}
+  msg.textContent='Un momento...';
+  const r=m==='in'?await sb.auth.signInWithPassword({email:f.get('email'),password:f.get('pass')}):await sb.auth.signUp({email:f.get('email'),password:f.get('pass'),options:{data:{full_name:f.get('name')},emailRedirectTo:location.href.split('#')[0]}});
+  if(r.error)msg.textContent=tr(r.error.message);
+  else if(m==='up'&&!r.data.session)msg.textContent='Cuenta creada. Te enviamos un correo para confirmarla; después de confirmar, inicia sesión.';
+  return false},
+async create(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
+  const r=await sb.from('projects').insert({client_id:S.u.id,title:f.title,type:f.type,format:f.format,package:f.package,description:f.description,material_url:f.material_url||null}).select().single();
+  if(r.error){alert(r.error.message);return false}await load();go('project',r.data.id);return false},
+async save(e,id){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
+  const r=await sb.from('projects').update({status:f.status,progress:+f.progress,price:+f.price,due_date:f.due_date||null}).eq('id',id);
+  if(r.error)alert(r.error.message);await load();render();return false},
+async send(e,id){e.preventDefault();const b=new FormData(e.target).get('body').trim();if(!b)return false;
+  const r=await sb.from('messages').insert({project_id:id,sender_id:S.u.id,body:b});if(r.error)alert(r.error.message);await loadD();render();return false},
+async mod(e,id){e.preventDefault();const r=await sb.from('modifications').insert({project_id:id,requested_by:S.u.id,body:new FormData(e.target).get('body')});
+  if(r.error)alert(r.error.message);await loadD();render();return false},
+async modst(id,v){await sb.from('modifications').update({status:v}).eq('id',id);await loadD();render()},
+async pay(e,id){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
+  const r=await sb.from('payments').insert({project_id:id,amount:+f.amount,method:f.method,note:f.note||null,recorded_by:S.u.id});
+  if(r.error)alert(r.error.message);await load();render();return false},
+async fin(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
+  const r=await sb.from('finance_entries').insert({kind:f.kind,concept:f.concept,category:f.category||null,amount:+f.amount,entry_date:f.entry_date});
+  if(r.error)alert(r.error.message);await load();render();return false}
+};
+
+if(SUPABASE_URL.includes('TU-PROYECTO')){
+  app.innerHTML='<div class="card auth"><h1>Falta conectar Supabase</h1><small>Abre portal.html y pega tu Project URL y tu anon key en la parte de CONFIGURACION. Luego ejecuta schema.sql en tu proyecto.</small></div>';
+}else{
+  sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  sb.auth.onAuthStateChange((ev,session)=>{
+    if(session&&session.user){if(!S.u||S.u.id!==session.user.id)setTimeout(()=>init(session.user),0)}
+    else{S.u=null;S.p=null;S.view='home';S.id=null;if(ch){sb.removeChannel(ch);ch=null}authView()}
+  });
+}
+</script>
+</body>
+</html>
