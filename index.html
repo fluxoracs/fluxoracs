@@ -371,6 +371,12 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
   .about-grid .reveal,.bento .reveal,.tiers .reveal{opacity:1;transform:none;filter:none}
   .dots{display:flex}
 }
+
+/* boton "Ir a mi panel" siempre visible */
+.nav-cta{display:flex;align-items:center;gap:.5rem}
+.panel-btn{border:0;background:#fff;color:#000}.nav-cta .btn-light{border:1px solid rgba(255,255,255,.28)}
+@media(max-width:980px){.nav .btn:not(.panel-btn){display:none}.panel-btn{display:inline-flex}}
+@media(max-width:380px){.panel-btn{padding:0 .8rem;font-size:.74rem}.nav{gap:.5rem}}
 </style>
 </head>
 <body>
@@ -381,9 +387,9 @@ footer{border-top:1px solid var(--line);padding:2.5rem 0 calc(2rem + env(safe-ar
     <a href="#inicio" class="brand" aria-label="Fluxora Creative Studio"><img src="1.1.png" alt="Fluxora Creative Studio"></a>
     <nav class="links">
       <a href="#nosotros">Nosotros</a><a href="#servicios">Servicios</a><a href="#portafolio">Portafolio</a><a href="#paquetes">Paquetes</a><a href="#proceso">Proceso</a><a href="#contacto">Contacto</a>
+      
     </nav>
-    <a href="https://wa.me/526424836880" target="_blank" rel="noopener" class="btn btn-dark btn-sm">Cotizar <span class="arrow">→</span></a>
-    <button class="menu-toggle" id="menuBtn" aria-label="Abrir menú"><span></span><span></span></button>
+    <div class="nav-cta"><a href="portal.html" class="btn btn-dark btn-sm panel-btn">Ir a mi panel</a><button class="menu-toggle" id="menuBtn" aria-label="Abrir menú"><span></span><span></span></button></div>
   </div>
 </header>
 
