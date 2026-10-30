@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mi panel | Fluxora Creative Studio</title>
 <meta name="robots" content="index, follow">
-<meta name="description" content="Panel de clientes de Fluxora Creative Studio: sigue el estado de tus proyectos de edición de video, pide modificaciones, escríbenos y consulta tus pagos.">
+<meta name="description" content="Panel de clientes de Fluxora Creative Studio.">
 <link rel="canonical" href="https://fluxoracs.github.io/fluxoracs/portal.html">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Fluxora Creative Studio"><meta property="og:locale" content="es_MX">
-<meta property="og:title" content="Mi panel | Fluxora Creative Studio"><meta property="og:description" content="Panel de clientes de Fluxora Creative Studio: sigue el estado de tus proyectos de edición de video, pide modificaciones, escríbenos y consulta tus pagos.">
+<meta property="og:title" content="Mi panel | Fluxora Creative Studio">
 <meta property="og:url" content="https://fluxoracs.github.io/fluxoracs/portal.html"><meta property="og:image" content="https://fluxoracs.github.io/fluxoracs/1.1.png">
 <meta name="theme-color" content="#0b0b0c"><meta name="color-scheme" content="dark">
 <link rel="icon" type="image/png" href="favicon1.png" media="(prefers-color-scheme: dark)">
@@ -45,6 +45,7 @@ small{color:var(--muted);font-size:.74rem}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;height:44px;padding:0 1.4rem;border-radius:999px;border:0;font-weight:700;font-size:.82rem;transition:transform .12s,box-shadow .3s}.btn:active{transform:scale(.96)}
 .btn-dark{background:#fff;color:#000}.btn-dark:hover{box-shadow:0 0 0 5px rgba(255,255,255,.15)}
 .btn-light{background:rgba(255,255,255,.1);color:#fff}
+.btn-red{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid #ef4444}
 input,select,textarea{width:100%;background:rgba(0,0,0,.55);border:1px solid var(--line);border-radius:12px;padding:.75rem 1rem;color:var(--ink);font:inherit;outline:none}
 input:focus,select:focus,textarea:focus{border-color:#fff}textarea{min-height:90px;resize:vertical}select option{background:#111}
 label{display:grid;gap:.35rem;font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
@@ -60,6 +61,11 @@ table{width:100%;border-collapse:collapse;font-size:.82rem}th,td{text-align:left
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;padding:.3rem;border-radius:999px;background:rgba(0,0,0,.5);border:1px solid var(--line);margin:.3rem 0}.seg button{border:0;background:none;padding:.6rem;border-radius:999px;font-size:.78rem;font-weight:700;color:var(--muted)}.seg button.on{background:#fff;color:#000}
 .auth{max-width:420px;margin:12vh auto 0;text-align:center}.auth img{height:46px;margin:0 auto}.auth .msg2{min-height:1.2em;color:var(--muted);font-size:.8rem}
 .empty{text-align:center;color:var(--muted);padding:2rem 1rem}
+.badge-role{padding:.15rem .55rem;border-radius:999px;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.2)}
+.badge-admin{border-color:#a78bfa;color:#a78bfa}
+.badge-staff{border-color:#60a5fa;color:#60a5fa}
+.badge-manager{border-color:#34d399;color:#34d399}
+.badge-client{border-color:#9a9a9f;color:#9a9a9f}
 @media(max-width:600px){.who span{display:none}.msg{max-width:92%}}
 
 .pc.st-cancelado,.card.st-cancelado{border-color:#ef4444}.pc.st-proceso,.card.st-proceso{border-color:#f59e0b}.pc.st-ok,.card.st-ok{border-color:#22c55e}
@@ -68,7 +74,9 @@ table{width:100%;border-collapse:collapse;font-size:.82rem}th,td{text-align:left
 .bd.s-revision,.bd.s-edicion,.bd.s-modificaciones{border-color:#f59e0b;color:#fcd34d}
 .bd.s-entregado,.bd.s-finalizado{border-color:#22c55e;color:#86efac;background:rgba(34,197,94,.14)}
 .bd svg{width:11px;height:11px;margin-right:.3rem;vertical-align:-1px}
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.82);display:grid;place-items:center;padding:1rem;z-index:50}.ov .card{max-width:440px;width:100%;border-color:#ef4444}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.82);display:grid;place-items:center;padding:1rem;z-index:50;overflow-y:auto}.ov .inner{max-width:500px;width:100%}
+.ov .card{border-color:#ef4444}
+.ov-neu .card{border-color:var(--line)}
 
 .pw{overflow-x:auto}
 #paper{background:#fff;color:#111;border-radius:14px;padding:clamp(1rem,4vw,2.2rem);font-size:.82rem;line-height:1.45;min-width:0}
@@ -91,6 +99,12 @@ table{width:100%;border-collapse:collapse;font-size:.82rem}th,td{text-align:left
 .fold{gap:.4rem}.fold svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:.3rem}
 .crumb{color:var(--muted);font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:0 .5rem;white-space:nowrap}
 @media print{#paper{zoom:var(--pz,1)}#paper table{table-layout:fixed}#paper td,#paper th{word-break:break-word;font-size:.62rem}}
+
+/* reparto cards */
+.cast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem}
+.cast-card{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:.9rem;display:grid;gap:.35rem}
+.cast-card b{color:#fff;font-size:.88rem}
+.cast-card small{color:var(--muted);font-size:.72rem}
 </style>
 </head>
 <body>
@@ -99,15 +113,17 @@ table{width:100%;border-collapse:collapse;font-size:.82rem}th,td{text-align:left
 <noscript>Panel de clientes de Fluxora Creative Studio. Activa JavaScript para entrar a tu panel.</noscript>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
-/* ===== CONFIGURACION: pega los datos de tu proyecto Supabase (Settings > API) ===== */
+/* ===== CONFIGURACION ===== */
 const SUPABASE_URL='https://bglrhelixubrfdpqkwjy.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnbHJoZWxpeHVicmZkcHFrd2p5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxMzU5NjIsImV4cCI6MjEwODcxMTk2Mn0.RkdhuvJ1iBWF0BzW5CtdauJPyj6VtxeL-OfrJZYhqm4';
-/* ================================================================================ */
+/* ======================== */
+
 const app=document.getElementById('app');
 const $=s=>document.querySelector(s);
 const ST={solicitado:'Solicitado',revision:'En revisión',edicion:'En edición',entregado:'Entregado',modificaciones:'En modificaciones',finalizado:'Finalizado',cancelado:'Cancelado'};
-const TY={edicion:'Edición de video',diseno:'Diseño gráfico',ia:'Estrategia con IA',otro:'Otro'};
+const TY={edicion:'Edición de video',diseno:'Diseño gráfico',ia:'Estrategia con IA',cortometraje:'Cortometraje',documental:'Documental',otro:'Otro'};
 const MD={pendiente:'Pendiente',proceso:'En proceso',hecha:'Hecha'};
+const ROLES={client:'Cliente',manager:'Manager',staff:'Colaborador',admin:'Administrador'};
 const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const mx=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'}).format(+n||0);
 const fd=d=>d?new Date(String(d).length===10?d+'T00:00:00':d).toLocaleDateString('es-MX',{day:'2-digit',month:'short',year:'numeric'}):'Sin fecha';
@@ -115,86 +131,211 @@ const ft=d=>new Date(d).toLocaleString('es-MX',{day:'2-digit',month:'short',hour
 const CK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 const bd=s=>`<span class="bd s-${s}">${s==='entregado'||s==='finalizado'?CK:''}${ST[s]||MD[s]||s}</span>`;
 const stc=s=>s==='cancelado'?'st-cancelado':['revision','edicion','modificaciones'].includes(s)?'st-proceso':['entregado','finalizado'].includes(s)?'st-ok':'';
+const roleBadge=r=>`<span class="badge-role badge-${r}">${ROLES[r]||r}</span>`;
 const daysLeft=p=>Math.max(0,Math.ceil(14-(Date.now()-new Date(p.cancelled_at||Date.now()))/864e5));
-function askReason(){return new Promise(res=>{const d=document.createElement('div');d.className='ov';d.innerHTML='<form class="card"><h2>Cancelar proyecto</h2><small>El cliente verá este motivo y podrá enviar una apelación.</small><textarea required placeholder="Motivo de la cancelación"></textarea><div class="row2"><button type="button" class="btn btn-light">Volver</button><button class="btn btn-dark">Cancelar proyecto</button></div></form>';document.body.appendChild(d);const t=d.querySelector('textarea');t.focus();const done=v=>{d.remove();res(v)};d.querySelector('.btn-light').onclick=()=>done(null);d.querySelector('form').onsubmit=e=>{e.preventDefault();done(t.value.trim()||null)}})}
+
+function askReason(){return new Promise(res=>{const d=document.createElement('div');d.className='ov';d.innerHTML='<div class="inner"><form class="card"><h2>Cancelar proyecto</h2><small>El cliente verá este motivo y podrá enviar una apelación.</small><textarea required placeholder="Motivo de la cancelación"></textarea><div class="row2"><button type="button" class="btn btn-light">Volver</button><button class="btn btn-dark">Cancelar proyecto</button></div></form></div>';document.body.appendChild(d);const t=d.querySelector('textarea');t.focus();const done=v=>{d.remove();res(v)};d.querySelector('.btn-light').onclick=()=>done(null);d.querySelector('form').onsubmit=e=>{e.preventDefault();done(t.value.trim()||null)}})}
+
 const opts=(o,v)=>Object.entries(o).map(([k,t])=>`<option value="${k}" ${k===v?'selected':''}>${t}</option>`).join('');
-let sb,S={mem:[],tm:null,fit:true,paper:'letter',dkBack:null,docs:[],dk:null,wish:[],set:{},q:{lines:[],mode:'plan'},dr:null,u:null,p:null,projects:[],payments:[],profiles:[],fin:[],view:'home',id:null,tab:'resumen',f:'',D:{ev:[],msg:[],mods:[],ap:[]}},ch;
+let sb,ch;
+let S={mem:[],tm:null,fit:true,paper:'letter',dkBack:null,docs:[],dk:null,wish:[],set:{},q:{lines:[],mode:'plan'},dr:null,u:null,p:null,projects:[],payments:[],profiles:[],fin:[],cast:[],view:'home',id:null,tab:'resumen',f:'',D:{ev:[],msg:[],mods:[],ap:[]}};
+
+/* ── role helpers ── */
 const admin=()=>S.p&&S.p.role==='admin';
-const team=()=>S.p&&(S.p.role==='admin'||S.p.role==='staff');
+const staff=()=>S.p&&S.p.role==='staff';
+const manager=()=>S.p&&S.p.role==='manager';
+const team=()=>S.p&&['admin','staff'].includes(S.p.role);        // full back-office
+const canManage=()=>S.p&&['admin','staff','manager'].includes(S.p.role); // can touch projects
+
+/* manager sees only assigned projects */
+const myProjects=()=>{
+  if(admin()||staff()) return S.projects;
+  if(manager()) return S.projects.filter(p=>S.mem.some(m=>m.user_id===S.u.id&&m.project_id===p.id));
+  return S.projects.filter(p=>p.client_id===S.u.id);
+};
+
 const paid=id=>S.payments.filter(x=>x.project_id===id).reduce((a,x)=>a+ +x.amount,0);
 const ym=d=>String(d).slice(0,7),thisM=new Date().toISOString().slice(0,7);
 
+/* ── auth views ── */
 function authView(m){m=m||(location.hash==='#registro'?'up':'in');const up=m==='up';
   app.innerHTML=`<div class="card auth"><a href="index.html"><img src="1.1.png" alt="Fluxora"></a><div class="seg"><button class="${up?'':'on'}" onclick="authView('in')">Entrar</button><button class="${up?'on':''}" onclick="authView('up')">Crear cuenta</button></div><h1>${up?'Crea tu cuenta':'Bienvenido de vuelta'}</h1><small>${up?'Regístrate para pedir tus proyectos y darles seguimiento.':'Sigue tus proyectos, pide modificaciones y habla con nosotros.'}</small><form onsubmit="return A.auth(event,'${m}')">${up?'<input name="name" placeholder="Nombre completo" autocomplete="name" required>':''}<input name="email" type="email" placeholder="Correo" autocomplete="email" required><input name="pass" type="password" placeholder="Contraseña (mínimo 6 caracteres)" minlength="6" autocomplete="${up?'new-password':'current-password'}" required>${up?'<input name="pass2" type="password" placeholder="Repite la contraseña" minlength="6" autocomplete="new-password" required>':''}<button class="btn btn-dark">${up?'Crear mi cuenta':'Entrar'}</button></form><p class="msg2" id="msg"></p>${up?'':'<button type="button" class="lnk" onclick="A.reset()">Olvidé mi contraseña</button>'}</div>`}
 function recView(){app.innerHTML=`<div class="card auth"><a href="index.html"><img src="1.1.png" alt="Fluxora"></a><h1>Nueva contraseña</h1><small>Escribe la contraseña nueva para tu cuenta.</small><form onsubmit="return A.newpass(event)"><input name="pass" type="password" minlength="6" placeholder="Nueva contraseña (mínimo 6)" autocomplete="new-password" required><input name="pass2" type="password" minlength="6" placeholder="Repite la contraseña" autocomplete="new-password" required><button class="btn btn-dark">Guardar contraseña</button></form><p class="msg2" id="msg"></p></div>`}
 const tr=m=>{m=String(m||'');return /Invalid login/i.test(m)?'Correo o contraseña incorrectos.':/already registered|already been registered/i.test(m)?'Ese correo ya tiene cuenta. Usa "Entrar".':/Email not confirmed/i.test(m)?'Confirma tu correo antes de entrar. Revisa tu bandeja.':/at least 6/i.test(m)?'La contraseña debe tener mínimo 6 caracteres.':/rate limit/i.test(m)?'Demasiados intentos. Espera un momento.':m}
 
+/* ── data load ── */
 async function load(){
-  /* ── FIX: explicit FK hint to avoid "more than one relationship" error ── */
-  const q=[sb.from('projects').select('*,profiles!client_id(full_name,email)').order('created_at',{ascending:false}),sb.from('payments').select('*').order('paid_at',{ascending:false})];
-  if(admin())q.push(sb.from('profiles').select('*').order('created_at'),sb.from('finance_entries').select('*').order('entry_date',{ascending:false}),sb.from('wishlist').select('*'),sb.from('site_settings').select('*'),sb.from('project_members').select('*'));
-  const r=await Promise.all(q);if(r[0].error)throw r[0].error;S.projects=r[0].data||[];S.payments=r[1].data||[];
-  if(admin()){S.profiles=r[2].data||[];S.fin=r[3].data||[];S.wish=(r[4].data||[]).sort((a,b)=>(a.status==='comprado')-(b.status==='comprado')||a.priority-b.priority||String(a.created_at).localeCompare(b.created_at));S.set=Object.fromEntries((r[5].data||[]).map(x=>[x.key,x.value]));S.mem=r[6].data||[]}
-  if(team()){const d=await sb.from('documents').select('id,kind,title,project_id,updated_at').order('updated_at',{ascending:false});S.docs=d.data||[]}
-  if(S.id)await loadD()}
-async function loadD(){const g=(t,a)=>sb.from(t).select('*').eq('project_id',S.id).order('created_at',{ascending:a});
-  const [e,m,o,a]=await Promise.all([g('project_events',false),g('messages',true),g('modifications',false),g('appeals',false)]);S.D={ev:e.data||[],msg:m.data||[],mods:o.data||[],ap:a.data||[]}}
+  const q=[
+    sb.from('projects').select('*,profiles!client_id(full_name,email)').order('created_at',{ascending:false}),
+    sb.from('payments').select('*').order('paid_at',{ascending:false}),
+    sb.from('project_members').select('*'),
+  ];
+  if(admin()) q.push(
+    sb.from('profiles').select('*').order('created_at'),
+    sb.from('finance_entries').select('*').order('entry_date',{ascending:false}),
+    sb.from('wishlist').select('*'),
+    sb.from('site_settings').select('*')
+  );
+  if(staff()&&!admin()) q.push(
+    sb.from('profiles').select('*').order('created_at'),
+    sb.from('finance_entries').select('*').order('entry_date',{ascending:false})
+  );
+  const r=await Promise.all(q);
+  if(r[0].error) throw r[0].error;
+  S.projects=r[0].data||[];
+  S.payments=r[1].data||[];
+  S.mem=r[2].data||[];
+  if(admin()){S.profiles=r[3].data||[];S.fin=r[4].data||[];S.wish=(r[5].data||[]).sort((a,b)=>(a.status==='comprado')-(b.status==='comprado')||a.priority-b.priority||String(a.created_at).localeCompare(b.created_at));S.set=Object.fromEntries((r[6].data||[]).map(x=>[x.key,x.value]))}
+  if(staff()&&!admin()){S.profiles=r[3].data||[];S.fin=r[4].data||[]}
+  if(canManage()){const d=await sb.from('documents').select('id,kind,title,project_id,updated_at').order('updated_at',{ascending:false});S.docs=d.data||[]}
+  if(S.id) await loadD();
+}
+async function loadD(){
+  const g=(t,a)=>sb.from(t).select('*').eq('project_id',S.id).order('created_at',{ascending:a});
+  const [e,m,o,a,c]=await Promise.all([g('project_events',false),g('messages',true),g('modifications',false),g('appeals',false),g('cast_members',true)]);
+  S.D={ev:e.data||[],msg:m.data||[],mods:o.data||[],ap:a.data||[]};
+  S.cast=c.data||[];
+}
 function sub(){if(ch)return;let tm;ch=sb.channel('rt').on('postgres_changes',{event:'*',schema:'public'},()=>{clearTimeout(tm);tm=setTimeout(async()=>{await load();render(true)},400)}).subscribe()}
-async function init(u){try{S.u=u;const r=await sb.from('profiles').select('*').eq('id',u.id).single();S.p=r.data;await load();sub();render()}catch(e){app.innerHTML='<div class="card auth"><h1>No pudimos cargar tu panel</h1><small>'+esc(e.message||'Error de conexión')+'</small><button class="btn btn-dark" onclick="init(S.u)">Reintentar</button><a class="lnk" href="error.html?c=500">Ver más información</a></div>'}}
+async function init(u){try{S.u=u;const r=await sb.from('profiles').select('*').eq('id',u.id).single();S.p=r.data;await load();sub();render()}catch(e){app.innerHTML='<div class="card auth"><h1>No pudimos cargar tu panel</h1><small>'+esc(e.message||'Error de conexión')+'</small><button class="btn btn-dark" onclick="init(S.u)">Reintentar</button></div>'}}
 
-function go(v,id){if(v==='docs'&&!id){S.dk=null;S.dkBack=null}S.view=v;S.id=id||null;S.tab='resumen';(S.id?loadD():Promise.resolve()).then(()=>{render();scrollTo(0,0)})}
+/* ── navigation ── */
+function go(v,id){if(v==='docs'&&!id){S.dk=null;S.dkBack=null}S.view=v;S.id=id||null;S.tab='resumen';S.cast=[];(S.id?loadD():Promise.resolve()).then(()=>{render();scrollTo(0,0)})}
+
 const IC={proy:'<svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',din:'<svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/></svg>',prod:'<svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M3 9l3-5h4l-3 5M10 9l3-5h4l-3 5"/></svg>',site:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>',team:'<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6M16 5a3.5 3.5 0 0 1 0 6.5M18 14c2 .7 3.5 2.5 3.5 6"/></svg>'};
-const FOLD=[{id:'proy',n:'Proyectos',d:'Tus proyectos y tus clientes',v:[['projects','Proyectos'],['clients','Clientes']],c:()=>S.projects.length+' proyectos'},
- {id:'din',n:'Dinero',d:'Pagos, finanzas, cotizador y wishlist',adm:1,v:[['pay','Pagos'],['fin','Finanzas'],['quote','Cotizador'],['wish','Wishlist']],c:()=>'Por cobrar '+mx(S.projects.filter(p=>p.status!=='cancelado').reduce((a,p)=>a+Math.max(0,+p.price-paid(p.id)),0))},
- {id:'prod',n:'Producción',d:'Presupuestos, call sheets, contratos y más',v:[['docs','Documentos']],c:()=>S.docs.length+' documentos'},
- {id:'site',n:'Mi sitio',d:'Paquetes, precios y datos de contacto',adm:1,v:[['site','Mi sitio']],c:()=>'Se ve en tu página'},
- {id:'team',n:'Equipo',d:'Administradores, colaboradores y permisos',adm:1,v:[['team','Equipo']],c:()=>S.profiles.filter(x=>x.role!=='client').length+' en el equipo'}];
-const folders=()=>admin()?FOLD:FOLD.filter(f=>!f.adm).map(f=>f.id==='proy'?{...f,v:[['projects','Proyectos']]}:f);
-const foldOf=v=>S.id?folders()[0]:folders().find(f=>f.v.some(x=>x[0]===v));
+
+const FOLD=[
+  {id:'proy',n:'Proyectos',d:'Proyectos y clientes',v:[['projects','Proyectos'],['clients','Clientes']],c:()=>S.projects.length+' proyectos',adm:0},
+  {id:'din',n:'Dinero',d:'Pagos, finanzas, cotizador y wishlist',adm:1,v:[['pay','Pagos'],['fin','Finanzas'],['quote','Cotizador'],['wish','Wishlist']],c:()=>'Por cobrar '+mx(S.projects.filter(p=>p.status!=='cancelado').reduce((a,p)=>a+Math.max(0,+p.price-paid(p.id)),0))},
+  {id:'prod',n:'Producción',d:'Documentos de producción',v:[['docs','Documentos']],c:()=>S.docs.length+' documentos',adm:0},
+  {id:'site',n:'Mi sitio',d:'Paquetes, precios y contacto',adm:1,v:[['site','Mi sitio']],c:()=>'Se ve en tu página'},
+  {id:'team',n:'Equipo',d:'Roles y permisos',adm:1,v:[['team','Equipo']],c:()=>S.profiles.filter(x=>x.role!=='client').length+' en el equipo'}
+];
+
+const folders=()=>{
+  if(admin()) return FOLD;
+  if(staff()) return FOLD.filter(f=>!f.adm).concat([{id:'din',n:'Finanzas',d:'Pagos y finanzas',adm:0,v:[['pay','Pagos'],['fin','Finanzas']],c:()=>''}]);
+  // manager: solo proyectos y documentos
+  return FOLD.filter(f=>['proy','prod'].includes(f.id)).map(f=>f.id==='proy'?{...f,v:[['projects','Proyectos']]}:f);
+};
+const foldOf=v=>S.id?folders()[0]:folders().find(f=>f.v&&f.v.some(x=>x[0]===v));
+
+/* ── render shell ── */
 function render(keep){
   if(keep&&document.activeElement&&/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
-  let nav,sub='';
-  if(team()){const fl=foldOf(S.view);nav=`<button class="${S.view==='home'&&!S.id?'on':''}" onclick="go('home')">Inicio</button>${fl&&S.view!=='home'?`<span class="crumb">${fl.n}</span>`:''}`;
-    if(fl&&!S.id&&fl.v.length>1)sub=`<div class="tabs">${fl.v.map(([v,t])=>`<button class="${S.view===v?'on':''}" onclick="go('${v}')">${t}</button>`).join('')}</div>`}
-  else nav=[['home','Mis proyectos'],['new','Nuevo proyecto']].map(([v,t])=>`<button class="${S.view===v&&!S.id?'on':''}" onclick="go('${v}')">${t}</button>`).join('');
-  app.innerHTML=`<header class="top"><a href="index.html" class="brand"><img src="1.1.png" alt="Fluxora"></a><nav>${nav}</nav><div class="who"><span>${esc((S.p&&S.p.full_name)||S.u.email)}${admin()?' · Admin':team()?' · Colaborador':''}</span><button class="lnk" onclick="sb.auth.signOut()">Salir</button></div></header><main class="pm">${sub}${S.id?detail():V[S.view]()}</main>`;
-  const c=document.querySelector('.chat');if(c)c.scrollTop=c.scrollHeight;if(admin()&&S.view==='quote'&&!S.id)Q.u()}
+  let nav='',sub='';
+  const role=S.p&&S.p.role;
+  if(role==='client'){
+    nav=[['home','Mis proyectos'],['new','Nuevo proyecto']].map(([v,t])=>`<button class="${S.view===v&&!S.id?'on':''}" onclick="go('${v}')">${t}</button>`).join('');
+  } else {
+    const fl=foldOf(S.view);
+    nav=`<button class="${S.view==='home'&&!S.id?'on':''}" onclick="go('home')">Inicio</button>${fl&&S.view!=='home'?`<span class="crumb">${fl.n}</span>`:''}`;
+    if(fl&&!S.id&&fl.v&&fl.v.length>1) sub=`<div class="tabs">${fl.v.map(([v,t])=>`<button class="${S.view===v?'on':''}" onclick="go('${v}')">${t}</button>`).join('')}</div>`;
+  }
+  const roleLabel=role==='admin'?' · Admin':role==='staff'?' · Colaborador':role==='manager'?' · Manager':'';
+  app.innerHTML=`<header class="top"><a href="index.html" class="brand"><img src="1.1.png" alt="Fluxora"></a><nav>${nav}</nav><div class="who"><span>${esc((S.p&&S.p.full_name)||S.u.email)}${roleLabel}</span><button class="lnk" onclick="sb.auth.signOut()">Salir</button></div></header><main class="pm">${sub}${S.id?detail():V[S.view]?V[S.view]():V.home()}</main>`;
+  const c=document.querySelector('.chat');if(c)c.scrollTop=c.scrollHeight;
+  if(admin()&&S.view==='quote'&&!S.id)Q.u();
+}
 
-const card=p=>{const pg=paid(p.id),cx=p.status==='cancelado'&&!team();return `<article class="card pc ${stc(p.status)}" onclick="go('project','${p.id}')"><div class="row2"><b>${esc(p.title)}</b>${bd(p.status)}</div><small>${TY[p.type]||''}${p.format&&p.format!=='na'?' · '+esc(p.format):''}${team()?' · '+esc(p.profiles&&p.profiles.full_name||''):''}</small>${cx?`<small>Proyecto cerrado · puedes apelar. Se quitará de tu panel en ${daysLeft(p)} día(s).</small>`:`<div class="bar"><i style="width:${p.progress}%"></i></div><div class="row2"><small>${p.progress}% completado</small><small>${+p.price>0?mx(pg)+' de '+mx(p.price):'Por cotizar'}</small></div>`}</article>`};
+/* ── project cards ── */
+const card=p=>{const pg=paid(p.id),cx=p.status==='cancelado'&&!canManage();
+  return `<article class="card pc ${stc(p.status)}" onclick="go('project','${p.id}')"><div class="row2"><b>${esc(p.title)}</b>${bd(p.status)}</div><small>${TY[p.type]||''}${p.format&&p.format!=='na'?' · '+esc(p.format):''}${canManage()?' · '+esc(p.profiles&&p.profiles.full_name||''):''}</small>${cx?`<small>Proyecto cerrado · puedes apelar. Se quitará en ${daysLeft(p)} día(s).</small>`:`<div class="bar"><i style="width:${p.progress}%"></i></div><div class="row2"><small>${p.progress}% completado</small><small>${+p.price>0?mx(pg)+' de '+mx(p.price):'Por cotizar'}</small></div>`}</article>`};
 const stat=(t,v)=>`<div class="card stat"><small>${t}</small><b>${v}</b></div>`;
-const incomeOf=m=>S.payments.filter(x=>ym(x.paid_at)===m).reduce((a,x)=>a+ +x.amount,0)+S.fin.filter(x=>x.kind==='ingreso'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
-const expOf=m=>S.fin.filter(x=>x.kind==='gasto'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
+const incomeOf=m=>S.payments.filter(x=>ym(x.paid_at)===m).reduce((a,x)=>a+ +x.amount,0)+(S.fin||[]).filter(x=>x.kind==='ingreso'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
+const expOf=m=>(S.fin||[]).filter(x=>x.kind==='gasto'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
 
+/* ══════════════════════════════════════════
+   VIEWS
+══════════════════════════════════════════ */
 const V={
 home(){
-  if(!team())return `<div class="row2"><h1>Mis proyectos</h1><button class="btn btn-dark" onclick="go('new')">Nuevo proyecto</button></div>${S.projects.length?`<div class="grid">${S.projects.map(card).join('')}</div>`:'<div class="card empty">Aún no tienes proyectos. Pide tu primera edición o diseño.</div>'}`;
+  /* CLIENT */
+  if(S.p&&S.p.role==='client'){
+    return `<div class="row2"><h1>Mis proyectos</h1><button class="btn btn-dark" onclick="go('new')">Nuevo proyecto</button></div>${myProjects().length?`<div class="grid">${myProjects().map(card).join('')}</div>`:'<div class="card empty">Aún no tienes proyectos.</div>'}`;
+  }
+  /* MANAGER */
+  if(manager()){
+    const mp=myProjects();
+    return `<h1>Mis proyectos</h1>${mp.length?`<div class="grid">${mp.map(card).join('')}</div>`:'<div class="card empty">No tienes proyectos asignados todavía.</div>'}`;
+  }
+  /* STAFF / ADMIN */
   const act=S.projects.filter(p=>!['finalizado','cancelado'].includes(p.status)),nw=S.projects.filter(p=>p.status==='solicitado'),owed=S.projects.filter(p=>p.status!=='cancelado').reduce((a,p)=>a+Math.max(0,+p.price-paid(p.id)),0);
-  return `<h1>${admin()?'Panel de control':'Tu panel'}</h1><div class="grid">${admin()?stat('Proyectos activos',act.length)+stat('Por cobrar',mx(owed))+stat('Ingresos del mes',mx(incomeOf(thisM)))+stat('Gastos del mes',mx(expOf(thisM))):stat('Proyectos asignados',S.projects.length)+stat('En curso',act.length)}</div><h2>Carpetas</h2><div class="grid">${folders().map(f=>`<article class="card pc fold" onclick="go('${f.v[0][0]}')">${IC[f.id]}<b>${f.n}</b><small>${f.d}</small><small style="color:#fff">${f.c()}</small></article>`).join('')}</div><h2>Solicitudes nuevas</h2>${nw.length?`<div class="grid">${nw.map(card).join('')}</div>`:'<div class="card empty">No hay solicitudes nuevas.</div>'}<h2>En curso</h2>${act.filter(p=>p.status!=='solicitado').length?`<div class="grid">${act.filter(p=>p.status!=='solicitado').map(card).join('')}</div>`:'<div class="card empty">Sin proyectos en curso.</div>'}`},
+  return `<h1>${admin()?'Panel de control':'Tu panel'}</h1><div class="grid">${admin()?stat('Proyectos activos',act.length)+stat('Por cobrar',mx(owed))+stat('Ingresos del mes',mx(incomeOf(thisM)))+stat('Gastos del mes',mx(expOf(thisM))):stat('Proyectos',S.projects.length)+stat('En curso',act.length)}</div><h2>Carpetas</h2><div class="grid">${folders().map(f=>`<article class="card pc fold" onclick="go('${f.v[0][0]}')">${IC[f.id]||''}<b>${f.n}</b><small>${f.d}</small><small style="color:#fff">${f.c()}</small></article>`).join('')}</div><h2>Solicitudes nuevas</h2>${nw.length?`<div class="grid">${nw.map(card).join('')}</div>`:'<div class="card empty">No hay solicitudes nuevas.</div>'}<h2>En curso</h2>${act.filter(p=>p.status!=='solicitado').length?`<div class="grid">${act.filter(p=>p.status!=='solicitado').map(card).join('')}</div>`:'<div class="card empty">Sin proyectos en curso.</div>'}`;
+},
+
+/* ── nuevo proyecto (cliente) ── */
 new(){return `<h1>Nuevo proyecto</h1><form class="card" onsubmit="return A.create(event)"><label>Título<input name="title" placeholder="Ej. Reel de mi negocio" required></label><div class="grid grid2"><label>Tipo<select name="type">${opts(TY)}</select></label><label>Formato<select name="format"><option value="vertical">Vertical 9:16</option><option value="horizontal">Horizontal 16:9</option><option value="ambos">Ambos</option><option value="na">No aplica</option></select></label><label>Paquete<select name="package"><option>Básico $150</option><option>Estándar $300</option><option>Pro $500</option><option>A cotizar</option></select></label></div><label>Cuéntanos qué necesitas<textarea name="description" required></textarea></label><label>Enlace a tu material (Drive, etc.)<input name="material_url" type="url" placeholder="https://"></label><button class="btn btn-dark">Enviar solicitud</button></form>`},
-projects(){const l=S.projects.filter(p=>!S.f||p.status===S.f);return `<div class="row2"><h1>Proyectos</h1><select style="max-width:220px" onchange="S.f=this.value;render()"><option value="">Todos</option>${opts(ST,S.f)}</select></div>${l.length?`<div class="grid">${l.map(card).join('')}</div>`:'<div class="card empty">Sin proyectos.</div>'}`},
-clients(){return `<h1>Clientes</h1><div class="card tw"><table><tr><th>Cliente</th><th>Proyectos</th><th>Total</th><th>Pagado</th><th>Pendiente</th></tr>${S.profiles.filter(c=>c.role==='client').map(c=>{const ps=S.projects.filter(p=>p.client_id===c.id&&p.status!=='cancelado'),t=ps.reduce((a,p)=>a+ +p.price,0),pg=ps.reduce((a,p)=>a+paid(p.id),0);return `<tr><td><b>${esc(c.full_name||'Sin nombre')}</b><br><small>${esc(c.email)}</small></td><td>${ps.length}</td><td>${mx(t)}</td><td>${mx(pg)}</td><td>${mx(Math.max(0,t-pg))}</td></tr>`}).join('')||'<tr><td colspan="5" class="empty">Aún no hay clientes.</td></tr>'}</table></div>`},
-pay(){const l=S.projects.filter(p=>+p.price>0&&p.status!=='cancelado');return `<h1>Pagos</h1><div class="card tw"><table><tr><th>Proyecto</th><th>Cliente</th><th>Precio</th><th>Pagado</th><th>Pendiente</th></tr>${l.map(p=>{const pg=paid(p.id);return `<tr class="k" onclick="go('project','${p.id}')"><td><b>${esc(p.title)}</b></td><td>${esc(p.profiles&&p.profiles.full_name||'')}</td><td>${mx(p.price)}</td><td>${mx(pg)}</td><td>${+p.price-pg>0?mx(+p.price-pg):'Liquidado'}</td></tr>`}).join('')||'<tr><td colspan="5" class="empty">Sin proyectos cotizados.</td></tr>'}</table></div>`},
-fin(){const rows=[...S.payments.map(x=>({d:x.paid_at,k:'ingreso',c:'Pago: '+((S.projects.find(p=>p.id===x.project_id)||{}).title||''),cat:x.method||'Pago',a:x.amount})),...S.fin.map(x=>({d:x.entry_date,k:x.kind,c:x.concept,cat:x.category||'',a:x.amount}))].sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,150),i=incomeOf(thisM),e=expOf(thisM);
-  return `<h1>Finanzas</h1><div class="grid">${stat('Ingresos del mes',mx(i))}${stat('Gastos del mes',mx(e))}${stat('Utilidad del mes',mx(i-e))}</div><form class="card" onsubmit="return A.fin(event)"><h2>Nuevo movimiento</h2><div class="grid grid2"><label>Tipo<select name="kind"><option value="gasto">Gasto</option><option value="ingreso">Ingreso extra</option></select></label><label>Concepto<input name="concept" required placeholder="Ej. Licencia de software"></label><label>Categoría<input name="category" placeholder="Software, publicidad..."></label><label>Monto<input name="amount" type="number" min="1" step="0.01" required></label><label>Fecha<input name="entry_date" type="date" value="${new Date().toISOString().slice(0,10)}"></label></div><button class="btn btn-dark">Registrar</button></form><div class="card tw"><h2>Bitácora</h2><table><tr><th>Fecha</th><th>Concepto</th><th>Categoría</th><th>Monto</th></tr>${rows.map(r=>`<tr><td>${fd(r.d)}</td><td>${esc(r.c)}</td><td>${esc(r.cat)}</td><td>${r.k==='gasto'?'- ':'+ '}${mx(r.a)}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin movimientos.</td></tr>'}</table></div>`}
+
+/* ── crear proyecto manual (admin / staff) ── */
+newmanual(){
+  return `<h1>Nuevo proyecto manual</h1>
+  <small>Para clientes que contactaron por otro medio. Puedes asignarles un cliente existente o dejarlo sin cuenta.</small>
+  <form class="card" onsubmit="return A.createManual(event)">
+    <div class="grid grid2">
+      <label>Título del proyecto<input name="title" required placeholder="Ej. Cortometraje 'La espera'"></label>
+      <label>Tipo<select name="type">${opts(TY)}</select></label>
+      <label>Formato<select name="format"><option value="vertical">Vertical 9:16</option><option value="horizontal">Horizontal 16:9</option><option value="ambos">Ambos</option><option value="na">No aplica</option></select></label>
+      <label>Paquete / servicio<input name="package" placeholder="Ej. Edición completa, A cotizar..."></label>
+      <label>Precio (MXN, 0 = por cotizar)<input name="price" type="number" min="0" step="1" value="0"></label>
+      <label>Fecha de entrega estimada<input name="due_date" type="date"></label>
+      <label>Estado inicial<select name="status">${opts(ST,'edicion')}</select></label>
+      <label>Avance inicial (%)<input name="progress" type="number" min="0" max="100" value="0"></label>
+    </div>
+    <label>Descripción / alcance<textarea name="description" placeholder="Describe el proyecto..."></textarea></label>
+    <label>Enlace a material (Drive, etc.)<input name="material_url" type="url" placeholder="https://"></label>
+    <label>Asignar a cliente existente (opcional)<select name="client_id"><option value="">— Sin cuenta registrada —</option>${S.profiles.filter(x=>['client','manager'].includes(x.role)).map(p=>`<option value="${p.id}">${esc(p.full_name||p.email)} · ${esc(p.email)}</option>`).join('')}</select></label>
+    <label>Nombre del cliente (si no tiene cuenta)<input name="client_name" placeholder="Ej. Juan Pérez — solo referencia interna"></label>
+    <div class="row2">
+      <button class="btn btn-dark">Crear proyecto</button>
+      <button type="button" class="btn btn-light" onclick="go('projects')">Cancelar</button>
+    </div>
+  </form>`;
+},
+
+projects(){
+  const l=myProjects().filter(p=>!S.f||p.status===S.f);
+  return `<div class="row2"><h1>Proyectos</h1><div style="display:flex;gap:.6rem;flex-wrap:wrap"><select style="max-width:200px" onchange="S.f=this.value;render()"><option value="">Todos</option>${opts(ST,S.f)}</select>${team()?`<button class="btn btn-dark" onclick="go('newmanual')">+ Crear proyecto</button>`:''}</div></div>${l.length?`<div class="grid">${l.map(card).join('')}</div>`:'<div class="card empty">Sin proyectos.</div>'}`;
+},
+
+clients(){
+  return `<h1>Clientes</h1><div class="card tw"><table><tr><th>Cliente</th><th>Rol</th><th>Proyectos</th><th>Total</th><th>Pagado</th><th>Pendiente</th></tr>${S.profiles.filter(c=>['client','manager'].includes(c.role)).map(c=>{const ps=S.projects.filter(p=>p.client_id===c.id&&p.status!=='cancelado'),t=ps.reduce((a,p)=>a+ +p.price,0),pg=ps.reduce((a,p)=>a+paid(p.id),0);return `<tr><td><b>${esc(c.full_name||'Sin nombre')}</b><br><small>${esc(c.email)}</small></td><td>${roleBadge(c.role)}</td><td>${ps.length}</td><td>${mx(t)}</td><td>${mx(pg)}</td><td>${mx(Math.max(0,t-pg))}</td></tr>`}).join('')||'<tr><td colspan="6" class="empty">Aún no hay clientes.</td></tr>'}</table></div>`;
+},
+
+pay(){
+  const l=S.projects.filter(p=>+p.price>0&&p.status!=='cancelado');
+  return `<h1>Pagos</h1><div class="card tw"><table><tr><th>Proyecto</th><th>Cliente</th><th>Precio</th><th>Pagado</th><th>Pendiente</th></tr>${l.map(p=>{const pg=paid(p.id);return `<tr class="k" onclick="go('project','${p.id}')"><td><b>${esc(p.title)}</b></td><td>${esc(p.profiles&&p.profiles.full_name||p.client_name||'')}</td><td>${mx(p.price)}</td><td>${mx(pg)}</td><td>${+p.price-pg>0?mx(+p.price-pg):'Liquidado'}</td></tr>`}).join('')||'<tr><td colspan="5" class="empty">Sin proyectos cotizados.</td></tr>'}</table></div>`;
+},
+
+fin(){
+  const rows=[...S.payments.map(x=>({d:x.paid_at,k:'ingreso',c:'Pago: '+((S.projects.find(p=>p.id===x.project_id)||{}).title||''),cat:x.method||'Pago',a:x.amount})),...(S.fin||[]).map(x=>({d:x.entry_date,k:x.kind,c:x.concept,cat:x.category||'',a:x.amount}))].sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,150),i=incomeOf(thisM),e=expOf(thisM);
+  return `<h1>Finanzas</h1><div class="grid">${stat('Ingresos del mes',mx(i))}${stat('Gastos del mes',mx(e))}${stat('Utilidad del mes',mx(i-e))}</div>${admin()?`<form class="card" onsubmit="return A.fin(event)"><h2>Nuevo movimiento</h2><div class="grid grid2"><label>Tipo<select name="kind"><option value="gasto">Gasto</option><option value="ingreso">Ingreso extra</option></select></label><label>Concepto<input name="concept" required placeholder="Ej. Licencia de software"></label><label>Categoría<input name="category" placeholder="Software, publicidad..."></label><label>Monto<input name="amount" type="number" min="1" step="0.01" required></label><label>Fecha<input name="entry_date" type="date" value="${new Date().toISOString().slice(0,10)}"></label></div><button class="btn btn-dark">Registrar</button></form>`:''}<div class="card tw"><h2>Bitácora</h2><table><tr><th>Fecha</th><th>Concepto</th><th>Categoría</th><th>Monto</th></tr>${rows.map(r=>`<tr><td>${fd(r.d)}</td><td>${esc(r.c)}</td><td>${esc(r.cat)}</td><td>${r.k==='gasto'?'- ':'+ '}${mx(r.a)}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin movimientos.</td></tr>'}</table></div>`;
+}
 };
 
-
+/* ── DEF / site settings ── */
 const DEF={packages:[{name:'Básico',price:150,features:['Para videos de máximo 1 minuto','Vertical u horizontal','Música sin copyright','Cortes y ajustes básicos','Entrega estimada: 1 a 2 días']},{name:'Estándar',price:300,features:['Edición intermedia','Vertical u horizontal','Para videos de hasta 4 minutos','Subtítulos incluidos','Transiciones','Entrega estimada: 1 a 2 días']},{name:'Pro',price:500,features:['Edición avanzada y más dinámica','Vertical u horizontal','Música y efectos de sonido','Para videos de 5 a 10 minutos','Ajustes visuales más detallados','Entrega estimada: 1 a 3 días']}],contact:{wa:'526424836880',wa_show:'(642) 483 6880',ig:'fluxoracs',fb:'FluxoraCreativeStudio',fb_show:'Fluxora Creative Studio',h1_l:'Lunes a Viernes',h1:'3:30 pm a 7:00 pm',h2_l:'Sábados y Domingos',h2:'10:00 am a 4:00 pm'},services:[{name:'Video hasta 1 minuto',price:150,kind:'base',unit:'por video'},{name:'Video de 1 a 4 minutos',price:300,kind:'base',unit:'por video'},{name:'Video de 5 a 10 minutos',price:500,kind:'base',unit:'por video'},{name:'Video de 10 a 20 minutos',price:800,kind:'base',unit:'por video'},{name:'Minuto extra de video',price:40,kind:'extra',unit:'por minuto'},{name:'Subtítulos',price:30,kind:'extra',unit:'por minuto de video'},{name:'Miniatura o portada',price:80,kind:'extra',unit:'por pieza'},{name:'Música y efectos de sonido',price:40,kind:'extra',unit:'por video'},{name:'Efectos y animaciones de texto',price:60,kind:'extra',unit:'por video'},{name:'Corrección de color',price:50,kind:'extra',unit:'por video'},{name:'Versión en otro formato (vertical u horizontal)',price:60,kind:'extra',unit:'por video'},{name:'Revisión adicional',price:50,kind:'extra',unit:'por revisión'},{name:'Intro o logo animado',price:120,kind:'extra',unit:'por pieza'},{name:'Diseño gráfico sencillo (post o flyer)',price:100,kind:'extra',unit:'por pieza'}]};
 const getSet=k=>S.set[k]||DEF[k];
 const PRI={1:'Urgente',2:'Normal',3:'Puede esperar'};
-const expNW=m=>S.fin.filter(x=>x.kind==='gasto'&&x.category!=='Wishlist'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
+const expNW=m=>(S.fin||[]).filter(x=>x.kind==='gasto'&&x.category!=='Wishlist'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
 const okUrl=u=>/^https?:\/\//i.test(u||'')?u:null;
+
+/* ── quote ── */
 Object.assign(V,{
 quote(){const m=S.q.mode,pk=getSet('packages'),sv=getSet('services'),ix=sv.map((x,i)=>({i,x})),base=m==='plan'?pk.map((x,i)=>({i,t:x.name+' · '+mx(x.price)})):ix.filter(o=>o.x.kind==='base').map(o=>({i:o.i,t:o.x.name+' · '+mx(o.x.price)})),ex=ix.filter(o=>o.x.kind!=='base');
-  return `<h1>Cotizador</h1><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"><div class="card"><div class="seg"><button class="${m==='plan'?'on':''}" onclick="Q.mode('plan')">Con paquete</button><button class="${m==='custom'?'on':''}" onclick="Q.mode('custom')">Sin paquete</button></div><small>${m==='plan'?'Elige uno de tus paquetes y, si hace falta, agrégale extras.':'A la medida: primero la duración del video y luego los extras que pida el cliente.'}</small><label>Cliente (opcional)<input id="qcli" placeholder="Nombre del cliente" oninput="Q.u()"></label><label>${m==='plan'?'Paquete':'Duración del video'}<select id="qcat">${base.map(o=>`<option value="${o.i}">${esc(o.t)}</option>`).join('')}</select></label><button class="btn btn-light" onclick="Q.addCat()">Agregar</button><div class="grid grid2"><label>Extra<select id="qex">${ex.map(o=>`<option value="${o.i}">${esc(o.x.name)} · ${mx(o.x.price)} ${esc(o.x.unit||'')}</option>`).join('')}</select></label><label>Cantidad<input id="qq" type="number" min="1" value="1"></label></div><button class="btn btn-light" onclick="Q.addExtra()">Agregar extra</button><div class="grid grid2"><label>Otro concepto<input id="qn" placeholder="Ej. Trabajo especial"></label><label>Precio<input id="qp" type="number" min="0"></label></div><button class="btn btn-light" onclick="Q.addCus()">Agregar concepto</button><div class="grid grid2"><label>Urgencia (+%)<input id="qur" type="number" min="0" max="200" value="0" oninput="Q.u()"></label><label>Descuento (-%)<input id="qds" type="number" min="0" max="100" value="0" oninput="Q.u()"></label></div><details><summary style="cursor:pointer;color:#fff;font-weight:600">¿Cuánto cobro? Guía rápida</summary><small style="display:block;margin-top:.5rem">1) Estima cuántas horas te toma el video y multiplícalas por lo que quieres ganar por hora. 2) Cobra aparte cada extra, porque cada uno lleva trabajo. 3) Si es para entregar en 24 horas, pon +30% en urgencia. 4) Los precios de partida ya vienen cargados; puedes cambiarlos en Mi sitio. 5) Cuando tengas más clientes de los que puedes atender, sube tus precios entre 10% y 20%.</small></details></div><div class="card" id="qout"></div></div>`},
-wish(){const pc=+(S.set.wish_pct??20),base=Math.max(0,incomeOf(thisM)-expNW(thisM)),done=S.fin.filter(x=>x.category==='Wishlist'&&ym(x.entry_date)===thisM).reduce((a,x)=>a+ +x.amount,0),sug=Math.max(0,Math.round(base*pc/100)-done),next=S.wish.find(w=>w.status==='pendiente'&&+w.saved<+w.price);
+  return `<h1>Cotizador</h1><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"><div class="card"><div class="seg"><button class="${m==='plan'?'on':''}" onclick="Q.mode('plan')">Con paquete</button><button class="${m==='custom'?'on':''}" onclick="Q.mode('custom')">Sin paquete</button></div><label>Cliente (opcional)<input id="qcli" placeholder="Nombre del cliente" oninput="Q.u()"></label><label>${m==='plan'?'Paquete':'Duración del video'}<select id="qcat">${base.map(o=>`<option value="${o.i}">${esc(o.t)}</option>`).join('')}</select></label><button class="btn btn-light" onclick="Q.addCat()">Agregar</button><div class="grid grid2"><label>Extra<select id="qex">${ex.map(o=>`<option value="${o.i}">${esc(o.x.name)} · ${mx(o.x.price)} ${esc(o.x.unit||'')}</option>`).join('')}</select></label><label>Cantidad<input id="qq" type="number" min="1" value="1"></label></div><button class="btn btn-light" onclick="Q.addExtra()">Agregar extra</button><div class="grid grid2"><label>Otro concepto<input id="qn" placeholder="Ej. Trabajo especial"></label><label>Precio<input id="qp" type="number" min="0"></label></div><button class="btn btn-light" onclick="Q.addCus()">Agregar concepto</button><div class="grid grid2"><label>Urgencia (+%)<input id="qur" type="number" min="0" max="200" value="0" oninput="Q.u()"></label><label>Descuento (-%)<input id="qds" type="number" min="0" max="100" value="0" oninput="Q.u()"></label></div></div><div class="card" id="qout"></div></div>`;
+},
+wish(){const pc=+(S.set.wish_pct??20),base=Math.max(0,incomeOf(thisM)-expNW(thisM)),done=(S.fin||[]).filter(x=>x.category==='Wishlist'&&ym(x.entry_date)===thisM).reduce((a,x)=>a+ +x.amount,0),sug=Math.max(0,Math.round(base*pc/100)-done),next=S.wish.find(w=>w.status==='pendiente'&&+w.saved<+w.price);
   return `<h1>Wishlist de material</h1><div class="grid">${stat('Utilidad base del mes',mx(base))}${stat('Destinado este mes',mx(done))}${stat('Sugerido por destinar',mx(sug))}</div>
-<form class="card" onsubmit="return A.walloc(event)"><h2>Destinar ganancias</h2><small>El dinero se reparte primero al artículo más urgente hasta completarlo, y luego al siguiente. Cada aportación queda como gasto en Finanzas (categoría Wishlist).</small><div class="grid grid2"><label>% de la utilidad para la wishlist<input type="number" min="0" max="100" value="${pc}" onchange="A.wpct(this.value)"></label><label>Monto a destinar ahora<input name="amount" type="number" min="1" step="0.01" value="${sug||''}" required></label></div><button class="btn btn-dark">Destinar a lo más urgente</button><p class="msg2" id="wmsg"></p></form>
+<form class="card" onsubmit="return A.walloc(event)"><h2>Destinar ganancias</h2><div class="grid grid2"><label>% de la utilidad<input type="number" min="0" max="100" value="${pc}" onchange="A.wpct(this.value)"></label><label>Monto a destinar ahora<input name="amount" type="number" min="1" step="0.01" value="${sug||''}" required></label></div><button class="btn btn-dark">Destinar a lo más urgente</button><p class="msg2" id="wmsg"></p></form>
 <form class="card" onsubmit="return A.wadd(event)"><h2>Agregar artículo</h2><div class="grid grid2"><label>Artículo<input name="name" required placeholder="Ej. Micrófono, SSD, licencia"></label><label>Categoría<input name="category" placeholder="Equipo, software..."></label><label>Precio estimado<input name="price" type="number" min="0" step="0.01" required></label><label>Prioridad<select name="priority"><option value="1">Urgente</option><option value="2" selected>Normal</option><option value="3">Puede esperar</option></select></label><label>Enlace<input name="url" type="url" placeholder="https://"></label></div><button class="btn btn-light">Agregar a la wishlist</button></form>
-<div class="grid">${S.wish.map(w=>{const pr=+w.price>0?Math.min(100,Math.round(w.saved/w.price*100)):0,ok=w.status==='comprado';return `<article class="card ${ok?'st-ok':''}"><div class="row2"><b>${esc(w.name)}</b><span class="bd">${ok?CK+'Comprado':PRI[w.priority]}</span></div><small>${esc(w.category||'')}${next&&next.id===w.id?' · Recibe fondos ahora':''}</small><div class="bar"><i style="width:${pr}%"></i></div><div class="row2"><small>${mx(w.saved)} de ${mx(w.price)}</small><small>${pr}%</small></div><div class="row2">${okUrl(w.url)?`<a href="${esc(w.url)}" target="_blank" rel="noopener"><small>Ver producto</small></a>`:'<span></span>'}<span>${ok?'':`<button class="lnk" onclick="A.wbuy('${w.id}')">Marcar comprado</button> `}<button class="lnk" onclick="A.wdel('${w.id}')">Eliminar</button></span></div></article>`}).join('')||'<div class="card empty">Tu wishlist está vacía.</div>'}</div>`},
+<div class="grid">${S.wish.map(w=>{const pr=+w.price>0?Math.min(100,Math.round(w.saved/w.price*100)):0,ok=w.status==='comprado';return `<article class="card ${ok?'st-ok':''}"><div class="row2"><b>${esc(w.name)}</b><span class="bd">${ok?CK+'Comprado':PRI[w.priority]}</span></div><small>${esc(w.category||'')}${next&&next.id===w.id?' · Recibe fondos ahora':''}</small><div class="bar"><i style="width:${pr}%"></i></div><div class="row2"><small>${mx(w.saved)} de ${mx(w.price)}</small><small>${pr}%</small></div><div class="row2">${okUrl(w.url)?`<a href="${esc(w.url)}" target="_blank" rel="noopener"><small>Ver producto</small></a>`:'<span></span>'}<span>${ok?'':`<button class="lnk" onclick="A.wbuy('${w.id}')">Marcar comprado</button> `}<button class="lnk" onclick="A.wdel('${w.id}')">Eliminar</button></span></div></article>`}).join('')||'<div class="card empty">Tu wishlist está vacía.</div>'}</div>`;
+},
 site(){if(!S.dr)S.dr=JSON.parse(JSON.stringify({packages:getSet('packages'),contact:getSet('contact'),services:getSet('services')}));if(!S.dr.services)S.dr.services=getSet('services');const d=S.dr,c=d.contact,f=(k,l)=>`<label>${l}<input name="${k}" value="${esc(c[k]||'')}"></label>`;
-  return `<h1>Mi sitio</h1><small>Lo que cambies aquí se actualiza en tu página principal.</small><form onsubmit="return A.siteSave(event)"><h2>Paquetes</h2>${d.packages.map((x,i)=>`<div class="card"><div class="grid grid2"><label>Nombre<input name="pn" value="${esc(x.name)}" required></label><label>Precio (MXN)<input name="pp" type="number" min="0" value="${x.price}" required></label></div><label>Incluye (uno por línea)<textarea name="pf" style="min-height:120px">${esc(x.features.join('\n'))}</textarea></label><button type="button" class="lnk" style="justify-self:start" onclick="A.pkRm(${i})">Quitar paquete</button></div>`).join('')}<button type="button" class="btn btn-light" style="justify-self:start" onclick="A.pkAdd()">Agregar paquete</button><h2>Precios de servicios sueltos (para el cotizador)</h2><small>Úsalos cuando un cliente no quiere paquete. "Base" es el precio por duración del video; "Extra" se suma encima.</small>${d.services.map((x,i)=>`<div class="card"><div class="grid grid2"><label>Servicio<input name="sn" value="${esc(x.name)}" required></label><label>Precio (MXN)<input name="sp" type="number" min="0" value="${x.price}" required></label><label>Tipo<select name="sk"><option value="base" ${x.kind==='base'?'selected':''}>Base (duración del video)</option><option value="extra" ${x.kind!=='base'?'selected':''}>Extra</option></select></label><label>Se cobra<input name="su" value="${esc(x.unit||'')}" placeholder="por video, por minuto..."></label></div><button type="button" class="lnk" style="justify-self:start" onclick="A.svRm(${i})">Quitar</button></div>`).join('')}<button type="button" class="btn btn-light" style="justify-self:start" onclick="A.svAdd()">Agregar servicio</button><h2>Contacto y horarios</h2><div class="card"><div class="grid grid2">${f('wa','WhatsApp (solo números con lada, ej. 526424836880)')}${f('wa_show','WhatsApp (como se muestra)')}${f('ig','Instagram (sin @)')}${f('fb','Facebook (nombre de la página)')}${f('fb_show','Facebook (como se muestra)')}${f('h1_l','Horario 1: días')}${f('h1','Horario 1: horas')}${f('h2_l','Horario 2: días')}${f('h2','Horario 2: horas')}</div></div><button class="btn btn-dark">Guardar cambios en mi sitio</button><p class="msg2" id="smsg"></p></form>`}
+  return `<h1>Mi sitio</h1><form onsubmit="return A.siteSave(event)"><h2>Paquetes</h2>${d.packages.map((x,i)=>`<div class="card"><div class="grid grid2"><label>Nombre<input name="pn" value="${esc(x.name)}" required></label><label>Precio (MXN)<input name="pp" type="number" min="0" value="${x.price}" required></label></div><label>Incluye (uno por línea)<textarea name="pf" style="min-height:120px">${esc(x.features.join('\n'))}</textarea></label><button type="button" class="lnk" onclick="A.pkRm(${i})">Quitar paquete</button></div>`).join('')}<button type="button" class="btn btn-light" onclick="A.pkAdd()">Agregar paquete</button><h2>Servicios sueltos</h2>${d.services.map((x,i)=>`<div class="card"><div class="grid grid2"><label>Servicio<input name="sn" value="${esc(x.name)}" required></label><label>Precio (MXN)<input name="sp" type="number" min="0" value="${x.price}" required></label><label>Tipo<select name="sk"><option value="base" ${x.kind==='base'?'selected':''}>Base</option><option value="extra" ${x.kind!=='base'?'selected':''}>Extra</option></select></label><label>Se cobra<input name="su" value="${esc(x.unit||'')}" placeholder="por video, por minuto..."></label></div><button type="button" class="lnk" onclick="A.svRm(${i})">Quitar</button></div>`).join('')}<button type="button" class="btn btn-light" onclick="A.svAdd()">Agregar servicio</button><h2>Contacto</h2><div class="card"><div class="grid grid2">${f('wa','WhatsApp (números con lada)')}${f('wa_show','WhatsApp (como se muestra)')}${f('ig','Instagram (sin @)')}${f('fb','Facebook')}${f('fb_show','Facebook (como se muestra)')}${f('h1_l','Horario 1: días')}${f('h1','Horario 1: horas')}${f('h2_l','Horario 2: días')}${f('h2','Horario 2: horas')}</div></div><button class="btn btn-dark">Guardar cambios</button><p class="msg2" id="smsg"></p></form>`;
+}
 });
+
 const Q={
  mode(m){S.q.mode=m;render()},
  addCat(){const i=+$('#qcat').value,x=S.q.mode==='plan'?getSet('packages')[i]:getSet('services')[i];if(!x)return;S.q.lines.push({n:(S.q.mode==='plan'?'Paquete ':'')+x.name,p:+x.price,q:1});Q.u()},
@@ -206,43 +347,26 @@ const Q={
  text(){const c=Q.calc(),cli=($('#qcli')||{}).value;return ['Cotización · Fluxora Creative Studio',cli?'Cliente: '+cli:'','',...S.q.lines.map(l=>'• '+l.n+(l.q>1?' x'+l.q:'')+': '+mx(l.p*l.q)),'','Subtotal: '+mx(c.sub),c.ur?'Urgencia +'+c.ur+'%':'',c.ds?'Descuento -'+c.ds+'%':'','Total: '+mx(c.tot)+' MXN','','Se requiere 50% de anticipo para iniciar. Vigencia: 7 días.'].filter((x,i,a)=>x!==''||(i>0&&a[i-1]!=='')).join('\n')},
  copy(){navigator.clipboard.writeText(Q.text()).then(()=>alert('Cotización copiada'))},
  apply(){const id=($('#qpj')||{}).value,t=Q.calc().tot;if(!id||!confirm('¿Poner '+mx(t)+' como precio de ese proyecto?'))return;sb.from('projects').update({price:t}).eq('id',id).then(async r=>{if(r.error)alert(r.error.message);else{await load();alert('Precio aplicado al proyecto')}})},
- u(){const o=$('#qout');if(!o)return;const c=Q.calc(),ls=S.q.lines;o.innerHTML=`<h2>Cotización</h2>${ls.length?`<div class="tw"><table><tr><th>Concepto</th><th>Cant.</th><th>Importe</th><th></th></tr>${ls.map((l,i)=>`<tr><td>${esc(l.n)}</td><td><input type="number" min="1" value="${l.q}" style="width:68px" onchange="Q.qty(${i},this.value)"></td><td>${mx(l.p*l.q)}</td><td><button class="lnk" onclick="Q.rm(${i})">Quitar</button></td></tr>`).join('')}</table></div>`:'<div class="empty">Agrega conceptos para cotizar.</div>'}<div class="row2"><small>Subtotal ${mx(c.sub)}</small><small>${c.ur?'Urgencia +'+c.ur+'% ':''}${c.ds?'Descuento -'+c.ds+'%':''}</small></div><div class="stat"><small>Total</small><b>${mx(c.tot)}</b></div><div class="row2"><button class="btn btn-dark" onclick="Q.copy()">Copiar</button><a class="btn btn-light" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(Q.text())}">Enviar por WhatsApp</a></div><label>Aplicar el total a un proyecto<select id="qpj">${S.projects.filter(p=>p.status!=='cancelado').map(p=>`<option value="${p.id}">${esc(p.title)} · ${esc(p.profiles&&p.profiles.full_name||'')}</option>`).join('')}</select></label><button class="btn btn-light" onclick="Q.apply()">Aplicar precio</button>`}
+ u(){const o=$('#qout');if(!o)return;const c=Q.calc(),ls=S.q.lines;o.innerHTML=`<h2>Cotización</h2>${ls.length?`<div class="tw"><table><tr><th>Concepto</th><th>Cant.</th><th>Importe</th><th></th></tr>${ls.map((l,i)=>`<tr><td>${esc(l.n)}</td><td><input type="number" min="1" value="${l.q}" style="width:68px" onchange="Q.qty(${i},this.value)"></td><td>${mx(l.p*l.q)}</td><td><button class="lnk" onclick="Q.rm(${i})">Quitar</button></td></tr>`).join('')}</table></div>`:'<div class="empty">Agrega conceptos para cotizar.</div>'}<div class="row2"><small>Subtotal ${mx(c.sub)}</small><small>${c.ur?'Urgencia +'+c.ur+'% ':''}${c.ds?'Descuento -'+c.ds+'%':''}</small></div><div class="stat"><small>Total</small><b>${mx(c.tot)}</b></div><div class="row2"><button class="btn btn-dark" onclick="Q.copy()">Copiar</button><a class="btn btn-light" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(Q.text())}">WhatsApp</a></div><label>Aplicar total a un proyecto<select id="qpj">${S.projects.filter(p=>p.status!=='cancelado').map(p=>`<option value="${p.id}">${esc(p.title)} · ${esc(p.profiles&&p.profiles.full_name||'')}</option>`).join('')}</select></label><button class="btn btn-light" onclick="Q.apply()">Aplicar precio</button>`}
 };
 
+/* ══════════════════════════════════════════
+   DOCUMENTS
+══════════════════════════════════════════ */
 const TODAY=new Date().toISOString().slice(0,10);
 const NOTE=['notas','Notas','a'];
 const DOCS={
-contract:{n:'Contrato de servicios (cliente)',d:'Contrato simple con alcance, precio, plazos y derechos.',hd:{lugar:'Navojoa, Sonora',anticipo:'50',revisiones:'2 revisiones menores'},sig:['Prestador (Fluxora Creative Studio)','Cliente'],
-  note:'Plantilla general basada en tus Términos y Condiciones. No sustituye la asesoría de un abogado en proyectos grandes.',
-  head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['lugar','Lugar de firma'],['cliente','Nombre del cliente'],['id','Identificación del cliente'],['alcance','Alcance del servicio','a'],['entregables','Entregables'],['formato','Formato (vertical, horizontal, ambos)'],['precio','Precio total (MXN)','n'],['anticipo','Anticipo (%)','n'],['pago','Forma de pago'],['entrega','Entrega estimada'],['revisiones','Revisiones incluidas'],NOTE],
-  body:['En {{lugar}}, el {{fecha}}, Fluxora Creative Studio (el "Prestador") y {{cliente}} (el "Cliente"), con identificación {{id}}, celebran este contrato de prestación de servicios para el proyecto "{{proyecto}}".','Alcance del servicio: {{alcance}}. Entregables: {{entregables}}. Formato: {{formato}}.','Precio total: {{precio}} MXN. Anticipo: {{anticipo}}% para iniciar el proyecto; el resto se liquida en la entrega final. Forma de pago: {{pago}}.','Plazos: el Prestador contactará al Cliente a más tardar 48 horas después del pago. El Cliente entregará todo el material en un máximo de 72 horas después de ser contactado. La entrega estimada es {{entrega}} y se cuenta desde que el Cliente entregue el material completo.','Revisiones: se incluyen {{revisiones}}. Los cambios completos de concepto, rehacer el proyecto y las revisiones adicionales pueden tener costo extra.','Cancelaciones: solo se reembolsa el pago si el proyecto no ha iniciado. Una vez iniciada la edición o producción no hay reembolsos, ni si el Cliente abandona el proyecto o deja de responder.','Derechos de uso: el Cliente garantiza contar con los derechos del material que entrega. Una vez entregado el proyecto final y liquidado el pago, el Cliente podrá usar el contenido con fines personales o comerciales. El Prestador podrá usarlo con fines promocionales (portafolio y redes), salvo indicación contraria por escrito.','Ambas partes se someten a las leyes aplicables en México y a los tribunales competentes. Este contrato se complementa con los Términos y Condiciones publicados por Fluxora Creative Studio.'],tables:[]},
-budget:{n:'Presupuesto (Budget)',d:'Costos por partida con imprevistos e IVA.',budget:1,hd:{moneda:'MXN',imp:'10',iva:'16'},sig:['Elaboró','Aprobó (cliente)'],
-  head:[['proyecto','Proyecto'],['cliente','Cliente'],['fecha','Fecha','d'],['moneda','Moneda'],['imp','Imprevistos (%)','n'],['iva','IVA (%, pon 0 si no aplica)','n'],NOTE],
-  tables:[{k:'rows',t:'Partidas',cols:[['c','Concepto'],['cat','Categoría'],['q','Cantidad','n'],['u','Unidad'],['p','Precio unitario','n$']],seed:[{c:'Preproducción y guion',cat:'Preproducción',q:1,u:'servicio'},{c:'Rodaje',cat:'Producción',q:1,u:'día'},{c:'Renta de equipo',cat:'Producción',q:1,u:'día'},{c:'Edición de video',cat:'Postproducción',q:1,u:'video'},{c:'Música y licencias',cat:'Postproducción',q:1,u:'pieza'},{c:'Transporte y alimentos',cat:'Logística',q:1,u:'día'}]}]},
-breakdown:{n:'Desglose de guion (Script Breakdown)',d:'Por escena: locación, personajes, utilería y vestuario.',
-  head:[['proyecto','Proyecto'],['guion','Título del guion'],['fecha','Fecha','d'],NOTE],
-  tables:[{k:'rows',t:'Escenas',cols:[['esc','Escena'],['ie','INT / EXT'],['loc','Locación'],['dn','Día / Noche'],['d','Descripción','a'],['per','Personajes o talento'],['ut','Utilería'],['ves','Vestuario y maquillaje'],['n','Notas']]}]},
-memo:{n:'Crew Deal Memo',d:'Acuerdo simple con cada integrante del equipo.',hd:{cancel:'50%',tipo:'por día'},sig:['Productor','Contratado'],
-  note:'Plantilla general. Para contratos de mayor valor consulta a un abogado.',
-  head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['nombre','Nombre del contratado'],['puesto','Puesto'],['id','Identificación (INE, RFC)'],['tel','Teléfono'],['tarifa','Tarifa (MXN)','n'],['tipo','Tipo de tarifa (por día, hora, proyecto)'],['fechas','Fechas de trabajo'],['horas','Horas de jornada','n'],['extra','Pago de horas extra'],['pago','Forma y fecha de pago'],['cancel','Pago si se cancela con menos de 24 h'],NOTE],
-  body:['En {{fecha}}, Fluxora Creative Studio (la "Productora") y {{nombre}} (el "Contratado"), con identificación {{id}} y teléfono {{tel}}, acuerdan lo siguiente para el proyecto "{{proyecto}}".','Puesto: {{puesto}}. Fechas de trabajo: {{fechas}}. Jornada: {{horas}} horas.','Tarifa: {{tarifa}} MXN {{tipo}}. Horas extra: {{extra}}. Forma y fecha de pago: {{pago}}.','Confidencialidad: el Contratado se obliga a no divulgar material, guiones, ideas ni información del proyecto o del cliente sin autorización por escrito.','Derechos: el trabajo realizado en este proyecto es trabajo por encargo y los derechos patrimoniales corresponden a la Productora o a su cliente, según se acuerde. El Contratado solo podrá mostrarlo en su portafolio con autorización.','Cancelación: si el proyecto se cancela con menos de 24 horas de aviso, se pagará {{cancel}} de la tarifa del día.','Este memorándum es un acuerdo simple entre las partes. Si el proyecto requiere un contrato formal, se firmará por separado.'],tables:[]},
-shots:{n:'Lista de planos (Shot List)',d:'Plano, movimiento, lente y avance de cada toma.',
-  head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['loc','Locación'],NOTE],
-  tables:[{k:'rows',t:'Planos',cols:[['n','No.'],['esc','Escena'],['pl','Plano (GP, PM, PP, cenital...)'],['mov','Movimiento o ángulo'],['d','Descripción','a'],['eq','Lente o equipo'],['ok','Listo','c']]}]},
-call:{n:'Call Sheet',d:'Hoja de llamado del día de rodaje.',
-  head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['llamado','Llamado general','h'],['loc','Locación'],['dir','Dirección'],['clima','Clima'],['contacto','Contacto de producción'],['hosp','Hospital o emergencias cercano'],NOTE],
-  tables:[{k:'crew',t:'Equipo y talento',cols:[['nom','Nombre'],['rol','Rol'],['tel','Teléfono'],['hora','Hora de llamado','h']]},{k:'esc',t:'Escenas del día',cols:[['e','Escena'],['d','Descripción','a'],['loc','Locación'],['hora','Hora estimada','h']]}]},
-release:{n:'Talent Release',d:'Autorización de uso de imagen y voz.',hd:{usos:'redes sociales, sitio web y publicidad del proyecto',territorio:'México y medios digitales',vigencia:'2 años a partir de la firma',compensacion:'Sin compensación económica',lugar:'Navojoa, Sonora'},sig:['Talento','Madre, padre o tutor (si es menor)','Productor'],
-  note:'Plantilla general. No sustituye la asesoría de un abogado, sobre todo si hay menores o campañas grandes.',
-  head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['lugar','Lugar de firma'],['nombre','Nombre del talento'],['id','Identificación (INE, pasaporte)'],['tutor','Nombre del tutor (si es menor)'],['usos','Usos autorizados'],['territorio','Territorio'],['vigencia','Vigencia'],['compensacion','Compensación'],NOTE],
-  body:['Yo, {{nombre}}, identificado con {{id}}, autorizo a Fluxora Creative Studio y a su cliente a grabar, fotografiar y registrar mi imagen, voz y nombre durante el proyecto "{{proyecto}}".','Autorizo el uso de este material para: {{usos}}. Territorio: {{territorio}}. Vigencia: {{vigencia}}.','Compensación: {{compensacion}}.','Declaro que soy mayor de edad y que no existe impedimento para otorgar esta autorización. Si soy menor de edad, la firma quien ejerce la patria potestad o tutela: {{tutor}}.','Mi imagen no se usará de forma denigrante ni contraria a mi dignidad. Puedo solicitar por escrito que se deje de usar mi imagen en publicaciones futuras; esto no obliga a retirar material ya publicado ni obras ya producidas.','Firmado en {{lugar}}, el {{fecha}}.'],tables:[]},
-story:{n:'Storyboard',d:'Cuadros con imagen, plano, descripción y audio.',
-  head:[['proyecto','Proyecto'],['cliente','Cliente'],['fecha','Fecha','d'],NOTE],
-  tables:[{k:'rows',t:'Cuadros',frames:1,cols:[['img','Imagen del cuadro','i'],['pl','Plano'],['d','Descripción de la acción','a'],['a','Audio o diálogo'],['n','Notas']]}]},
-sched:{n:'Plan de rodaje (Shooting Schedule)',d:'Calendario de días, horarios, escenas y locaciones.',
-  head:[['proyecto','Proyecto'],['inicio','Inicio de rodaje','d'],['fin','Fin de rodaje','d'],NOTE],
-  tables:[{k:'rows',t:'Calendario',cols:[['dia','Día'],['fecha','Fecha','d'],['ini','Hora inicio','h'],['fin','Hora fin','h'],['esc','Escenas'],['loc','Locación'],['d','Descripción','a'],['tal','Talento y equipo'],['n','Notas']]}]}
+contract:{n:'Contrato de servicios',d:'Contrato simple con alcance, precio, plazos y derechos.',hd:{lugar:'Navojoa, Sonora',anticipo:'50',revisiones:'2 revisiones menores'},sig:['Prestador (Fluxora Creative Studio)','Cliente'],note:'Plantilla general. No sustituye la asesoría de un abogado.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['lugar','Lugar de firma'],['cliente','Nombre del cliente'],['id','Identificación del cliente'],['alcance','Alcance del servicio','a'],['entregables','Entregables'],['formato','Formato'],['precio','Precio total (MXN)','n'],['anticipo','Anticipo (%)','n'],['pago','Forma de pago'],['entrega','Entrega estimada'],['revisiones','Revisiones incluidas'],NOTE],body:['En {{lugar}}, el {{fecha}}, Fluxora Creative Studio (el "Prestador") y {{cliente}} (el "Cliente"), con identificación {{id}}, celebran este contrato de prestación de servicios para el proyecto "{{proyecto}}".','Alcance del servicio: {{alcance}}. Entregables: {{entregables}}. Formato: {{formato}}.','Precio total: {{precio}} MXN. Anticipo: {{anticipo}}% para iniciar el proyecto; el resto se liquida en la entrega final. Forma de pago: {{pago}}.','Plazos: el Prestador contactará al Cliente a más tardar 48 horas después del pago. El Cliente entregará todo el material en un máximo de 72 horas después de ser contactado. La entrega estimada es {{entrega}} y se cuenta desde que el Cliente entregue el material completo.','Revisiones: se incluyen {{revisiones}}. Los cambios completos de concepto y revisiones adicionales pueden tener costo extra.','Cancelaciones: solo se reembolsa el pago si el proyecto no ha iniciado. Una vez iniciada la edición o producción no hay reembolsos.','Derechos de uso: el Cliente garantiza contar con los derechos del material que entrega. Una vez entregado el proyecto final y liquidado el pago, el Cliente podrá usar el contenido con fines personales o comerciales.','Ambas partes se someten a las leyes aplicables en México.'],tables:[]},
+budget:{n:'Presupuesto (Budget)',d:'Costos por partida con imprevistos e IVA.',budget:1,hd:{moneda:'MXN',imp:'10',iva:'16'},sig:['Elaboró','Aprobó (cliente)'],head:[['proyecto','Proyecto'],['cliente','Cliente'],['fecha','Fecha','d'],['moneda','Moneda'],['imp','Imprevistos (%)','n'],['iva','IVA (%, pon 0 si no aplica)','n'],NOTE],tables:[{k:'rows',t:'Partidas',cols:[['c','Concepto'],['cat','Categoría'],['q','Cantidad','n'],['u','Unidad'],['p','Precio unitario','n$']],seed:[{c:'Preproducción y guion',cat:'Preproducción',q:1,u:'servicio'},{c:'Rodaje',cat:'Producción',q:1,u:'día'},{c:'Renta de equipo',cat:'Producción',q:1,u:'día'},{c:'Edición de video',cat:'Postproducción',q:1,u:'video'},{c:'Música y licencias',cat:'Postproducción',q:1,u:'pieza'},{c:'Transporte y alimentos',cat:'Logística',q:1,u:'día'}]}]},
+breakdown:{n:'Desglose de guion',d:'Por escena: locación, personajes, utilería y vestuario.',head:[['proyecto','Proyecto'],['guion','Título del guion'],['fecha','Fecha','d'],NOTE],tables:[{k:'rows',t:'Escenas',cols:[['esc','Escena'],['ie','INT / EXT'],['loc','Locación'],['dn','Día / Noche'],['d','Descripción','a'],['per','Personajes o talento'],['ut','Utilería'],['ves','Vestuario y maquillaje'],['n','Notas']]}]},
+memo:{n:'Crew Deal Memo',d:'Acuerdo simple con cada integrante del equipo.',hd:{cancel:'50%',tipo:'por día'},sig:['Productor','Contratado'],note:'Plantilla general. Para contratos de mayor valor consulta a un abogado.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['nombre','Nombre del contratado'],['puesto','Puesto'],['id','Identificación (INE, RFC)'],['tel','Teléfono'],['tarifa','Tarifa (MXN)','n'],['tipo','Tipo de tarifa'],['fechas','Fechas de trabajo'],['horas','Horas de jornada','n'],['extra','Pago de horas extra'],['pago','Forma y fecha de pago'],['cancel','Pago si se cancela con menos de 24 h'],NOTE],body:['En {{fecha}}, Fluxora Creative Studio (la "Productora") y {{nombre}} (el "Contratado"), con identificación {{id}} y teléfono {{tel}}, acuerdan lo siguiente para el proyecto "{{proyecto}}".','Puesto: {{puesto}}. Fechas de trabajo: {{fechas}}. Jornada: {{horas}} horas.','Tarifa: {{tarifa}} MXN {{tipo}}. Horas extra: {{extra}}. Forma y fecha de pago: {{pago}}.','Confidencialidad: el Contratado se obliga a no divulgar material, guiones, ideas ni información del proyecto o del cliente sin autorización por escrito.','Derechos: el trabajo realizado en este proyecto es trabajo por encargo y los derechos patrimoniales corresponden a la Productora o a su cliente, según se acuerde.','Cancelación: si el proyecto se cancela con menos de 24 horas de aviso, se pagará {{cancel}} de la tarifa del día.'],tables:[]},
+shots:{n:'Lista de planos (Shot List)',d:'Plano, movimiento, lente y avance de cada toma.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['loc','Locación'],NOTE],tables:[{k:'rows',t:'Planos',cols:[['n','No.'],['esc','Escena'],['pl','Plano (GP, PM, PP, cenital...)'],['mov','Movimiento o ángulo'],['d','Descripción','a'],['eq','Lente o equipo'],['ok','Listo','c']]}]},
+call:{n:'Call Sheet',d:'Hoja de llamado del día de rodaje.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['llamado','Llamado general','h'],['loc','Locación'],['dir','Dirección'],['clima','Clima'],['contacto','Contacto de producción'],['hosp','Hospital o emergencias cercano'],NOTE],tables:[{k:'crew',t:'Equipo y talento',cols:[['nom','Nombre'],['rol','Rol'],['tel','Teléfono'],['hora','Hora de llamado','h']]},{k:'esc',t:'Escenas del día',cols:[['e','Escena'],['d','Descripción','a'],['loc','Locación'],['hora','Hora estimada','h']]}]},
+release:{n:'Talent Release',d:'Autorización de uso de imagen y voz.',hd:{usos:'redes sociales, sitio web y publicidad del proyecto',territorio:'México y medios digitales',vigencia:'2 años a partir de la firma',compensacion:'Sin compensación económica',lugar:'Navojoa, Sonora'},sig:['Talento','Madre, padre o tutor (si es menor)','Productor'],note:'Plantilla general. No sustituye la asesoría de un abogado.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['lugar','Lugar de firma'],['nombre','Nombre del talento'],['id','Identificación (INE, pasaporte)'],['tutor','Nombre del tutor (si es menor)'],['usos','Usos autorizados'],['territorio','Territorio'],['vigencia','Vigencia'],['compensacion','Compensación'],NOTE],body:['Yo, {{nombre}}, identificado con {{id}}, autorizo a Fluxora Creative Studio y a su cliente a grabar, fotografiar y registrar mi imagen, voz y nombre durante el proyecto "{{proyecto}}".','Autorizo el uso de este material para: {{usos}}. Territorio: {{territorio}}. Vigencia: {{vigencia}}.','Compensación: {{compensacion}}.','Declaro que soy mayor de edad y que no existe impedimento para otorgar esta autorización. Si soy menor de edad, la firma quien ejerce la patria potestad o tutela: {{tutor}}.','Mi imagen no se usará de forma denigrante ni contraria a mi dignidad.','Firmado en {{lugar}}, el {{fecha}}.'],tables:[]},
+story:{n:'Storyboard',d:'Cuadros con imagen, plano, descripción y audio.',head:[['proyecto','Proyecto'],['cliente','Cliente'],['fecha','Fecha','d'],NOTE],tables:[{k:'rows',t:'Cuadros',frames:1,cols:[['img','Imagen del cuadro','i'],['pl','Plano'],['d','Descripción de la acción','a'],['a','Audio o diálogo'],['n','Notas']]}]},
+sched:{n:'Plan de rodaje',d:'Calendario de días, horarios, escenas y locaciones.',head:[['proyecto','Proyecto'],['inicio','Inicio de rodaje','d'],['fin','Fin de rodaje','d'],NOTE],tables:[{k:'rows',t:'Calendario',cols:[['dia','Día'],['fecha','Fecha','d'],['ini','Hora inicio','h'],['fin','Hora fin','h'],['esc','Escenas'],['loc','Locación'],['d','Descripción','a'],['tal','Talento y equipo'],['n','Notas']]}]}
 };
+
 const fill=t=>t.replace(/\{\{(\w+)\}\}/g,(m,k)=>S.dk.h[k]?esc(S.dk.h[k]):'________');
 const cellv=(r,c)=>{const v=r[c[0]],t=c[2]||'t';return t==='c'?(v?'✓':''):t==='d'?(v?fd(v):''):t==='n$'?(v?mx(v):''):esc(v||'')};
 function paper(){const k=S.dk,d=DOCS[k.kind],h=k.h;
@@ -251,8 +375,7 @@ function paper(){const k=S.dk,d=DOCS[k.kind],h=k.h;
   d.tables.forEach(tb=>{const rows=k.t[tb.k]||[];o+=`<h2>${tb.t}</h2>`;
     if(tb.frames)o+=`<div class="fr">${rows.map((r,i)=>`<div class="fc">${r.img?`<img src="${r.img}" alt="">`:'<div class="ph"></div>'}<small>Cuadro ${i+1}${r.pl?' · '+esc(r.pl):''}</small><p>${esc(r.d||'')}</p>${r.a?`<p><i>${esc(r.a)}</i></p>`:''}${r.n?`<small>${esc(r.n)}</small>`:''}</div>`).join('')}</div>`;
     else o+=`<table><tr>${tb.cols.map(c=>`<th>${c[1]}</th>`).join('')}${d.budget?'<th>Importe</th>':''}</tr>${rows.map(r=>`<tr>${tb.cols.map(c=>`<td>${cellv(r,c)}</td>`).join('')}${d.budget?`<td>${mx((+r.q||0)*(+r.p||0))}</td>`:''}</tr>`).join('')}</table>`});
-  if(d.budget){const sub=(k.t.rows||[]).reduce((a,r)=>a+(+r.q||0)*(+r.p||0),0),im=sub*(+h.imp||0)/100,iv=(sub+im)*(+h.iva||0)/100;
-    o+=`<table class="tot"><tr><td>Subtotal</td><td>${mx(sub)}</td></tr><tr><td>Imprevistos (${+h.imp||0}%)</td><td>${mx(im)}</td></tr><tr><td>IVA (${+h.iva||0}%)</td><td>${mx(iv)}</td></tr><tr><th>Total ${esc(h.moneda||'MXN')}</th><th>${mx(sub+im+iv)}</th></tr></table>`}
+  if(d.budget){const sub=(k.t.rows||[]).reduce((a,r)=>a+(+r.q||0)*(+r.p||0),0),im=sub*(+h.imp||0)/100,iv=(sub+im)*(+h.iva||0)/100;o+=`<table class="tot"><tr><td>Subtotal</td><td>${mx(sub)}</td></tr><tr><td>Imprevistos (${+h.imp||0}%)</td><td>${mx(im)}</td></tr><tr><td>IVA (${+h.iva||0}%)</td><td>${mx(iv)}</td></tr><tr><th>Total ${esc(h.moneda||'MXN')}</th><th>${mx(sub+im+iv)}</th></tr></table>`}
   if(h.notas)o+=`<h2>Notas</h2><p style="white-space:pre-wrap">${esc(h.notas)}</p>`;
   if(d.sig)o+=`<div class="sg">${d.sig.map(s=>`<div><span></span>${s}</div>`).join('')}</div>`;
   return o}
@@ -263,14 +386,23 @@ function fld(c,v,ctx){const t=c[2]||'t',l=c[1],H=ctx.t?`DC.c('${ctx.t}',${ctx.i}
   const ty=t==='n'||t==='n$'?'number" step="any':t==='d'?'date':t==='h'?'time':'text';
   return `<label>${l}<input type="${ty}" value="${esc(v||'')}" oninput="${H}this.value)"></label>`}
 function editor(){const k=S.dk,d=DOCS[k.kind];
-  return `<button class="lnk" style="justify-self:start" onclick="DC.close()">← Volver a documentos</button><h1>${esc(d.n)}</h1>
-<div class="card"><div class="grid grid2"><label>Basar en un proyecto (opcional)<select onchange="DC.proj(this.value)"><option value="">Ninguno</option>${S.projects.map(p=>`<option value="${p.id}" ${p.id===k.project_id?'selected':''}>${esc(p.title)}</option>`).join('')}</select></label><label>Título para guardarlo<input value="${esc(k.title)}" oninput="S.dk.title=this.value" placeholder="${esc(d.n)}"></label></div>${d.note?`<small>${esc(d.note)}</small>`:''}</div>
+  return `<button class="lnk" onclick="DC.close()">← Volver a documentos</button><h1>${esc(d.n)}</h1>
+<div class="card"><div class="grid grid2"><label>Basar en un proyecto<select onchange="DC.proj(this.value)"><option value="">Ninguno</option>${S.projects.map(p=>`<option value="${p.id}" ${p.id===k.project_id?'selected':''}>${esc(p.title)}</option>`).join('')}</select></label><label>Título para guardarlo<input value="${esc(k.title)}" oninput="S.dk.title=this.value" placeholder="${esc(d.n)}"></label></div>${d.note?`<small>${esc(d.note)}</small>`:''}</div>
 <div class="card"><h2>Datos generales</h2><div class="grid grid2">${d.head.map(f=>fld(f,k.h[f[0]],{})).join('')}</div></div>
-${d.tables.map(tb=>`<div class="card"><div class="row2"><h2>${tb.t}</h2><button class="btn btn-light" onclick="DC.add('${tb.k}')">Agregar</button></div>${(k.t[tb.k]||[]).map((r,i)=>`<div class="card"><div class="grid grid2">${tb.cols.map(c=>fld(c,r[c[0]],{t:tb.k,i})).join('')}</div><button class="lnk" style="justify-self:start" onclick="DC.rm('${tb.k}',${i})">Quitar</button></div>`).join('')}</div>`).join('')}
-<div class="card"><h2>Impresión (siempre vertical)</h2><div class="grid grid2"><label>Papel<select onchange="S.paper=this.value"><option value="letter" ${S.paper==='letter'?'selected':''}>Carta</option><option value="a4" ${S.paper==='a4'?'selected':''}>A4</option></select></label><label style="grid-auto-flow:column;justify-content:start;align-items:center;gap:.6rem;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:.82rem"><input type="checkbox" style="width:auto" ${S.fit?'checked':''} onchange="S.fit=this.checked">Solo frente: si cabe en una hoja, ajusta el tamaño para no imprimir reverso</label></div><div class="row2"><button class="btn btn-dark" onclick="DC.save()">Guardar</button><button class="btn btn-light" onclick="DC.print()">Imprimir o guardar PDF</button></div></div>
+${d.tables.map(tb=>`<div class="card"><div class="row2"><h2>${tb.t}</h2><button class="btn btn-light" onclick="DC.add('${tb.k}')">Agregar</button></div>${(k.t[tb.k]||[]).map((r,i)=>`<div class="card"><div class="grid grid2">${tb.cols.map(c=>fld(c,r[c[0]],{t:tb.k,i})).join('')}</div><button class="lnk" onclick="DC.rm('${tb.k}',${i})">Quitar</button></div>`).join('')}</div>`).join('')}
+<div class="card"><div class="row2"><button class="btn btn-dark" onclick="DC.save()">Guardar</button><button class="btn btn-light" onclick="DC.print()">Imprimir / PDF</button></div></div>
 <div class="pw"><div id="paper">${paper()}</div></div>`}
-Object.assign(V,{docs(){if(S.dk)return editor();
-  return `<h1>Documentos de producción</h1><small>Crea, guarda e imprime (o exporta a PDF) los documentos de tus rodajes.</small><div class="grid">${Object.entries(DOCS).filter(([k])=>admin()||!['budget','contract','memo'].includes(k)).map(([k,d])=>`<article class="card pc" onclick="DC.new('${k}')"><b>${esc(d.n)}</b><small>${esc(d.d)}</small></article>`).join('')}</div><h2>Mis documentos</h2><div class="card tw"><table><tr><th>Documento</th><th>Tipo</th><th>Proyecto</th><th>Actualizado</th><th></th></tr>${S.docs.map(x=>`<tr><td><b>${esc(x.title)}</b></td><td>${esc((DOCS[x.kind]||{}).n||x.kind)}</td><td><small>${esc((S.projects.find(q=>q.id===x.project_id)||{}).title||'')}</small></td><td>${fd(x.updated_at)}</td><td><button class="lnk" onclick="DC.open('${x.id}')">Abrir</button> <button class="lnk" onclick="DC.del('${x.id}')">Eliminar</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">Aún no guardas documentos.</td></tr>'}</table></div>`}});
+
+Object.assign(V,{docs(){
+  if(S.dk) return editor();
+  const canSeeAll=['admin','staff'].includes(S.p&&S.p.role);
+  const restricted=!canSeeAll;
+  return `<h1>Documentos de producción</h1>
+  <div class="grid">${Object.entries(DOCS).filter(([k])=>!restricted||!['budget','contract','memo'].includes(k)).map(([k,d])=>`<article class="card pc" onclick="DC.new('${k}')"><b>${esc(d.n)}</b><small>${esc(d.d)}</small></article>`).join('')}</div>
+  <h2>Documentos guardados</h2>
+  <div class="card tw"><table><tr><th>Documento</th><th>Tipo</th><th>Proyecto</th><th>Actualizado</th><th></th></tr>${S.docs.map(x=>`<tr><td><b>${esc(x.title)}</b></td><td>${esc((DOCS[x.kind]||{}).n||x.kind)}</td><td><small>${esc((S.projects.find(q=>q.id===x.project_id)||{}).title||'')}</small></td><td>${fd(x.updated_at)}</td><td><button class="lnk" onclick="DC.open('${x.id}')">Abrir</button>${admin()?` <button class="lnk" onclick="DC.del('${x.id}')">Eliminar</button>`:''}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">Aún no guardas documentos.</td></tr>'}</table></div>`;
+}});
+
 const DC={
  new(kind){const d=DOCS[kind],t={};d.tables.forEach(tb=>t[tb.k]=(tb.seed||[{}]).map(x=>({...x})));S.dk={kind,id:null,title:'',project_id:null,h:{fecha:TODAY,...(d.hd||{})},t};render();scrollTo(0,0)},
  close(){S.dk=null;const b=S.dkBack;S.dkBack=null;if(b){go('project',b.id);setTimeout(()=>{S.tab='archivo';render()},0)}else render()},
@@ -280,67 +412,134 @@ const DC={
  h(k,v){S.dk.h[k]=v;DC.pv()},c(t,i,k,v){S.dk.t[t][i][k]=v;DC.pv()},
  add(t){S.dk.t[t].push({});render()},rm(t,i){S.dk.t[t].splice(i,1);render()},
  pv(){const p=$('#paper');if(p)p.innerHTML=paper()},
- proj(id){const p=S.projects.find(x=>x.id===id);S.dk.project_id=id||null;if(p){S.dk.h.proyecto=p.title;S.dk.h.cliente=(p.profiles&&p.profiles.full_name)||'';if(S.dk.kind==='contract'){if(+p.price)S.dk.h.precio=p.price;S.dk.h.formato=p.format&&p.format!=='na'?p.format:'';S.dk.h.alcance=S.dk.h.alcance||p.description||''}if(S.dk.kind==='budget'&&!(S.dk.t.rows||[]).some(r=>+r.p)){}}render()},
+ proj(id){const p=S.projects.find(x=>x.id===id);S.dk.project_id=id||null;if(p){S.dk.h.proyecto=p.title;S.dk.h.cliente=(p.profiles&&p.profiles.full_name)||p.client_name||'';if(S.dk.kind==='contract'){if(+p.price)S.dk.h.precio=p.price;S.dk.h.formato=p.format&&p.format!=='na'?p.format:'';S.dk.h.alcance=S.dk.h.alcance||p.description||''}}render()},
  img(t,i,k,inp){const f=inp.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{const im=new Image();im.onload=()=>{const w=Math.min(520,im.width),c=document.createElement('canvas');c.width=w;c.height=Math.round(im.height*w/im.width);c.getContext('2d').drawImage(im,0,0,c.width,c.height);S.dk.t[t][i][k]=c.toDataURL('image/jpeg',.72);render()};im.src=rd.result};rd.readAsDataURL(f)},
  async save(){const k=S.dk;if(!admin()&&!k.project_id){alert('Elige un proyecto para guardar el documento.');return}const d=DOCS[k.kind],row={kind:k.kind,title:k.title||(d.n+(k.h.proyecto?' · '+k.h.proyecto:'')),project_id:k.project_id,data:{h:k.h,t:k.t},updated_at:new Date().toISOString()};
   const r=k.id?await sb.from('documents').update(row).eq('id',k.id):await sb.from('documents').insert(row).select('id').single();
   if(r.error){alert(r.error.message);return}if(!k.id&&r.data)k.id=r.data.id;await load();render();alert('Documento guardado')},
  async open(id){const r=await sb.from('documents').select('*').eq('id',id).single();if(r.error){alert(r.error.message);return}S.dk={kind:r.data.kind,id,title:r.data.title,project_id:r.data.project_id,h:r.data.data.h||{},t:r.data.data.t||{}};render();scrollTo(0,0)},
- async del(id){if(!confirm('¿Eliminar este documento guardado?'))return;await sb.from('documents').delete().eq('id',id);await load();render()}
+ async del(id){if(!confirm('¿Eliminar este documento?'))return;await sb.from('documents').delete().eq('id',id);await load();render()}
 };
 
+/* ══════════════════════════════════════════
+   PROJECT DETAIL
+══════════════════════════════════════════ */
 function closedView(p){const ap=S.D.ap[0];
-  return `<button class="lnk" style="justify-self:start" onclick="go('home')">← Volver</button><div class="card st-cancelado"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div><h2>Proyecto cerrado</h2><p><b>Motivo:</b> ${esc(p.cancel_reason||'Sin motivo registrado')}</p><small>Este proyecto desaparecerá de tu panel en ${daysLeft(p)} día(s).</small></div>
-  ${ap?`<div class="card"><h2>Tu apelación</h2><p style="white-space:pre-wrap">${esc(ap.body)}</p><small>Enviada ${ft(ap.created_at)}. Solo se permite un mensaje de apelación; la respuesta aparecerá abajo.</small></div>`:`<form class="card" onsubmit="return A.appeal(event,'${p.id}')"><h2>Apelar la cancelación</h2><small>Puedes enviar un solo mensaje para pedir que reconsideremos. No podrás enviar otro, así que explícalo con claridad.</small><textarea name="body" minlength="10" required placeholder="Escribe tu apelación..."></textarea><button class="btn btn-dark">Enviar apelación</button></form>`}
-  ${S.D.msg.length?`<div class="card"><h2>Respuestas</h2><div class="chat">${S.D.msg.map(m=>`<div class="msg ${m.sender_id===S.u.id?'me':''}"><small>${m.sender_id===S.u.id?'Tú':'Fluxora'} · ${ft(m.created_at)}</small><p>${esc(m.body)}</p></div>`).join('')}</div><small>El proyecto está cerrado, por eso el chat es solo de lectura.</small></div>`:''}
+  return `<button class="lnk" onclick="go('home')">← Volver</button><div class="card st-cancelado"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div><h2>Proyecto cerrado</h2><p><b>Motivo:</b> ${esc(p.cancel_reason||'Sin motivo registrado')}</p><small>Este proyecto desaparecerá de tu panel en ${daysLeft(p)} día(s).</small></div>
+  ${ap?`<div class="card"><h2>Tu apelación</h2><p style="white-space:pre-wrap">${esc(ap.body)}</p><small>Enviada ${ft(ap.created_at)}.</small></div>`:`<form class="card" onsubmit="return A.appeal(event,'${p.id}')"><h2>Apelar la cancelación</h2><textarea name="body" minlength="10" required placeholder="Escribe tu apelación..."></textarea><button class="btn btn-dark">Enviar apelación</button></form>`}
+  ${S.D.msg.length?`<div class="card"><div class="chat">${S.D.msg.map(m=>`<div class="msg ${m.sender_id===S.u.id?'me':''}"><small>${m.sender_id===S.u.id?'Tú':'Fluxora'} · ${ft(m.created_at)}</small><p>${esc(m.body)}</p></div>`).join('')}</div><small>El proyecto está cerrado, el chat es solo de lectura.</small></div>`:''}
   <div class="card"><h2>Historial</h2><ul class="tl">${S.D.ev.map(e=>`<li><b>${esc(e.text)}</b><br><small>${ft(e.created_at)}</small></li>`).join('')}</ul></div>`}
-function detail(){const p=S.projects.find(x=>x.id===S.id);if(!p)return '<div class="card empty">Proyecto no encontrado.</div>';
-  if(!team()&&p.status==='cancelado')return closedView(p);
-  const tabs=[['resumen','Resumen'],['chat','Chat'],['mods','Modificaciones'],...(admin()?[['pagos','Pagos']]:[]),...(team()?[['archivo','Archivo']]:[])];
-  return `<button class="lnk" style="justify-self:start" onclick="go('${team()?'projects':'home'}')">← Volver</button><div class="card ${stc(p.status)}"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div><div class="bar"><i style="width:${p.progress}%"></i></div><small>${p.progress}% completado${team()?' · '+esc(p.profiles&&p.profiles.full_name||'')+' · '+esc(p.profiles&&p.profiles.email||''):''}</small></div><div class="tabs">${tabs.map(([k,t])=>`<button class="${S.tab===k?'on':''}" onclick="S.tab='${k}';render()">${t}</button>`).join('')}</div>${T[S.tab](p)}${admin()&&S.tab==='resumen'?`<button class="btn btn-light" style="justify-self:start;border:1px solid #ef4444;color:#fca5a5" onclick="A.pdel('${p.id}')">Eliminar proyecto</button>`:''}`}
+
+function detail(){
+  const p=S.projects.find(x=>x.id===S.id);
+  if(!p) return '<div class="card empty">Proyecto no encontrado.</div>';
+  if(S.p.role==='client'&&p.status==='cancelado') return closedView(p);
+
+  // tabs depend on role
+  const tabs=[['resumen','Resumen'],['chat','Chat'],['mods','Modificaciones']];
+  if(admin()) tabs.push(['pagos','Pagos']);
+  if(canManage()) tabs.push(['reparto','Reparto'],['archivo','Archivo']);
+
+  const backTo=team()?'projects':'home';
+  return `<button class="lnk" onclick="go('${backTo}')">← Volver</button>
+  <div class="card ${stc(p.status)}"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div>
+  <div class="bar"><i style="width:${p.progress}%"></i></div>
+  <small>${p.progress}% completado${canManage()?' · '+esc(p.profiles&&p.profiles.full_name||p.client_name||''):''}${canManage()&&p.profiles?' · '+esc(p.profiles.email||''):''}</small></div>
+  <div class="tabs">${tabs.map(([k,t])=>`<button class="${S.tab===k?'on':''}" onclick="S.tab='${k}';render()">${t}</button>`).join('')}</div>
+  ${T[S.tab]?T[S.tab](p):''}
+  ${admin()&&S.tab==='resumen'?`<button class="btn btn-red" onclick="A.pdel('${p.id}')">Eliminar proyecto</button>`:''}`;
+}
 
 const T={
-resumen(p){return `${team()&&p.status==='cancelado'?`<div class="card st-cancelado"><h2>Proyecto cancelado</h2><p><b>Motivo:</b> ${esc(p.cancel_reason||'')}</p><small>Se oculta del panel del cliente el ${fd(new Date(+new Date(p.cancelled_at)+12096e5).toISOString())}.</small></div>`:''}${team()&&S.D.ap.length?`<div class="card"><h2>Apelación del cliente</h2><p style="white-space:pre-wrap">${esc(S.D.ap[0].body)}</p><small>${ft(S.D.ap[0].created_at)} · Respóndele en la pestaña Chat. Para reabrir el proyecto, cambia su estado.</small></div>`:''}<div class="card"><h2>Detalles</h2><p><b>${TY[p.type]||''}</b>${p.format&&p.format!=='na'?' · '+esc(p.format):''} · ${esc(p.package||'')}</p><p style="white-space:pre-wrap">${esc(p.description||'')}</p>${/^https?:\/\//i.test(p.material_url||'')?`<a href="${esc(p.material_url)}" target="_blank" rel="noopener">Ver material</a>`:''}<small>Entrega estimada: ${fd(p.due_date)} · Creado: ${fd(p.created_at)}</small></div>
-  ${team()?`<form class="card" onsubmit="return A.save(event,'${p.id}')"><h2>Gestionar y notificar al cliente</h2><div class="grid grid2"><label>Estado<select name="status">${opts(ST,p.status)}</select></label><label>Avance (%)<input type="number" name="progress" min="0" max="100" value="${p.progress}"></label><label>Precio (MXN)<input type="number" name="price" min="0" step="1" value="${p.price}" ${admin()?'':'disabled'}></label><label>Fecha de entrega<input type="date" name="due_date" value="${p.due_date||''}"></label></div><button class="btn btn-dark">Guardar cambios</button></form>`:''}
-  <div class="card"><h2>Historial del proyecto</h2><ul class="tl">${S.D.ev.map(e=>`<li><b>${esc(e.text)}</b><br><small>${ft(e.created_at)}</small></li>`).join('')||'<li><small>Sin movimientos.</small></li>'}</ul></div>`},
-chat(p){const who=m=>m.sender_id===S.u.id?'Tú':(team()?esc(p.profiles&&p.profiles.full_name||'Cliente'):'Fluxora');
-  return `<div class="card"><div class="chat">${S.D.msg.map(m=>`<div class="msg ${m.sender_id===S.u.id?'me':''}"><small>${who(m)} · ${ft(m.created_at)}</small><p>${esc(m.body)}</p></div>`).join('')||'<div class="empty">Escribe el primer mensaje.</div>'}</div><form onsubmit="return A.send(event,'${p.id}')" style="grid-template-columns:1fr auto;align-items:start"><textarea name="body" style="min-height:48px" placeholder="Escribe un mensaje..." required></textarea><button class="btn btn-dark">Enviar</button></form></div>`},
-mods(p){return `${team()?'':`<form class="card" onsubmit="return A.mod(event,'${p.id}')"><h2>Pedir una modificación</h2><textarea name="body" placeholder="Describe qué quieres cambiar (minutos, texto, música, cortes...)" required></textarea><button class="btn btn-dark">Enviar solicitud</button></form>`}
-  <div class="card"><h2>Solicitudes de modificación</h2>${S.D.mods.map(m=>`<div class="row2" style="border-top:1px solid var(--line);padding-top:.7rem"><div><p style="white-space:pre-wrap">${esc(m.body)}</p><small>${ft(m.created_at)}</small></div>${team()?`<select style="max-width:160px" onchange="A.modst('${m.id}',this.value)">${opts(MD,m.status)}</select>`:bd(m.status)}</div>`).join('')||'<div class="empty">Sin solicitudes.</div>'}</div>`},
-pagos(p){const pg=paid(p.id),pr=+p.price,pc=pr>0?Math.min(100,Math.round(pg/pr*100)):0;
+resumen(p){
+  return `${team()&&p.status==='cancelado'?`<div class="card st-cancelado"><h2>Proyecto cancelado</h2><p><b>Motivo:</b> ${esc(p.cancel_reason||'')}</p></div>`:''}
+  ${team()&&S.D.ap.length?`<div class="card"><h2>Apelación del cliente</h2><p style="white-space:pre-wrap">${esc(S.D.ap[0].body)}</p><small>${ft(S.D.ap[0].created_at)} · Respóndele en Chat. Para reabrir el proyecto, cambia su estado.</small></div>`:''}
+  <div class="card"><h2>Detalles</h2><p><b>${TY[p.type]||''}</b>${p.format&&p.format!=='na'?' · '+esc(p.format):''} · ${esc(p.package||'')}</p><p style="white-space:pre-wrap">${esc(p.description||'')}</p>${/^https?:\/\//i.test(p.material_url||'')?`<a href="${esc(p.material_url)}" target="_blank" rel="noopener">Ver material</a>`:''}<small>Entrega estimada: ${fd(p.due_date)} · Creado: ${fd(p.created_at)}</small></div>
+  ${canManage()?`<form class="card" onsubmit="return A.save(event,'${p.id}')"><h2>${admin()||staff()?'Gestionar proyecto':'Actualizar proyecto'}</h2><div class="grid grid2"><label>Estado<select name="status">${opts(ST,p.status)}</select></label><label>Avance (%)<input type="number" name="progress" min="0" max="100" value="${p.progress}"></label>${admin()?`<label>Precio (MXN)<input type="number" name="price" min="0" step="1" value="${p.price}"></label>`:'<input type="hidden" name="price" value="'+p.price+'">'}<label>Fecha de entrega<input type="date" name="due_date" value="${p.due_date||''}"></label></div><button class="btn btn-dark">Guardar cambios</button></form>`:''}
+  <div class="card"><h2>Historial del proyecto</h2><ul class="tl">${S.D.ev.map(e=>`<li><b>${esc(e.text)}</b><br><small>${ft(e.created_at)}</small></li>`).join('')||'<li><small>Sin movimientos.</small></li>'}</ul></div>`;
+},
+chat(p){
+  const who=m=>m.sender_id===S.u.id?'Tú':(team()||manager()?esc(p.profiles&&p.profiles.full_name||'Cliente'):'Fluxora');
+  return `<div class="card"><div class="chat">${S.D.msg.map(m=>`<div class="msg ${m.sender_id===S.u.id?'me':''}"><small>${who(m)} · ${ft(m.created_at)}</small><p>${esc(m.body)}</p></div>`).join('')||'<div class="empty">Escribe el primer mensaje.</div>'}</div><form onsubmit="return A.send(event,'${p.id}')" style="grid-template-columns:1fr auto;align-items:start"><textarea name="body" style="min-height:48px" placeholder="Escribe un mensaje..." required></textarea><button class="btn btn-dark">Enviar</button></form></div>`;
+},
+mods(p){
+  return `${S.p.role==='client'?`<form class="card" onsubmit="return A.mod(event,'${p.id}')"><h2>Pedir una modificación</h2><textarea name="body" placeholder="Describe qué quieres cambiar" required></textarea><button class="btn btn-dark">Enviar solicitud</button></form>`:''}
+  <div class="card"><h2>Solicitudes de modificación</h2>${S.D.mods.map(m=>`<div class="row2" style="border-top:1px solid var(--line);padding-top:.7rem"><div><p style="white-space:pre-wrap">${esc(m.body)}</p><small>${ft(m.created_at)}</small></div>${canManage()?`<select style="max-width:160px" onchange="A.modst('${m.id}',this.value)">${opts(MD,m.status)}</select>`:bd(m.status)}</div>`).join('')||'<div class="empty">Sin solicitudes.</div>'}</div>`;
+},
+pagos(p){
+  const pg=paid(p.id),pr=+p.price,pc=pr>0?Math.min(100,Math.round(pg/pr*100)):0;
   return `<div class="card"><div class="grid grid2"><div class="stat"><small>Precio</small><b>${pr>0?mx(pr):'Por cotizar'}</b></div><div class="stat"><small>Pagado</small><b>${mx(pg)}</b></div><div class="stat"><small>Pendiente</small><b>${pr>0?mx(Math.max(0,pr-pg)):'-'}</b></div></div><div class="bar"><i style="width:${pc}%"></i></div><small>${pc}% pagado</small></div>
   ${admin()?`<form class="card" onsubmit="return A.pay(event,'${p.id}')"><h2>Registrar pago</h2><div class="grid grid2"><label>Monto<input name="amount" type="number" min="1" step="0.01" required></label><label>Método<select name="method"><option>Transferencia</option><option>Efectivo</option><option>Depósito</option><option>Otro</option></select></label><label>Nota<input name="note" placeholder="Anticipo, liquidación..."></label></div><button class="btn btn-dark">Registrar pago</button></form>`:''}
-  <div class="card tw"><h2>Pagos recibidos</h2><table><tr><th>Fecha</th><th>Monto</th><th>Método</th><th>Nota</th></tr>${S.payments.filter(x=>x.project_id===p.id).map(x=>`<tr><td>${fd(x.paid_at)}</td><td>${mx(x.amount)}</td><td>${esc(x.method||'')}</td><td>${esc(x.note||'')}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin pagos todavía.</td></tr>'}</table></div>`}
+  <div class="card tw"><h2>Pagos recibidos</h2><table><tr><th>Fecha</th><th>Monto</th><th>Método</th><th>Nota</th></tr>${S.payments.filter(x=>x.project_id===p.id).map(x=>`<tr><td>${fd(x.paid_at)}</td><td>${mx(x.amount)}</td><td>${esc(x.method||'')}</td><td>${esc(x.note||'')}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin pagos todavía.</td></tr>'}</table></div>`;
+},
+
+/* ── REPARTO (cast) ── */
+reparto(p){
+  const canEdit=canManage();
+  return `${canEdit?`<form class="card" onsubmit="return A.castAdd(event,'${p.id}')"><h2>Agregar al reparto</h2><div class="grid grid2"><label>Nombre<input name="name" required placeholder="Ej. María López"></label><label>Rol / Personaje<input name="role" required placeholder="Ej. Protagonista — Elena"></label><label>Contacto<input name="contact" placeholder="Teléfono o correo"></label><label>Notas<input name="notes" placeholder="Disponibilidad, talla, etc."></label></div><button class="btn btn-dark">Agregar</button></form>`:''} 
+  <div class="cast-grid">${S.cast.map(c=>`<div class="cast-card"><b>${esc(c.name)}</b><small>${esc(c.role)}</small>${c.contact?`<small>${esc(c.contact)}</small>`:''} ${c.notes?`<small>${esc(c.notes)}</small>`:''} ${canEdit?`<button class="lnk" style="color:#ef4444" onclick="A.castDel('${c.id}')">Quitar</button>`:''}</div>`).join('')||'<div class="card empty">Sin miembros en el reparto todavía.</div>'}</div>`;
+},
+
+/* ── ARCHIVO (docs afiliados al proyecto) ── */
+archivo(p){
+  const docs=S.docs.filter(x=>x.project_id===p.id),pg=paid(p.id);
+  const FILES=[{n:'Contratos y memos',k:['contract','memo'],adm:1},{n:'Presupuestos',k:['budget'],adm:1},{n:'Preproducción',k:['breakdown','shots','story']},{n:'Rodaje y corridas',k:['call','sched']},{n:'Legales',k:['release']}];
+  return `<div class="card"><h2>Resumen del proyecto</h2><div class="grid grid2"><div><small>Cliente</small><br><b>${esc(p.profiles&&p.profiles.full_name||p.client_name||'Sin asignar')}</b></div><div><small>Estado</small><br>${bd(p.status)}</div><div><small>Entrega</small><br><b>${fd(p.due_date)}</b></div>${admin()?`<div><small>Precio · pagado</small><br><b>${mx(p.price)} · ${mx(pg)}</b></div>`:''}</div></div>
+  <div class="grid">${FILES.filter(f=>admin()||staff()||!f.adm).map(f=>{const l=docs.filter(x=>f.k.includes(x.kind));return `<div class="card fold"><div class="row2"><b>${f.n}</b><small>${l.length}</small></div>${l.map(x=>`<div class="row2"><small>${esc(x.title)}</small><button class="lnk" onclick="DC.openFrom('${x.id}','${p.id}')">Abrir</button></div>`).join('')||'<small>Vacía</small>'}<div>${f.k.map(k=>`<button class="lnk" onclick="DC.newFor('${k}','${p.id}')">+ ${esc(DOCS[k].n)}</button>`).join('<br>')}</div></div>`}).join('')}</div>`;
+}
 };
 
+/* ══════════════════════════════════════════
+   TEAM VIEW
+══════════════════════════════════════════ */
+Object.assign(V,{team(){
+  const sel=S.tm&&S.profiles.find(x=>x.id===S.tm);
+  return `<h1>Equipo y permisos</h1>
+  <div class="card"><h2>Roles disponibles</h2>
+  <small><b>Administrador</b> — control total. <b>Colaborador (Staff)</b> — administra todos los proyectos, sin acceso a finanzas ni wishlist. <b>Manager</b> — panel propio con los proyectos que le asignes; puede editar, subir documentos y gestionar reparto. <b>Cliente</b> — solo ve y gestiona sus propios proyectos.</small></div>
+  <div class="card tw"><table><tr><th>Persona</th><th>Rol</th><th>Proyectos</th></tr>
+  ${S.profiles.map(x=>{const n=S.mem.filter(m=>m.user_id===x.id).length;return `<tr><td><b>${esc(x.full_name||'Sin nombre')}</b><br><small>${esc(x.email)}</small></td><td><select style="max-width:180px" onchange="A.role('${x.id}',this.value)" ${x.id===S.u.id?'disabled':''}>${opts(ROLES,x.role)}</select></td><td>${['staff','manager'].includes(x.role)?`<button class="lnk" onclick="A.tmSel('${x.id}')">Asignar (${n})</button>`:x.role==='admin'?'Todos':'Los suyos'}</td></tr>`}).join('')}
+  </table></div>
+  ${sel?`<div class="card"><h2>Proyectos asignados a ${esc(sel.full_name||sel.email)}</h2>${S.projects.map(p=>`<label style="grid-auto-flow:column;justify-content:start;align-items:center;gap:.6rem;text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--ink2)"><input type="checkbox" style="width:auto" ${S.mem.some(m=>m.user_id===sel.id&&m.project_id===p.id)?'checked':''} onchange="A.mem('${sel.id}','${p.id}',this.checked)">${esc(p.title)} · ${esc(p.profiles&&p.profiles.full_name||p.client_name||'')}</label>`).join('')||'<small>No hay proyectos.</small>'}</div>`:''}`}
+});
 
-const FILES=[{n:'Contratos y memos',k:['contract','memo'],adm:1},{n:'Presupuestos',k:['budget'],adm:1},{n:'Preproducción',k:['breakdown','shots','story']},{n:'Rodaje y corridas',k:['call','sched']},{n:'Legales',k:['release']}];
-Object.assign(T,{archivo(p){const docs=S.docs.filter(x=>x.project_id===p.id),pg=paid(p.id);
-  return `<div class="card"><h2>Resumen del proyecto</h2><div class="grid grid2"><div><small>Cliente</small><br><b>${esc(p.profiles&&p.profiles.full_name||'')}</b></div><div><small>Estado</small><br>${bd(p.status)}</div><div><small>Entrega</small><br><b>${fd(p.due_date)}</b></div>${admin()?`<div><small>Precio · pagado</small><br><b>${mx(p.price)} · ${mx(pg)}</b></div>`:''}</div></div><div class="grid">${FILES.filter(f=>admin()||!f.adm).map(f=>{const l=docs.filter(x=>f.k.includes(x.kind));return `<div class="card fold"><div class="row2"><b>${f.n}</b><small>${l.length}</small></div>${l.map(x=>`<div class="row2"><small>${esc(x.title)}</small><button class="lnk" onclick="DC.openFrom('${x.id}','${p.id}')">Abrir</button></div>`).join('')||'<small>Vacía</small>'}<div>${f.k.map(k=>`<button class="lnk" onclick="DC.newFor('${k}','${p.id}')">+ ${esc(DOCS[k].n)}</button>`).join('<br>')}</div></div>`}).join('')}</div>`}});
-Object.assign(V,{team(){const role={client:'Cliente',staff:'Colaborador',admin:'Administrador'},sel=S.tm&&S.profiles.find(x=>x.id===S.tm);
-  return `<h1>Equipo y permisos</h1><div class="card"><h2>Cómo agregar a una persona</h2><small>1) Pídele que entre a portal.html y toque "Crear cuenta". 2) Aparecerá aquí como Cliente. 3) Cambia su rol: <b>Colaborador</b> ve solo los proyectos que le asignes, sin pagos ni finanzas; <b>Administrador</b> tiene acceso total. La página no puede crear cuentas por ti: eso exige una llave secreta de Supabase que nunca debe ir en una página pública.</small></div><div class="card tw"><table><tr><th>Persona</th><th>Rol</th><th>Proyectos</th></tr>${S.profiles.map(x=>{const n=S.mem.filter(m=>m.user_id===x.id).length;return `<tr><td><b>${esc(x.full_name||'Sin nombre')}</b><br><small>${esc(x.email)}</small></td><td><select style="max-width:170px" onchange="A.role('${x.id}',this.value)" ${x.id===S.u.id?'disabled':''}>${opts(role,x.role)}</select></td><td>${x.role==='staff'?`<button class="lnk" onclick="A.tmSel('${x.id}')">Asignar (${n})</button>`:x.role==='admin'?'Todos':'Los suyos'}</td></tr>`}).join('')}</table></div>${sel?`<div class="card"><h2>Proyectos de ${esc(sel.full_name||sel.email)}</h2>${S.projects.map(p=>`<label style="grid-auto-flow:column;justify-content:start;align-items:center;gap:.6rem;text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--ink2)"><input type="checkbox" style="width:auto" ${S.mem.some(m=>m.user_id===sel.id&&m.project_id===p.id)?'checked':''} onchange="A.mem('${sel.id}','${p.id}',this.checked)">${esc(p.title)} · ${esc(p.profiles&&p.profiles.full_name||'')}</label>`).join('')||'<small>No hay proyectos.</small>'}</div>`:''}`}});
+/* ══════════════════════════════════════════
+   ACTIONS
+══════════════════════════════════════════ */
 const A={
 async auth(e,m){e.preventDefault();const f=new FormData(e.target),msg=document.getElementById('msg');
   if(m==='up'&&f.get('pass')!==f.get('pass2')){msg.textContent='Las contraseñas no coinciden.';return false}
   msg.textContent='Un momento...';
   const r=m==='in'?await sb.auth.signInWithPassword({email:f.get('email'),password:f.get('pass')}):await sb.auth.signUp({email:f.get('email'),password:f.get('pass'),options:{data:{full_name:f.get('name')},emailRedirectTo:location.href.split('#')[0]}});
   if(r.error)msg.textContent=tr(r.error.message);
-  else if(m==='up'&&!r.data.session)msg.textContent='Cuenta creada. Te enviamos un correo para confirmarla; después de confirmar, inicia sesión.';
+  else if(m==='up'&&!r.data.session)msg.textContent='Cuenta creada. Confirma tu correo y luego inicia sesión.';
   return false},
 async reset(){const em=(document.querySelector('input[name=email]').value||'').trim(),msg=document.getElementById('msg');
-  if(!em){msg.textContent='Escribe tu correo en el campo de arriba y vuelve a tocar "Olvidé mi contraseña".';return}
+  if(!em){msg.textContent='Escribe tu correo arriba primero.';return}
   msg.textContent='Enviando...';const r=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.href.split('#')[0]});
-  msg.textContent=r.error?tr(r.error.message):'Listo. Si ese correo tiene cuenta, te enviamos un enlace para crear una contraseña nueva.'},
+  msg.textContent=r.error?tr(r.error.message):'Listo. Si ese correo tiene cuenta, te enviamos un enlace.'},
 async newpass(e){e.preventDefault();const f=new FormData(e.target),msg=document.getElementById('msg');
   if(f.get('pass')!==f.get('pass2')){msg.textContent='Las contraseñas no coinciden.';return false}
   const r=await sb.auth.updateUser({password:f.get('pass')});
   if(r.error){msg.textContent=tr(r.error.message);return false}
   S.rec=false;history.replaceState(null,'',location.pathname);const u=await sb.auth.getUser();init(u.data.user);return false},
+
+/* cliente crea proyecto */
 async create(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
   const r=await sb.from('projects').insert({client_id:S.u.id,title:f.title,type:f.type,format:f.format,package:f.package,description:f.description,material_url:/^https?:\/\//i.test(f.material_url||'')?f.material_url:null}).select().single();
   if(r.error){alert(r.error.message);return false}await load();go('project',r.data.id);return false},
+
+/* admin/staff crea proyecto manual */
+async createManual(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
+  const row={title:f.title,type:f.type,format:f.format,package:f.package||null,description:f.description||null,material_url:okUrl(f.material_url),price:+f.price||0,progress:+f.progress||0,status:f.status,due_date:f.due_date||null,client_name:f.client_name||null};
+  if(f.client_id) row.client_id=f.client_id;
+  const r=await sb.from('projects').insert(row).select().single();
+  if(r.error){alert(r.error.message);return false}
+  await load();go('project',r.data.id);return false},
+
 async save(e,id){e.preventDefault();const f=Object.fromEntries(new FormData(e.target)),p=S.projects.find(x=>x.id===id);
-  const u={status:f.status,progress:+f.progress,due_date:f.due_date||null};if(admin())u.price=+f.price;
+  const u={status:f.status,progress:+f.progress,due_date:f.due_date||null};
+  if(admin()) u.price=+f.price;
   if(f.status==='cancelado'){const why=p.status==='cancelado'?p.cancel_reason:await askReason();if(!why)return false;u.cancel_reason=why}
   const r=await sb.from('projects').update(u).eq('id',id);
   if(r.error)alert(r.error.message);await load();render();return false},
@@ -357,14 +556,19 @@ async pay(e,id){e.preventDefault();const f=Object.fromEntries(new FormData(e.tar
   if(r.error)alert(r.error.message);await load();render();return false},
 async fin(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
   const r=await sb.from('finance_entries').insert({kind:f.kind,concept:f.concept,category:f.category||null,amount:+f.amount,entry_date:f.entry_date});
-  if(r.error)alert(r.error.message);await load();render();return false}
-};
+  if(r.error)alert(r.error.message);await load();render();return false},
 
+/* cast */
+async castAdd(e,pid){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
+  const r=await sb.from('cast_members').insert({project_id:pid,name:f.name,role:f.role,contact:f.contact||null,notes:f.notes||null});
+  if(r.error)alert(r.error.message);else{await loadD();render()}return false},
+async castDel(id){if(!confirm('¿Quitar a este miembro del reparto?'))return;
+  await sb.from('cast_members').delete().eq('id',id);await loadD();render()},
 
-Object.assign(A,{
-async pdel(id){const p=S.projects.find(x=>x.id===id);if(!confirm('Vas a ELIMINAR "'+p.title+'". También se borran su chat, modificaciones, pagos e historial. No se puede deshacer.'))return;
+async pdel(id){const p=S.projects.find(x=>x.id===id);if(!confirm('Vas a ELIMINAR "'+p.title+'". También se borran chat, modificaciones, pagos e historial. No se puede deshacer.'))return;
   if(prompt('Escribe ELIMINAR para confirmar')!=='ELIMINAR')return;
   const r=await sb.from('projects').delete().eq('id',id);if(r.error){alert(r.error.message);return}await load();go('projects')},
+
 async wadd(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
   const r=await sb.from('wishlist').insert({name:f.name,category:f.category||null,price:+f.price,priority:+f.priority,url:okUrl(f.url)});
   if(r.error)alert(r.error.message);await load();render();return false},
@@ -373,10 +577,15 @@ async wbuy(id){const w=S.wish.find(x=>x.id===id),v=prompt('Precio real pagado (M
   const r=await sb.rpc('buy_wish',{p_id:id,p_real:+v});if(r.error)alert(r.error.message);await load();render()},
 async walloc(e){e.preventDefault();const a=+new FormData(e.target).get('amount'),m=document.getElementById('wmsg');
   const r=await sb.rpc('allocate_wish',{p_amount:a});if(r.error){m.textContent=r.error.message;return false}
-  await load();render();const m2=document.getElementById('wmsg');if(m2)m2.textContent=+r.data>0?'Se destinó todo lo posible. Sobraron '+mx(r.data)+' porque tu wishlist ya está completa.':'Listo: el dinero se repartió al artículo más urgente.';return false},
+  await load();render();const m2=document.getElementById('wmsg');if(m2)m2.textContent=+r.data>0?'Sobraron '+mx(r.data)+' (wishlist completa).':'Listo: dinero repartido al artículo más urgente.';return false},
 async wpct(v){const r=await sb.from('site_settings').upsert({key:'wish_pct',value:Math.min(100,Math.max(0,+v||0))});if(r.error)alert(r.error.message);await load();render()},
-pkCollect(){const fm=document.querySelector('form[onsubmit*=siteSave]');if(!fm||!S.dr)return;const n=[...fm.querySelectorAll('[name=pn]')],pp=[...fm.querySelectorAll('[name=pp]')],pf=[...fm.querySelectorAll('[name=pf]')];
-  S.dr.packages=n.map((x,i)=>({name:x.value.trim(),price:+pp[i].value||0,features:pf[i].value.split('\n').map(t=>t.trim()).filter(Boolean)}));const sn=[...fm.querySelectorAll('[name=sn]')],sp=[...fm.querySelectorAll('[name=sp]')],sk=[...fm.querySelectorAll('[name=sk]')],su=[...fm.querySelectorAll('[name=su]')];S.dr.services=sn.map((x,i)=>({name:x.value.trim(),price:+sp[i].value||0,kind:sk[i].value,unit:su[i].value.trim()}));Object.keys(S.dr.contact).forEach(k=>{if(fm.elements[k])S.dr.contact[k]=fm.elements[k].value.trim()})},
+
+pkCollect(){const fm=document.querySelector('form[onsubmit*=siteSave]');if(!fm||!S.dr)return;
+  const n=[...fm.querySelectorAll('[name=pn]')],pp=[...fm.querySelectorAll('[name=pp]')],pf=[...fm.querySelectorAll('[name=pf]')];
+  S.dr.packages=n.map((x,i)=>({name:x.value.trim(),price:+pp[i].value||0,features:pf[i].value.split('\n').map(t=>t.trim()).filter(Boolean)}));
+  const sn=[...fm.querySelectorAll('[name=sn]')],sp=[...fm.querySelectorAll('[name=sp]')],sk=[...fm.querySelectorAll('[name=sk]')],su=[...fm.querySelectorAll('[name=su]')];
+  S.dr.services=sn.map((x,i)=>({name:x.value.trim(),price:+sp[i].value||0,kind:sk[i].value,unit:su[i].value.trim()}));
+  Object.keys(S.dr.contact).forEach(k=>{if(fm.elements[k])S.dr.contact[k]=fm.elements[k].value.trim()})},
 pkAdd(){A.pkCollect();S.dr.packages.push({name:'Nuevo paquete',price:0,features:[]});render()},
 pkRm(i){A.pkCollect();S.dr.packages.splice(i,1);render()},
 svAdd(){A.pkCollect();S.dr.services.push({name:'Nuevo servicio',price:0,kind:'extra',unit:'por video'});render()},
@@ -385,22 +594,24 @@ async siteSave(e){e.preventDefault();A.pkCollect();const m=document.getElementBy
   if(!S.dr.packages.length){m.textContent='Deja al menos un paquete.';return false}
   S.dr.contact.wa=S.dr.contact.wa.replace(/\D/g,'');S.dr.contact.ig=S.dr.contact.ig.replace('@','');
   const r=await sb.from('site_settings').upsert([{key:'packages',value:S.dr.packages},{key:'contact',value:S.dr.contact},{key:'services',value:S.dr.services}]);
-  if(r.error){m.textContent=r.error.message;return false}m.textContent='Guardado. Recarga tu página principal para ver los cambios.';S.set.packages=S.dr.packages;S.set.contact=S.dr.contact;S.set.services=S.dr.services;return false}
-});
+  if(r.error){m.textContent=r.error.message;return false}m.textContent='Guardado.';S.set.packages=S.dr.packages;S.set.contact=S.dr.contact;S.set.services=S.dr.services;return false},
 
-
-Object.assign(A,{
 tmSel(id){S.tm=id;render()},
-async role(uid,v){if(uid===S.u.id){render();return}if(!confirm('¿Cambiar el rol de esta persona?')){render();return}const r=await sb.from('profiles').update({role:v}).eq('id',uid);if(r.error)alert(r.error.message);await load();render()},
+async role(uid,v){if(uid===S.u.id){render();return}if(!confirm('¿Cambiar el rol de esta persona?')){render();return}
+  const r=await sb.from('profiles').update({role:v}).eq('id',uid);if(r.error)alert(r.error.message);await load();render()},
 async mem(uid,pid,on){const r=on?await sb.from('project_members').insert({project_id:pid,user_id:uid}):await sb.from('project_members').delete().eq('project_id',pid).eq('user_id',uid);if(r.error)alert(r.error.message);await load();render()}
-});
+};
+
+/* ══════════════════════════════════════════
+   BOOT
+══════════════════════════════════════════ */
 if(SUPABASE_URL.includes('TU-PROYECTO')){
-  app.innerHTML='<div class="card auth"><h1>Falta conectar Supabase</h1><small>Abre portal.html y pega tu Project URL y tu anon key en la parte de CONFIGURACION. Luego ejecuta schema.sql en tu proyecto.</small></div>';
+  app.innerHTML='<div class="card auth"><h1>Falta conectar Supabase</h1><small>Pega tu Project URL y anon key en la parte de CONFIGURACION.</small></div>';
 }else{
   S.rec=location.hash.includes('type=recovery');
   sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
   sb.auth.onAuthStateChange((ev,session)=>{
-    if(ev==='PASSWORD_RECOVERY')S.rec=true;
+    if(ev==='PASSWORD_RECOVERY') S.rec=true;
     if(session&&session.user&&S.rec){setTimeout(recView,0)}
     else if(session&&session.user){if(!S.u||S.u.id!==session.user.id)setTimeout(()=>init(session.user),0)}
     else{S.u=null;S.p=null;S.view='home';S.id=null;if(ch){sb.removeChannel(ch);ch=null}authView()}
