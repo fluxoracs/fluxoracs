@@ -4,12 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mi panel | Fluxora Creative Studio</title>
-<meta name="robots" content="index, follow">
-<meta name="description" content="Panel de clientes de Fluxora Creative Studio.">
-<link rel="canonical" href="https://fluxoracs.github.io/fluxoracs/portal.html">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Fluxora Creative Studio"><meta property="og:locale" content="es_MX">
-<meta property="og:title" content="Mi panel | Fluxora Creative Studio">
-<meta property="og:url" content="https://fluxoracs.github.io/fluxoracs/portal.html"><meta property="og:image" content="https://fluxoracs.github.io/fluxoracs/1.1.png">
 <meta name="theme-color" content="#0b0b0c"><meta name="color-scheme" content="dark">
 <link rel="icon" type="image/png" href="favicon1.png" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" href="favicon2.png" media="(prefers-color-scheme: light)">
@@ -17,153 +11,501 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style id="pgstyle">@page{size:letter portrait;margin:12mm}</style>
 <style>
-:root{--ink:#f5f5f7;--ink2:#e4e4e8;--muted:#9a9a9f;--line:rgba(255,255,255,.1);--ease:cubic-bezier(.22,1,.36,1)}
+/* ── reset ── */
 *{box-sizing:border-box;margin:0;padding:0}
-html{background:#000}
-body{font:400 .92rem/1.55 Montserrat,system-ui,sans-serif;color:var(--ink2);background:transparent;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
-.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 110% 85% at 50% 15%,#000 25%,transparent 100%);mask-image:radial-gradient(ellipse 110% 85% at 50% 15%,#000 25%,transparent 100%)}
-.top{position:sticky;top:0;z-index:10;background:#0b0b0c;border-bottom:1px solid var(--line);padding:env(safe-area-inset-top,0px) clamp(1rem,3vw,2rem) 0;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;min-height:60px}
-.brand img{height:30px;display:block}
-.top nav{display:flex;gap:.3rem;overflow-x:auto;flex:1;scrollbar-width:none}.top nav::-webkit-scrollbar{display:none}
-.top nav button{background:none;border:0;padding:.55rem .9rem;border-radius:999px;color:var(--muted);font-size:.8rem;font-weight:600;white-space:nowrap}
-.top nav button.on,.top nav button:hover{background:rgba(255,255,255,.1);color:#fff}
-.who{display:flex;align-items:center;gap:.8rem;font-size:.75rem;color:var(--muted)}
-.lnk{background:none;border:0;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-size:.8rem;padding:.3rem 0}.lnk:hover{color:#fff}
-.pm{max-width:1100px;margin:0 auto;padding:clamp(1.2rem,4vw,2.5rem) clamp(1rem,3vw,2rem) 4rem;display:grid;gap:1.2rem}
-h1{font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.02em;line-height:1.15}
-h2{font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-small{color:var(--muted);font-size:.74rem}
-.card{background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:20px;padding:clamp(1rem,3vw,1.5rem);display:grid;gap:.8rem}
-.pc{cursor:pointer;transition:transform .4s var(--ease),border-color .3s}.pc:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.4)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
-.grid2{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.row2{display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
-.bar{height:6px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden}.bar i{display:block;height:100%;background:#fff;border-radius:9px;transition:width .6s var(--ease)}
-.bd{padding:.2rem .7rem;border-radius:999px;font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.35);color:#fff;white-space:nowrap}
-.s-finalizado{background:#fff;color:#000}.s-cancelado{opacity:.5}.s-solicitado,.s-pendiente{border-style:dashed}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;height:44px;padding:0 1.4rem;border-radius:999px;border:0;font-weight:700;font-size:.82rem;transition:transform .12s,box-shadow .3s}.btn:active{transform:scale(.96)}
-.btn-dark{background:#fff;color:#000}.btn-dark:hover{box-shadow:0 0 0 5px rgba(255,255,255,.15)}
-.btn-light{background:rgba(255,255,255,.1);color:#fff}
-.btn-red{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid #ef4444}
-input,select,textarea{width:100%;background:rgba(0,0,0,.55);border:1px solid var(--line);border-radius:12px;padding:.75rem 1rem;color:var(--ink);font:inherit;outline:none}
-input:focus,select:focus,textarea:focus{border-color:#fff}textarea{min-height:90px;resize:vertical}select option{background:#111}
-label{display:grid;gap:.35rem;font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-form{display:grid;gap:.8rem}
-.tabs{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none}.tabs button{background:rgba(255,255,255,.06);border:1px solid var(--line);padding:.55rem 1.1rem;border-radius:999px;font-size:.78rem;font-weight:600;color:var(--muted);white-space:nowrap}.tabs button.on{background:#fff;color:#000}
-.stat b{display:block;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;color:#fff}
-.tl{list-style:none;display:grid;gap:.7rem;border-left:1px solid var(--line);padding-left:1rem}.tl li{position:relative}.tl li::before{content:"";position:absolute;left:-1.28rem;top:.45rem;width:7px;height:7px;border-radius:50%;background:#fff}
-.chat{display:grid;gap:.6rem;max-height:52vh;overflow-y:auto;padding:.2rem}
-.msg{max-width:82%;padding:.6rem .9rem;border-radius:16px;background:rgba(255,255,255,.08);justify-self:start}.msg.me{background:#fff;color:#000;justify-self:end}.msg.me small{color:#555}
-.msg p{white-space:pre-wrap;overflow-wrap:anywhere}
-table{width:100%;border-collapse:collapse;font-size:.82rem}th,td{text-align:left;padding:.7rem .5rem;border-bottom:1px solid var(--line)}th{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}tr.k{cursor:pointer}tr.k:hover td{background:rgba(255,255,255,.04)}
-.tw{overflow-x:auto}
-.seg{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;padding:.3rem;border-radius:999px;background:rgba(0,0,0,.5);border:1px solid var(--line);margin:.3rem 0}.seg button{border:0;background:none;padding:.6rem;border-radius:999px;font-size:.78rem;font-weight:700;color:var(--muted)}.seg button.on{background:#fff;color:#000}
-.auth{max-width:420px;margin:12vh auto 0;text-align:center}.auth img{height:46px;margin:0 auto}.auth .msg2{min-height:1.2em;color:var(--muted);font-size:.8rem}
-.empty{text-align:center;color:var(--muted);padding:2rem 1rem}
-.badge-role{padding:.15rem .55rem;border-radius:999px;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.2)}
+html,body{height:100%;overflow:hidden;font:400 .88rem/1.5 Montserrat,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+/* ── tokens ── */
+:root{
+  --bg:#0a0a0b;
+  --surface:rgba(255,255,255,.05);
+  --surface2:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.09);
+  --border2:rgba(255,255,255,.16);
+  --ink:#f0f0f2;
+  --ink2:#c8c8cc;
+  --muted:#6e6e76;
+  --accent:#fff;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --sidebar-w:220px;
+  --sidebar-w-col:64px;
+  --radius:14px;
+  --win-radius:16px;
+  --taskbar:48px;
+}
+
+/* ── layout shell ── */
+#shell{display:flex;height:100vh;width:100vw;background:var(--bg);position:relative;overflow:hidden}
+
+/* ── grid wallpaper ── */
+#shell::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse 120% 90% at 60% 40%,#000 20%,transparent 100%);
+  mask-image:radial-gradient(ellipse 120% 90% at 60% 40%,#000 20%,transparent 100%)}
+
+/* ══════════════
+   SIDEBAR
+══════════════ */
+#sidebar{
+  position:relative;z-index:20;
+  width:var(--sidebar-w);
+  min-width:var(--sidebar-w);
+  height:100vh;
+  background:rgba(10,10,11,.85);
+  backdrop-filter:blur(24px);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  transition:width .35s var(--ease),min-width .35s var(--ease);
+  overflow:hidden;
+}
+#sidebar.collapsed{width:var(--sidebar-w-col);min-width:var(--sidebar-w-col)}
+
+.sb-logo{
+  display:flex;align-items:center;gap:.75rem;
+  padding:1.1rem 1rem 1rem;
+  border-bottom:1px solid var(--border);
+  min-height:60px;flex-shrink:0;
+}
+.sb-logo img{height:26px;flex-shrink:0;display:block}
+.sb-logo-text{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden}
+#sidebar.collapsed .sb-logo-text{opacity:0;width:0}
+
+.sb-toggle{
+  position:absolute;top:14px;right:10px;
+  width:26px;height:26px;border-radius:8px;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;color:var(--muted);z-index:2;flex-shrink:0;
+}
+.sb-toggle:hover{color:var(--ink);background:var(--surface)}
+#sidebar.collapsed .sb-toggle{right:50%;transform:translateX(50%);top:16px}
+
+.sb-section{padding:.5rem 0;border-bottom:1px solid var(--border);flex-shrink:0}
+.sb-section:last-of-type{border-bottom:0;flex:1;overflow-y:auto;overflow-x:hidden}
+.sb-label{
+  font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);padding:.6rem 1rem .3rem;white-space:nowrap;overflow:hidden;
+}
+#sidebar.collapsed .sb-label{opacity:0;height:0;padding:0}
+
+.sb-item{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.55rem 1rem;border-radius:10px;margin:1px 6px;
+  color:var(--ink2);font-size:.8rem;font-weight:500;
+  cursor:pointer;white-space:nowrap;overflow:hidden;
+  transition:background .15s,color .15s;position:relative;
+}
+.sb-item:hover{background:var(--surface2);color:var(--ink)}
+.sb-item.active{background:rgba(255,255,255,.12);color:#fff;font-weight:600}
+.sb-item svg{width:16px;height:16px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sb-item span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#sidebar.collapsed .sb-item span{width:0;opacity:0}
+#sidebar.collapsed .sb-item{justify-content:center;padding:.55rem 0}
+
+.sb-badge{
+  margin-left:auto;background:rgba(255,255,255,.15);border-radius:999px;
+  font-size:.58rem;font-weight:700;padding:.1rem .45rem;color:var(--ink);flex-shrink:0;
+}
+#sidebar.collapsed .sb-badge{display:none}
+
+.sb-user{
+  padding:.85rem 1rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:.7rem;flex-shrink:0;
+}
+.sb-avatar{
+  width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.12);
+  border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0;text-transform:uppercase;
+}
+.sb-user-info{overflow:hidden;flex:1}
+.sb-user-info b{display:block;font-size:.75rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-user-info small{font-size:.62rem;color:var(--muted)}
+#sidebar.collapsed .sb-user-info,.sb-logout-btn span{display:none}
+#sidebar.collapsed .sb-user{justify-content:center;padding:.85rem 0}
+.sb-logout-btn{color:var(--muted);font-size:.7rem;text-decoration:underline;text-underline-offset:3px;flex-shrink:0}
+.sb-logout-btn:hover{color:var(--ink)}
+
+/* ══════════════
+   DESKTOP AREA
+══════════════ */
+#desktop{
+  flex:1;position:relative;overflow:hidden;z-index:1;
+  display:flex;flex-direction:column;
+}
+
+/* ── taskbar ── */
+#taskbar{
+  height:var(--taskbar);min-height:var(--taskbar);
+  background:rgba(10,10,11,.7);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:.5rem;
+  padding:0 1rem;z-index:15;flex-shrink:0;
+}
+.tb-clock{margin-left:auto;font-size:.72rem;color:var(--muted);font-weight:500;white-space:nowrap}
+.tb-btn{
+  height:30px;padding:0 .75rem;border-radius:8px;
+  background:var(--surface2);border:1px solid var(--border);
+  font-size:.72rem;font-weight:600;color:var(--ink2);
+  display:flex;align-items:center;gap:.4rem;
+  transition:background .15s,color .15s;white-space:nowrap;
+}
+.tb-btn:hover{background:rgba(255,255,255,.14);color:#fff}
+.tb-btn.active{background:rgba(255,255,255,.18);color:#fff}
+.tb-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.tb-sep{width:1px;height:20px;background:var(--border);flex-shrink:0}
+
+/* ── icon grid (desktop) ── */
+#icon-area{
+  flex:1;overflow:hidden;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,80px);
+  grid-auto-rows:88px;
+  align-content:start;
+  gap:.25rem;
+  padding:1.2rem 1.4rem;
+}
+.desk-icon{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  gap:.45rem;padding:.55rem .3rem .4rem;border-radius:12px;
+  cursor:pointer;user-select:none;
+  transition:background .15s;
+}
+.desk-icon:hover{background:rgba(255,255,255,.09)}
+.desk-icon:active{background:rgba(255,255,255,.15)}
+.desk-icon .di-box{
+  width:46px;height:46px;border-radius:12px;
+  background:rgba(255,255,255,.07);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .2s var(--ease),box-shadow .2s;flex-shrink:0;
+}
+.desk-icon:hover .di-box{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.desk-icon .di-box svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.desk-icon .di-box.c-purple{background:rgba(139,92,246,.18);border-color:rgba(139,92,246,.3)}
+.desk-icon .di-box.c-blue{background:rgba(59,130,246,.18);border-color:rgba(59,130,246,.3)}
+.desk-icon .di-box.c-green{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.3)}
+.desk-icon .di-box.c-amber{background:rgba(245,158,11,.18);border-color:rgba(245,158,11,.3)}
+.desk-icon .di-box.c-rose{background:rgba(244,63,94,.18);border-color:rgba(244,63,94,.3)}
+.desk-icon .di-box.c-cyan{background:rgba(6,182,212,.18);border-color:rgba(6,182,212,.3)}
+.desk-icon .di-box.c-white{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.desk-icon span{font-size:.65rem;font-weight:600;color:var(--ink2);text-align:center;line-height:1.3;max-width:72px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+
+/* ══════════════
+   WINDOWS
+══════════════ */
+.win{
+  position:fixed;
+  background:rgba(14,14,16,.96);
+  backdrop-filter:blur(32px);
+  border:1px solid var(--border2);
+  border-radius:var(--win-radius);
+  box-shadow:0 32px 80px rgba(0,0,0,.7);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  z-index:100;
+  min-width:360px;min-height:240px;
+  transition:box-shadow .2s;
+}
+.win.focused{z-index:110;border-color:rgba(255,255,255,.22);box-shadow:0 40px 100px rgba(0,0,0,.8)}
+.win.minimized{display:none}
+
+.win-bar{
+  height:42px;min-height:42px;
+  background:rgba(255,255,255,.04);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:.6rem;
+  padding:0 .85rem;
+  cursor:move;user-select:none;flex-shrink:0;
+}
+.win-dots{display:flex;gap:.38rem;flex-shrink:0}
+.win-dot{width:11px;height:11px;border-radius:50%;cursor:pointer;transition:filter .15s}
+.win-dot:hover{filter:brightness(1.3)}
+.win-dot.close{background:#ef4444}
+.win-dot.min{background:#f59e0b}
+.win-dot.max{background:#22c55e}
+.win-title{font-size:.75rem;font-weight:600;color:var(--ink2);flex:1;text-align:center;pointer-events:none}
+.win-title-icon{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;margin-right:.3rem;vertical-align:-2px;flex-shrink:0}
+
+.win-body{
+  flex:1;overflow-y:auto;overflow-x:hidden;
+  padding:1.2rem 1.4rem 1.4rem;
+  display:flex;flex-direction:column;gap:1rem;
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.1) transparent;
+}
+.win-body::-webkit-scrollbar{width:5px}.win-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:9px}
+
+.win-resize{
+  position:absolute;bottom:0;right:0;
+  width:18px;height:18px;cursor:se-resize;
+  display:flex;align-items:flex-end;justify-content:flex-end;padding:4px;
+}
+.win-resize svg{width:10px;height:10px;stroke:var(--muted);fill:none;stroke-width:1.5;opacity:.5}
+
+/* ══════════════
+   UI COMPONENTS
+══════════════ */
+.card{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1rem 1.1rem;
+  display:flex;flex-direction:column;gap:.7rem;
+}
+.card-title{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.row{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.row.between{justify-content:space-between}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem}
+
+h1.win-h1{font-size:1.15rem;font-weight:800;color:#fff;letter-spacing:.01em;line-height:1.2}
+h2.sec{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.1rem}
+
+.stat-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1rem}
+.stat-card small{font-size:.62rem;color:var(--muted);display:block;margin-bottom:.25rem}
+.stat-card b{font-size:1.4rem;font-weight:800;color:#fff;display:block}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;height:36px;padding:0 1rem;border-radius:8px;font-weight:700;font-size:.76rem;transition:transform .1s,box-shadow .2s,background .15s;white-space:nowrap;flex-shrink:0}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:#fff;color:#000}.btn-primary:hover{box-shadow:0 0 0 4px rgba(255,255,255,.15)}
+.btn-ghost{background:rgba(255,255,255,.08);color:var(--ink);border:1px solid var(--border)}.btn-ghost:hover{background:rgba(255,255,255,.13)}
+.btn-red{background:rgba(239,68,68,.12);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}.btn-red:hover{background:rgba(239,68,68,.2)}
+.btn-sm{height:28px;padding:0 .7rem;font-size:.7rem;border-radius:6px}
+.btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+input,select,textarea{
+  width:100%;background:rgba(0,0,0,.4);border:1px solid var(--border);
+  border-radius:9px;padding:.6rem .85rem;color:var(--ink);font:inherit;
+  font-size:.8rem;outline:none;transition:border-color .15s;
+}
+input:focus,select:focus,textarea:focus{border-color:rgba(255,255,255,.35)}
+textarea{min-height:80px;resize:vertical}
+select option{background:#111}
+label.lbl{display:flex;flex-direction:column;gap:.3rem;font-size:.62rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.65rem}
+
+.bd{display:inline-flex;align-items:center;gap:.25rem;padding:.15rem .55rem;border-radius:999px;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);color:#fff;white-space:nowrap;flex-shrink:0}
+.s-solicitado,.s-pendiente{border-style:dashed}
+.s-revision,.s-edicion,.s-modificaciones{border-color:#f59e0b;color:#fcd34d}
+.s-entregado,.s-finalizado{border-color:#22c55e;color:#86efac;background:rgba(34,197,94,.1)}
+.s-cancelado{border-color:#ef4444;color:#fca5a5;opacity:1}
+.s-cancelado-dim{opacity:.5}
+.bd svg{width:9px;height:9px;stroke:currentColor;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+
+.bar{height:4px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden;flex-shrink:0}
+.bar i{display:block;height:100%;background:#fff;border-radius:9px;transition:width .5s var(--ease)}
+
+.pcard{
+  background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;
+  padding:.85rem 1rem;cursor:pointer;
+  transition:border-color .25s,transform .3s var(--ease),background .15s;
+  display:flex;flex-direction:column;gap:.5rem;
+}
+.pcard:hover{border-color:rgba(255,255,255,.3);transform:translateY(-2px);background:rgba(255,255,255,.07)}
+.pcard.ok{border-color:rgba(34,197,94,.4)}.pcard.ok:hover{border-color:#4ade80;box-shadow:0 0 20px -8px #22c55e}
+.pcard.proc{border-color:rgba(245,158,11,.4)}.pcard.proc:hover{border-color:#fbbf24;box-shadow:0 0 20px -8px #f59e0b}
+.pcard.canc{border-color:rgba(239,68,68,.4)}.pcard.canc:hover{border-color:#f87171;box-shadow:0 0 20px -8px #ef4444}
+.pcard b{font-size:.85rem;color:#fff;font-weight:700}
+.pcard small{font-size:.68rem;color:var(--muted)}
+
+table{width:100%;border-collapse:collapse;font-size:.78rem}
+th{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.5rem .6rem;border-bottom:1px solid var(--border);text-align:left;font-weight:600}
+td{padding:.55rem .6rem;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink2);vertical-align:middle}
+tr.clickable{cursor:pointer}tr.clickable:hover td{background:rgba(255,255,255,.04)}
+
+.tabs-row{display:flex;gap:.3rem;border-bottom:1px solid var(--border);padding-bottom:.1px;margin-bottom:.2rem;overflow-x:auto;scrollbar-width:none}
+.tabs-row::-webkit-scrollbar{display:none}
+.tab-btn{padding:.4rem .85rem;border-radius:8px 8px 0 0;font-size:.74rem;font-weight:600;color:var(--muted);border:1px solid transparent;border-bottom:0;transition:all .15s;white-space:nowrap}
+.tab-btn.on{background:rgba(255,255,255,.08);color:#fff;border-color:var(--border)}
+.tab-btn:hover{color:var(--ink)}
+
+.tl{list-style:none;display:flex;flex-direction:column;gap:.6rem;border-left:1px solid var(--border);padding-left:1rem}
+.tl li{position:relative;font-size:.78rem;color:var(--ink2)}
+.tl li::before{content:'';position:absolute;left:-1.22rem;top:.45rem;width:6px;height:6px;border-radius:50%;background:#fff}
+.tl li b{color:#fff;display:block}
+.tl li time{font-size:.65rem;color:var(--muted)}
+
+.chat-area{display:flex;flex-direction:column;gap:.5rem;max-height:320px;overflow-y:auto;padding:.1rem;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent}
+.bubble{max-width:78%;padding:.5rem .8rem;border-radius:12px;background:rgba(255,255,255,.07);align-self:flex-start}
+.bubble.me{background:#fff;color:#000;align-self:flex-end}.bubble.me small{color:#555}
+.bubble p{white-space:pre-wrap;font-size:.78rem;overflow-wrap:anywhere}
+.bubble small{font-size:.62rem;color:var(--muted);display:block;margin-bottom:.2rem}
+
+.badge-role{padding:.1rem .5rem;border-radius:999px;font-size:.58rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border:1px solid;white-space:nowrap}
 .badge-admin{border-color:#a78bfa;color:#a78bfa}
 .badge-staff{border-color:#60a5fa;color:#60a5fa}
 .badge-manager{border-color:#34d399;color:#34d399}
-.badge-client{border-color:#9a9a9f;color:#9a9a9f}
-@media(max-width:600px){.who span{display:none}.msg{max-width:92%}}
+.badge-client{border-color:#6e6e76;color:#9a9a9f}
 
-.pc.st-cancelado,.card.st-cancelado{border-color:#ef4444}.pc.st-proceso,.card.st-proceso{border-color:#f59e0b}.pc.st-ok,.card.st-ok{border-color:#22c55e}
-.pc.st-cancelado:hover{border-color:#f87171;box-shadow:0 0 28px -10px #ef4444}.pc.st-proceso:hover{border-color:#fbbf24;box-shadow:0 0 28px -10px #f59e0b}.pc.st-ok:hover{border-color:#4ade80;box-shadow:0 0 28px -10px #22c55e}
-.bd.s-cancelado{border-color:#ef4444;color:#fca5a5;opacity:1}
-.bd.s-revision,.bd.s-edicion,.bd.s-modificaciones{border-color:#f59e0b;color:#fcd34d}
-.bd.s-entregado,.bd.s-finalizado{border-color:#22c55e;color:#86efac;background:rgba(34,197,94,.14)}
-.bd svg{width:11px;height:11px;margin-right:.3rem;vertical-align:-1px}
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.82);display:grid;place-items:center;padding:1rem;z-index:50;overflow-y:auto}.ov .inner{max-width:500px;width:100%}
-.ov .card{border-color:#ef4444}
-.ov-neu .card{border-color:var(--line)}
+.empty-state{text-align:center;color:var(--muted);padding:2.5rem 1rem;font-size:.8rem}
 
+.cast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.65rem}
+.ccast{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:.75rem .9rem;display:flex;flex-direction:column;gap:.25rem}
+.ccast b{color:#fff;font-size:.82rem}.ccast small{color:var(--muted);font-size:.68rem}
+
+/* ── notification dot ── */
+.dot{width:7px;height:7px;border-radius:50%;background:#ef4444;flex-shrink:0}
+
+/* ── auth overlay ── */
+#auth-screen{
+  position:fixed;inset:0;z-index:999;
+  background:rgba(10,10,11,.97);
+  display:flex;align-items:center;justify-content:center;
+  padding:1rem;
+}
+.auth-box{
+  width:100%;max-width:380px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border2);
+  border-radius:20px;padding:2rem 1.75rem;
+  display:flex;flex-direction:column;gap:1rem;text-align:center;
+}
+.auth-box img{height:36px;margin:0 auto .5rem}
+.auth-box h1{font-size:1.1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.02em}
+.auth-box small{color:var(--muted);font-size:.76rem}
+.seg2{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;padding:.25rem;border-radius:999px;background:rgba(0,0,0,.5);border:1px solid var(--border)}
+.seg2 button{border:0;background:none;padding:.5rem;border-radius:999px;font-size:.76rem;font-weight:700;color:var(--muted)}
+.seg2 button.on{background:#fff;color:#000}
+.msg-line{min-height:1.1em;color:var(--muted);font-size:.75rem}
+.lnk-btn{background:none;border:0;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-size:.74rem;cursor:pointer}
+.lnk-btn:hover{color:var(--ink)}
+
+/* paper print */
 .pw{overflow-x:auto}
-#paper{background:#fff;color:#111;border-radius:14px;padding:clamp(1rem,4vw,2.2rem);font-size:.82rem;line-height:1.45;min-width:0}
-#paper .phd{display:flex;justify-content:space-between;border-bottom:2px solid #111;padding-bottom:.5rem;margin-bottom:.8rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase}
-#paper h1{color:#111;font-size:1.25rem;margin-bottom:.8rem;text-transform:none}
-#paper h2{color:#111;border-bottom:1px solid #bbb;padding-bottom:.2rem;margin:1rem 0 .5rem}
-#paper small{color:#666;display:block;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em}
-#paper .pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem 1rem}
-#paper table{width:100%;border-collapse:collapse;font-size:.72rem}
-#paper th{background:#eee;color:#111;border:1px solid #bbb;padding:.35rem;text-align:left;letter-spacing:.04em}
-#paper td{border:1px solid #ccc;padding:.35rem;vertical-align:top;color:#111}
-#paper .tot{width:auto;margin:.8rem 0 0 auto}
-#paper .fr{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem}
-#paper .fc{border:1px solid #bbb;padding:.5rem;break-inside:avoid}
-#paper .fc img,#paper .ph{width:100%;aspect-ratio:16/9;object-fit:cover;background:#eee;display:block;margin-bottom:.4rem}
-#paper p{margin:.5rem 0;color:#111}
-#paper .sg{display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap}#paper .sg div{flex:1;min-width:140px;text-align:center;font-size:.72rem}#paper .sg span{display:block;border-top:1px solid #111;margin-bottom:.3rem}
-@media print{html,body{background:#fff!important}.glow,.top,.pm>*:not(.pw){display:none!important}.pm{padding:0;max-width:none;display:block}#paper{border-radius:0;padding:0}@page{margin:12mm}}
+#paper{background:#fff;color:#111;border-radius:10px;padding:1.5rem;font-size:.78rem;line-height:1.45}
+#paper .phd{display:flex;justify-content:space-between;border-bottom:2px solid #111;padding-bottom:.4rem;margin-bottom:.7rem;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+#paper h1{color:#111;font-size:1.1rem;margin-bottom:.7rem;text-transform:none}
+#paper h2{color:#111;border-bottom:1px solid #bbb;padding-bottom:.2rem;margin:.9rem 0 .4rem;font-size:.72rem;letter-spacing:.12em}
+#paper small{color:#666;display:block;font-size:.58rem;text-transform:uppercase;letter-spacing:.06em}
+#paper .pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.4rem .8rem}
+#paper table{width:100%;border-collapse:collapse;font-size:.68rem}
+#paper th{background:#eee;color:#111;border:1px solid #bbb;padding:.3rem;text-align:left}
+#paper td{border:1px solid #ccc;padding:.3rem;vertical-align:top;color:#111}
+#paper .tot{width:auto;margin:.7rem 0 0 auto}
+#paper .fr{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.7rem}
+#paper .fc{border:1px solid #bbb;padding:.45rem;break-inside:avoid}
+#paper .fc img,#paper .ph{width:100%;aspect-ratio:16/9;object-fit:cover;background:#eee;display:block;margin-bottom:.35rem}
+#paper p{margin:.4rem 0;color:#111}
+#paper .sg{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}
+#paper .sg div{flex:1;min-width:120px;text-align:center;font-size:.68rem}
+#paper .sg span{display:block;border-top:1px solid #111;margin-bottom:.25rem}
+@media print{html,body{overflow:auto!important}#shell{display:block!important}.win,.win-bar,.sb-toggle,#sidebar,#taskbar,#icon-area{display:none!important}#paper{border-radius:0;padding:0}@page{margin:12mm}#paper{zoom:var(--pz,1)}#paper table{table-layout:fixed}#paper td,#paper th{word-break:break-word;font-size:.6rem}}
 
-.fold{gap:.4rem}.fold svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:.3rem}
-.crumb{color:var(--muted);font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:0 .5rem;white-space:nowrap}
-@media print{#paper{zoom:var(--pz,1)}#paper table{table-layout:fixed}#paper td,#paper th{word-break:break-word;font-size:.62rem}}
-
-/* reparto cards */
-.cast-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem}
-.cast-card{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:.9rem;display:grid;gap:.35rem}
-.cast-card b{color:#fff;font-size:.88rem}
-.cast-card small{color:var(--muted);font-size:.72rem}
+/* ── responsive: mobile hides sidebar ── */
+@media(max-width:680px){
+  #sidebar{position:fixed;left:0;top:0;bottom:0;z-index:200;transform:translateX(-100%);transition:transform .3s var(--ease)}
+  #sidebar.open{transform:translateX(0)}
+  #shell{display:block}
+  #desktop{height:100vh}
+  .win{min-width:calc(100vw - 1rem);max-width:calc(100vw - 1rem)!important;left:.5rem!important}
+}
 </style>
 </head>
 <body>
-<div class="glow" aria-hidden="true"></div>
-<div id="app"></div>
-<noscript>Panel de clientes de Fluxora Creative Studio. Activa JavaScript para entrar a tu panel.</noscript>
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen">
+  <div class="auth-box">
+    <a href="index.html"><img src="1.1.png" alt="Fluxora"></a>
+    <div id="auth-inner"></div>
+  </div>
+</div>
+
+<!-- APP SHELL -->
+<div id="shell" style="display:none">
+  <!-- SIDEBAR -->
+  <nav id="sidebar">
+    <div class="sb-logo">
+      <img src="1.1.png" alt="Fluxora">
+      <span class="sb-logo-text">Creative Studio</span>
+      <button class="sb-toggle" onclick="WM.toggleSidebar()" title="Colapsar">
+        <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+    </div>
+    <div id="sb-nav"></div>
+    <div class="sb-user" id="sb-user"></div>
+  </nav>
+
+  <!-- DESKTOP -->
+  <div id="desktop">
+    <div id="taskbar">
+      <div id="tb-wins" style="display:flex;gap:.4rem;align-items:center;overflow-x:auto;scrollbar-width:none;flex:1"></div>
+      <div class="tb-sep"></div>
+      <div class="tb-clock" id="tb-clock"></div>
+    </div>
+    <div id="icon-area"></div>
+  </div>
+</div>
+
+<!-- WINDOWS CONTAINER -->
+<div id="wins-container"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
-/* ===== CONFIGURACION ===== */
+/* ══════════════════════════════════════
+   CONFIG
+══════════════════════════════════════ */
 const SUPABASE_URL='https://bglrhelixubrfdpqkwjy.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnbHJoZWxpeHVicmZkcHFrd2p5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMxMzU5NjIsImV4cCI6MjEwODcxMTk2Mn0.RkdhuvJ1iBWF0BzW5CtdauJPyj6VtxeL-OfrJZYhqm4';
-/* ======================== */
 
-const app=document.getElementById('app');
-const $=s=>document.querySelector(s);
-const ST={solicitado:'Solicitado',revision:'En revisión',edicion:'En edición',entregado:'Entregado',modificaciones:'En modificaciones',finalizado:'Finalizado',cancelado:'Cancelado'};
-const TY={edicion:'Edición de video',diseno:'Diseño gráfico',ia:'Estrategia con IA',cortometraje:'Cortometraje',documental:'Documental',otro:'Otro'};
-const MD={pendiente:'Pendiente',proceso:'En proceso',hecha:'Hecha'};
-const ROLES={client:'Cliente',manager:'Manager',staff:'Colaborador',admin:'Administrador'};
+/* ══════════════════════════════════════
+   HELPERS
+══════════════════════════════════════ */
 const esc=t=>String(t??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const mx=n=>new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN'}).format(+n||0);
 const fd=d=>d?new Date(String(d).length===10?d+'T00:00:00':d).toLocaleDateString('es-MX',{day:'2-digit',month:'short',year:'numeric'}):'Sin fecha';
 const ft=d=>new Date(d).toLocaleString('es-MX',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});
-const CK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const $=s=>document.querySelector(s);
+const opts=(o,v)=>Object.entries(o).map(([k,t])=>`<option value="${k}"${k===v?' selected':''}>${t}</option>`).join('');
+const CK='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+const ST={solicitado:'Solicitado',revision:'En revisión',edicion:'En edición',entregado:'Entregado',modificaciones:'En modificaciones',finalizado:'Finalizado',cancelado:'Cancelado'};
+const TY={edicion:'Edición de video',diseno:'Diseño gráfico',ia:'Estrategia con IA',cortometraje:'Cortometraje',documental:'Documental',otro:'Otro'};
+const MD={pendiente:'Pendiente',proceso:'En proceso',hecha:'Hecha'};
+const ROLES={client:'Cliente',manager:'Manager',staff:'Colaborador',admin:'Administrador'};
+
 const bd=s=>`<span class="bd s-${s}">${s==='entregado'||s==='finalizado'?CK:''}${ST[s]||MD[s]||s}</span>`;
-const stc=s=>s==='cancelado'?'st-cancelado':['revision','edicion','modificaciones'].includes(s)?'st-proceso':['entregado','finalizado'].includes(s)?'st-ok':'';
+const stcC=s=>s==='cancelado'?'canc':['revision','edicion','modificaciones'].includes(s)?'proc':['entregado','finalizado'].includes(s)?'ok':'';
 const roleBadge=r=>`<span class="badge-role badge-${r}">${ROLES[r]||r}</span>`;
 const daysLeft=p=>Math.max(0,Math.ceil(14-(Date.now()-new Date(p.cancelled_at||Date.now()))/864e5));
+const okUrl=u=>/^https?:\/\//i.test(u||'')?u:null;
+const ym=d=>String(d).slice(0,7),thisM=new Date().toISOString().slice(0,7);
+const TODAY=new Date().toISOString().slice(0,10);
 
-function askReason(){return new Promise(res=>{const d=document.createElement('div');d.className='ov';d.innerHTML='<div class="inner"><form class="card"><h2>Cancelar proyecto</h2><small>El cliente verá este motivo y podrá enviar una apelación.</small><textarea required placeholder="Motivo de la cancelación"></textarea><div class="row2"><button type="button" class="btn btn-light">Volver</button><button class="btn btn-dark">Cancelar proyecto</button></div></form></div>';document.body.appendChild(d);const t=d.querySelector('textarea');t.focus();const done=v=>{d.remove();res(v)};d.querySelector('.btn-light').onclick=()=>done(null);d.querySelector('form').onsubmit=e=>{e.preventDefault();done(t.value.trim()||null)}})}
-
-const opts=(o,v)=>Object.entries(o).map(([k,t])=>`<option value="${k}" ${k===v?'selected':''}>${t}</option>`).join('');
+/* ══════════════════════════════════════
+   APP STATE
+══════════════════════════════════════ */
 let sb,ch;
-let S={mem:[],tm:null,fit:true,paper:'letter',dkBack:null,docs:[],dk:null,wish:[],set:{},q:{lines:[],mode:'plan'},dr:null,u:null,p:null,projects:[],payments:[],profiles:[],fin:[],cast:[],view:'home',id:null,tab:'resumen',f:'',D:{ev:[],msg:[],mods:[],ap:[]}};
+const S={
+  u:null,p:null,
+  projects:[],payments:[],profiles:[],fin:[],mem:[],docs:[],wish:[],cast:[],
+  set:{},tm:null,q:{lines:[],mode:'plan'},dr:null,
+  D:{ev:[],msg:[],mods:[],ap:[]},
+  curProject:null,curTab:'resumen',
+  dk:null,dkBack:null,fit:true,paper:'letter'
+};
 
-/* ── role helpers ── */
-const admin=()=>S.p&&S.p.role==='admin';
-const staff=()=>S.p&&S.p.role==='staff';
-const manager=()=>S.p&&S.p.role==='manager';
-const team=()=>S.p&&['admin','staff'].includes(S.p.role);        // full back-office
-const canManage=()=>S.p&&['admin','staff','manager'].includes(S.p.role); // can touch projects
+/* role helpers */
+const admin=()=>S.p?.role==='admin';
+const staff=()=>S.p?.role==='staff';
+const manager=()=>S.p?.role==='manager';
+const isClient=()=>S.p?.role==='client';
+const team=()=>['admin','staff'].includes(S.p?.role);
+const canManage=()=>['admin','staff','manager'].includes(S.p?.role);
 
-/* manager sees only assigned projects */
 const myProjects=()=>{
   if(admin()||staff()) return S.projects;
   if(manager()) return S.projects.filter(p=>S.mem.some(m=>m.user_id===S.u.id&&m.project_id===p.id));
   return S.projects.filter(p=>p.client_id===S.u.id);
 };
-
 const paid=id=>S.payments.filter(x=>x.project_id===id).reduce((a,x)=>a+ +x.amount,0);
-const ym=d=>String(d).slice(0,7),thisM=new Date().toISOString().slice(0,7);
+const incomeOf=m=>S.payments.filter(x=>ym(x.paid_at)===m).reduce((a,x)=>a+ +x.amount,0)+(S.fin||[]).filter(x=>x.kind==='ingreso'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
+const expOf=m=>(S.fin||[]).filter(x=>x.kind==='gasto'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
 
-/* ── auth views ── */
-function authView(m){m=m||(location.hash==='#registro'?'up':'in');const up=m==='up';
-  app.innerHTML=`<div class="card auth"><a href="index.html"><img src="1.1.png" alt="Fluxora"></a><div class="seg"><button class="${up?'':'on'}" onclick="authView('in')">Entrar</button><button class="${up?'on':''}" onclick="authView('up')">Crear cuenta</button></div><h1>${up?'Crea tu cuenta':'Bienvenido de vuelta'}</h1><small>${up?'Regístrate para pedir tus proyectos y darles seguimiento.':'Sigue tus proyectos, pide modificaciones y habla con nosotros.'}</small><form onsubmit="return A.auth(event,'${m}')">${up?'<input name="name" placeholder="Nombre completo" autocomplete="name" required>':''}<input name="email" type="email" placeholder="Correo" autocomplete="email" required><input name="pass" type="password" placeholder="Contraseña (mínimo 6 caracteres)" minlength="6" autocomplete="${up?'new-password':'current-password'}" required>${up?'<input name="pass2" type="password" placeholder="Repite la contraseña" minlength="6" autocomplete="new-password" required>':''}<button class="btn btn-dark">${up?'Crear mi cuenta':'Entrar'}</button></form><p class="msg2" id="msg"></p>${up?'':'<button type="button" class="lnk" onclick="A.reset()">Olvidé mi contraseña</button>'}</div>`}
-function recView(){app.innerHTML=`<div class="card auth"><a href="index.html"><img src="1.1.png" alt="Fluxora"></a><h1>Nueva contraseña</h1><small>Escribe la contraseña nueva para tu cuenta.</small><form onsubmit="return A.newpass(event)"><input name="pass" type="password" minlength="6" placeholder="Nueva contraseña (mínimo 6)" autocomplete="new-password" required><input name="pass2" type="password" minlength="6" placeholder="Repite la contraseña" autocomplete="new-password" required><button class="btn btn-dark">Guardar contraseña</button></form><p class="msg2" id="msg"></p></div>`}
-const tr=m=>{m=String(m||'');return /Invalid login/i.test(m)?'Correo o contraseña incorrectos.':/already registered|already been registered/i.test(m)?'Ese correo ya tiene cuenta. Usa "Entrar".':/Email not confirmed/i.test(m)?'Confirma tu correo antes de entrar. Revisa tu bandeja.':/at least 6/i.test(m)?'La contraseña debe tener mínimo 6 caracteres.':/rate limit/i.test(m)?'Demasiados intentos. Espera un momento.':m}
-
-/* ── data load ── */
+/* ══════════════════════════════════════
+   DATA
+══════════════════════════════════════ */
 async function load(){
   const q=[
     sb.from('projects').select('*,profiles!client_id(full_name,email)').order('created_at',{ascending:false}),
@@ -188,435 +530,962 @@ async function load(){
   if(admin()){S.profiles=r[3].data||[];S.fin=r[4].data||[];S.wish=(r[5].data||[]).sort((a,b)=>(a.status==='comprado')-(b.status==='comprado')||a.priority-b.priority||String(a.created_at).localeCompare(b.created_at));S.set=Object.fromEntries((r[6].data||[]).map(x=>[x.key,x.value]))}
   if(staff()&&!admin()){S.profiles=r[3].data||[];S.fin=r[4].data||[]}
   if(canManage()){const d=await sb.from('documents').select('id,kind,title,project_id,updated_at').order('updated_at',{ascending:false});S.docs=d.data||[]}
-  if(S.id) await loadD();
 }
-async function loadD(){
-  const g=(t,a)=>sb.from(t).select('*').eq('project_id',S.id).order('created_at',{ascending:a});
+async function loadProject(id){
+  const g=(t,asc)=>sb.from(t).select('*').eq('project_id',id).order('created_at',{ascending:asc});
   const [e,m,o,a,c]=await Promise.all([g('project_events',false),g('messages',true),g('modifications',false),g('appeals',false),g('cast_members',true)]);
   S.D={ev:e.data||[],msg:m.data||[],mods:o.data||[],ap:a.data||[]};
   S.cast=c.data||[];
 }
-function sub(){if(ch)return;let tm;ch=sb.channel('rt').on('postgres_changes',{event:'*',schema:'public'},()=>{clearTimeout(tm);tm=setTimeout(async()=>{await load();render(true)},400)}).subscribe()}
-async function init(u){try{S.u=u;const r=await sb.from('profiles').select('*').eq('id',u.id).single();S.p=r.data;await load();sub();render()}catch(e){app.innerHTML='<div class="card auth"><h1>No pudimos cargar tu panel</h1><small>'+esc(e.message||'Error de conexión')+'</small><button class="btn btn-dark" onclick="init(S.u)">Reintentar</button></div>'}}
+function sub(){if(ch)return;let tm;ch=sb.channel('rt').on('postgres_changes',{event:'*',schema:'public'},()=>{clearTimeout(tm);tm=setTimeout(async()=>{await load();WM.refreshAll()},500)}).subscribe()}
 
-/* ── navigation ── */
-function go(v,id){if(v==='docs'&&!id){S.dk=null;S.dkBack=null}S.view=v;S.id=id||null;S.tab='resumen';S.cast=[];(S.id?loadD():Promise.resolve()).then(()=>{render();scrollTo(0,0)})}
+/* ══════════════════════════════════════
+   WINDOW MANAGER
+══════════════════════════════════════ */
+const WM={
+  wins:{},   // id -> {el,title,icon}
+  zTop:100,
+  sideCollapsed:false,
 
-const IC={proy:'<svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',din:'<svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/></svg>',prod:'<svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M3 9l3-5h4l-3 5M10 9l3-5h4l-3 5"/></svg>',site:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>',team:'<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6M16 5a3.5 3.5 0 0 1 0 6.5M18 14c2 .7 3.5 2.5 3.5 6"/></svg>'};
+  toggleSidebar(){
+    this.sideCollapsed=!this.sideCollapsed;
+    const sb=document.getElementById('sidebar');
+    sb.classList.toggle('collapsed',this.sideCollapsed);
+    const arrow=sb.querySelector('.sb-toggle svg path');
+    if(arrow) arrow.setAttribute('d',this.sideCollapsed?'M9 18l6-6-6-6':'M15 18l-6-6 6-6');
+  },
 
-const FOLD=[
-  {id:'proy',n:'Proyectos',d:'Proyectos y clientes',v:[['projects','Proyectos'],['clients','Clientes']],c:()=>S.projects.length+' proyectos',adm:0},
-  {id:'din',n:'Dinero',d:'Pagos, finanzas, cotizador y wishlist',adm:1,v:[['pay','Pagos'],['fin','Finanzas'],['quote','Cotizador'],['wish','Wishlist']],c:()=>'Por cobrar '+mx(S.projects.filter(p=>p.status!=='cancelado').reduce((a,p)=>a+Math.max(0,+p.price-paid(p.id)),0))},
-  {id:'prod',n:'Producción',d:'Documentos de producción',v:[['docs','Documentos']],c:()=>S.docs.length+' documentos',adm:0},
-  {id:'site',n:'Mi sitio',d:'Paquetes, precios y contacto',adm:1,v:[['site','Mi sitio']],c:()=>'Se ve en tu página'},
-  {id:'team',n:'Equipo',d:'Roles y permisos',adm:1,v:[['team','Equipo']],c:()=>S.profiles.filter(x=>x.role!=='client').length+' en el equipo'}
-];
+  open(id,title,icon,buildFn,opts={}){
+    if(this.wins[id]){
+      const w=this.wins[id].el;
+      w.classList.remove('minimized');
+      this.focus(id);
+      if(buildFn) this._setBody(id,buildFn);
+      return;
+    }
+    const w=document.createElement('div');
+    w.className='win';
+    w.id='win-'+id;
+    const iw=opts.w||720,ih=opts.h||520;
+    const maxX=window.innerWidth-iw-20,maxY=window.innerHeight-ih-20;
+    const ox=80+Math.min(Object.keys(this.wins).length*24,maxX>0?maxX:0);
+    const oy=60+Math.min(Object.keys(this.wins).length*20,maxY>0?maxY:0);
+    w.style.cssText=`left:${ox}px;top:${oy}px;width:${iw}px;height:${ih}px`;
+    w.innerHTML=`
+      <div class="win-bar" id="winbar-${id}">
+        <div class="win-dots">
+          <div class="win-dot close" onclick="WM.close('${id}')"></div>
+          <div class="win-dot min" onclick="WM.minimize('${id}')"></div>
+          <div class="win-dot max" onclick="WM.maximize('${id}')"></div>
+        </div>
+        <span class="win-title">${icon?`<svg class="win-title-icon" viewBox="0 0 24 24">${icon}</svg>`:''}${esc(title)}</span>
+        <div style="width:52px"></div>
+      </div>
+      <div class="win-body" id="winbody-${id}"></div>
+      <div class="win-resize" onmousedown="WM.startResize(event,'${id}')">
+        <svg viewBox="0 0 10 10"><path d="M10 0L0 10M6 0L0 6M10 4L4 10"/></svg>
+      </div>`;
+    document.getElementById('wins-container').appendChild(w);
+    this.wins[id]={el:w,title,icon,buildFn,maximized:false};
+    this.focus(id);
+    this._makeDraggable(w,id);
+    if(buildFn) this._setBody(id,buildFn);
+    this._addTaskbarBtn(id,title);
+  },
 
-const folders=()=>{
-  if(admin()) return FOLD;
-  if(staff()) return FOLD.filter(f=>!f.adm).concat([{id:'din',n:'Finanzas',d:'Pagos y finanzas',adm:0,v:[['pay','Pagos'],['fin','Finanzas']],c:()=>''}]);
-  // manager: solo proyectos y documentos
-  return FOLD.filter(f=>['proy','prod'].includes(f.id)).map(f=>f.id==='proy'?{...f,v:[['projects','Proyectos']]}:f);
-};
-const foldOf=v=>S.id?folders()[0]:folders().find(f=>f.v&&f.v.some(x=>x[0]===v));
+  _setBody(id,buildFn){
+    const body=document.getElementById('winbody-'+id);
+    if(body){body.innerHTML=buildFn();if(this.wins[id])this.wins[id].buildFn=buildFn;}
+    const chat=body?.querySelector('.chat-area');
+    if(chat) chat.scrollTop=chat.scrollHeight;
+  },
 
-/* ── render shell ── */
-function render(keep){
-  if(keep&&document.activeElement&&/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
-  let nav='',sub='';
-  const role=S.p&&S.p.role;
-  if(role==='client'){
-    nav=[['home','Mis proyectos'],['new','Nuevo proyecto']].map(([v,t])=>`<button class="${S.view===v&&!S.id?'on':''}" onclick="go('${v}')">${t}</button>`).join('');
-  } else {
-    const fl=foldOf(S.view);
-    nav=`<button class="${S.view==='home'&&!S.id?'on':''}" onclick="go('home')">Inicio</button>${fl&&S.view!=='home'?`<span class="crumb">${fl.n}</span>`:''}`;
-    if(fl&&!S.id&&fl.v&&fl.v.length>1) sub=`<div class="tabs">${fl.v.map(([v,t])=>`<button class="${S.view===v?'on':''}" onclick="go('${v}')">${t}</button>`).join('')}</div>`;
-  }
-  const roleLabel=role==='admin'?' · Admin':role==='staff'?' · Colaborador':role==='manager'?' · Manager':'';
-  app.innerHTML=`<header class="top"><a href="index.html" class="brand"><img src="1.1.png" alt="Fluxora"></a><nav>${nav}</nav><div class="who"><span>${esc((S.p&&S.p.full_name)||S.u.email)}${roleLabel}</span><button class="lnk" onclick="sb.auth.signOut()">Salir</button></div></header><main class="pm">${sub}${S.id?detail():V[S.view]?V[S.view]():V.home()}</main>`;
-  const c=document.querySelector('.chat');if(c)c.scrollTop=c.scrollHeight;
-  if(admin()&&S.view==='quote'&&!S.id)Q.u();
-}
+  refresh(id){
+    if(this.wins[id]?.buildFn) this._setBody(id,this.wins[id].buildFn);
+  },
 
-/* ── project cards ── */
-const card=p=>{const pg=paid(p.id),cx=p.status==='cancelado'&&!canManage();
-  return `<article class="card pc ${stc(p.status)}" onclick="go('project','${p.id}')"><div class="row2"><b>${esc(p.title)}</b>${bd(p.status)}</div><small>${TY[p.type]||''}${p.format&&p.format!=='na'?' · '+esc(p.format):''}${canManage()?' · '+esc(p.profiles&&p.profiles.full_name||''):''}</small>${cx?`<small>Proyecto cerrado · puedes apelar. Se quitará en ${daysLeft(p)} día(s).</small>`:`<div class="bar"><i style="width:${p.progress}%"></i></div><div class="row2"><small>${p.progress}% completado</small><small>${+p.price>0?mx(pg)+' de '+mx(p.price):'Por cotizar'}</small></div>`}</article>`};
-const stat=(t,v)=>`<div class="card stat"><small>${t}</small><b>${v}</b></div>`;
-const incomeOf=m=>S.payments.filter(x=>ym(x.paid_at)===m).reduce((a,x)=>a+ +x.amount,0)+(S.fin||[]).filter(x=>x.kind==='ingreso'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
-const expOf=m=>(S.fin||[]).filter(x=>x.kind==='gasto'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
+  refreshAll(){
+    Object.keys(this.wins).forEach(id=>this.refresh(id));
+    this._buildSidebar();this._buildIcons();
+  },
 
-/* ══════════════════════════════════════════
-   VIEWS
-══════════════════════════════════════════ */
-const V={
-home(){
-  /* CLIENT */
-  if(S.p&&S.p.role==='client'){
-    return `<div class="row2"><h1>Mis proyectos</h1><button class="btn btn-dark" onclick="go('new')">Nuevo proyecto</button></div>${myProjects().length?`<div class="grid">${myProjects().map(card).join('')}</div>`:'<div class="card empty">Aún no tienes proyectos.</div>'}`;
-  }
-  /* MANAGER */
-  if(manager()){
+  close(id){
+    this.wins[id]?.el.remove();
+    delete this.wins[id];
+    document.getElementById('tb-btn-'+id)?.remove();
+  },
+
+  minimize(id){
+    this.wins[id]?.el.classList.add('minimized');
+    document.getElementById('tb-btn-'+id)?.classList.remove('active');
+  },
+
+  maximize(id){
+    const w=this.wins[id];if(!w)return;
+    if(w.maximized){
+      w.el.style.cssText=w.prevStyle;w.maximized=false;
+    } else {
+      w.prevStyle=w.el.style.cssText;
+      const sb=document.getElementById('sidebar');
+      const sbW=this.sideCollapsed?64:220;
+      w.el.style.cssText=`left:${sbW}px;top:48px;width:calc(100vw - ${sbW}px);height:calc(100vh - 48px);border-radius:0`;
+      w.maximized=true;
+    }
+  },
+
+  focus(id){
+    Object.values(this.wins).forEach(w=>w.el.classList.remove('focused'));
+    document.querySelectorAll('.tb-btn').forEach(b=>b.classList.remove('active'));
+    const w=this.wins[id];if(!w)return;
+    this.zTop++;w.el.style.zIndex=this.zTop;w.el.classList.add('focused');w.el.classList.remove('minimized');
+    document.getElementById('tb-btn-'+id)?.classList.add('active');
+  },
+
+  _addTaskbarBtn(id,title){
+    const btn=document.createElement('button');
+    btn.className='tb-btn';btn.id='tb-btn-'+id;
+    btn.innerHTML=`<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>${esc(title.length>18?title.slice(0,16)+'…':title)}`;
+    btn.onclick=()=>{
+      const w=this.wins[id];if(!w)return;
+      if(w.el.classList.contains('minimized')||!w.el.classList.contains('focused')){this.focus(id);}
+      else this.minimize(id);
+    };
+    document.getElementById('tb-wins').appendChild(btn);
+  },
+
+  _makeDraggable(win,id){
+    const bar=document.getElementById('winbar-'+id);
+    let ox,oy,dragging=false;
+    bar.addEventListener('mousedown',e=>{
+      if(e.target.classList.contains('win-dot')) return;
+      dragging=true;ox=e.clientX-win.offsetLeft;oy=e.clientY-win.offsetTop;
+      this.focus(id);e.preventDefault();
+    });
+    document.addEventListener('mousemove',e=>{
+      if(!dragging)return;
+      win.style.left=Math.max(0,e.clientX-ox)+'px';
+      win.style.top=Math.max(0,e.clientY-oy)+'px';
+    });
+    document.addEventListener('mouseup',()=>{dragging=false});
+    win.addEventListener('mousedown',()=>this.focus(id));
+  },
+
+  startResize(e,id){
+    const w=this.wins[id]?.el;if(!w)return;
+    e.preventDefault();
+    const sx=e.clientX,sy=e.clientY,sw=w.offsetWidth,sh=w.offsetHeight;
+    const mv=e2=>{w.style.width=Math.max(360,sw+e2.clientX-sx)+'px';w.style.height=Math.max(240,sh+e2.clientY-sy)+'px'};
+    const up=()=>{document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',up)};
+    document.addEventListener('mousemove',mv);document.addEventListener('mouseup',up);
+  },
+
+  _buildIcons(){
+    const area=document.getElementById('icon-area');if(!area)return;
+    const icons=this._iconList();
+    area.innerHTML=icons.map(ic=>`
+      <div class="desk-icon" onclick="WM.openApp('${ic.id}')">
+        <div class="di-box ${ic.color}"><svg viewBox="0 0 24 24">${ic.svg}</svg></div>
+        <span>${esc(ic.label)}</span>
+      </div>`).join('');
+  },
+
+  _iconList(){
+    const icons=[];
     const mp=myProjects();
-    return `<h1>Mis proyectos</h1>${mp.length?`<div class="grid">${mp.map(card).join('')}</div>`:'<div class="card empty">No tienes proyectos asignados todavía.</div>'}`;
-  }
-  /* STAFF / ADMIN */
-  const act=S.projects.filter(p=>!['finalizado','cancelado'].includes(p.status)),nw=S.projects.filter(p=>p.status==='solicitado'),owed=S.projects.filter(p=>p.status!=='cancelado').reduce((a,p)=>a+Math.max(0,+p.price-paid(p.id)),0);
-  return `<h1>${admin()?'Panel de control':'Tu panel'}</h1><div class="grid">${admin()?stat('Proyectos activos',act.length)+stat('Por cobrar',mx(owed))+stat('Ingresos del mes',mx(incomeOf(thisM)))+stat('Gastos del mes',mx(expOf(thisM))):stat('Proyectos',S.projects.length)+stat('En curso',act.length)}</div><h2>Carpetas</h2><div class="grid">${folders().map(f=>`<article class="card pc fold" onclick="go('${f.v[0][0]}')">${IC[f.id]||''}<b>${f.n}</b><small>${f.d}</small><small style="color:#fff">${f.c()}</small></article>`).join('')}</div><h2>Solicitudes nuevas</h2>${nw.length?`<div class="grid">${nw.map(card).join('')}</div>`:'<div class="card empty">No hay solicitudes nuevas.</div>'}<h2>En curso</h2>${act.filter(p=>p.status!=='solicitado').length?`<div class="grid">${act.filter(p=>p.status!=='solicitado').map(card).join('')}</div>`:'<div class="card empty">Sin proyectos en curso.</div>'}`;
-},
+    icons.push({id:'projects',label:'Proyectos',color:'c-blue',svg:'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'});
+    if(!isClient()) icons.push({id:'docs',label:'Documentos',color:'c-purple',svg:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>'});
+    if(isClient()) icons.push({id:'new-project',label:'Nuevo proyecto',color:'c-green',svg:'<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'});
+    if(admin()||staff()) icons.push({id:'new-manual',label:'Crear proyecto',color:'c-green',svg:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/>'});
+    if(admin()) icons.push({id:'pay',label:'Pagos',color:'c-amber',svg:'<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/>'});
+    if(admin()) icons.push({id:'fin',label:'Finanzas',color:'c-amber',svg:'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'});
+    if(admin()) icons.push({id:'quote',label:'Cotizador',color:'c-cyan',svg:'<path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3"/><rect x="9" y="3" width="6" height="6" rx="1"/>'});
+    if(admin()) icons.push({id:'wish',label:'Wishlist',color:'c-rose',svg:'<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>'});
+    if(admin()) icons.push({id:'site',label:'Mi sitio',color:'c-white',svg:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'});
+    if(admin()) icons.push({id:'team',label:'Equipo',color:'c-white',svg:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6M16 5a3.5 3.5 0 0 1 0 6.5M18 14c2 .7 3.5 2.5 3.5 6"/>'});
+    if(admin()||staff()) icons.push({id:'clients',label:'Clientes',color:'c-white',svg:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'});
+    return icons;
+  },
 
-/* ── nuevo proyecto (cliente) ── */
-new(){return `<h1>Nuevo proyecto</h1><form class="card" onsubmit="return A.create(event)"><label>Título<input name="title" placeholder="Ej. Reel de mi negocio" required></label><div class="grid grid2"><label>Tipo<select name="type">${opts(TY)}</select></label><label>Formato<select name="format"><option value="vertical">Vertical 9:16</option><option value="horizontal">Horizontal 16:9</option><option value="ambos">Ambos</option><option value="na">No aplica</option></select></label><label>Paquete<select name="package"><option>Básico $150</option><option>Estándar $300</option><option>Pro $500</option><option>A cotizar</option></select></label></div><label>Cuéntanos qué necesitas<textarea name="description" required></textarea></label><label>Enlace a tu material (Drive, etc.)<input name="material_url" type="url" placeholder="https://"></label><button class="btn btn-dark">Enviar solicitud</button></form>`},
+  openApp(id){
+    if(id==='new-project'){ this.open('new-project','Nuevo proyecto','<path d="M12 5v14M5 12h14"/>',()=>VIEWS.newProject(),{w:560,h:520});return;}
+    if(id==='new-manual'){ this.open('new-manual','Crear proyecto','<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/>',()=>VIEWS.newManual(),{w:620,h:600});return;}
+    const map={
+      projects:['Proyectos','<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',()=>VIEWS.projects(),{w:780,h:540}],
+      docs:['Documentos','<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>',()=>VIEWS.docs(),{w:820,h:560}],
+      clients:['Clientes','<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>',()=>VIEWS.clients(),{w:780,h:480}],
+      pay:['Pagos','<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/>',()=>VIEWS.pay(),{w:760,h:480}],
+      fin:['Finanzas','<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',()=>VIEWS.fin(),{w:800,h:560}],
+      quote:['Cotizador','<path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3"/><rect x="9" y="3" width="6" height="6" rx="1"/>',()=>VIEWS.quote(),{w:760,h:560}],
+      wish:['Wishlist','<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',()=>VIEWS.wish(),{w:760,h:580}],
+      site:['Mi sitio','<circle cx="12" cy="12" r="9"/>',()=>VIEWS.site(),{w:780,h:580}],
+      team:['Equipo','<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6M16 5a3.5 3.5 0 0 1 0 6.5M18 14c2 .7 3.5 2.5 3.5 6"/>',()=>VIEWS.team(),{w:760,h:520}],
+    };
+    const m=map[id];if(!m)return;
+    this.open(id,m[0],m[1],m[2],m[3]);
+  },
 
-/* ── crear proyecto manual (admin / staff) ── */
-newmanual(){
-  return `<h1>Nuevo proyecto manual</h1>
-  <small>Para clientes que contactaron por otro medio. Puedes asignarles un cliente existente o dejarlo sin cuenta.</small>
-  <form class="card" onsubmit="return A.createManual(event)">
-    <div class="grid grid2">
-      <label>Título del proyecto<input name="title" required placeholder="Ej. Cortometraje 'La espera'"></label>
-      <label>Tipo<select name="type">${opts(TY)}</select></label>
-      <label>Formato<select name="format"><option value="vertical">Vertical 9:16</option><option value="horizontal">Horizontal 16:9</option><option value="ambos">Ambos</option><option value="na">No aplica</option></select></label>
-      <label>Paquete / servicio<input name="package" placeholder="Ej. Edición completa, A cotizar..."></label>
-      <label>Precio (MXN, 0 = por cotizar)<input name="price" type="number" min="0" step="1" value="0"></label>
-      <label>Fecha de entrega estimada<input name="due_date" type="date"></label>
-      <label>Estado inicial<select name="status">${opts(ST,'edicion')}</select></label>
-      <label>Avance inicial (%)<input name="progress" type="number" min="0" max="100" value="0"></label>
-    </div>
-    <label>Descripción / alcance<textarea name="description" placeholder="Describe el proyecto..."></textarea></label>
-    <label>Enlace a material (Drive, etc.)<input name="material_url" type="url" placeholder="https://"></label>
-    <label>Asignar a cliente existente (opcional)<select name="client_id"><option value="">— Sin cuenta registrada —</option>${S.profiles.filter(x=>['client','manager'].includes(x.role)).map(p=>`<option value="${p.id}">${esc(p.full_name||p.email)} · ${esc(p.email)}</option>`).join('')}</select></label>
-    <label>Nombre del cliente (si no tiene cuenta)<input name="client_name" placeholder="Ej. Juan Pérez — solo referencia interna"></label>
-    <div class="row2">
-      <button class="btn btn-dark">Crear proyecto</button>
-      <button type="button" class="btn btn-light" onclick="go('projects')">Cancelar</button>
-    </div>
-  </form>`;
-},
+  openProject(pid){
+    S.curProject=pid;S.curTab='resumen';S.cast=[];
+    loadProject(pid).then(()=>{
+      const p=S.projects.find(x=>x.id===pid);if(!p)return;
+      const winId='proj-'+pid;
+      this.open(winId,p.title,'<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',()=>VIEWS.projectDetail(pid),{w:780,h:560});
+    });
+  },
+
+  setTab(pid,tab){
+    S.curTab=tab;S.curProject=pid;
+    this.refresh('proj-'+pid);
+    const chat=document.querySelector('#winbody-proj-'+pid+' .chat-area');
+    if(chat) setTimeout(()=>chat.scrollTop=chat.scrollHeight,50);
+  },
+
+  _buildSidebar(){
+    const nav=document.getElementById('sb-nav');if(!nav)return;
+    const role=S.p?.role;
+    let html='';
+    const item=(id,label,svg,badge='')=>{
+      const isOpen=!!this.wins[id];
+      return `<div class="sb-item${isOpen?' active':''}" onclick="WM.openApp('${id}')" title="${esc(label)}">
+        <svg viewBox="0 0 24 24">${svg}</svg>
+        <span>${esc(label)}</span>
+        ${badge?`<span class="sb-badge">${badge}</span>`:''}
+      </div>`;
+    };
+    const act=myProjects().filter(p=>!['finalizado','cancelado'].includes(p.status));
+    html+=`<div class="sb-section">
+      <div class="sb-label">Principal</div>
+      ${item('projects','Proyectos','<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',act.length||'')}
+      ${canManage()?item('docs','Documentos','<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>',S.docs.length||''):''}
+      ${isClient()?item('new-project','Nuevo proyecto','<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>'):''}
+      ${team()?item('new-manual','Crear proyecto','<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/>'):''}
+    </div>`;
+    if(admin()||staff()) html+=`<div class="sb-section">
+      <div class="sb-label">Gestión</div>
+      ${(admin()||staff())?item('clients','Clientes','<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>'):''}
+      ${admin()?item('pay','Pagos','<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/>'):''}
+      ${admin()?item('fin','Finanzas','<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>'):''}
+      ${admin()?item('quote','Cotizador','<path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3"/><rect x="9" y="3" width="6" height="6" rx="1"/>'):''}
+      ${admin()?item('wish','Wishlist','<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',S.wish.filter(w=>w.status!=='comprado').length||''):''}
+    </div>`;
+    if(admin()) html+=`<div class="sb-section">
+      <div class="sb-label">Configuración</div>
+      ${item('site','Mi sitio','<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>')}
+      ${item('team','Equipo','<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6M16 5a3.5 3.5 0 0 1 0 6.5M18 14c2 .7 3.5 2.5 3.5 6"/>')}
+    </div>`;
+    nav.innerHTML=html;
+
+    // user area
+    const u=document.getElementById('sb-user');if(!u)return;
+    const name=S.p?.full_name||S.u?.email||'';
+    const initial=name[0]||'?';
+    u.innerHTML=`<div class="sb-avatar">${esc(initial)}</div>
+    <div class="sb-user-info"><b>${esc(name)}</b><small>${roleBadge(S.p?.role||'client')}</small></div>
+    <button class="sb-logout-btn lnk-btn" onclick="sb.auth.signOut()"><span>Salir</span></button>`;
+  },
+};
+
+/* ══════════════════════════════════════
+   VIEWS
+══════════════════════════════════════ */
+const VIEWS={
 
 projects(){
-  const l=myProjects().filter(p=>!S.f||p.status===S.f);
-  return `<div class="row2"><h1>Proyectos</h1><div style="display:flex;gap:.6rem;flex-wrap:wrap"><select style="max-width:200px" onchange="S.f=this.value;render()"><option value="">Todos</option>${opts(ST,S.f)}</select>${team()?`<button class="btn btn-dark" onclick="go('newmanual')">+ Crear proyecto</button>`:''}</div></div>${l.length?`<div class="grid">${l.map(card).join('')}</div>`:'<div class="card empty">Sin proyectos.</div>'}`;
+  const list=myProjects().filter(p=>!S._pf||p.status===S._pf);
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <div class="row between">
+      <h1 class="win-h1">Proyectos</h1>
+      <div class="row" style="gap:.5rem">
+        <select style="width:auto;min-width:140px" onchange="S._pf=this.value;WM.refresh('projects')">
+          <option value="">Todos los estados</option>${opts(ST,S._pf)}
+        </select>
+        ${team()?`<button class="btn btn-primary btn-sm" onclick="WM.openApp('new-manual')">+ Crear</button>`:''}
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem">
+      ${list.map(p=>{const pg=paid(p.id),cx=p.status==='cancelado'&&!canManage();
+        return `<div class="pcard ${stcC(p.status)}" onclick="WM.openProject('${p.id}')">
+          <div class="row between"><b>${esc(p.title)}</b>${bd(p.status)}</div>
+          <small>${TY[p.type]||''}${p.format&&p.format!=='na'?' · '+esc(p.format):''}${canManage()?' · '+esc(p.profiles?.full_name||p.client_name||''):''}</small>
+          ${cx?`<small>Proyecto cerrado · ${daysLeft(p)} día(s) restantes</small>`:`
+          <div class="bar" style="margin:.1rem 0"><i style="width:${p.progress}%"></i></div>
+          <div class="row between"><small>${p.progress}% completado</small><small>${+p.price>0?mx(pg)+' / '+mx(p.price):'Por cotizar'}</small></div>`}
+        </div>`;}).join('')||'<div class="empty-state">Sin proyectos.</div>'}
+    </div>
+  </div>`;
+},
+
+newProject(){
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <h1 class="win-h1">Nuevo proyecto</h1>
+    <form onsubmit="return A.create(event)" style="display:flex;flex-direction:column;gap:.75rem">
+      <label class="lbl">Título<input name="title" placeholder="Ej. Reel de mi negocio" required></label>
+      <div class="form-grid">
+        <label class="lbl">Tipo<select name="type">${opts(TY)}</select></label>
+        <label class="lbl">Formato<select name="format"><option value="vertical">Vertical 9:16</option><option value="horizontal">Horizontal 16:9</option><option value="ambos">Ambos</option><option value="na">No aplica</option></select></label>
+        <label class="lbl">Paquete<select name="package"><option>Básico $150</option><option>Estándar $300</option><option>Pro $500</option><option>A cotizar</option></select></label>
+      </div>
+      <label class="lbl">Cuéntanos qué necesitas<textarea name="description" required></textarea></label>
+      <label class="lbl">Enlace a tu material (Drive, etc.)<input name="material_url" type="url" placeholder="https://"></label>
+      <button class="btn btn-primary" style="justify-self:start">Enviar solicitud</button>
+    </form>
+  </div>`;
+},
+
+newManual(){
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <h1 class="win-h1">Crear proyecto</h1>
+    <p style="font-size:.76rem;color:var(--muted)">Para clientes que contactaron por otro medio.</p>
+    <form onsubmit="return A.createManual(event)" style="display:flex;flex-direction:column;gap:.75rem">
+      <div class="form-grid">
+        <label class="lbl" style="grid-column:1/-1">Título<input name="title" required placeholder="Ej. Cortometraje 'La espera'"></label>
+        <label class="lbl">Tipo<select name="type">${opts(TY)}</select></label>
+        <label class="lbl">Formato<select name="format"><option value="vertical">Vertical 9:16</option><option value="horizontal">Horizontal 16:9</option><option value="ambos">Ambos</option><option value="na">No aplica</option></select></label>
+        <label class="lbl">Paquete / servicio<input name="package" placeholder="Ej. Edición completa"></label>
+        <label class="lbl">Precio MXN (0 = por cotizar)<input name="price" type="number" min="0" step="1" value="0"></label>
+        <label class="lbl">Fecha de entrega<input name="due_date" type="date"></label>
+        <label class="lbl">Estado inicial<select name="status">${opts(ST,'edicion')}</select></label>
+        <label class="lbl">Avance (%)<input name="progress" type="number" min="0" max="100" value="0"></label>
+      </div>
+      <label class="lbl">Descripción / alcance<textarea name="description" placeholder="Describe el proyecto..."></textarea></label>
+      <label class="lbl">Material (URL)<input name="material_url" type="url" placeholder="https://"></label>
+      <label class="lbl">Asignar a cliente existente<select name="client_id"><option value="">— Sin cuenta —</option>${(S.profiles||[]).filter(x=>['client','manager'].includes(x.role)).map(p=>`<option value="${p.id}">${esc(p.full_name||p.email)}</option>`).join('')}</select></label>
+      <label class="lbl">Nombre del cliente (referencia interna)<input name="client_name" placeholder="Ej. Juan Pérez"></label>
+      <button class="btn btn-primary" style="justify-self:start">Crear proyecto</button>
+    </form>
+  </div>`;
+},
+
+projectDetail(pid){
+  const p=S.projects.find(x=>x.id===pid);if(!p) return '<div class="empty-state">Proyecto no encontrado.</div>';
+  const tabs=[['resumen','Resumen'],['chat','Chat'],['mods','Modificaciones']];
+  if(admin()) tabs.push(['pagos','Pagos']);
+  if(canManage()) tabs.push(['reparto','Reparto'],['archivo','Archivo']);
+  const t=S.curTab;
+  return `<div style="display:flex;flex-direction:column;gap:1rem;height:100%">
+    <div class="card" style="gap:.5rem;flex-shrink:0">
+      <div class="row between"><b style="font-size:.95rem;color:#fff">${esc(p.title)}</b>${bd(p.status)}</div>
+      <div class="bar"><i style="width:${p.progress}%"></i></div>
+      <div class="row between">
+        <small>${p.progress}% completado${canManage()?' · '+esc(p.profiles?.full_name||p.client_name||''):''}${canManage()&&p.profiles?' · '+esc(p.profiles.email||''):''}</small>
+        <small>${+p.price>0?mx(paid(pid))+' / '+mx(p.price):'Por cotizar'}</small>
+      </div>
+    </div>
+    <div class="tabs-row">${tabs.map(([k,l])=>`<button class="tab-btn${t===k?' on':''}" onclick="WM.setTab('${pid}','${k}')">${l}</button>`).join('')}</div>
+    <div style="flex:1;overflow-y:auto">
+      ${t==='resumen'?this._tabResumen(p):t==='chat'?this._tabChat(p):t==='mods'?this._tabMods(p):t==='pagos'?this._tabPagos(p):t==='reparto'?this._tabReparto(p):t==='archivo'?this._tabArchivo(p):''}
+    </div>
+    ${admin()&&t==='resumen'?`<div style="flex-shrink:0"><button class="btn btn-red btn-sm" onclick="A.pdel('${p.id}')">Eliminar proyecto</button></div>`:''}
+  </div>`;
+},
+
+_tabResumen(p){
+  return `<div style="display:flex;flex-direction:column;gap:.85rem">
+    ${team()&&p.status==='cancelado'?`<div class="card" style="border-color:rgba(239,68,68,.4)"><div class="card-title">Proyecto cancelado</div><p style="font-size:.8rem;color:var(--ink2)"><b>Motivo:</b> ${esc(p.cancel_reason||'')}</p></div>`:''}
+    ${team()&&S.D.ap.length?`<div class="card"><div class="card-title">Apelación del cliente</div><p style="font-size:.78rem;white-space:pre-wrap;color:var(--ink2)">${esc(S.D.ap[0].body)}</p><small>${ft(S.D.ap[0].created_at)}</small></div>`:''}
+    <div class="card">
+      <div class="card-title">Detalles</div>
+      <p style="font-size:.8rem;color:var(--ink2)"><b style="color:#fff">${TY[p.type]||''}</b>${p.format&&p.format!=='na'?' · '+esc(p.format):''} · ${esc(p.package||'')}</p>
+      ${p.description?`<p style="font-size:.78rem;color:var(--muted);white-space:pre-wrap">${esc(p.description)}</p>`:''}
+      ${okUrl(p.material_url)?`<a href="${esc(p.material_url)}" target="_blank" rel="noopener" style="font-size:.76rem;color:var(--ink2);text-decoration:underline">Ver material</a>`:''}
+      <div class="row between"><small>Entrega estimada: ${fd(p.due_date)}</small><small>Creado: ${fd(p.created_at)}</small></div>
+    </div>
+    ${canManage()?`<form class="card" onsubmit="return A.save(event,'${p.id}')">
+      <div class="card-title">Actualizar</div>
+      <div class="form-grid">
+        <label class="lbl">Estado<select name="status">${opts(ST,p.status)}</select></label>
+        <label class="lbl">Avance (%)<input type="number" name="progress" min="0" max="100" value="${p.progress}"></label>
+        ${admin()?`<label class="lbl">Precio MXN<input type="number" name="price" min="0" value="${p.price}"></label>`:`<input type="hidden" name="price" value="${p.price}">`}
+        <label class="lbl">Fecha de entrega<input type="date" name="due_date" value="${p.due_date||''}"></label>
+      </div>
+      <button class="btn btn-primary btn-sm" style="justify-self:start">Guardar</button>
+    </form>`:''}
+    <div class="card">
+      <div class="card-title">Historial</div>
+      ${S.D.ev.length?`<ul class="tl">${S.D.ev.map(e=>`<li><b>${esc(e.text)}</b><time>${ft(e.created_at)}</time></li>`).join('')}</ul>`:'<div class="empty-state" style="padding:1rem">Sin movimientos.</div>'}
+    </div>
+  </div>`;
+},
+
+_tabChat(p){
+  const who=m=>m.sender_id===S.u.id?'Tú':(team()||manager()?esc(p.profiles?.full_name||'Cliente'):'Fluxora');
+  return `<div style="display:flex;flex-direction:column;gap:.75rem;height:100%">
+    <div class="chat-area card" style="flex:1;max-height:none">
+      ${S.D.msg.map(m=>`<div class="bubble${m.sender_id===S.u.id?' me':''}"><small>${who(m)} · ${ft(m.created_at)}</small><p>${esc(m.body)}</p></div>`).join('')||'<div class="empty-state">Escribe el primer mensaje.</div>'}
+    </div>
+    <form onsubmit="return A.send(event,'${p.id}')" style="display:grid;grid-template-columns:1fr auto;gap:.5rem;align-items:start;flex-shrink:0">
+      <textarea name="body" style="min-height:44px" placeholder="Escribe un mensaje..." required></textarea>
+      <button class="btn btn-primary">Enviar</button>
+    </form>
+  </div>`;
+},
+
+_tabMods(p){
+  return `<div style="display:flex;flex-direction:column;gap:.75rem">
+    ${isClient()?`<form class="card" onsubmit="return A.mod(event,'${p.id}')">
+      <div class="card-title">Pedir una modificación</div>
+      <textarea name="body" placeholder="Describe qué quieres cambiar" required></textarea>
+      <button class="btn btn-primary btn-sm" style="justify-self:start">Enviar solicitud</button>
+    </form>`:''}
+    <div class="card">
+      <div class="card-title">Solicitudes</div>
+      ${S.D.mods.map(m=>`<div class="row between" style="padding:.6rem 0;border-bottom:1px solid var(--border)">
+        <div style="flex:1"><p style="font-size:.78rem;white-space:pre-wrap;color:var(--ink2)">${esc(m.body)}</p><small>${ft(m.created_at)}</small></div>
+        ${canManage()?`<select style="width:auto;min-width:130px" onchange="A.modst('${m.id}',this.value)">${opts(MD,m.status)}</select>`:bd(m.status)}
+      </div>`).join('')||'<div class="empty-state" style="padding:1rem">Sin solicitudes.</div>'}
+    </div>
+  </div>`;
+},
+
+_tabPagos(p){
+  const pg=paid(p.id),pr=+p.price,pc=pr>0?Math.min(100,Math.round(pg/pr*100)):0;
+  return `<div style="display:flex;flex-direction:column;gap:.85rem">
+    <div class="grid3">
+      <div class="stat-card"><small>Precio</small><b>${pr>0?mx(pr):'Por cotizar'}</b></div>
+      <div class="stat-card"><small>Pagado</small><b>${mx(pg)}</b></div>
+      <div class="stat-card"><small>Pendiente</small><b>${pr>0?mx(Math.max(0,pr-pg)):'-'}</b></div>
+    </div>
+    <div class="bar"><i style="width:${pc}%"></i></div>
+    ${admin()?`<form class="card" onsubmit="return A.pay(event,'${p.id}')">
+      <div class="card-title">Registrar pago</div>
+      <div class="form-grid">
+        <label class="lbl">Monto<input name="amount" type="number" min="1" step="0.01" required></label>
+        <label class="lbl">Método<select name="method"><option>Transferencia</option><option>Efectivo</option><option>Depósito</option><option>Otro</option></select></label>
+        <label class="lbl">Nota<input name="note" placeholder="Anticipo, liquidación..."></label>
+      </div>
+      <button class="btn btn-primary btn-sm" style="justify-self:start">Registrar</button>
+    </form>`:''}
+    <div class="card"><div class="card-title">Pagos recibidos</div>
+      <table><thead><tr><th>Fecha</th><th>Monto</th><th>Método</th><th>Nota</th></tr></thead>
+      <tbody>${S.payments.filter(x=>x.project_id===p.id).map(x=>`<tr><td>${fd(x.paid_at)}</td><td>${mx(x.amount)}</td><td>${esc(x.method||'')}</td><td>${esc(x.note||'')}</td></tr>`).join('')||'<tr><td colspan="4" class="empty-state">Sin pagos.</td></tr>'}</tbody></table>
+    </div>
+  </div>`;
+},
+
+_tabReparto(p){
+  return `<div style="display:flex;flex-direction:column;gap:.85rem">
+    ${canManage()?`<form class="card" onsubmit="return A.castAdd(event,'${p.id}')">
+      <div class="card-title">Agregar al reparto</div>
+      <div class="form-grid">
+        <label class="lbl">Nombre<input name="name" required placeholder="Ej. María López"></label>
+        <label class="lbl">Rol / Personaje<input name="role" required placeholder="Ej. Protagonista — Elena"></label>
+        <label class="lbl">Contacto<input name="contact" placeholder="Teléfono o correo"></label>
+        <label class="lbl">Notas<input name="notes" placeholder="Disponibilidad, talla..."></label>
+      </div>
+      <button class="btn btn-primary btn-sm" style="justify-self:start">Agregar</button>
+    </form>`:''}
+    <div class="cast-grid">
+      ${S.cast.map(c=>`<div class="ccast">
+        <b>${esc(c.name)}</b><small>${esc(c.role)}</small>
+        ${c.contact?`<small>${esc(c.contact)}</small>`:''}
+        ${c.notes?`<small>${esc(c.notes)}</small>`:''}
+        ${canManage()?`<button class="lnk-btn" style="color:#ef4444;font-size:.68rem;margin-top:.2rem" onclick="A.castDel('${c.id}')">Quitar</button>`:''}
+      </div>`).join('')||'<div class="empty-state" style="grid-column:1/-1">Sin miembros en el reparto.</div>'}
+    </div>
+  </div>`;
+},
+
+_tabArchivo(p){
+  const docs=S.docs.filter(x=>x.project_id===p.id);
+  const FILES=[{n:'Contratos y memos',k:['contract','memo'],adm:1},{n:'Presupuestos',k:['budget'],adm:1},{n:'Preproducción',k:['breakdown','shots','story']},{n:'Rodaje',k:['call','sched']},{n:'Legales',k:['release']}];
+  return `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem">
+    ${FILES.filter(f=>admin()||staff()||!f.adm).map(f=>{
+      const l=docs.filter(x=>f.k.includes(x.kind));
+      return `<div class="card">
+        <div class="card-title">${f.n} <span style="opacity:.5">${l.length}</span></div>
+        ${l.map(x=>`<div class="row between"><small style="color:var(--ink2)">${esc(x.title)}</small><button class="btn btn-ghost btn-sm" onclick="DC.openFrom('${x.id}','${p.id}')">Abrir</button></div>`).join('')||'<small>Vacía</small>'}
+        <div style="display:flex;flex-direction:column;gap:.3rem;margin-top:.2rem">
+          ${f.k.map(k=>`<button class="lnk-btn" style="font-size:.68rem;text-align:left" onclick="DC.newFor('${k}','${p.id}')">+ ${esc(DOCS[k]?.n||k)}</button>`).join('')}
+        </div>
+      </div>`;}).join('')}
+  </div>`;
 },
 
 clients(){
-  return `<h1>Clientes</h1><div class="card tw"><table><tr><th>Cliente</th><th>Rol</th><th>Proyectos</th><th>Total</th><th>Pagado</th><th>Pendiente</th></tr>${S.profiles.filter(c=>['client','manager'].includes(c.role)).map(c=>{const ps=S.projects.filter(p=>p.client_id===c.id&&p.status!=='cancelado'),t=ps.reduce((a,p)=>a+ +p.price,0),pg=ps.reduce((a,p)=>a+paid(p.id),0);return `<tr><td><b>${esc(c.full_name||'Sin nombre')}</b><br><small>${esc(c.email)}</small></td><td>${roleBadge(c.role)}</td><td>${ps.length}</td><td>${mx(t)}</td><td>${mx(pg)}</td><td>${mx(Math.max(0,t-pg))}</td></tr>`}).join('')||'<tr><td colspan="6" class="empty">Aún no hay clientes.</td></tr>'}</table></div>`;
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <h1 class="win-h1">Clientes</h1>
+    <div class="card" style="padding:0;overflow:hidden">
+    <table><thead><tr><th>Cliente</th><th>Rol</th><th>Proyectos</th><th>Total</th><th>Pagado</th><th>Pendiente</th></tr></thead>
+    <tbody>${(S.profiles||[]).filter(c=>['client','manager'].includes(c.role)).map(c=>{const ps=S.projects.filter(p=>p.client_id===c.id&&p.status!=='cancelado'),t=ps.reduce((a,p)=>a+ +p.price,0),pg=ps.reduce((a,p)=>a+paid(p.id),0);return `<tr><td><b style="color:#fff">${esc(c.full_name||'Sin nombre')}</b><br><small>${esc(c.email)}</small></td><td>${roleBadge(c.role)}</td><td>${ps.length}</td><td>${mx(t)}</td><td>${mx(pg)}</td><td>${mx(Math.max(0,t-pg))}</td></tr>`}).join('')||'<tr><td colspan="6" class="empty-state">Sin clientes.</td></tr>'}</tbody>
+    </table></div>
+  </div>`;
 },
 
 pay(){
   const l=S.projects.filter(p=>+p.price>0&&p.status!=='cancelado');
-  return `<h1>Pagos</h1><div class="card tw"><table><tr><th>Proyecto</th><th>Cliente</th><th>Precio</th><th>Pagado</th><th>Pendiente</th></tr>${l.map(p=>{const pg=paid(p.id);return `<tr class="k" onclick="go('project','${p.id}')"><td><b>${esc(p.title)}</b></td><td>${esc(p.profiles&&p.profiles.full_name||p.client_name||'')}</td><td>${mx(p.price)}</td><td>${mx(pg)}</td><td>${+p.price-pg>0?mx(+p.price-pg):'Liquidado'}</td></tr>`}).join('')||'<tr><td colspan="5" class="empty">Sin proyectos cotizados.</td></tr>'}</table></div>`;
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <h1 class="win-h1">Pagos</h1>
+    <div class="card" style="padding:0;overflow:hidden">
+    <table><thead><tr><th>Proyecto</th><th>Cliente</th><th>Precio</th><th>Pagado</th><th>Pendiente</th></tr></thead>
+    <tbody>${l.map(p=>{const pg=paid(p.id);return `<tr class="clickable" onclick="WM.openProject('${p.id}')"><td><b style="color:#fff">${esc(p.title)}</b></td><td>${esc(p.profiles?.full_name||p.client_name||'')}</td><td>${mx(p.price)}</td><td>${mx(pg)}</td><td>${+p.price-pg>0?mx(+p.price-pg):'<span style="color:#86efac">Liquidado</span>'}</td></tr>`}).join('')||'<tr><td colspan="5" class="empty-state">Sin proyectos cotizados.</td></tr>'}</tbody>
+    </table></div>
+  </div>`;
 },
 
 fin(){
-  const rows=[...S.payments.map(x=>({d:x.paid_at,k:'ingreso',c:'Pago: '+((S.projects.find(p=>p.id===x.project_id)||{}).title||''),cat:x.method||'Pago',a:x.amount})),...(S.fin||[]).map(x=>({d:x.entry_date,k:x.kind,c:x.concept,cat:x.category||'',a:x.amount}))].sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,150),i=incomeOf(thisM),e=expOf(thisM);
-  return `<h1>Finanzas</h1><div class="grid">${stat('Ingresos del mes',mx(i))}${stat('Gastos del mes',mx(e))}${stat('Utilidad del mes',mx(i-e))}</div>${admin()?`<form class="card" onsubmit="return A.fin(event)"><h2>Nuevo movimiento</h2><div class="grid grid2"><label>Tipo<select name="kind"><option value="gasto">Gasto</option><option value="ingreso">Ingreso extra</option></select></label><label>Concepto<input name="concept" required placeholder="Ej. Licencia de software"></label><label>Categoría<input name="category" placeholder="Software, publicidad..."></label><label>Monto<input name="amount" type="number" min="1" step="0.01" required></label><label>Fecha<input name="entry_date" type="date" value="${new Date().toISOString().slice(0,10)}"></label></div><button class="btn btn-dark">Registrar</button></form>`:''}<div class="card tw"><h2>Bitácora</h2><table><tr><th>Fecha</th><th>Concepto</th><th>Categoría</th><th>Monto</th></tr>${rows.map(r=>`<tr><td>${fd(r.d)}</td><td>${esc(r.c)}</td><td>${esc(r.cat)}</td><td>${r.k==='gasto'?'- ':'+ '}${mx(r.a)}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin movimientos.</td></tr>'}</table></div>`;
-}
+  const rows=[...S.payments.map(x=>({d:x.paid_at,k:'ingreso',c:'Pago: '+((S.projects.find(p=>p.id===x.project_id)||{}).title||''),cat:x.method||'Pago',a:x.amount})),...(S.fin||[]).map(x=>({d:x.entry_date,k:x.kind,c:x.concept,cat:x.category||'',a:x.amount}))].sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,150);
+  const i=incomeOf(thisM),e=expOf(thisM);
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <h1 class="win-h1">Finanzas</h1>
+    <div class="grid3">
+      <div class="stat-card"><small>Ingresos del mes</small><b>${mx(i)}</b></div>
+      <div class="stat-card"><small>Gastos del mes</small><b>${mx(e)}</b></div>
+      <div class="stat-card"><small>Utilidad del mes</small><b style="color:${i-e>=0?'#86efac':'#fca5a5'}">${mx(i-e)}</b></div>
+    </div>
+    ${admin()?`<form class="card" onsubmit="return A.fin(event)">
+      <div class="card-title">Nuevo movimiento</div>
+      <div class="form-grid">
+        <label class="lbl">Tipo<select name="kind"><option value="gasto">Gasto</option><option value="ingreso">Ingreso extra</option></select></label>
+        <label class="lbl">Concepto<input name="concept" required placeholder="Ej. Licencia de software"></label>
+        <label class="lbl">Categoría<input name="category" placeholder="Software, publicidad..."></label>
+        <label class="lbl">Monto<input name="amount" type="number" min="1" step="0.01" required></label>
+        <label class="lbl">Fecha<input name="entry_date" type="date" value="${TODAY}"></label>
+      </div>
+      <button class="btn btn-primary btn-sm" style="justify-self:start">Registrar</button>
+    </form>`:''}
+    <div class="card" style="padding:0;overflow:hidden">
+    <table><thead><tr><th>Fecha</th><th>Concepto</th><th>Categoría</th><th>Monto</th></tr></thead>
+    <tbody>${rows.map(r=>`<tr><td>${fd(r.d)}</td><td>${esc(r.c)}</td><td>${esc(r.cat)}</td><td style="color:${r.k==='gasto'?'#fca5a5':'#86efac'}">${r.k==='gasto'?'−':'+'} ${mx(r.a)}</td></tr>`).join('')||'<tr><td colspan="4" class="empty-state">Sin movimientos.</td></tr>'}</tbody>
+    </table></div>
+  </div>`;
+},
+
+quote(){
+  const DEF_SV=(S.set.services||[{name:'Video hasta 1 minuto',price:150,kind:'base',unit:'por video'},{name:'Video de 1 a 4 minutos',price:300,kind:'base',unit:'por video'},{name:'Video de 5 a 10 minutos',price:500,kind:'base',unit:'por video'},{name:'Subtítulos',price:30,kind:'extra',unit:'por minuto'},{name:'Miniatura o portada',price:80,kind:'extra',unit:'por pieza'},{name:'Música y efectos',price:40,kind:'extra',unit:'por video'},{name:'Revisión adicional',price:50,kind:'extra',unit:'por revisión'}]);
+  const DEF_PK=(S.set.packages||[{name:'Básico',price:150},{name:'Estándar',price:300},{name:'Pro',price:500}]);
+  const m=S.q.mode||'plan';
+  const base=m==='plan'?DEF_PK.map((x,i)=>({i,t:x.name+' · '+mx(x.price)})):DEF_SV.filter(x=>x.kind==='base').map((x,i)=>({i,t:x.name+' · '+mx(x.price)}));
+  const ex=DEF_SV.map((x,i)=>({i,x})).filter(o=>o.x.kind!=='base');
+  const calc=()=>{const sub=(S.q.lines||[]).reduce((a,l)=>a+l.p*l.q,0),ur=+($('#_qur')||{}).value||0,ds=+($('#_qds')||{}).value||0;return{sub,ur,ds,tot:Math.round(sub*(1+ur/100)*(1-ds/100))}};
+  const c=calc();
+  return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;height:100%">
+    <div style="display:flex;flex-direction:column;gap:.75rem;overflow-y:auto">
+      <h2 class="sec">Configurar cotización</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem;padding:.25rem;border-radius:999px;background:rgba(0,0,0,.5);border:1px solid var(--border)">
+        <button class="btn${m==='plan'?' btn-primary':' btn-ghost'} btn-sm" onclick="S.q.mode='plan';WM.refresh('quote')">Con paquete</button>
+        <button class="btn${m!=='plan'?' btn-primary':' btn-ghost'} btn-sm" onclick="S.q.mode='custom';WM.refresh('quote')">Sin paquete</button>
+      </div>
+      <label class="lbl">Cliente (opcional)<input id="_qcli" placeholder="Nombre del cliente" oninput="WM.refresh('quote')"></label>
+      <label class="lbl">${m==='plan'?'Paquete':'Duración del video'}<select id="_qcat">${base.map(o=>`<option value="${o.i}">${esc(o.t)}</option>`).join('')}</select></label>
+      <button class="btn btn-ghost btn-sm" onclick="Q2.addCat()">Agregar</button>
+      <label class="lbl">Extra<select id="_qex">${ex.map(o=>`<option value="${o.i}">${esc(o.x.name)} · ${mx(o.x.price)}</option>`).join('')}</select></label>
+      <button class="btn btn-ghost btn-sm" onclick="Q2.addExtra()">Agregar extra</button>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
+        <label class="lbl">Concepto libre<input id="_qn" placeholder="Nombre"></label>
+        <label class="lbl">Precio<input id="_qp" type="number" min="0"></label>
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="Q2.addCus()">Agregar concepto</button>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
+        <label class="lbl">Urgencia (+%)<input id="_qur" type="number" min="0" max="200" value="0" oninput="WM.refresh('quote')"></label>
+        <label class="lbl">Descuento (-%)<input id="_qds" type="number" min="0" max="100" value="0" oninput="WM.refresh('quote')"></label>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.75rem;overflow-y:auto">
+      <h2 class="sec">Cotización</h2>
+      ${(S.q.lines||[]).length?`<div class="card" style="padding:.5rem 0;gap:0">${(S.q.lines||[]).map((l,i)=>`<div class="row between" style="padding:.4rem .75rem;border-bottom:1px solid var(--border)"><span style="font-size:.76rem;color:var(--ink2)">${esc(l.n)}</span><div class="row" style="gap:.4rem"><input type="number" min="1" value="${l.q}" style="width:52px;padding:.25rem .4rem" onchange="Q2.qty(${i},this.value)"><span style="font-size:.76rem;color:#fff">${mx(l.p*l.q)}</span><button class="lnk-btn" style="font-size:.7rem;color:#ef4444" onclick="Q2.rm(${i})">✕</button></div></div>`).join('')}</div>`:'<div class="empty-state">Agrega conceptos.</div>'}
+      <div class="card">
+        <div class="row between"><small>Subtotal</small><small>${mx(c.sub)}</small></div>
+        ${c.ur?`<div class="row between"><small>Urgencia +${c.ur}%</small><small>${mx(c.sub*c.ur/100)}</small></div>`:''}
+        ${c.ds?`<div class="row between"><small>Descuento -${c.ds}%</small><small>-${mx(c.sub*(1+c.ur/100)*c.ds/100)}</small></div>`:''}
+        <div class="row between" style="border-top:1px solid var(--border);padding-top:.5rem"><b style="color:#fff">Total</b><b style="color:#fff;font-size:1.1rem">${mx(c.tot)}</b></div>
+      </div>
+      <div class="row" style="gap:.5rem">
+        <button class="btn btn-primary btn-sm" onclick="Q2.copy()">Copiar</button>
+        <a class="btn btn-ghost btn-sm" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(Q2.text(c))}">WhatsApp</a>
+      </div>
+      <label class="lbl">Aplicar a proyecto<select id="_qpj">${S.projects.filter(p=>p.status!=='cancelado').map(p=>`<option value="${p.id}">${esc(p.title)}</option>`).join('')}</select></label>
+      <button class="btn btn-ghost btn-sm" onclick="Q2.apply()">Aplicar precio al proyecto</button>
+    </div>
+  </div>`;
+},
+
+wish(){
+  const pc=+(S.set.wish_pct??20),base=Math.max(0,incomeOf(thisM)-expOf(thisM)),
+    done=(S.fin||[]).filter(x=>x.category==='Wishlist'&&ym(x.entry_date)===thisM).reduce((a,x)=>a+ +x.amount,0),
+    sug=Math.max(0,Math.round(base*pc/100)-done),PRI={1:'Urgente',2:'Normal',3:'Puede esperar'};
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <h1 class="win-h1">Wishlist de material</h1>
+    <div class="grid3">
+      <div class="stat-card"><small>Utilidad base del mes</small><b>${mx(base)}</b></div>
+      <div class="stat-card"><small>Destinado este mes</small><b>${mx(done)}</b></div>
+      <div class="stat-card"><small>Sugerido destinar</small><b>${mx(sug)}</b></div>
+    </div>
+    <form class="card" onsubmit="return A.walloc(event)">
+      <div class="card-title">Destinar ganancias</div>
+      <div class="form-grid">
+        <label class="lbl">% de la utilidad<input type="number" min="0" max="100" value="${pc}" onchange="A.wpct(this.value)"></label>
+        <label class="lbl">Monto a destinar ahora<input name="amount" type="number" min="1" step="0.01" value="${sug||''}"></label>
+      </div>
+      <button class="btn btn-primary btn-sm" style="justify-self:start">Destinar a lo más urgente</button>
+      <p id="wmsg" style="font-size:.74rem;color:var(--muted)"></p>
+    </form>
+    <form class="card" onsubmit="return A.wadd(event)">
+      <div class="card-title">Agregar artículo</div>
+      <div class="form-grid">
+        <label class="lbl">Artículo<input name="name" required placeholder="Ej. Micrófono"></label>
+        <label class="lbl">Categoría<input name="category" placeholder="Equipo, software..."></label>
+        <label class="lbl">Precio estimado<input name="price" type="number" min="0" step="0.01" required></label>
+        <label class="lbl">Prioridad<select name="priority"><option value="1">Urgente</option><option value="2" selected>Normal</option><option value="3">Puede esperar</option></select></label>
+        <label class="lbl">Enlace<input name="url" type="url" placeholder="https://"></label>
+      </div>
+      <button class="btn btn-ghost btn-sm" style="justify-self:start">Agregar</button>
+    </form>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem">
+      ${S.wish.map(w=>{const pr=+w.price>0?Math.min(100,Math.round(w.saved/w.price*100)):0,ok=w.status==='comprado';
+        return `<div class="card ${ok?'ok':''}">
+          <div class="row between"><b style="font-size:.82rem;color:#fff">${esc(w.name)}</b><span class="bd">${ok?CK+'Comprado':PRI[w.priority]}</span></div>
+          <small>${esc(w.category||'')}</small>
+          <div class="bar"><i style="width:${pr}%"></i></div>
+          <div class="row between"><small>${mx(w.saved)} / ${mx(w.price)}</small><small>${pr}%</small></div>
+          <div class="row" style="gap:.5rem;margin-top:.1rem">
+            ${okUrl(w.url)?`<a href="${esc(w.url)}" target="_blank" rel="noopener" class="lnk-btn" style="font-size:.68rem">Ver</a>`:''}
+            ${ok?'':`<button class="lnk-btn" style="font-size:.68rem" onclick="A.wbuy('${w.id}')">Comprado</button>`}
+            <button class="lnk-btn" style="font-size:.68rem;color:#ef4444" onclick="A.wdel('${w.id}')">Quitar</button>
+          </div>
+        </div>`;}).join('')||'<div class="empty-state">Tu wishlist está vacía.</div>'}
+    </div>
+  </div>`;
+},
+
+site(){
+  if(!S.dr) S.dr=JSON.parse(JSON.stringify({packages:(S.set.packages||[{name:'Básico',price:150,features:[]},{name:'Estándar',price:300,features:[]},{name:'Pro',price:500,features:[]}]),contact:(S.set.contact||{wa:'526424836880',wa_show:'(642) 483 6880',ig:'fluxoracs',fb:'FluxoraCreativeStudio',fb_show:'Fluxora Creative Studio',h1_l:'Lunes a Viernes',h1:'3:30 pm a 7:00 pm',h2_l:'Sábados y Domingos',h2:'10:00 am a 4:00 pm'}),services:(S.set.services||[])}));
+  const c=S.dr.contact,f=(k,l)=>`<label class="lbl">${l}<input name="${k}" value="${esc(c[k]||'')}"></label>`;
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <h1 class="win-h1">Mi sitio</h1>
+    <form onsubmit="return A.siteSave(event)" style="display:flex;flex-direction:column;gap:1rem">
+      <div class="card"><div class="card-title">Paquetes</div>
+        ${S.dr.packages.map((x,i)=>`<div class="card">
+          <div class="form-grid">
+            <label class="lbl">Nombre<input name="pn" value="${esc(x.name)}" required></label>
+            <label class="lbl">Precio MXN<input name="pp" type="number" min="0" value="${x.price}" required></label>
+          </div>
+          <label class="lbl">Incluye (uno por línea)<textarea name="pf" style="min-height:80px">${esc(x.features.join('\n'))}</textarea></label>
+          <button type="button" class="lnk-btn" style="font-size:.68rem;color:#ef4444" onclick="A.pkRm(${i})">Quitar paquete</button>
+        </div>`).join('')}
+        <button type="button" class="btn btn-ghost btn-sm" style="justify-self:start" onclick="A.pkAdd()">+ Agregar paquete</button>
+      </div>
+      <div class="card"><div class="card-title">Contacto y horarios</div>
+        <div class="form-grid">${f('wa','WhatsApp (con lada, ej. 526424836880)')}${f('wa_show','WhatsApp (como se muestra)')}${f('ig','Instagram (sin @)')}${f('fb','Facebook')}${f('fb_show','Facebook (como se muestra)')}${f('h1_l','Horario 1: días')}${f('h1','Horario 1: horas')}${f('h2_l','Horario 2: días')}${f('h2','Horario 2: horas')}</div>
+      </div>
+      <button class="btn btn-primary" style="justify-self:start">Guardar cambios</button>
+      <p id="smsg" style="font-size:.74rem;color:var(--muted)"></p>
+    </form>
+  </div>`;
+},
+
+team(){
+  const sel=S.tm&&(S.profiles||[]).find(x=>x.id===S.tm);
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <h1 class="win-h1">Equipo y permisos</h1>
+    <div class="card"><div class="card-title">Roles</div>
+      <p style="font-size:.76rem;color:var(--ink2)"><b style="color:#fff">Admin</b> — control total. &nbsp;<b style="color:#fff">Colaborador</b> — administra proyectos, sin finanzas. &nbsp;<b style="color:#fff">Manager</b> — sus proyectos asignados; edita, documentos y reparto. &nbsp;<b style="color:#fff">Cliente</b> — solo sus proyectos.</p>
+    </div>
+    <div class="card" style="padding:0;overflow:hidden">
+    <table><thead><tr><th>Persona</th><th>Rol</th><th>Proyectos</th></tr></thead>
+    <tbody>${(S.profiles||[]).map(x=>{const n=S.mem.filter(m=>m.user_id===x.id).length;return `<tr><td><b style="color:#fff">${esc(x.full_name||'Sin nombre')}</b><br><small>${esc(x.email)}</small></td><td><select style="width:auto;min-width:150px" onchange="A.role('${x.id}',this.value)"${x.id===S.u.id?' disabled':''}>${opts(ROLES,x.role)}</select></td><td>${['staff','manager'].includes(x.role)?`<button class="btn btn-ghost btn-sm" onclick="A.tmSel('${x.id}')">Asignar (${n})</button>`:x.role==='admin'?'Todos':'Los suyos'}</td></tr>`}).join('')}</tbody>
+    </table></div>
+    ${sel?`<div class="card"><div class="card-title">Proyectos de ${esc(sel.full_name||sel.email)}</div>
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        ${S.projects.map(p=>`<label style="display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:var(--ink2);cursor:pointer"><input type="checkbox" style="width:auto;accent-color:#fff"${S.mem.some(m=>m.user_id===sel.id&&m.project_id===p.id)?' checked':''} onchange="A.mem('${sel.id}','${p.id}',this.checked)">${esc(p.title)} · ${esc(p.profiles?.full_name||p.client_name||'')}</label>`).join('')||'<small>No hay proyectos.</small>'}
+      </div>
+    </div>`:''}
+  </div>`;
+},
+
+docs(){
+  if(S.dk) return DOCS_EDITOR.render();
+  const canSeeAll=team();
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <h1 class="win-h1">Documentos de producción</h1>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.65rem">
+      ${Object.entries(DOCS).filter(([k])=>canSeeAll||!['budget','contract','memo'].includes(k)).map(([k,d])=>`<div class="pcard" onclick="DC.new('${k}')"><b style="font-size:.82rem">${esc(d.n)}</b><small>${esc(d.d)}</small></div>`).join('')}
+    </div>
+    <div class="card-title">Documentos guardados</div>
+    <div class="card" style="padding:0;overflow:hidden">
+    <table><thead><tr><th>Título</th><th>Tipo</th><th>Proyecto</th><th>Actualizado</th><th></th></tr></thead>
+    <tbody>${S.docs.map(x=>`<tr><td><b style="color:#fff">${esc(x.title)}</b></td><td style="color:var(--muted);font-size:.72rem">${esc((DOCS[x.kind]||{}).n||x.kind)}</td><td style="color:var(--muted);font-size:.72rem">${esc((S.projects.find(q=>q.id===x.project_id)||{}).title||'')}</td><td style="color:var(--muted);font-size:.72rem">${fd(x.updated_at)}</td><td><button class="btn btn-ghost btn-sm" onclick="DC.open('${x.id}')">Abrir</button>${admin()?` <button class="lnk-btn" style="font-size:.68rem;color:#ef4444" onclick="DC.del('${x.id}')">Eliminar</button>`:''}</td></tr>`).join('')||'<tr><td colspan="5" class="empty-state">Sin documentos.</td></tr>'}</tbody>
+    </table></div>
+  </div>`;
+},
 };
 
-/* ── DEF / site settings ── */
-const DEF={packages:[{name:'Básico',price:150,features:['Para videos de máximo 1 minuto','Vertical u horizontal','Música sin copyright','Cortes y ajustes básicos','Entrega estimada: 1 a 2 días']},{name:'Estándar',price:300,features:['Edición intermedia','Vertical u horizontal','Para videos de hasta 4 minutos','Subtítulos incluidos','Transiciones','Entrega estimada: 1 a 2 días']},{name:'Pro',price:500,features:['Edición avanzada y más dinámica','Vertical u horizontal','Música y efectos de sonido','Para videos de 5 a 10 minutos','Ajustes visuales más detallados','Entrega estimada: 1 a 3 días']}],contact:{wa:'526424836880',wa_show:'(642) 483 6880',ig:'fluxoracs',fb:'FluxoraCreativeStudio',fb_show:'Fluxora Creative Studio',h1_l:'Lunes a Viernes',h1:'3:30 pm a 7:00 pm',h2_l:'Sábados y Domingos',h2:'10:00 am a 4:00 pm'},services:[{name:'Video hasta 1 minuto',price:150,kind:'base',unit:'por video'},{name:'Video de 1 a 4 minutos',price:300,kind:'base',unit:'por video'},{name:'Video de 5 a 10 minutos',price:500,kind:'base',unit:'por video'},{name:'Video de 10 a 20 minutos',price:800,kind:'base',unit:'por video'},{name:'Minuto extra de video',price:40,kind:'extra',unit:'por minuto'},{name:'Subtítulos',price:30,kind:'extra',unit:'por minuto de video'},{name:'Miniatura o portada',price:80,kind:'extra',unit:'por pieza'},{name:'Música y efectos de sonido',price:40,kind:'extra',unit:'por video'},{name:'Efectos y animaciones de texto',price:60,kind:'extra',unit:'por video'},{name:'Corrección de color',price:50,kind:'extra',unit:'por video'},{name:'Versión en otro formato (vertical u horizontal)',price:60,kind:'extra',unit:'por video'},{name:'Revisión adicional',price:50,kind:'extra',unit:'por revisión'},{name:'Intro o logo animado',price:120,kind:'extra',unit:'por pieza'},{name:'Diseño gráfico sencillo (post o flyer)',price:100,kind:'extra',unit:'por pieza'}]};
-const getSet=k=>S.set[k]||DEF[k];
-const PRI={1:'Urgente',2:'Normal',3:'Puede esperar'};
-const expNW=m=>(S.fin||[]).filter(x=>x.kind==='gasto'&&x.category!=='Wishlist'&&ym(x.entry_date)===m).reduce((a,x)=>a+ +x.amount,0);
-const okUrl=u=>/^https?:\/\//i.test(u||'')?u:null;
-
-/* ── quote ── */
-Object.assign(V,{
-quote(){const m=S.q.mode,pk=getSet('packages'),sv=getSet('services'),ix=sv.map((x,i)=>({i,x})),base=m==='plan'?pk.map((x,i)=>({i,t:x.name+' · '+mx(x.price)})):ix.filter(o=>o.x.kind==='base').map(o=>({i:o.i,t:o.x.name+' · '+mx(o.x.price)})),ex=ix.filter(o=>o.x.kind!=='base');
-  return `<h1>Cotizador</h1><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))"><div class="card"><div class="seg"><button class="${m==='plan'?'on':''}" onclick="Q.mode('plan')">Con paquete</button><button class="${m==='custom'?'on':''}" onclick="Q.mode('custom')">Sin paquete</button></div><label>Cliente (opcional)<input id="qcli" placeholder="Nombre del cliente" oninput="Q.u()"></label><label>${m==='plan'?'Paquete':'Duración del video'}<select id="qcat">${base.map(o=>`<option value="${o.i}">${esc(o.t)}</option>`).join('')}</select></label><button class="btn btn-light" onclick="Q.addCat()">Agregar</button><div class="grid grid2"><label>Extra<select id="qex">${ex.map(o=>`<option value="${o.i}">${esc(o.x.name)} · ${mx(o.x.price)} ${esc(o.x.unit||'')}</option>`).join('')}</select></label><label>Cantidad<input id="qq" type="number" min="1" value="1"></label></div><button class="btn btn-light" onclick="Q.addExtra()">Agregar extra</button><div class="grid grid2"><label>Otro concepto<input id="qn" placeholder="Ej. Trabajo especial"></label><label>Precio<input id="qp" type="number" min="0"></label></div><button class="btn btn-light" onclick="Q.addCus()">Agregar concepto</button><div class="grid grid2"><label>Urgencia (+%)<input id="qur" type="number" min="0" max="200" value="0" oninput="Q.u()"></label><label>Descuento (-%)<input id="qds" type="number" min="0" max="100" value="0" oninput="Q.u()"></label></div></div><div class="card" id="qout"></div></div>`;
-},
-wish(){const pc=+(S.set.wish_pct??20),base=Math.max(0,incomeOf(thisM)-expNW(thisM)),done=(S.fin||[]).filter(x=>x.category==='Wishlist'&&ym(x.entry_date)===thisM).reduce((a,x)=>a+ +x.amount,0),sug=Math.max(0,Math.round(base*pc/100)-done),next=S.wish.find(w=>w.status==='pendiente'&&+w.saved<+w.price);
-  return `<h1>Wishlist de material</h1><div class="grid">${stat('Utilidad base del mes',mx(base))}${stat('Destinado este mes',mx(done))}${stat('Sugerido por destinar',mx(sug))}</div>
-<form class="card" onsubmit="return A.walloc(event)"><h2>Destinar ganancias</h2><div class="grid grid2"><label>% de la utilidad<input type="number" min="0" max="100" value="${pc}" onchange="A.wpct(this.value)"></label><label>Monto a destinar ahora<input name="amount" type="number" min="1" step="0.01" value="${sug||''}" required></label></div><button class="btn btn-dark">Destinar a lo más urgente</button><p class="msg2" id="wmsg"></p></form>
-<form class="card" onsubmit="return A.wadd(event)"><h2>Agregar artículo</h2><div class="grid grid2"><label>Artículo<input name="name" required placeholder="Ej. Micrófono, SSD, licencia"></label><label>Categoría<input name="category" placeholder="Equipo, software..."></label><label>Precio estimado<input name="price" type="number" min="0" step="0.01" required></label><label>Prioridad<select name="priority"><option value="1">Urgente</option><option value="2" selected>Normal</option><option value="3">Puede esperar</option></select></label><label>Enlace<input name="url" type="url" placeholder="https://"></label></div><button class="btn btn-light">Agregar a la wishlist</button></form>
-<div class="grid">${S.wish.map(w=>{const pr=+w.price>0?Math.min(100,Math.round(w.saved/w.price*100)):0,ok=w.status==='comprado';return `<article class="card ${ok?'st-ok':''}"><div class="row2"><b>${esc(w.name)}</b><span class="bd">${ok?CK+'Comprado':PRI[w.priority]}</span></div><small>${esc(w.category||'')}${next&&next.id===w.id?' · Recibe fondos ahora':''}</small><div class="bar"><i style="width:${pr}%"></i></div><div class="row2"><small>${mx(w.saved)} de ${mx(w.price)}</small><small>${pr}%</small></div><div class="row2">${okUrl(w.url)?`<a href="${esc(w.url)}" target="_blank" rel="noopener"><small>Ver producto</small></a>`:'<span></span>'}<span>${ok?'':`<button class="lnk" onclick="A.wbuy('${w.id}')">Marcar comprado</button> `}<button class="lnk" onclick="A.wdel('${w.id}')">Eliminar</button></span></div></article>`}).join('')||'<div class="card empty">Tu wishlist está vacía.</div>'}</div>`;
-},
-site(){if(!S.dr)S.dr=JSON.parse(JSON.stringify({packages:getSet('packages'),contact:getSet('contact'),services:getSet('services')}));if(!S.dr.services)S.dr.services=getSet('services');const d=S.dr,c=d.contact,f=(k,l)=>`<label>${l}<input name="${k}" value="${esc(c[k]||'')}"></label>`;
-  return `<h1>Mi sitio</h1><form onsubmit="return A.siteSave(event)"><h2>Paquetes</h2>${d.packages.map((x,i)=>`<div class="card"><div class="grid grid2"><label>Nombre<input name="pn" value="${esc(x.name)}" required></label><label>Precio (MXN)<input name="pp" type="number" min="0" value="${x.price}" required></label></div><label>Incluye (uno por línea)<textarea name="pf" style="min-height:120px">${esc(x.features.join('\n'))}</textarea></label><button type="button" class="lnk" onclick="A.pkRm(${i})">Quitar paquete</button></div>`).join('')}<button type="button" class="btn btn-light" onclick="A.pkAdd()">Agregar paquete</button><h2>Servicios sueltos</h2>${d.services.map((x,i)=>`<div class="card"><div class="grid grid2"><label>Servicio<input name="sn" value="${esc(x.name)}" required></label><label>Precio (MXN)<input name="sp" type="number" min="0" value="${x.price}" required></label><label>Tipo<select name="sk"><option value="base" ${x.kind==='base'?'selected':''}>Base</option><option value="extra" ${x.kind!=='base'?'selected':''}>Extra</option></select></label><label>Se cobra<input name="su" value="${esc(x.unit||'')}" placeholder="por video, por minuto..."></label></div><button type="button" class="lnk" onclick="A.svRm(${i})">Quitar</button></div>`).join('')}<button type="button" class="btn btn-light" onclick="A.svAdd()">Agregar servicio</button><h2>Contacto</h2><div class="card"><div class="grid grid2">${f('wa','WhatsApp (números con lada)')}${f('wa_show','WhatsApp (como se muestra)')}${f('ig','Instagram (sin @)')}${f('fb','Facebook')}${f('fb_show','Facebook (como se muestra)')}${f('h1_l','Horario 1: días')}${f('h1','Horario 1: horas')}${f('h2_l','Horario 2: días')}${f('h2','Horario 2: horas')}</div></div><button class="btn btn-dark">Guardar cambios</button><p class="msg2" id="smsg"></p></form>`;
-}
-});
-
-const Q={
- mode(m){S.q.mode=m;render()},
- addCat(){const i=+$('#qcat').value,x=S.q.mode==='plan'?getSet('packages')[i]:getSet('services')[i];if(!x)return;S.q.lines.push({n:(S.q.mode==='plan'?'Paquete ':'')+x.name,p:+x.price,q:1});Q.u()},
- addExtra(){const x=getSet('services')[+$('#qex').value],q=Math.max(1,+$('#qq').value||1);if(!x)return;S.q.lines.push({n:x.name+(x.unit?' ('+x.unit+')':''),p:+x.price,q});Q.u()},
- addCus(){const n=$('#qn').value.trim(),v=+$('#qp').value;if(!n||!(v>=0))return;S.q.lines.push({n,p:v,q:1});$('#qn').value='';$('#qp').value='';Q.u()},
- rm(i){S.q.lines.splice(i,1);Q.u()},
- qty(i,v){S.q.lines[i].q=Math.max(1,+v||1);Q.u()},
- calc(){const sub=S.q.lines.reduce((a,l)=>a+l.p*l.q,0),ur=+($('#qur')||{}).value||0,ds=+($('#qds')||{}).value||0;return{sub,ur,ds,tot:Math.round(sub*(1+ur/100)*(1-ds/100))}},
- text(){const c=Q.calc(),cli=($('#qcli')||{}).value;return ['Cotización · Fluxora Creative Studio',cli?'Cliente: '+cli:'','',...S.q.lines.map(l=>'• '+l.n+(l.q>1?' x'+l.q:'')+': '+mx(l.p*l.q)),'','Subtotal: '+mx(c.sub),c.ur?'Urgencia +'+c.ur+'%':'',c.ds?'Descuento -'+c.ds+'%':'','Total: '+mx(c.tot)+' MXN','','Se requiere 50% de anticipo para iniciar. Vigencia: 7 días.'].filter((x,i,a)=>x!==''||(i>0&&a[i-1]!=='')).join('\n')},
- copy(){navigator.clipboard.writeText(Q.text()).then(()=>alert('Cotización copiada'))},
- apply(){const id=($('#qpj')||{}).value,t=Q.calc().tot;if(!id||!confirm('¿Poner '+mx(t)+' como precio de ese proyecto?'))return;sb.from('projects').update({price:t}).eq('id',id).then(async r=>{if(r.error)alert(r.error.message);else{await load();alert('Precio aplicado al proyecto')}})},
- u(){const o=$('#qout');if(!o)return;const c=Q.calc(),ls=S.q.lines;o.innerHTML=`<h2>Cotización</h2>${ls.length?`<div class="tw"><table><tr><th>Concepto</th><th>Cant.</th><th>Importe</th><th></th></tr>${ls.map((l,i)=>`<tr><td>${esc(l.n)}</td><td><input type="number" min="1" value="${l.q}" style="width:68px" onchange="Q.qty(${i},this.value)"></td><td>${mx(l.p*l.q)}</td><td><button class="lnk" onclick="Q.rm(${i})">Quitar</button></td></tr>`).join('')}</table></div>`:'<div class="empty">Agrega conceptos para cotizar.</div>'}<div class="row2"><small>Subtotal ${mx(c.sub)}</small><small>${c.ur?'Urgencia +'+c.ur+'% ':''}${c.ds?'Descuento -'+c.ds+'%':''}</small></div><div class="stat"><small>Total</small><b>${mx(c.tot)}</b></div><div class="row2"><button class="btn btn-dark" onclick="Q.copy()">Copiar</button><a class="btn btn-light" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(Q.text())}">WhatsApp</a></div><label>Aplicar total a un proyecto<select id="qpj">${S.projects.filter(p=>p.status!=='cancelado').map(p=>`<option value="${p.id}">${esc(p.title)} · ${esc(p.profiles&&p.profiles.full_name||'')}</option>`).join('')}</select></label><button class="btn btn-light" onclick="Q.apply()">Aplicar precio</button>`}
+/* ══════════════════════════════════════
+   QUOTE HELPER
+══════════════════════════════════════ */
+const Q2={
+  _sv(){return S.set.services||[{name:'Video hasta 1 minuto',price:150,kind:'base'},{name:'Video de 1 a 4 minutos',price:300,kind:'base'},{name:'Video de 5 a 10 minutos',price:500,kind:'base'},{name:'Subtítulos',price:30,kind:'extra',unit:'por minuto'},{name:'Miniatura',price:80,kind:'extra',unit:'por pieza'},{name:'Revisión adicional',price:50,kind:'extra',unit:'por revisión'}]},
+  _pk(){return S.set.packages||[{name:'Básico',price:150},{name:'Estándar',price:300},{name:'Pro',price:500}]},
+  addCat(){const m=S.q.mode||'plan',i=+($('#_qcat')||{}).value;const x=m==='plan'?this._pk()[i]:this._sv().filter(s=>s.kind==='base')[i];if(!x)return;(S.q.lines=S.q.lines||[]).push({n:(m==='plan'?'Paquete ':'')+x.name,p:+x.price,q:1});WM.refresh('quote')},
+  addExtra(){const ex=this._sv().filter(s=>s.kind!=='base');const x=ex[+($('#_qex')||{}).value];if(!x)return;(S.q.lines=S.q.lines||[]).push({n:x.name,p:+x.price,q:1});WM.refresh('quote')},
+  addCus(){const n=($('#_qn')||{}).value?.trim(),v=+($('#_qp')||{}).value;if(!n||!(v>=0))return;(S.q.lines=S.q.lines||[]).push({n,p:v,q:1});if($('#_qn'))$('#_qn').value='';if($('#_qp'))$('#_qp').value='';WM.refresh('quote')},
+  rm(i){(S.q.lines=S.q.lines||[]).splice(i,1);WM.refresh('quote')},
+  qty(i,v){(S.q.lines=S.q.lines||[])[i].q=Math.max(1,+v||1);WM.refresh('quote')},
+  text(c){const cli=($('#_qcli')||{}).value||'';return['Cotización · Fluxora Creative Studio',cli?'Cliente: '+cli:'','',...(S.q.lines||[]).map(l=>'• '+l.n+(l.q>1?' x'+l.q:'')+': '+mx(l.p*l.q)),'','Subtotal: '+mx(c.sub),c.ur?'Urgencia +'+c.ur+'%':'',c.ds?'Descuento -'+c.ds+'%':'','Total: '+mx(c.tot)+' MXN','','50% de anticipo para iniciar. Vigencia: 7 días.'].filter((x,i,a)=>x!==''||(i>0&&a[i-1]!=='')).join('\n')},
+  copy(){const sub=(S.q.lines||[]).reduce((a,l)=>a+l.p*l.q,0),ur=+($('#_qur')||{}).value||0,ds=+($('#_qds')||{}).value||0,tot=Math.round(sub*(1+ur/100)*(1-ds/100));navigator.clipboard.writeText(this.text({sub,ur,ds,tot})).then(()=>alert('Cotización copiada'))},
+  apply(){const id=($('#_qpj')||{}).value,sub=(S.q.lines||[]).reduce((a,l)=>a+l.p*l.q,0),ur=+($('#_qur')||{}).value||0,ds=+($('#_qds')||{}).value||0,tot=Math.round(sub*(1+ur/100)*(1-ds/100));if(!id||!confirm('¿Poner '+mx(tot)+' como precio de ese proyecto?'))return;sb.from('projects').update({price:tot}).eq('id',id).then(async r=>{if(r.error)alert(r.error.message);else{await load();WM.refreshAll();alert('Precio aplicado')}})}
 };
 
-/* ══════════════════════════════════════════
+/* ══════════════════════════════════════
    DOCUMENTS
-══════════════════════════════════════════ */
-const TODAY=new Date().toISOString().slice(0,10);
-const NOTE=['notas','Notas','a'];
+══════════════════════════════════════ */
 const DOCS={
-contract:{n:'Contrato de servicios',d:'Contrato simple con alcance, precio, plazos y derechos.',hd:{lugar:'Navojoa, Sonora',anticipo:'50',revisiones:'2 revisiones menores'},sig:['Prestador (Fluxora Creative Studio)','Cliente'],note:'Plantilla general. No sustituye la asesoría de un abogado.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['lugar','Lugar de firma'],['cliente','Nombre del cliente'],['id','Identificación del cliente'],['alcance','Alcance del servicio','a'],['entregables','Entregables'],['formato','Formato'],['precio','Precio total (MXN)','n'],['anticipo','Anticipo (%)','n'],['pago','Forma de pago'],['entrega','Entrega estimada'],['revisiones','Revisiones incluidas'],NOTE],body:['En {{lugar}}, el {{fecha}}, Fluxora Creative Studio (el "Prestador") y {{cliente}} (el "Cliente"), con identificación {{id}}, celebran este contrato de prestación de servicios para el proyecto "{{proyecto}}".','Alcance del servicio: {{alcance}}. Entregables: {{entregables}}. Formato: {{formato}}.','Precio total: {{precio}} MXN. Anticipo: {{anticipo}}% para iniciar el proyecto; el resto se liquida en la entrega final. Forma de pago: {{pago}}.','Plazos: el Prestador contactará al Cliente a más tardar 48 horas después del pago. El Cliente entregará todo el material en un máximo de 72 horas después de ser contactado. La entrega estimada es {{entrega}} y se cuenta desde que el Cliente entregue el material completo.','Revisiones: se incluyen {{revisiones}}. Los cambios completos de concepto y revisiones adicionales pueden tener costo extra.','Cancelaciones: solo se reembolsa el pago si el proyecto no ha iniciado. Una vez iniciada la edición o producción no hay reembolsos.','Derechos de uso: el Cliente garantiza contar con los derechos del material que entrega. Una vez entregado el proyecto final y liquidado el pago, el Cliente podrá usar el contenido con fines personales o comerciales.','Ambas partes se someten a las leyes aplicables en México.'],tables:[]},
-budget:{n:'Presupuesto (Budget)',d:'Costos por partida con imprevistos e IVA.',budget:1,hd:{moneda:'MXN',imp:'10',iva:'16'},sig:['Elaboró','Aprobó (cliente)'],head:[['proyecto','Proyecto'],['cliente','Cliente'],['fecha','Fecha','d'],['moneda','Moneda'],['imp','Imprevistos (%)','n'],['iva','IVA (%, pon 0 si no aplica)','n'],NOTE],tables:[{k:'rows',t:'Partidas',cols:[['c','Concepto'],['cat','Categoría'],['q','Cantidad','n'],['u','Unidad'],['p','Precio unitario','n$']],seed:[{c:'Preproducción y guion',cat:'Preproducción',q:1,u:'servicio'},{c:'Rodaje',cat:'Producción',q:1,u:'día'},{c:'Renta de equipo',cat:'Producción',q:1,u:'día'},{c:'Edición de video',cat:'Postproducción',q:1,u:'video'},{c:'Música y licencias',cat:'Postproducción',q:1,u:'pieza'},{c:'Transporte y alimentos',cat:'Logística',q:1,u:'día'}]}]},
-breakdown:{n:'Desglose de guion',d:'Por escena: locación, personajes, utilería y vestuario.',head:[['proyecto','Proyecto'],['guion','Título del guion'],['fecha','Fecha','d'],NOTE],tables:[{k:'rows',t:'Escenas',cols:[['esc','Escena'],['ie','INT / EXT'],['loc','Locación'],['dn','Día / Noche'],['d','Descripción','a'],['per','Personajes o talento'],['ut','Utilería'],['ves','Vestuario y maquillaje'],['n','Notas']]}]},
-memo:{n:'Crew Deal Memo',d:'Acuerdo simple con cada integrante del equipo.',hd:{cancel:'50%',tipo:'por día'},sig:['Productor','Contratado'],note:'Plantilla general. Para contratos de mayor valor consulta a un abogado.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['nombre','Nombre del contratado'],['puesto','Puesto'],['id','Identificación (INE, RFC)'],['tel','Teléfono'],['tarifa','Tarifa (MXN)','n'],['tipo','Tipo de tarifa'],['fechas','Fechas de trabajo'],['horas','Horas de jornada','n'],['extra','Pago de horas extra'],['pago','Forma y fecha de pago'],['cancel','Pago si se cancela con menos de 24 h'],NOTE],body:['En {{fecha}}, Fluxora Creative Studio (la "Productora") y {{nombre}} (el "Contratado"), con identificación {{id}} y teléfono {{tel}}, acuerdan lo siguiente para el proyecto "{{proyecto}}".','Puesto: {{puesto}}. Fechas de trabajo: {{fechas}}. Jornada: {{horas}} horas.','Tarifa: {{tarifa}} MXN {{tipo}}. Horas extra: {{extra}}. Forma y fecha de pago: {{pago}}.','Confidencialidad: el Contratado se obliga a no divulgar material, guiones, ideas ni información del proyecto o del cliente sin autorización por escrito.','Derechos: el trabajo realizado en este proyecto es trabajo por encargo y los derechos patrimoniales corresponden a la Productora o a su cliente, según se acuerde.','Cancelación: si el proyecto se cancela con menos de 24 horas de aviso, se pagará {{cancel}} de la tarifa del día.'],tables:[]},
-shots:{n:'Lista de planos (Shot List)',d:'Plano, movimiento, lente y avance de cada toma.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['loc','Locación'],NOTE],tables:[{k:'rows',t:'Planos',cols:[['n','No.'],['esc','Escena'],['pl','Plano (GP, PM, PP, cenital...)'],['mov','Movimiento o ángulo'],['d','Descripción','a'],['eq','Lente o equipo'],['ok','Listo','c']]}]},
-call:{n:'Call Sheet',d:'Hoja de llamado del día de rodaje.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['llamado','Llamado general','h'],['loc','Locación'],['dir','Dirección'],['clima','Clima'],['contacto','Contacto de producción'],['hosp','Hospital o emergencias cercano'],NOTE],tables:[{k:'crew',t:'Equipo y talento',cols:[['nom','Nombre'],['rol','Rol'],['tel','Teléfono'],['hora','Hora de llamado','h']]},{k:'esc',t:'Escenas del día',cols:[['e','Escena'],['d','Descripción','a'],['loc','Locación'],['hora','Hora estimada','h']]}]},
-release:{n:'Talent Release',d:'Autorización de uso de imagen y voz.',hd:{usos:'redes sociales, sitio web y publicidad del proyecto',territorio:'México y medios digitales',vigencia:'2 años a partir de la firma',compensacion:'Sin compensación económica',lugar:'Navojoa, Sonora'},sig:['Talento','Madre, padre o tutor (si es menor)','Productor'],note:'Plantilla general. No sustituye la asesoría de un abogado.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['lugar','Lugar de firma'],['nombre','Nombre del talento'],['id','Identificación (INE, pasaporte)'],['tutor','Nombre del tutor (si es menor)'],['usos','Usos autorizados'],['territorio','Territorio'],['vigencia','Vigencia'],['compensacion','Compensación'],NOTE],body:['Yo, {{nombre}}, identificado con {{id}}, autorizo a Fluxora Creative Studio y a su cliente a grabar, fotografiar y registrar mi imagen, voz y nombre durante el proyecto "{{proyecto}}".','Autorizo el uso de este material para: {{usos}}. Territorio: {{territorio}}. Vigencia: {{vigencia}}.','Compensación: {{compensacion}}.','Declaro que soy mayor de edad y que no existe impedimento para otorgar esta autorización. Si soy menor de edad, la firma quien ejerce la patria potestad o tutela: {{tutor}}.','Mi imagen no se usará de forma denigrante ni contraria a mi dignidad.','Firmado en {{lugar}}, el {{fecha}}.'],tables:[]},
-story:{n:'Storyboard',d:'Cuadros con imagen, plano, descripción y audio.',head:[['proyecto','Proyecto'],['cliente','Cliente'],['fecha','Fecha','d'],NOTE],tables:[{k:'rows',t:'Cuadros',frames:1,cols:[['img','Imagen del cuadro','i'],['pl','Plano'],['d','Descripción de la acción','a'],['a','Audio o diálogo'],['n','Notas']]}]},
-sched:{n:'Plan de rodaje',d:'Calendario de días, horarios, escenas y locaciones.',head:[['proyecto','Proyecto'],['inicio','Inicio de rodaje','d'],['fin','Fin de rodaje','d'],NOTE],tables:[{k:'rows',t:'Calendario',cols:[['dia','Día'],['fecha','Fecha','d'],['ini','Hora inicio','h'],['fin','Hora fin','h'],['esc','Escenas'],['loc','Locación'],['d','Descripción','a'],['tal','Talento y equipo'],['n','Notas']]}]}
+contract:{n:'Contrato de servicios',d:'Contrato simple con alcance, precio, plazos y derechos.',hd:{lugar:'Navojoa, Sonora',anticipo:'50',revisiones:'2 revisiones menores'},sig:['Prestador (Fluxora Creative Studio)','Cliente'],note:'Plantilla general. No sustituye asesoría legal.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['lugar','Lugar de firma'],['cliente','Nombre del cliente'],['id','Identificación del cliente'],['alcance','Alcance del servicio','a'],['entregables','Entregables'],['formato','Formato'],['precio','Precio total (MXN)','n'],['anticipo','Anticipo (%)','n'],['pago','Forma de pago'],['entrega','Entrega estimada'],['revisiones','Revisiones incluidas'],['notas','Notas','a']],body:['En {{lugar}}, el {{fecha}}, Fluxora Creative Studio (el "Prestador") y {{cliente}} (el "Cliente"), con identificación {{id}}, celebran este contrato de prestación de servicios para el proyecto "{{proyecto}}".','Alcance del servicio: {{alcance}}. Entregables: {{entregables}}. Formato: {{formato}}.','Precio total: {{precio}} MXN. Anticipo: {{anticipo}}% para iniciar el proyecto; el resto se liquida en la entrega final. Forma de pago: {{pago}}.','Plazos: el Prestador contactará al Cliente a más tardar 48 horas después del pago. La entrega estimada es {{entrega}} desde que el Cliente entregue el material completo.','Revisiones: se incluyen {{revisiones}}. Revisiones adicionales pueden tener costo extra.','Cancelaciones: solo se reembolsa el pago si el proyecto no ha iniciado.','Derechos de uso: una vez entregado y liquidado, el Cliente podrá usar el contenido con fines personales o comerciales.'],tables:[]},
+budget:{n:'Presupuesto (Budget)',d:'Costos por partida con imprevistos e IVA.',budget:1,hd:{moneda:'MXN',imp:'10',iva:'16'},sig:['Elaboró','Aprobó (cliente)'],head:[['proyecto','Proyecto'],['cliente','Cliente'],['fecha','Fecha','d'],['moneda','Moneda'],['imp','Imprevistos (%)','n'],['iva','IVA (%)','n'],['notas','Notas','a']],tables:[{k:'rows',t:'Partidas',cols:[['c','Concepto'],['cat','Categoría'],['q','Cantidad','n'],['u','Unidad'],['p','Precio unitario','n$']],seed:[{c:'Preproducción',cat:'Preproducción',q:1,u:'servicio'},{c:'Rodaje',cat:'Producción',q:1,u:'día'},{c:'Edición de video',cat:'Postproducción',q:1,u:'video'}]}]},
+breakdown:{n:'Desglose de guion',d:'Por escena: locación, personajes, utilería y vestuario.',head:[['proyecto','Proyecto'],['guion','Título del guion'],['fecha','Fecha','d'],['notas','Notas','a']],tables:[{k:'rows',t:'Escenas',cols:[['esc','Escena'],['ie','INT / EXT'],['loc','Locación'],['dn','Día / Noche'],['d','Descripción','a'],['per','Personajes'],['ut','Utilería'],['ves','Vestuario'],['n','Notas']]}]},
+memo:{n:'Crew Deal Memo',d:'Acuerdo simple con cada integrante del equipo.',hd:{cancel:'50%',tipo:'por día'},sig:['Productor','Contratado'],note:'Plantilla general.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['nombre','Nombre del contratado'],['puesto','Puesto'],['id','Identificación (INE, RFC)'],['tel','Teléfono'],['tarifa','Tarifa (MXN)','n'],['tipo','Tipo de tarifa'],['fechas','Fechas de trabajo'],['horas','Horas de jornada','n'],['extra','Pago de horas extra'],['pago','Forma y fecha de pago'],['cancel','Pago si se cancela con menos de 24 h'],['notas','Notas','a']],body:['En {{fecha}}, Fluxora Creative Studio y {{nombre}}, con identificación {{id}}, acuerdan lo siguiente para "{{proyecto}}".','Puesto: {{puesto}}. Fechas: {{fechas}}. Jornada: {{horas}} horas.','Tarifa: {{tarifa}} MXN {{tipo}}. Horas extra: {{extra}}. Pago: {{pago}}.','Cancelación con menos de 24 h: se pagará {{cancel}} de la tarifa del día.'],tables:[]},
+shots:{n:'Lista de planos',d:'Plano, movimiento, lente y avance.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['loc','Locación'],['notas','Notas','a']],tables:[{k:'rows',t:'Planos',cols:[['n','No.'],['esc','Escena'],['pl','Plano'],['mov','Movimiento'],['d','Descripción','a'],['eq','Lente / equipo'],['ok','Listo','c']]}]},
+call:{n:'Call Sheet',d:'Hoja de llamado del día de rodaje.',head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['llamado','Llamado general','h'],['loc','Locación'],['dir','Dirección'],['contacto','Contacto de producción'],['hosp','Hospital / emergencias'],['notas','Notas','a']],tables:[{k:'crew',t:'Equipo y talento',cols:[['nom','Nombre'],['rol','Rol'],['tel','Teléfono'],['hora','Hora de llamado','h']]},{k:'esc',t:'Escenas del día',cols:[['e','Escena'],['d','Descripción','a'],['loc','Locación'],['hora','Hora','h']]}]},
+release:{n:'Talent Release',d:'Autorización de uso de imagen y voz.',hd:{usos:'redes sociales, sitio web y publicidad',territorio:'México y medios digitales',vigencia:'2 años a partir de la firma',compensacion:'Sin compensación económica',lugar:'Navojoa, Sonora'},sig:['Talento','Tutor (si es menor)','Productor'],head:[['proyecto','Proyecto'],['fecha','Fecha','d'],['lugar','Lugar'],['nombre','Nombre del talento'],['id','Identificación'],['tutor','Tutor (si es menor)'],['usos','Usos autorizados'],['territorio','Territorio'],['vigencia','Vigencia'],['compensacion','Compensación'],['notas','Notas','a']],body:['Yo, {{nombre}}, identificado con {{id}}, autorizo a Fluxora Creative Studio a grabar y usar mi imagen y voz durante el proyecto "{{proyecto}}".','Usos: {{usos}}. Territorio: {{territorio}}. Vigencia: {{vigencia}}.','Compensación: {{compensacion}}.','Firmado en {{lugar}}, el {{fecha}}.'],tables:[]},
+story:{n:'Storyboard',d:'Cuadros con imagen, plano y audio.',head:[['proyecto','Proyecto'],['cliente','Cliente'],['fecha','Fecha','d'],['notas','Notas','a']],tables:[{k:'rows',t:'Cuadros',frames:1,cols:[['img','Imagen','i'],['pl','Plano'],['d','Descripción','a'],['a','Audio / diálogo'],['n','Notas']]}]},
+sched:{n:'Plan de rodaje',d:'Calendario de días, horarios y locaciones.',head:[['proyecto','Proyecto'],['inicio','Inicio de rodaje','d'],['fin','Fin de rodaje','d'],['notas','Notas','a']],tables:[{k:'rows',t:'Calendario',cols:[['dia','Día'],['fecha','Fecha','d'],['ini','Inicio','h'],['fin','Fin','h'],['esc','Escenas'],['loc','Locación'],['d','Descripción','a'],['tal','Talento / equipo']]}]}
 };
 
-const fill=t=>t.replace(/\{\{(\w+)\}\}/g,(m,k)=>S.dk.h[k]?esc(S.dk.h[k]):'________');
+const fill=t=>t.replace(/\{\{(\w+)\}\}/g,(m,k)=>S.dk?.h[k]?esc(S.dk.h[k]):'________');
 const cellv=(r,c)=>{const v=r[c[0]],t=c[2]||'t';return t==='c'?(v?'✓':''):t==='d'?(v?fd(v):''):t==='n$'?(v?mx(v):''):esc(v||'')};
-function paper(){const k=S.dk,d=DOCS[k.kind],h=k.h;
+
+function paperHTML(){const k=S.dk,d=DOCS[k.kind],h=k.h;
   let o=`<div class="phd"><b>FLUXORA CREATIVE STUDIO</b><span>${fd(h.fecha||TODAY)}</span></div><h1>${esc(d.n)}</h1><div class="pg">${d.head.filter(f=>f[2]!=='a').map(f=>`<div><small>${f[1]}</small><b>${f[2]==='d'?(h[f[0]]?fd(h[f[0]]):''):esc(h[f[0]]||'')}</b></div>`).join('')}</div>`;
   if(d.body)o+=d.body.map(p=>`<p>${fill(esc(p))}</p>`).join('').replace(/&quot;/g,'"');
   d.tables.forEach(tb=>{const rows=k.t[tb.k]||[];o+=`<h2>${tb.t}</h2>`;
     if(tb.frames)o+=`<div class="fr">${rows.map((r,i)=>`<div class="fc">${r.img?`<img src="${r.img}" alt="">`:'<div class="ph"></div>'}<small>Cuadro ${i+1}${r.pl?' · '+esc(r.pl):''}</small><p>${esc(r.d||'')}</p>${r.a?`<p><i>${esc(r.a)}</i></p>`:''}${r.n?`<small>${esc(r.n)}</small>`:''}</div>`).join('')}</div>`;
-    else o+=`<table><tr>${tb.cols.map(c=>`<th>${c[1]}</th>`).join('')}${d.budget?'<th>Importe</th>':''}</tr>${rows.map(r=>`<tr>${tb.cols.map(c=>`<td>${cellv(r,c)}</td>`).join('')}${d.budget?`<td>${mx((+r.q||0)*(+r.p||0))}</td>`:''}</tr>`).join('')}</table>`});
+    else o+=`<table><tr>${tb.cols.map(c=>`<th>${c[1]}</th>`).join('')}${d.budget?'<th>Importe</th>':''}</tr>${rows.map(r=>`<tr>${tb.cols.map(c=>`<td>${cellv(r,c)}</td>`).join('')}${d.budget?`<td>${mx((+r.q||0)*(+r.p||0))}</td>`:''}</tr>`).join('')}</table>`;
+  });
   if(d.budget){const sub=(k.t.rows||[]).reduce((a,r)=>a+(+r.q||0)*(+r.p||0),0),im=sub*(+h.imp||0)/100,iv=(sub+im)*(+h.iva||0)/100;o+=`<table class="tot"><tr><td>Subtotal</td><td>${mx(sub)}</td></tr><tr><td>Imprevistos (${+h.imp||0}%)</td><td>${mx(im)}</td></tr><tr><td>IVA (${+h.iva||0}%)</td><td>${mx(iv)}</td></tr><tr><th>Total ${esc(h.moneda||'MXN')}</th><th>${mx(sub+im+iv)}</th></tr></table>`}
   if(h.notas)o+=`<h2>Notas</h2><p style="white-space:pre-wrap">${esc(h.notas)}</p>`;
   if(d.sig)o+=`<div class="sg">${d.sig.map(s=>`<div><span></span>${s}</div>`).join('')}</div>`;
   return o}
-function fld(c,v,ctx){const t=c[2]||'t',l=c[1],H=ctx.t?`DC.c('${ctx.t}',${ctx.i},'${c[0]}',`:`DC.h('${c[0]}',`;
-  if(t==='c')return `<label style="grid-auto-flow:column;justify-content:start;align-items:center;gap:.6rem"><input type="checkbox" style="width:auto" ${v?'checked':''} onchange="${H}this.checked)">${l}</label>`;
-  if(t==='a')return `<label style="grid-column:1/-1">${l}<textarea oninput="${H}this.value)">${esc(v||'')}</textarea></label>`;
-  if(t==='i')return `<label style="grid-column:1/-1">${l}<input type="file" accept="image/*" onchange="DC.img('${ctx.t}',${ctx.i},'${c[0]}',this)">${v?`<img src="${v}" alt="" style="max-width:220px;border-radius:10px">`:''}</label>`;
-  const ty=t==='n'||t==='n$'?'number" step="any':t==='d'?'date':t==='h'?'time':'text';
-  return `<label>${l}<input type="${ty}" value="${esc(v||'')}" oninput="${H}this.value)"></label>`}
-function editor(){const k=S.dk,d=DOCS[k.kind];
-  return `<button class="lnk" onclick="DC.close()">← Volver a documentos</button><h1>${esc(d.n)}</h1>
-<div class="card"><div class="grid grid2"><label>Basar en un proyecto<select onchange="DC.proj(this.value)"><option value="">Ninguno</option>${S.projects.map(p=>`<option value="${p.id}" ${p.id===k.project_id?'selected':''}>${esc(p.title)}</option>`).join('')}</select></label><label>Título para guardarlo<input value="${esc(k.title)}" oninput="S.dk.title=this.value" placeholder="${esc(d.n)}"></label></div>${d.note?`<small>${esc(d.note)}</small>`:''}</div>
-<div class="card"><h2>Datos generales</h2><div class="grid grid2">${d.head.map(f=>fld(f,k.h[f[0]],{})).join('')}</div></div>
-${d.tables.map(tb=>`<div class="card"><div class="row2"><h2>${tb.t}</h2><button class="btn btn-light" onclick="DC.add('${tb.k}')">Agregar</button></div>${(k.t[tb.k]||[]).map((r,i)=>`<div class="card"><div class="grid grid2">${tb.cols.map(c=>fld(c,r[c[0]],{t:tb.k,i})).join('')}</div><button class="lnk" onclick="DC.rm('${tb.k}',${i})">Quitar</button></div>`).join('')}</div>`).join('')}
-<div class="card"><div class="row2"><button class="btn btn-dark" onclick="DC.save()">Guardar</button><button class="btn btn-light" onclick="DC.print()">Imprimir / PDF</button></div></div>
-<div class="pw"><div id="paper">${paper()}</div></div>`}
 
-Object.assign(V,{docs(){
-  if(S.dk) return editor();
-  const canSeeAll=['admin','staff'].includes(S.p&&S.p.role);
-  const restricted=!canSeeAll;
-  return `<h1>Documentos de producción</h1>
-  <div class="grid">${Object.entries(DOCS).filter(([k])=>!restricted||!['budget','contract','memo'].includes(k)).map(([k,d])=>`<article class="card pc" onclick="DC.new('${k}')"><b>${esc(d.n)}</b><small>${esc(d.d)}</small></article>`).join('')}</div>
-  <h2>Documentos guardados</h2>
-  <div class="card tw"><table><tr><th>Documento</th><th>Tipo</th><th>Proyecto</th><th>Actualizado</th><th></th></tr>${S.docs.map(x=>`<tr><td><b>${esc(x.title)}</b></td><td>${esc((DOCS[x.kind]||{}).n||x.kind)}</td><td><small>${esc((S.projects.find(q=>q.id===x.project_id)||{}).title||'')}</small></td><td>${fd(x.updated_at)}</td><td><button class="lnk" onclick="DC.open('${x.id}')">Abrir</button>${admin()?` <button class="lnk" onclick="DC.del('${x.id}')">Eliminar</button>`:''}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">Aún no guardas documentos.</td></tr>'}</table></div>`;
-}});
+function fld(c,v,ctx){const t=c[2]||'t',l=c[1],H=ctx.t?`DC.c('${ctx.t}',${ctx.i},'${c[0]}',`:`DC.h('${c[0]}',`;
+  if(t==='c')return `<label style="display:flex;align-items:center;gap:.5rem;font-size:.76rem;color:var(--ink2)"><input type="checkbox" style="width:auto;accent-color:#fff"${v?' checked':''} onchange="${H}this.checked)">${l}</label>`;
+  if(t==='a')return `<label class="lbl" style="grid-column:1/-1">${l}<textarea oninput="${H}this.value)">${esc(v||'')}</textarea></label>`;
+  if(t==='i')return `<label class="lbl" style="grid-column:1/-1">${l}<input type="file" accept="image/*" onchange="DC.img('${ctx.t}',${ctx.i},'${c[0]}',this)">${v?`<img src="${v}" alt="" style="max-width:200px;border-radius:8px;margin-top:.4rem">`:''}</label>`;
+  const ty=t==='n'||t==='n$'?'number" step="any':t==='d'?'date':t==='h'?'time':'text';
+  return `<label class="lbl">${l}<input type="${ty}" value="${esc(v||'')}" oninput="${H}this.value)"></label>`}
+
+const DOCS_EDITOR={render(){
+  const k=S.dk,d=DOCS[k.kind];
+  return `<div style="display:flex;flex-direction:column;gap:1rem">
+    <div class="row between"><h1 class="win-h1">${esc(d.n)}</h1><div class="row" style="gap:.5rem"><button class="btn btn-primary btn-sm" onclick="DC.save()">Guardar</button><button class="btn btn-ghost btn-sm" onclick="DC.print()">Imprimir / PDF</button><button class="lnk-btn" onclick="DC.close()">← Volver</button></div></div>
+    ${d.note?`<p style="font-size:.72rem;color:var(--muted)">${esc(d.note)}</p>`:''}
+    <div class="card">
+      <div class="form-grid">
+        <label class="lbl">Basar en un proyecto<select onchange="DC.proj(this.value)"><option value="">Ninguno</option>${S.projects.map(p=>`<option value="${p.id}"${p.id===k.project_id?' selected':''}>${esc(p.title)}</option>`).join('')}</select></label>
+        <label class="lbl">Título para guardar<input value="${esc(k.title)}" oninput="S.dk.title=this.value" placeholder="${esc(d.n)}"></label>
+      </div>
+    </div>
+    <div class="card"><div class="card-title">Datos generales</div><div class="form-grid">${d.head.map(f=>fld(f,k.h[f[0]],{})).join('')}</div></div>
+    ${d.tables.map(tb=>`<div class="card"><div class="row between"><div class="card-title">${tb.t}</div><button class="btn btn-ghost btn-sm" onclick="DC.add('${tb.k}')">+ Agregar</button></div>${(k.t[tb.k]||[]).map((r,i)=>`<div class="card"><div class="form-grid">${tb.cols.map(c=>fld(c,r[c[0]],{t:tb.k,i})).join('')}</div><button class="lnk-btn" style="font-size:.68rem;color:#ef4444" onclick="DC.rm('${tb.k}',${i})">Quitar fila</button></div>`).join('')}</div>`).join('')}
+    <div class="card"><div class="card-title">Vista previa (para imprimir)</div><div class="pw"><div id="paper">${paperHTML()}</div></div></div>
+  </div>`
+}};
 
 const DC={
- new(kind){const d=DOCS[kind],t={};d.tables.forEach(tb=>t[tb.k]=(tb.seed||[{}]).map(x=>({...x})));S.dk={kind,id:null,title:'',project_id:null,h:{fecha:TODAY,...(d.hd||{})},t};render();scrollTo(0,0)},
- close(){S.dk=null;const b=S.dkBack;S.dkBack=null;if(b){go('project',b.id);setTimeout(()=>{S.tab='archivo';render()},0)}else render()},
- newFor(kind,pid){S.view='docs';S.id=null;S.dkBack={id:pid};DC.new(kind);DC.proj(pid)},
- async openFrom(id,pid){S.view='docs';S.id=null;S.dkBack={id:pid};await DC.open(id)},
- print(){const pp=$('#paper');if(!pp)return;const a4=S.paper==='a4',W=a4?703:725,H=a4?1032:965;document.getElementById('pgstyle').textContent='@page{size:'+(a4?'A4':'letter')+' portrait;margin:12mm}';const w0=pp.style.width;pp.style.width=W+'px';const h=pp.scrollHeight;pp.style.width=w0;let z=1;if(S.fit&&h>H&&h<=H*1.45)z=Math.max(.62,(H-6)/h);document.documentElement.style.setProperty('--pz',z);window.print()},
- h(k,v){S.dk.h[k]=v;DC.pv()},c(t,i,k,v){S.dk.t[t][i][k]=v;DC.pv()},
- add(t){S.dk.t[t].push({});render()},rm(t,i){S.dk.t[t].splice(i,1);render()},
- pv(){const p=$('#paper');if(p)p.innerHTML=paper()},
- proj(id){const p=S.projects.find(x=>x.id===id);S.dk.project_id=id||null;if(p){S.dk.h.proyecto=p.title;S.dk.h.cliente=(p.profiles&&p.profiles.full_name)||p.client_name||'';if(S.dk.kind==='contract'){if(+p.price)S.dk.h.precio=p.price;S.dk.h.formato=p.format&&p.format!=='na'?p.format:'';S.dk.h.alcance=S.dk.h.alcance||p.description||''}}render()},
- img(t,i,k,inp){const f=inp.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{const im=new Image();im.onload=()=>{const w=Math.min(520,im.width),c=document.createElement('canvas');c.width=w;c.height=Math.round(im.height*w/im.width);c.getContext('2d').drawImage(im,0,0,c.width,c.height);S.dk.t[t][i][k]=c.toDataURL('image/jpeg',.72);render()};im.src=rd.result};rd.readAsDataURL(f)},
- async save(){const k=S.dk;if(!admin()&&!k.project_id){alert('Elige un proyecto para guardar el documento.');return}const d=DOCS[k.kind],row={kind:k.kind,title:k.title||(d.n+(k.h.proyecto?' · '+k.h.proyecto:'')),project_id:k.project_id,data:{h:k.h,t:k.t},updated_at:new Date().toISOString()};
-  const r=k.id?await sb.from('documents').update(row).eq('id',k.id):await sb.from('documents').insert(row).select('id').single();
-  if(r.error){alert(r.error.message);return}if(!k.id&&r.data)k.id=r.data.id;await load();render();alert('Documento guardado')},
- async open(id){const r=await sb.from('documents').select('*').eq('id',id).single();if(r.error){alert(r.error.message);return}S.dk={kind:r.data.kind,id,title:r.data.title,project_id:r.data.project_id,h:r.data.data.h||{},t:r.data.data.t||{}};render();scrollTo(0,0)},
- async del(id){if(!confirm('¿Eliminar este documento?'))return;await sb.from('documents').delete().eq('id',id);await load();render()}
+ new(kind){const d=DOCS[kind],t={};d.tables.forEach(tb=>t[tb.k]=(tb.seed||[{}]).map(x=>({...x})));S.dk={kind,id:null,title:'',project_id:null,h:{fecha:TODAY,...(d.hd||{})},t};WM.refresh('docs');WM.focus('docs')},
+ close(){S.dk=null;const b=S.dkBack;S.dkBack=null;WM.refresh('docs');if(b)WM.openProject(b)},
+ newFor(kind,pid){S.dkBack=pid;const d=DOCS[kind],t={};d.tables.forEach(tb=>t[tb.k]=(tb.seed||[{}]).map(x=>({...x})));S.dk={kind,id:null,title:'',project_id:pid,h:{fecha:TODAY,...(d.hd||{})},t};DC.proj(pid);if(!WM.wins['docs'])WM.openApp('docs');else WM.refresh('docs');WM.focus('docs')},
+ async openFrom(id,pid){S.dkBack=pid;await DC.open(id);if(!WM.wins['docs'])WM.openApp('docs');else WM.refresh('docs');WM.focus('docs')},
+ print(){const pp=document.getElementById('paper');if(!pp)return;const a4=S.paper==='a4',H=a4?1032:965;document.getElementById('pgstyle').textContent='@page{size:'+(a4?'A4':'letter')+' portrait;margin:12mm}';const h=pp.scrollHeight;let z=1;if(S.fit&&h>H&&h<=H*1.45)z=Math.max(.62,(H-6)/h);document.documentElement.style.setProperty('--pz',z);window.print()},
+ h(k,v){if(!S.dk)return;S.dk.h[k]=v;const p=document.getElementById('paper');if(p)p.innerHTML=paperHTML()},
+ c(t,i,k,v){if(!S.dk)return;S.dk.t[t][i][k]=v;const p=document.getElementById('paper');if(p)p.innerHTML=paperHTML()},
+ add(t){S.dk.t[t].push({});WM.refresh('docs')},rm(t,i){S.dk.t[t].splice(i,1);WM.refresh('docs')},
+ proj(id){const p=S.projects.find(x=>x.id===id);S.dk.project_id=id||null;if(p){S.dk.h.proyecto=p.title;S.dk.h.cliente=p.profiles?.full_name||p.client_name||'';if(S.dk.kind==='contract'){if(+p.price)S.dk.h.precio=p.price;S.dk.h.formato=p.format&&p.format!=='na'?p.format:'';S.dk.h.alcance=S.dk.h.alcance||p.description||''}}WM.refresh('docs')},
+ img(t,i,k,inp){const f=inp.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{const im=new Image();im.onload=()=>{const w=Math.min(520,im.width),c=document.createElement('canvas');c.width=w;c.height=Math.round(im.height*w/im.width);c.getContext('2d').drawImage(im,0,0,c.width,c.height);S.dk.t[t][i][k]=c.toDataURL('image/jpeg',.72);WM.refresh('docs')};im.src=rd.result};rd.readAsDataURL(f)},
+ async save(){if(!admin()&&!S.dk.project_id){alert('Elige un proyecto para guardar el documento.');return}const d=DOCS[S.dk.kind],row={kind:S.dk.kind,title:S.dk.title||(d.n+(S.dk.h.proyecto?' · '+S.dk.h.proyecto:'')),project_id:S.dk.project_id,data:{h:S.dk.h,t:S.dk.t},updated_at:new Date().toISOString()};const r=S.dk.id?await sb.from('documents').update(row).eq('id',S.dk.id):await sb.from('documents').insert(row).select('id').single();if(r.error){alert(r.error.message);return}if(!S.dk.id&&r.data)S.dk.id=r.data.id;await load();WM.refresh('docs');alert('Documento guardado')},
+ async open(id){const r=await sb.from('documents').select('*').eq('id',id).single();if(r.error){alert(r.error.message);return}S.dk={kind:r.data.kind,id,title:r.data.title,project_id:r.data.project_id,h:r.data.data.h||{},t:r.data.data.t||{}}},
+ async del(id){if(!confirm('¿Eliminar este documento?'))return;await sb.from('documents').delete().eq('id',id);await load();WM.refresh('docs')}
 };
 
-/* ══════════════════════════════════════════
-   PROJECT DETAIL
-══════════════════════════════════════════ */
-function closedView(p){const ap=S.D.ap[0];
-  return `<button class="lnk" onclick="go('home')">← Volver</button><div class="card st-cancelado"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div><h2>Proyecto cerrado</h2><p><b>Motivo:</b> ${esc(p.cancel_reason||'Sin motivo registrado')}</p><small>Este proyecto desaparecerá de tu panel en ${daysLeft(p)} día(s).</small></div>
-  ${ap?`<div class="card"><h2>Tu apelación</h2><p style="white-space:pre-wrap">${esc(ap.body)}</p><small>Enviada ${ft(ap.created_at)}.</small></div>`:`<form class="card" onsubmit="return A.appeal(event,'${p.id}')"><h2>Apelar la cancelación</h2><textarea name="body" minlength="10" required placeholder="Escribe tu apelación..."></textarea><button class="btn btn-dark">Enviar apelación</button></form>`}
-  ${S.D.msg.length?`<div class="card"><div class="chat">${S.D.msg.map(m=>`<div class="msg ${m.sender_id===S.u.id?'me':''}"><small>${m.sender_id===S.u.id?'Tú':'Fluxora'} · ${ft(m.created_at)}</small><p>${esc(m.body)}</p></div>`).join('')}</div><small>El proyecto está cerrado, el chat es solo de lectura.</small></div>`:''}
-  <div class="card"><h2>Historial</h2><ul class="tl">${S.D.ev.map(e=>`<li><b>${esc(e.text)}</b><br><small>${ft(e.created_at)}</small></li>`).join('')}</ul></div>`}
-
-function detail(){
-  const p=S.projects.find(x=>x.id===S.id);
-  if(!p) return '<div class="card empty">Proyecto no encontrado.</div>';
-  if(S.p.role==='client'&&p.status==='cancelado') return closedView(p);
-
-  // tabs depend on role
-  const tabs=[['resumen','Resumen'],['chat','Chat'],['mods','Modificaciones']];
-  if(admin()) tabs.push(['pagos','Pagos']);
-  if(canManage()) tabs.push(['reparto','Reparto'],['archivo','Archivo']);
-
-  const backTo=team()?'projects':'home';
-  return `<button class="lnk" onclick="go('${backTo}')">← Volver</button>
-  <div class="card ${stc(p.status)}"><div class="row2"><h1>${esc(p.title)}</h1>${bd(p.status)}</div>
-  <div class="bar"><i style="width:${p.progress}%"></i></div>
-  <small>${p.progress}% completado${canManage()?' · '+esc(p.profiles&&p.profiles.full_name||p.client_name||''):''}${canManage()&&p.profiles?' · '+esc(p.profiles.email||''):''}</small></div>
-  <div class="tabs">${tabs.map(([k,t])=>`<button class="${S.tab===k?'on':''}" onclick="S.tab='${k}';render()">${t}</button>`).join('')}</div>
-  ${T[S.tab]?T[S.tab](p):''}
-  ${admin()&&S.tab==='resumen'?`<button class="btn btn-red" onclick="A.pdel('${p.id}')">Eliminar proyecto</button>`:''}`;
-}
-
-const T={
-resumen(p){
-  return `${team()&&p.status==='cancelado'?`<div class="card st-cancelado"><h2>Proyecto cancelado</h2><p><b>Motivo:</b> ${esc(p.cancel_reason||'')}</p></div>`:''}
-  ${team()&&S.D.ap.length?`<div class="card"><h2>Apelación del cliente</h2><p style="white-space:pre-wrap">${esc(S.D.ap[0].body)}</p><small>${ft(S.D.ap[0].created_at)} · Respóndele en Chat. Para reabrir el proyecto, cambia su estado.</small></div>`:''}
-  <div class="card"><h2>Detalles</h2><p><b>${TY[p.type]||''}</b>${p.format&&p.format!=='na'?' · '+esc(p.format):''} · ${esc(p.package||'')}</p><p style="white-space:pre-wrap">${esc(p.description||'')}</p>${/^https?:\/\//i.test(p.material_url||'')?`<a href="${esc(p.material_url)}" target="_blank" rel="noopener">Ver material</a>`:''}<small>Entrega estimada: ${fd(p.due_date)} · Creado: ${fd(p.created_at)}</small></div>
-  ${canManage()?`<form class="card" onsubmit="return A.save(event,'${p.id}')"><h2>${admin()||staff()?'Gestionar proyecto':'Actualizar proyecto'}</h2><div class="grid grid2"><label>Estado<select name="status">${opts(ST,p.status)}</select></label><label>Avance (%)<input type="number" name="progress" min="0" max="100" value="${p.progress}"></label>${admin()?`<label>Precio (MXN)<input type="number" name="price" min="0" step="1" value="${p.price}"></label>`:'<input type="hidden" name="price" value="'+p.price+'">'}<label>Fecha de entrega<input type="date" name="due_date" value="${p.due_date||''}"></label></div><button class="btn btn-dark">Guardar cambios</button></form>`:''}
-  <div class="card"><h2>Historial del proyecto</h2><ul class="tl">${S.D.ev.map(e=>`<li><b>${esc(e.text)}</b><br><small>${ft(e.created_at)}</small></li>`).join('')||'<li><small>Sin movimientos.</small></li>'}</ul></div>`;
-},
-chat(p){
-  const who=m=>m.sender_id===S.u.id?'Tú':(team()||manager()?esc(p.profiles&&p.profiles.full_name||'Cliente'):'Fluxora');
-  return `<div class="card"><div class="chat">${S.D.msg.map(m=>`<div class="msg ${m.sender_id===S.u.id?'me':''}"><small>${who(m)} · ${ft(m.created_at)}</small><p>${esc(m.body)}</p></div>`).join('')||'<div class="empty">Escribe el primer mensaje.</div>'}</div><form onsubmit="return A.send(event,'${p.id}')" style="grid-template-columns:1fr auto;align-items:start"><textarea name="body" style="min-height:48px" placeholder="Escribe un mensaje..." required></textarea><button class="btn btn-dark">Enviar</button></form></div>`;
-},
-mods(p){
-  return `${S.p.role==='client'?`<form class="card" onsubmit="return A.mod(event,'${p.id}')"><h2>Pedir una modificación</h2><textarea name="body" placeholder="Describe qué quieres cambiar" required></textarea><button class="btn btn-dark">Enviar solicitud</button></form>`:''}
-  <div class="card"><h2>Solicitudes de modificación</h2>${S.D.mods.map(m=>`<div class="row2" style="border-top:1px solid var(--line);padding-top:.7rem"><div><p style="white-space:pre-wrap">${esc(m.body)}</p><small>${ft(m.created_at)}</small></div>${canManage()?`<select style="max-width:160px" onchange="A.modst('${m.id}',this.value)">${opts(MD,m.status)}</select>`:bd(m.status)}</div>`).join('')||'<div class="empty">Sin solicitudes.</div>'}</div>`;
-},
-pagos(p){
-  const pg=paid(p.id),pr=+p.price,pc=pr>0?Math.min(100,Math.round(pg/pr*100)):0;
-  return `<div class="card"><div class="grid grid2"><div class="stat"><small>Precio</small><b>${pr>0?mx(pr):'Por cotizar'}</b></div><div class="stat"><small>Pagado</small><b>${mx(pg)}</b></div><div class="stat"><small>Pendiente</small><b>${pr>0?mx(Math.max(0,pr-pg)):'-'}</b></div></div><div class="bar"><i style="width:${pc}%"></i></div><small>${pc}% pagado</small></div>
-  ${admin()?`<form class="card" onsubmit="return A.pay(event,'${p.id}')"><h2>Registrar pago</h2><div class="grid grid2"><label>Monto<input name="amount" type="number" min="1" step="0.01" required></label><label>Método<select name="method"><option>Transferencia</option><option>Efectivo</option><option>Depósito</option><option>Otro</option></select></label><label>Nota<input name="note" placeholder="Anticipo, liquidación..."></label></div><button class="btn btn-dark">Registrar pago</button></form>`:''}
-  <div class="card tw"><h2>Pagos recibidos</h2><table><tr><th>Fecha</th><th>Monto</th><th>Método</th><th>Nota</th></tr>${S.payments.filter(x=>x.project_id===p.id).map(x=>`<tr><td>${fd(x.paid_at)}</td><td>${mx(x.amount)}</td><td>${esc(x.method||'')}</td><td>${esc(x.note||'')}</td></tr>`).join('')||'<tr><td colspan="4" class="empty">Sin pagos todavía.</td></tr>'}</table></div>`;
-},
-
-/* ── REPARTO (cast) ── */
-reparto(p){
-  const canEdit=canManage();
-  return `${canEdit?`<form class="card" onsubmit="return A.castAdd(event,'${p.id}')"><h2>Agregar al reparto</h2><div class="grid grid2"><label>Nombre<input name="name" required placeholder="Ej. María López"></label><label>Rol / Personaje<input name="role" required placeholder="Ej. Protagonista — Elena"></label><label>Contacto<input name="contact" placeholder="Teléfono o correo"></label><label>Notas<input name="notes" placeholder="Disponibilidad, talla, etc."></label></div><button class="btn btn-dark">Agregar</button></form>`:''} 
-  <div class="cast-grid">${S.cast.map(c=>`<div class="cast-card"><b>${esc(c.name)}</b><small>${esc(c.role)}</small>${c.contact?`<small>${esc(c.contact)}</small>`:''} ${c.notes?`<small>${esc(c.notes)}</small>`:''} ${canEdit?`<button class="lnk" style="color:#ef4444" onclick="A.castDel('${c.id}')">Quitar</button>`:''}</div>`).join('')||'<div class="card empty">Sin miembros en el reparto todavía.</div>'}</div>`;
-},
-
-/* ── ARCHIVO (docs afiliados al proyecto) ── */
-archivo(p){
-  const docs=S.docs.filter(x=>x.project_id===p.id),pg=paid(p.id);
-  const FILES=[{n:'Contratos y memos',k:['contract','memo'],adm:1},{n:'Presupuestos',k:['budget'],adm:1},{n:'Preproducción',k:['breakdown','shots','story']},{n:'Rodaje y corridas',k:['call','sched']},{n:'Legales',k:['release']}];
-  return `<div class="card"><h2>Resumen del proyecto</h2><div class="grid grid2"><div><small>Cliente</small><br><b>${esc(p.profiles&&p.profiles.full_name||p.client_name||'Sin asignar')}</b></div><div><small>Estado</small><br>${bd(p.status)}</div><div><small>Entrega</small><br><b>${fd(p.due_date)}</b></div>${admin()?`<div><small>Precio · pagado</small><br><b>${mx(p.price)} · ${mx(pg)}</b></div>`:''}</div></div>
-  <div class="grid">${FILES.filter(f=>admin()||staff()||!f.adm).map(f=>{const l=docs.filter(x=>f.k.includes(x.kind));return `<div class="card fold"><div class="row2"><b>${f.n}</b><small>${l.length}</small></div>${l.map(x=>`<div class="row2"><small>${esc(x.title)}</small><button class="lnk" onclick="DC.openFrom('${x.id}','${p.id}')">Abrir</button></div>`).join('')||'<small>Vacía</small>'}<div>${f.k.map(k=>`<button class="lnk" onclick="DC.newFor('${k}','${p.id}')">+ ${esc(DOCS[k].n)}</button>`).join('<br>')}</div></div>`}).join('')}</div>`;
-}
-};
-
-/* ══════════════════════════════════════════
-   TEAM VIEW
-══════════════════════════════════════════ */
-Object.assign(V,{team(){
-  const sel=S.tm&&S.profiles.find(x=>x.id===S.tm);
-  return `<h1>Equipo y permisos</h1>
-  <div class="card"><h2>Roles disponibles</h2>
-  <small><b>Administrador</b> — control total. <b>Colaborador (Staff)</b> — administra todos los proyectos, sin acceso a finanzas ni wishlist. <b>Manager</b> — panel propio con los proyectos que le asignes; puede editar, subir documentos y gestionar reparto. <b>Cliente</b> — solo ve y gestiona sus propios proyectos.</small></div>
-  <div class="card tw"><table><tr><th>Persona</th><th>Rol</th><th>Proyectos</th></tr>
-  ${S.profiles.map(x=>{const n=S.mem.filter(m=>m.user_id===x.id).length;return `<tr><td><b>${esc(x.full_name||'Sin nombre')}</b><br><small>${esc(x.email)}</small></td><td><select style="max-width:180px" onchange="A.role('${x.id}',this.value)" ${x.id===S.u.id?'disabled':''}>${opts(ROLES,x.role)}</select></td><td>${['staff','manager'].includes(x.role)?`<button class="lnk" onclick="A.tmSel('${x.id}')">Asignar (${n})</button>`:x.role==='admin'?'Todos':'Los suyos'}</td></tr>`}).join('')}
-  </table></div>
-  ${sel?`<div class="card"><h2>Proyectos asignados a ${esc(sel.full_name||sel.email)}</h2>${S.projects.map(p=>`<label style="grid-auto-flow:column;justify-content:start;align-items:center;gap:.6rem;text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--ink2)"><input type="checkbox" style="width:auto" ${S.mem.some(m=>m.user_id===sel.id&&m.project_id===p.id)?'checked':''} onchange="A.mem('${sel.id}','${p.id}',this.checked)">${esc(p.title)} · ${esc(p.profiles&&p.profiles.full_name||p.client_name||'')}</label>`).join('')||'<small>No hay proyectos.</small>'}</div>`:''}`}
-});
-
-/* ══════════════════════════════════════════
+/* ══════════════════════════════════════
    ACTIONS
-══════════════════════════════════════════ */
+══════════════════════════════════════ */
 const A={
-async auth(e,m){e.preventDefault();const f=new FormData(e.target),msg=document.getElementById('msg');
+async auth(e,m){e.preventDefault();const f=new FormData(e.target),msg=document.getElementById('auth-msg');
   if(m==='up'&&f.get('pass')!==f.get('pass2')){msg.textContent='Las contraseñas no coinciden.';return false}
   msg.textContent='Un momento...';
   const r=m==='in'?await sb.auth.signInWithPassword({email:f.get('email'),password:f.get('pass')}):await sb.auth.signUp({email:f.get('email'),password:f.get('pass'),options:{data:{full_name:f.get('name')},emailRedirectTo:location.href.split('#')[0]}});
   if(r.error)msg.textContent=tr(r.error.message);
   else if(m==='up'&&!r.data.session)msg.textContent='Cuenta creada. Confirma tu correo y luego inicia sesión.';
   return false},
-async reset(){const em=(document.querySelector('input[name=email]').value||'').trim(),msg=document.getElementById('msg');
+async reset(){const em=(document.querySelector('#auth-inner input[name=email]')?.value||'').trim(),msg=document.getElementById('auth-msg');
   if(!em){msg.textContent='Escribe tu correo arriba primero.';return}
   msg.textContent='Enviando...';const r=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.href.split('#')[0]});
-  msg.textContent=r.error?tr(r.error.message):'Listo. Si ese correo tiene cuenta, te enviamos un enlace.'},
-async newpass(e){e.preventDefault();const f=new FormData(e.target),msg=document.getElementById('msg');
+  msg.textContent=r.error?tr(r.error.message):'Si ese correo tiene cuenta, te enviamos el enlace.'},
+async newpass(e){e.preventDefault();const f=new FormData(e.target),msg=document.getElementById('auth-msg');
   if(f.get('pass')!==f.get('pass2')){msg.textContent='Las contraseñas no coinciden.';return false}
   const r=await sb.auth.updateUser({password:f.get('pass')});
   if(r.error){msg.textContent=tr(r.error.message);return false}
-  S.rec=false;history.replaceState(null,'',location.pathname);const u=await sb.auth.getUser();init(u.data.user);return false},
-
-/* cliente crea proyecto */
+  S.rec=false;history.replaceState(null,'',location.pathname);const u=await sb.auth.getUser();bootApp(u.data.user);return false},
 async create(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
-  const r=await sb.from('projects').insert({client_id:S.u.id,title:f.title,type:f.type,format:f.format,package:f.package,description:f.description,material_url:/^https?:\/\//i.test(f.material_url||'')?f.material_url:null}).select().single();
-  if(r.error){alert(r.error.message);return false}await load();go('project',r.data.id);return false},
-
-/* admin/staff crea proyecto manual */
+  const r=await sb.from('projects').insert({client_id:S.u.id,title:f.title,type:f.type,format:f.format,package:f.package,description:f.description,material_url:okUrl(f.material_url)}).select().single();
+  if(r.error){alert(r.error.message);return false}await load();WM.close('new-project');WM.openProject(r.data.id);return false},
 async createManual(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
   const row={title:f.title,type:f.type,format:f.format,package:f.package||null,description:f.description||null,material_url:okUrl(f.material_url),price:+f.price||0,progress:+f.progress||0,status:f.status,due_date:f.due_date||null,client_name:f.client_name||null};
   if(f.client_id) row.client_id=f.client_id;
   const r=await sb.from('projects').insert(row).select().single();
-  if(r.error){alert(r.error.message);return false}
-  await load();go('project',r.data.id);return false},
-
+  if(r.error){alert(r.error.message);return false}await load();WM.close('new-manual');WM.openProject(r.data.id);return false},
 async save(e,id){e.preventDefault();const f=Object.fromEntries(new FormData(e.target)),p=S.projects.find(x=>x.id===id);
   const u={status:f.status,progress:+f.progress,due_date:f.due_date||null};
   if(admin()) u.price=+f.price;
   if(f.status==='cancelado'){const why=p.status==='cancelado'?p.cancel_reason:await askReason();if(!why)return false;u.cancel_reason=why}
   const r=await sb.from('projects').update(u).eq('id',id);
-  if(r.error)alert(r.error.message);await load();render();return false},
-async appeal(e,id){e.preventDefault();if(!confirm('Solo puedes enviar un mensaje de apelación. ¿Enviarlo ahora?'))return false;
-  const r=await sb.from('appeals').insert({project_id:id,client_id:S.u.id,body:new FormData(e.target).get('body').trim()});
-  if(r.error)alert(/duplicate|unique/i.test(r.error.message)?'Ya enviaste tu apelación.':r.error.message);await loadD();render();return false},
+  if(r.error)alert(r.error.message);await load();WM.refresh('proj-'+id);WM.refresh('projects');return false},
 async send(e,id){e.preventDefault();const b=new FormData(e.target).get('body').trim();if(!b)return false;
-  const r=await sb.from('messages').insert({project_id:id,sender_id:S.u.id,body:b});if(r.error)alert(r.error.message);await loadD();render();return false},
+  const r=await sb.from('messages').insert({project_id:id,sender_id:S.u.id,body:b});
+  if(r.error)alert(r.error.message);await loadProject(id);WM.refresh('proj-'+id);e.target.reset();return false},
 async mod(e,id){e.preventDefault();const r=await sb.from('modifications').insert({project_id:id,requested_by:S.u.id,body:new FormData(e.target).get('body')});
-  if(r.error)alert(r.error.message);await loadD();render();return false},
-async modst(id,v){await sb.from('modifications').update({status:v}).eq('id',id);await loadD();render()},
+  if(r.error)alert(r.error.message);await loadProject(id);WM.refresh('proj-'+id);e.target.reset();return false},
+async modst(id,v){await sb.from('modifications').update({status:v}).eq('id',id);await loadProject(S.curProject);WM.refresh('proj-'+S.curProject)},
 async pay(e,id){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
   const r=await sb.from('payments').insert({project_id:id,amount:+f.amount,method:f.method,note:f.note||null,recorded_by:S.u.id});
-  if(r.error)alert(r.error.message);await load();render();return false},
+  if(r.error)alert(r.error.message);await load();WM.refresh('proj-'+id);WM.refresh('pay');e.target.reset();return false},
 async fin(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
   const r=await sb.from('finance_entries').insert({kind:f.kind,concept:f.concept,category:f.category||null,amount:+f.amount,entry_date:f.entry_date});
-  if(r.error)alert(r.error.message);await load();render();return false},
-
-/* cast */
+  if(r.error)alert(r.error.message);await load();WM.refresh('fin');e.target.reset();return false},
 async castAdd(e,pid){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
   const r=await sb.from('cast_members').insert({project_id:pid,name:f.name,role:f.role,contact:f.contact||null,notes:f.notes||null});
-  if(r.error)alert(r.error.message);else{await loadD();render()}return false},
+  if(r.error)alert(r.error.message);await loadProject(pid);WM.refresh('proj-'+pid);e.target.reset();return false},
 async castDel(id){if(!confirm('¿Quitar a este miembro del reparto?'))return;
-  await sb.from('cast_members').delete().eq('id',id);await loadD();render()},
-
-async pdel(id){const p=S.projects.find(x=>x.id===id);if(!confirm('Vas a ELIMINAR "'+p.title+'". También se borran chat, modificaciones, pagos e historial. No se puede deshacer.'))return;
+  await sb.from('cast_members').delete().eq('id',id);await loadProject(S.curProject);WM.refresh('proj-'+S.curProject)},
+async pdel(id){const p=S.projects.find(x=>x.id===id);
+  if(!confirm('Vas a ELIMINAR "'+p.title+'". No se puede deshacer.'))return;
   if(prompt('Escribe ELIMINAR para confirmar')!=='ELIMINAR')return;
-  const r=await sb.from('projects').delete().eq('id',id);if(r.error){alert(r.error.message);return}await load();go('projects')},
-
+  const r=await sb.from('projects').delete().eq('id',id);if(r.error){alert(r.error.message);return}
+  await load();WM.close('proj-'+id);WM.refresh('projects')},
+async appeal(e,id){e.preventDefault();if(!confirm('Solo puedes enviar una apelación. ¿Enviar ahora?'))return false;
+  const r=await sb.from('appeals').insert({project_id:id,client_id:S.u.id,body:new FormData(e.target).get('body').trim()});
+  if(r.error)alert(/duplicate|unique/i.test(r.error.message)?'Ya enviaste tu apelación.':r.error.message);
+  await loadProject(id);WM.refresh('proj-'+id);return false},
 async wadd(e){e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
   const r=await sb.from('wishlist').insert({name:f.name,category:f.category||null,price:+f.price,priority:+f.priority,url:okUrl(f.url)});
-  if(r.error)alert(r.error.message);await load();render();return false},
-async wdel(id){if(!confirm('¿Quitar este artículo de la wishlist?'))return;await sb.from('wishlist').delete().eq('id',id);await load();render()},
+  if(r.error)alert(r.error.message);await load();WM.refresh('wish');return false},
+async wdel(id){if(!confirm('¿Quitar este artículo?'))return;await sb.from('wishlist').delete().eq('id',id);await load();WM.refresh('wish')},
 async wbuy(id){const w=S.wish.find(x=>x.id===id),v=prompt('Precio real pagado (MXN)',w.price);if(v===null||!(+v>=0))return;
-  const r=await sb.rpc('buy_wish',{p_id:id,p_real:+v});if(r.error)alert(r.error.message);await load();render()},
+  const r=await sb.rpc('buy_wish',{p_id:id,p_real:+v});if(r.error)alert(r.error.message);await load();WM.refresh('wish')},
 async walloc(e){e.preventDefault();const a=+new FormData(e.target).get('amount'),m=document.getElementById('wmsg');
-  const r=await sb.rpc('allocate_wish',{p_amount:a});if(r.error){m.textContent=r.error.message;return false}
-  await load();render();const m2=document.getElementById('wmsg');if(m2)m2.textContent=+r.data>0?'Sobraron '+mx(r.data)+' (wishlist completa).':'Listo: dinero repartido al artículo más urgente.';return false},
-async wpct(v){const r=await sb.from('site_settings').upsert({key:'wish_pct',value:Math.min(100,Math.max(0,+v||0))});if(r.error)alert(r.error.message);await load();render()},
-
+  const r=await sb.rpc('allocate_wish',{p_amount:a});if(r.error){if(m)m.textContent=r.error.message;return false}
+  await load();WM.refresh('wish');const m2=document.getElementById('wmsg');
+  if(m2)m2.textContent=+r.data>0?'Sobraron '+mx(r.data)+' (wishlist completa).':'Listo.';return false},
+async wpct(v){const r=await sb.from('site_settings').upsert({key:'wish_pct',value:Math.min(100,Math.max(0,+v||0))});if(r.error)alert(r.error.message);await load()},
 pkCollect(){const fm=document.querySelector('form[onsubmit*=siteSave]');if(!fm||!S.dr)return;
   const n=[...fm.querySelectorAll('[name=pn]')],pp=[...fm.querySelectorAll('[name=pp]')],pf=[...fm.querySelectorAll('[name=pf]')];
   S.dr.packages=n.map((x,i)=>({name:x.value.trim(),price:+pp[i].value||0,features:pf[i].value.split('\n').map(t=>t.trim()).filter(Boolean)}));
-  const sn=[...fm.querySelectorAll('[name=sn]')],sp=[...fm.querySelectorAll('[name=sp]')],sk=[...fm.querySelectorAll('[name=sk]')],su=[...fm.querySelectorAll('[name=su]')];
-  S.dr.services=sn.map((x,i)=>({name:x.value.trim(),price:+sp[i].value||0,kind:sk[i].value,unit:su[i].value.trim()}));
   Object.keys(S.dr.contact).forEach(k=>{if(fm.elements[k])S.dr.contact[k]=fm.elements[k].value.trim()})},
-pkAdd(){A.pkCollect();S.dr.packages.push({name:'Nuevo paquete',price:0,features:[]});render()},
-pkRm(i){A.pkCollect();S.dr.packages.splice(i,1);render()},
-svAdd(){A.pkCollect();S.dr.services.push({name:'Nuevo servicio',price:0,kind:'extra',unit:'por video'});render()},
-svRm(i){A.pkCollect();S.dr.services.splice(i,1);render()},
+pkAdd(){A.pkCollect();S.dr.packages.push({name:'Nuevo paquete',price:0,features:[]});WM.refresh('site')},
+pkRm(i){A.pkCollect();S.dr.packages.splice(i,1);WM.refresh('site')},
 async siteSave(e){e.preventDefault();A.pkCollect();const m=document.getElementById('smsg');
-  if(!S.dr.packages.length){m.textContent='Deja al menos un paquete.';return false}
+  if(!S.dr.packages.length){if(m)m.textContent='Deja al menos un paquete.';return false}
   S.dr.contact.wa=S.dr.contact.wa.replace(/\D/g,'');S.dr.contact.ig=S.dr.contact.ig.replace('@','');
-  const r=await sb.from('site_settings').upsert([{key:'packages',value:S.dr.packages},{key:'contact',value:S.dr.contact},{key:'services',value:S.dr.services}]);
-  if(r.error){m.textContent=r.error.message;return false}m.textContent='Guardado.';S.set.packages=S.dr.packages;S.set.contact=S.dr.contact;S.set.services=S.dr.services;return false},
-
-tmSel(id){S.tm=id;render()},
-async role(uid,v){if(uid===S.u.id){render();return}if(!confirm('¿Cambiar el rol de esta persona?')){render();return}
-  const r=await sb.from('profiles').update({role:v}).eq('id',uid);if(r.error)alert(r.error.message);await load();render()},
-async mem(uid,pid,on){const r=on?await sb.from('project_members').insert({project_id:pid,user_id:uid}):await sb.from('project_members').delete().eq('project_id',pid).eq('user_id',uid);if(r.error)alert(r.error.message);await load();render()}
+  const r=await sb.from('site_settings').upsert([{key:'packages',value:S.dr.packages},{key:'contact',value:S.dr.contact}]);
+  if(r.error){if(m)m.textContent=r.error.message;return false}
+  if(m)m.textContent='Guardado.';S.set.packages=S.dr.packages;S.set.contact=S.dr.contact;return false},
+tmSel(id){S.tm=id;WM.refresh('team')},
+async role(uid,v){if(uid===S.u.id){WM.refresh('team');return}if(!confirm('¿Cambiar el rol?')){WM.refresh('team');return}
+  const r=await sb.from('profiles').update({role:v}).eq('id',uid);if(r.error)alert(r.error.message);await load();WM.refresh('team')},
+async mem(uid,pid,on){const r=on?await sb.from('project_members').insert({project_id:pid,user_id:uid}):await sb.from('project_members').delete().eq('project_id',pid).eq('user_id',uid);if(r.error)alert(r.error.message);await load();WM.refresh('team')}
 };
 
-/* ══════════════════════════════════════════
-   BOOT
-══════════════════════════════════════════ */
-if(SUPABASE_URL.includes('TU-PROYECTO')){
-  app.innerHTML='<div class="card auth"><h1>Falta conectar Supabase</h1><small>Pega tu Project URL y anon key en la parte de CONFIGURACION.</small></div>';
-}else{
-  S.rec=location.hash.includes('type=recovery');
-  sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-  sb.auth.onAuthStateChange((ev,session)=>{
-    if(ev==='PASSWORD_RECOVERY') S.rec=true;
-    if(session&&session.user&&S.rec){setTimeout(recView,0)}
-    else if(session&&session.user){if(!S.u||S.u.id!==session.user.id)setTimeout(()=>init(session.user),0)}
-    else{S.u=null;S.p=null;S.view='home';S.id=null;if(ch){sb.removeChannel(ch);ch=null}authView()}
-  });
+function askReason(){return new Promise(res=>{
+  const d=document.createElement('div');
+  d.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);display:grid;place-items:center;z-index:9999;padding:1rem';
+  d.innerHTML=`<div style="background:rgba(14,14,16,.98);border:1px solid rgba(239,68,68,.4);border-radius:16px;padding:1.5rem;max-width:420px;width:100%;display:flex;flex-direction:column;gap:.85rem">
+    <div class="card-title">Cancelar proyecto</div>
+    <p style="font-size:.76rem;color:var(--muted)">El cliente verá este motivo y podrá apelar.</p>
+    <textarea placeholder="Motivo de la cancelación" style="min-height:80px"></textarea>
+    <div class="row" style="gap:.5rem;justify-content:flex-end">
+      <button class="btn btn-ghost btn-sm" id="_cr_no">Volver</button>
+      <button class="btn btn-red btn-sm" id="_cr_ok">Cancelar proyecto</button>
+    </div>
+  </div>`;
+  document.body.appendChild(d);
+  const ta=d.querySelector('textarea');ta.focus();
+  const done=v=>{d.remove();res(v)};
+  d.querySelector('#_cr_no').onclick=()=>done(null);
+  d.querySelector('#_cr_ok').onclick=()=>done(ta.value.trim()||null);
+})}
+
+/* ══════════════════════════════════════
+   AUTH VIEWS
+══════════════════════════════════════ */
+const tr=m=>{m=String(m||'');return /Invalid login/i.test(m)?'Correo o contraseña incorrectos.':/already registered/i.test(m)?'Ese correo ya tiene cuenta. Usa "Entrar".':/Email not confirmed/i.test(m)?'Confirma tu correo antes de entrar.':/at least 6/i.test(m)?'La contraseña debe tener mínimo 6 caracteres.':/rate limit/i.test(m)?'Demasiados intentos. Espera un momento.':m};
+
+function showAuth(m){m=m||(location.hash==='#registro'?'up':'in');const up=m==='up';
+  document.getElementById('auth-inner').innerHTML=`
+    <div class="seg2"><button class="${up?'':'on'}" onclick="showAuth('in')">Entrar</button><button class="${up?'on':''}" onclick="showAuth('up')">Crear cuenta</button></div>
+    <h1>${up?'Crea tu cuenta':'Bienvenido de vuelta'}</h1>
+    <small>${up?'Regístrate para seguir tus proyectos.':'Sigue tus proyectos y habla con nosotros.'}</small>
+    <form onsubmit="return A.auth(event,'${m}')" style="display:flex;flex-direction:column;gap:.65rem;text-align:left">
+      ${up?'<label class="lbl">Nombre<input name="name" placeholder="Nombre completo" autocomplete="name" required></label>':''}
+      <label class="lbl">Correo<input name="email" type="email" placeholder="tu@correo.com" autocomplete="email" required></label>
+      <label class="lbl">Contraseña<input name="pass" type="password" placeholder="Mínimo 6 caracteres" minlength="6" autocomplete="${up?'new-password':'current-password'}" required></label>
+      ${up?'<label class="lbl">Repite la contraseña<input name="pass2" type="password" placeholder="Repite la contraseña" minlength="6" autocomplete="new-password" required></label>':''}
+      <button class="btn btn-primary" style="margin-top:.25rem">${up?'Crear mi cuenta':'Entrar'}</button>
+    </form>
+    <p class="msg-line" id="auth-msg"></p>
+    ${up?'':`<button type="button" class="lnk-btn" onclick="A.reset()">Olvidé mi contraseña</button>`}`;
 }
+function showRecovery(){
+  document.getElementById('auth-inner').innerHTML=`
+    <h1>Nueva contraseña</h1>
+    <form onsubmit="return A.newpass(event)" style="display:flex;flex-direction:column;gap:.65rem;text-align:left">
+      <label class="lbl">Nueva contraseña<input name="pass" type="password" minlength="6" required></label>
+      <label class="lbl">Repite la contraseña<input name="pass2" type="password" minlength="6" required></label>
+      <button class="btn btn-primary">Guardar contraseña</button>
+    </form>
+    <p class="msg-line" id="auth-msg"></p>`;}
+
+/* ══════════════════════════════════════
+   CLOCK
+══════════════════════════════════════ */
+function tickClock(){
+  const el=document.getElementById('tb-clock');if(!el)return;
+  el.textContent=new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'})+'  '+new Date().toLocaleDateString('es-MX',{weekday:'short',day:'2-digit',month:'short'});
+}
+setInterval(tickClock,10000);
+
+/* ══════════════════════════════════════
+   BOOT
+══════════════════════════════════════ */
+async function bootApp(u){
+  try{
+    S.u=u;
+    const r=await sb.from('profiles').select('*').eq('id',u.id).single();
+    S.p=r.data;
+    await load();
+    sub();
+    document.getElementById('auth-screen').style.display='none';
+    document.getElementById('shell').style.display='flex';
+    WM._buildSidebar();
+    WM._buildIcons();
+    tickClock();
+    // open projects window by default
+    WM.openApp('projects');
+  }catch(e){
+    document.getElementById('auth-inner').innerHTML=`<h1 style="color:#fff">Error al cargar</h1><small>${esc(e.message)}</small><button class="btn btn-primary" onclick="bootApp(S.u)">Reintentar</button>`;
+    document.getElementById('auth-screen').style.display='flex';
+    document.getElementById('shell').style.display='none';
+  }
+}
+
+sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+S.rec=location.hash.includes('type=recovery');
+showAuth();
+document.getElementById('auth-screen').style.display='flex';
+document.getElementById('shell').style.display='none';
+
+sb.auth.onAuthStateChange((ev,session)=>{
+  if(ev==='PASSWORD_RECOVERY') S.rec=true;
+  if(session?.user&&S.rec){setTimeout(showRecovery,0)}
+  else if(session?.user){
+    if(!S.u||S.u.id!==session.user.id) setTimeout(()=>bootApp(session.user),0);
+  } else {
+    S.u=null;S.p=null;
+    if(ch){sb.removeChannel(ch);ch=null}
+    Object.keys(WM.wins).forEach(id=>WM.close(id));
+    document.getElementById('shell').style.display='none';
+    document.getElementById('auth-screen').style.display='flex';
+    showAuth();
+  }
+});
 </script>
 </body>
 </html>
