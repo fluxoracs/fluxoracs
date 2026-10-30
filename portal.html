@@ -130,7 +130,8 @@ function recView(){app.innerHTML=`<div class="card auth"><a href="index.html"><i
 const tr=m=>{m=String(m||'');return /Invalid login/i.test(m)?'Correo o contraseña incorrectos.':/already registered|already been registered/i.test(m)?'Ese correo ya tiene cuenta. Usa "Entrar".':/Email not confirmed/i.test(m)?'Confirma tu correo antes de entrar. Revisa tu bandeja.':/at least 6/i.test(m)?'La contraseña debe tener mínimo 6 caracteres.':/rate limit/i.test(m)?'Demasiados intentos. Espera un momento.':m}
 
 async function load(){
-  const q=[sb.from('projects').select('*,profiles(full_name,email)').order('created_at',{ascending:false}),sb.from('payments').select('*').order('paid_at',{ascending:false})];
+  /* ── FIX: explicit FK hint to avoid "more than one relationship" error ── */
+  const q=[sb.from('projects').select('*,profiles!client_id(full_name,email)').order('created_at',{ascending:false}),sb.from('payments').select('*').order('paid_at',{ascending:false})];
   if(admin())q.push(sb.from('profiles').select('*').order('created_at'),sb.from('finance_entries').select('*').order('entry_date',{ascending:false}),sb.from('wishlist').select('*'),sb.from('site_settings').select('*'),sb.from('project_members').select('*'));
   const r=await Promise.all(q);if(r[0].error)throw r[0].error;S.projects=r[0].data||[];S.payments=r[1].data||[];
   if(admin()){S.profiles=r[2].data||[];S.fin=r[3].data||[];S.wish=(r[4].data||[]).sort((a,b)=>(a.status==='comprado')-(b.status==='comprado')||a.priority-b.priority||String(a.created_at).localeCompare(b.created_at));S.set=Object.fromEntries((r[5].data||[]).map(x=>[x.key,x.value]));S.mem=r[6].data||[]}
